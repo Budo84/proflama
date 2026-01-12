@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Site Admin</title>
+    <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIlNpdGUgQWRtaW4iLAogICJzaG9ydF9uYW1lIjogIkFkbWluIiwKICAic3RhcnRfdXJsIjogImFkbWluLmh0bWwiLAogICJkaXNwbGF5IjogInN0YW5kYWxvbmUiLAogICJiYWNrZ3JvdW5kX2NvbG9yIjogIiNmOGZhZmMiLAogICJ0aGVtZV9jb2xvciI6ICIjMjU2M2ViIgp9">
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        .glass { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
+        .tab-active { border-bottom: 3px solid #2563eb; color: #2563eb; }
+        .toolbar-btn { flex: 0 0 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: #f1f5f9; border-radius: 8px; font-weight: bold; color: #475569; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="bg-slate-50 min-h-screen pb-safe">
+
+    <nav class="glass sticky top-0 z-50 border-b border-slate-200 px-4 py-3 flex justify-between items-center">
+        <h1 class="text-xl font-bold text-slate-800 flex items-center gap-2">
+            <i data-lucide="layout-dashboard" class="text-blue-600"></i> Admin
+        </h1>
+        <button onclick="toggleConfig()" class="p-2 bg-slate-100 rounded-full text-slate-600">
+            <i data-lucide="settings" class="w-5 h-5"></i>
+        </button>
+    </nav>
+
+    <main class="p-4 max-w-2xl mx-auto pb-24">
+        <div id="config-section" class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 mb-6 hidden">
+            <h2 class="font-bold mb-4 text-slate-800">Connessione GitHub</h2>
+            <div class="text-xs text-slate-500 mb-2">Inserisci Username/Repo (es: mario/sito)</div>
+            <input type="text" id="gh-repo" placeholder="user/repo" class="w-full mb-3 p-3 border rounded-xl bg-slate-50">
+            <div class="text-xs text-slate-500 mb-2">Token (Fine-grained: Read & Write Contents)</div>
+            <input type="password" id="gh-token" placeholder="GitHub Token" class="w-full mb-4 p-3 border rounded-xl bg-slate-50">
+            <button onclick="saveConfig()" class="w-full bg-blue-600 text-white py-3 rounded-xl font-bold shadow-lg shadow-blue-200">Salva e Connetti</button>
+        </div>
+
+        <div id="dashboard-view">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-lg font-bold text-slate-800">Contenuti</h2>
+                <button onclick="openEditor()" class="bg-blue-600 text-white px-5 py-2.5 rounded-full text-sm font-bold shadow-lg shadow-blue-200 flex items-center gap-2 active:scale-95 transition-transform">
+                    <i data-lucide="plus" class="w-4 h-4"></i> Nuovo Post
+                </button>
+            </div>
+            <div id="file-container" class="space-y-3">
+                <div class="text-center py-12 text-slate-400">Caricamento...</div>
+            </div>
+        </div>
+    </main>
+
+    <div id="editor-modal" class="fixed inset-0 bg-white z-[60] hidden flex flex-col">
+        <div class="p-3 border-b flex justify-between items-center bg-white shadow-sm z-10">
+            <button onclick="closeEditor()" class="text-slate-500 font-medium px-2">Annulla</button>
+            <span class="text-xs font-bold text-blue-600 tracking-wider">EDITOR</span>
+            <button onclick="saveFileToGitHub()" class="bg-blue-600 text-white px-4 py-1.5 rounded-lg font-bold text-sm shadow-md shadow-blue-200">PUBBLICA</button>
+        </div>
+
+        <div class="flex border-b text-sm font-bold bg-slate-50">
+            <button id="btn-edit" onclick="switchTab('edit')" class="flex-1 py-3 tab-active transition-colors">SCRITTURA</button>
+            <button id="btn-preview" onclick="switchTab('preview')" class="flex-1 py-3 text-slate-400 transition-colors">ANTEPRIMA</button>
+        </div>
+
+        <div id="md-toolbar" class="flex gap-2 p-2 bg-white border-b overflow-x-auto no-scrollbar">
+            <button onclick="insertMd('**', '**')" class="toolbar-btn"><i data-lucide="bold" class="w-4 h-4"></i></button>
+            <button onclick="insertMd('*', '*')" class="toolbar-btn"><i data-lucide="italic" class="w-4 h-4"></i></button>
+            <button onclick="insertDate()" class="toolbar-btn text-blue-600 bg-blue-50"><i data-lucide="calendar" class="w-4 h-4"></i></button>
+            <button onclick="insertMd('## ', '')" class="toolbar-btn text-xs">H2</button>
+            <button onclick="insertMd('### ', '')" class="toolbar-btn text-xs">H3</button>
+            <button onclick="insertMd('- ', '')" class="toolbar-btn"><i data-lucide="list" class="w-4 h-4"></i></button>
+            <button onclick="insertMd('[', '](url)')" class="toolbar-btn"><i data-lucide="link" class="w-4 h-4"></i></button>
+            <button onclick="insertMd('![alt](', ')')" class="toolbar-btn"><i data-lucide="image" class="w-4 h-4"></i></button>
+        </div>
+
+        <div class="flex-1 overflow-y-auto p-4 bg-white relative">
+            <div id="edit-pane" class="h-full flex flex-col">
+                <input type="text" id="file-path" placeholder="docs/blog/titolo-post.md" class="w-full p-3 mb-4 border-b text-sm font-mono focus:outline-none focus:border-blue-500 text-slate-600 placeholder-slate-300">
+                <textarea id="file-content" oninput="updatePreview()" placeholder="Scrivi qui il tuo articolo..." class="flex-1 w-full resize-none focus:outline-none font-mono text-base leading-relaxed text-slate-800"></textarea>
+            </div>
+            <div id="preview-pane" class="hidden prose prose-blue prose-lg max-w-none pb-20"></div>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+        let config = JSON.parse(localStorage.getItem('gh_config') || '{}');
+        if(!config.token) document.getElementById('config-section').classList.remove('hidden');
+
+        function insertMd(before, after) {
+            const textarea = document.getElementById('file-content');
+            const start = textarea.selectionStart;
+            const end = textarea.selectionEnd;
+            const text = textarea.value;
+            textarea.value = text.substring(0, start) + before + text.substring(start, end) + after + text.substring(end);
+            textarea.focus();
+            textarea.setSelectionRange(start + before.length, start + before.length + (end - start));
+            updatePreview();
+        }
+
+        function insertDate() { insertMd(new Date().toISOString().split('T')[0], ''); }
+
+        function switchTab(mode) {
+            const edit = document.getElementById('edit-pane');
+            const prev = document.getElementById('preview-pane');
+            const tool = document.getElementById('md-toolbar');
+            
+            if(mode === 'edit') {
+                edit.classList.remove('hidden'); prev.classList.add('hidden'); tool.classList.remove('hidden');
+                document.getElementById('btn-edit').classList.add('tab-active');
+                document.getElementById('btn-edit').classList.remove('text-slate-400');
+                document.getElementById('btn-preview').classList.remove('tab-active');
+                document.getElementById('btn-preview').classList.add('text-slate-400');
+            } else {
+                edit.classList.add('hidden'); prev.classList.remove('hidden'); tool.classList.add('hidden');
+                document.getElementById('btn-preview').classList.add('tab-active');
+                document.getElementById('btn-preview').classList.remove('text-slate-400');
+                document.getElementById('btn-edit').classList.remove('tab-active');
+                document.getElementById('btn-edit').classList.add('text-slate-400');
+                updatePreview();
+            }
+        }
+
+        function updatePreview() {
+            document.getElementById('preview-pane').innerHTML = marked.parse(document.getElementById('file-content').value);
+        }
+
+        function toggleConfig() { document.getElementById('config-section').classList.toggle('hidden'); }
+
+        function saveConfig() {
+            config = { token: document.getElementById('gh-token').value, repo: document.getElementById('gh-repo').value };
+            localStorage.setItem('gh_config', JSON.stringify(config));
+            location.reload();
+        }
+
+        async function fetchFiles() {
+            if(!config.token) return;
+            try {
+                // Leggiamo la cartella docs/blog come default, se esiste
+                const res = await fetch(`https://api.github.com/repos/${config.repo}/contents/docs`, {
+                    headers: { 'Authorization': `token ${config.token}` }
+                });
+                const files = await res.json();
+                const container = document.getElementById('file-container');
+                container.innerHTML = files.map(f => `
+                    <div class="bg-white p-4 rounded-xl border border-slate-100 shadow-sm flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <div class="p-2 bg-blue-50 rounded-lg text-blue-600">
+                                <i data-lucide="${f.type === 'dir' ? 'folder' : 'file-text'}" class="w-5 h-5"></i>
+                            </div>
+                            <span class="font-medium text-slate-700">${f.name}</span>
+                        </div>
+                    </div>
+                `).join('');
+                lucide.createIcons();
+            } catch(e) { document.getElementById('file-container').innerHTML = "Errore connessione o cartella vuota."; }
+        }
+
+        function openEditor() {
+            document.getElementById('editor-modal').classList.remove('hidden');
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('file-path').value = 'docs/blog/nuovo-post.md';
+            document.getElementById('file-content').value = `---\ntitle: Titolo Post\ndate: ${today}\n---\n\n# Inizia qui...`;
+            updatePreview();
+        }
+
+        function closeEditor() {
+            if(confirm('Chiudere senza salvare?')) document.getElementById('editor-modal').classList.add('hidden');
+        }
+
+        async function saveFileToGitHub() {
+            const path = document.getElementById('file-path').value;
+            const content = document.getElementById('file-content').value;
+            
+            // Step 1: Controlliamo se il file esiste per prendere lo SHA (per aggiornamenti)
+            let sha = null;
+            try {
+                const check = await fetch(`https://api.github.com/repos/${config.repo}/contents/${path}`, {
+                    headers: { 'Authorization': `token ${config.token}` }
+                });
+                if(check.ok) {
+                    const data = await check.json();
+                    sha = data.sha;
+                }
+            } catch(e) {}
+
+            // Step 2: Caricamento
+            const payload = {
+                message: "Update from App",
+                content: btoa(unescape(encodeURIComponent(content)))
+            };
+            if(sha) payload.sha = sha;
+
+            const res = await fetch(`https://api.github.com/repos/${config.repo}/contents/${path}`, {
+                method: 'PUT',
+                headers: { 'Authorization': `token ${config.token}`, 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            if(res.ok) {
+                alert('Pubblicato con successo!');
+                document.getElementById('editor-modal').classList.add('hidden');
+                fetchFiles();
+            } else {
+                alert('Errore nel caricamento.');
+            }
+        }
+
+        if(config.token) fetchFiles();
+    </script>
+</body>
+</html>
