@@ -28,7 +28,7 @@ jobs:
           cache: npm
 
       - name: Install dependencies
-        run: npm ci # Installa vitepress leggendo il package.json
+        run: npm install # Installa vitepress leggendo il package.json
 
       - name: Build with VitePress
         run: npm run docs:build # Crea la cartella dist!
