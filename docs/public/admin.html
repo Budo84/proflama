@@ -3,10 +3,52 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gestione Sito</title>
-  <link href="/config.yml" type="text/yaml" rel="cms-config-url" />
+  <title>Admin Proflama</title>
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  
+  <script>
+    CMS.init({
+      config: {
+        backend: {
+          name: 'git-gateway', // <--- ECCO LA MAGIA: Usiamo il Gateway, non più GitHub diretto
+          branch: 'main',
+        },
+        media_folder: 'docs/public/img',
+        public_folder: '/img',
+        collections: [
+          {
+            name: 'blog',
+            label: 'Articoli Blog',
+            folder: 'docs/blog',
+            create: true,
+            slug: '{{slug}}',
+            fields: [
+              { label: 'Titolo', name: 'title', widget: 'string' },
+              { label: 'Data', name: 'date', widget: 'datetime' },
+              { label: 'Corpo', name: 'body', widget: 'markdown' }
+            ]
+          },
+          {
+            name: 'pages',
+            label: 'Pagine Sito',
+            files: [
+              {
+                file: 'docs/index.md',
+                label: 'Home Page',
+                name: 'home',
+                fields: [
+                   {label: 'Titolo', name: 'title', widget: 'string'},
+                   {label: 'Contenuto', name: 'body', widget: 'markdown'}
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    });
+  </script>
 </body>
 </html>
