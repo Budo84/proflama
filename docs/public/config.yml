@@ -1,13 +1,12 @@
 backend:
   name: github
-  repo: budo84/proflama # Assicurati che questo sia il TUO utente/repo corretto
+  repo: Budo84/proflama
   branch: main
 
 media_folder: "docs/public/img"
 public_folder: "/img"
 
 collections:
-  # 1. GESTIONE BLOG (Qui potrai creare, modificare e CANCELLARE i post)
   - name: "blog"
     label: "Articoli Blog"
     folder: "docs/blog"
@@ -16,23 +15,4 @@ collections:
     fields:
       - {label: "Titolo", name: "title", widget: "string"}
       - {label: "Data", name: "date", widget: "datetime"}
-      - {label: "Immagine Copertina", name: "image", widget: "image", required: false}
-      - {label: "Corpo del Testo", name: "body", widget: "markdown"}
-
-  # 2. GESTIONE PAGINE (Qui modifichi solo le pagine fisse)
-  - name: "pages"
-    label: "Pagine Sito"
-    files:
-      - file: "docs/index.md"
-        label: "Home Page"
-        name: "home"
-        fields:
-          - {label: "Titolo", name: "title", widget: "string", default: "Home"}
-          - {label: "Contenuto", name: "body", widget: "markdown"}
-      
-      - file: "docs/chi-sono.md"
-        label: "Chi Sono"
-        name: "about"
-        fields:
-          - {label: "Titolo", name: "title", widget: "string"}
-          - {label: "Contenuto", name: "body", widget: "markdown"}
+      - {label: "Corpo", name: "body", widget: "markdown"}
