@@ -1,13 +1,13 @@
 backend:
   name: github
-  repo: budo84/proflama  # Controlla che sia giusto
+  repo: budo84/proflama # Assicurati che questo sia il TUO utente/repo corretto
   branch: main
 
 media_folder: "docs/public/img"
 public_folder: "/img"
 
 collections:
-  # 1. SEZIONE BLOG (Gestisce la cartella)
+  # 1. GESTIONE BLOG (Qui potrai creare, modificare e CANCELLARE i post)
   - name: "blog"
     label: "Articoli Blog"
     folder: "docs/blog"
@@ -16,10 +16,10 @@ collections:
     fields:
       - {label: "Titolo", name: "title", widget: "string"}
       - {label: "Data", name: "date", widget: "datetime"}
-      - {label: "Descrizione", name: "description", widget: "text", required: false}
-      - {label: "Corpo", name: "body", widget: "markdown"}
+      - {label: "Immagine Copertina", name: "image", widget: "image", required: false}
+      - {label: "Corpo del Testo", name: "body", widget: "markdown"}
 
-  # 2. SEZIONE PAGINE (Gestisce solo file specifici, ignorando il resto)
+  # 2. GESTIONE PAGINE (Qui modifichi solo le pagine fisse)
   - name: "pages"
     label: "Pagine Sito"
     files:
@@ -27,12 +27,12 @@ collections:
         label: "Home Page"
         name: "home"
         fields:
-          - {label: "Titolo Scheda", name: "title", widget: "string", default: "Home"}
-          - {label: "Configurazione", name: "body", widget: "markdown", hint: "Non toccare se non sai cosa fai"}
+          - {label: "Titolo", name: "title", widget: "string", default: "Home"}
+          - {label: "Contenuto", name: "body", widget: "markdown"}
       
       - file: "docs/chi-sono.md"
         label: "Chi Sono"
         name: "about"
         fields:
           - {label: "Titolo", name: "title", widget: "string"}
-          - {label: "Testo", name: "body", widget: "markdown"}
+          - {label: "Contenuto", name: "body", widget: "markdown"}
