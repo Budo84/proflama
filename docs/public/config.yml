@@ -1,27 +1,38 @@
 backend:
   name: github
-  repo: budo84/proflama # <--- CONTROLLA CHE SIA IL TUO USERNAME/REPO ESATTO
+  repo: budo84/proflama  # Controlla che sia giusto
   branch: main
 
-media_folder: "docs/public/img" # Dove salva le immagini caricate
+media_folder: "docs/public/img"
 public_folder: "/img"
 
 collections:
+  # 1. SEZIONE BLOG (Gestisce la cartella)
   - name: "blog"
-    label: "Blog"
-    folder: "docs/blog" # Salva i post qui
+    label: "Articoli Blog"
+    folder: "docs/blog"
     create: true
     slug: "{{slug}}"
     fields:
       - {label: "Titolo", name: "title", widget: "string"}
       - {label: "Data", name: "date", widget: "datetime"}
+      - {label: "Descrizione", name: "description", widget: "text", required: false}
       - {label: "Corpo", name: "body", widget: "markdown"}
 
-  - name: "pagine"
-    label: "Pagine"
-    folder: "docs" # Salva le pagine generiche (Chi siamo, etc) qui
-    create: true
-    filter: {field: "layout", value: "page"}
-    fields:
-      - {label: "Titolo", name: "title", widget: "string"}
-      - {label: "Corpo", name: "body", widget: "markdown"}
+  # 2. SEZIONE PAGINE (Gestisce solo file specifici, ignorando il resto)
+  - name: "pages"
+    label: "Pagine Sito"
+    files:
+      - file: "docs/index.md"
+        label: "Home Page"
+        name: "home"
+        fields:
+          - {label: "Titolo Scheda", name: "title", widget: "string", default: "Home"}
+          - {label: "Configurazione", name: "body", widget: "markdown", hint: "Non toccare se non sai cosa fai"}
+      
+      - file: "docs/chi-sono.md"
+        label: "Chi Sono"
+        name: "about"
+        fields:
+          - {label: "Titolo", name: "title", widget: "string"}
+          - {label: "Testo", name: "body", widget: "markdown"}
