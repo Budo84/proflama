@@ -1,0 +1,27 @@
+backend:
+  name: github
+  repo: budo84/proflama # <--- CONTROLLA CHE SIA IL TUO USERNAME/REPO ESATTO
+  branch: main
+
+media_folder: "docs/public/img" # Dove salva le immagini caricate
+public_folder: "/img"
+
+collections:
+  - name: "blog"
+    label: "Blog"
+    folder: "docs/blog" # Salva i post qui
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Titolo", name: "title", widget: "string"}
+      - {label: "Data", name: "date", widget: "datetime"}
+      - {label: "Corpo", name: "body", widget: "markdown"}
+
+  - name: "pagine"
+    label: "Pagine"
+    folder: "docs" # Salva le pagine generiche (Chi siamo, etc) qui
+    create: true
+    filter: {field: "layout", value: "page"}
+    fields:
+      - {label: "Titolo", name: "title", widget: "string"}
+      - {label: "Corpo", name: "body", widget: "markdown"}
