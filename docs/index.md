@@ -2,20 +2,20 @@
 layout: home
 
 hero:
-  name: "ProfLama"
-  text: "Archivio Digitale"
-  tagline: Gestito interamente da Smartphone
+  name: "Proflama"
+  text: "Il mio spazio web"
+  tagline: Benvenuto nel mio sito personale
   actions:
     - theme: brand
-      text: Leggi gli articoli
-      link: /blog/primo-post
+      text: Leggi il Blog
+      link: /blog/
     - theme: alt
-      text: Admin Login
-      link: /admin
+      text: Chi sono
+      link: /chi-sono
 
 features:
-  - title: Markdown
-    details: Scritto in semplice testo.
-  - title: Veloce
-    details: Caricamento istantaneo delle pagine.
+  - title: Articoli
+    details: Leggi i miei pensieri e aggiornamenti.
+  - title: Progetti
+    details: Scopri su cosa sto lavorando.
 ---
