@@ -10,34 +10,34 @@ BBC micro:bit è una piccola scheda elettronica utilizzata per fare coding in mo
 I nostri PC hanno quello che si chiama **microprocessore** (o CPU), un singolo circuito integrato il cui scopo è elaborare i dati forniti da una memoria esterna contenente un programma.
 
 <div style="display: flex; justify-content: space-around;">
-     <img src="immagini/z80.png" style="width: 45%; object-fit: cover;">
-     <img src="immagini/microprocessore.png" style="width: 45%; object-fit: cover;">
+     <img src="/img/z80.png" style="width: 45%; object-fit: cover;">
+     <img src="/img/microprocessore.png" style="width: 45%; object-fit: cover;">
 </div>
 
 Un altro tipo di scheda elettronica che eleabora i dati è il **microcontrollore**, un circuito integrato come il microprocessore; un computer in scala molto ridotta. Al suo interno c'è tutto il necessario per essere immediatamente operativo. Il microprocessore lo troviamo nei nostri personal computer mentre il microcontrollore ha un campo di applicazione molto più vario: lavatrici, televisori, automobili, Arduino.
 
 <div style="display: flex; justify-content: space-around;">
-     <img src="immagini/atmega.png" style="width: 45%; object-fit: cover;">
-     <img src="immagini/arduino.png" style="width: 45%; object-fit: cover;">
+     <img src="/img/atmega.png" style="width: 45%; object-fit: cover;">
+     <img src="/img/arduino.png" style="width: 45%; object-fit: cover;">
 </div>
 
 <center>
-	<img src="immagini/microcontrollore.png" alt="windows" width="400"/>
+	<img src="/img/microcontrollore.png" alt="windows" width="400"/>
 </center>
 
 <center>
-	<img src="immagini/cpumicrocont.png" alt="windows" width="600"/>
+	<img src="/img/cpumicrocont.png" alt="windows" width="600"/>
 </center>
 
 Dopo aver compreso la differenza tra **microprocessore** e **microcontrollore** possiamo vedere da vicino cosa coordina la nostra scheda; il micro:bit presenta un chip ancora più evolto denominato **SoC** (*System On Chip*) ovvero un sistema su chip che prevede oltre ad un microcontrollore anche altre connessioni (Bluetooth e radio) e servizi in moo da ridurre l'uso di periferiche esterne limitando spazi e costi. Per le ridotte dimensioni e la presenza di più componenti all'interno di un'unico cicuito integrato i SoC vengono impiegati ad esempio negli smartphone, tablet, smartwatch e nei moderni PC per favorire dimensioni dei prodotti contenute e una maggiore autonomia.
 
 <div style="display: flex; justify-content: space-around;">
-     <img src="immagini/soc.png" style="width: 45%; object-fit: cover;">
-     <img src="immagini/applem.png" style="width: 45%; object-fit: cover;">
+     <img src="/img/soc.png" style="width: 45%; object-fit: cover;">
+     <img src="/img/applem.png" style="width: 45%; object-fit: cover;">
 </div>
 
 <center>
-	<img src="immagini/soccpu.png" alt="windows" width="600"/>
+	<img src="/img/soccpu.png" alt="windows" width="600"/>
 </center>
 
 <div style="page-break-after: always;"></div>
@@ -59,13 +59,13 @@ La scheda **Micro:Bit** è costituita da:
 * connessione radio e Bluetooth Low Energy per interagire con altri device.
 
 <center>
-	<img src="immagini/microbit-overview-2.png" alt="windows" width="450"/>
+	<img src="/img/microbit-overview-2.png" alt="windows" width="450"/>
 </center>
 
 <div style="page-break-after: always;"></div>
 
 <center>
-	<img src="immagini/microbit_V1vsV2.png" alt="windows" width="600"/>
+	<img src="/img/microbit_V1vsV2.png" alt="windows" width="600"/>
 </center>
 
 <div style="page-break-after: always;"></div>
@@ -91,7 +91,7 @@ La matrice è formata da 25 LED divisi in righe e colonne (5LED x 5LED). Ogni LE
 La posizione di ogni LED si può trovare come in una battaglia navale, incrociando le due coordinate numero di riga e numero di colonna. Il primo LED sarà quello posto in alto a sinistra e corrisponderà al numero di riga 0 e numero di colonna 0.
 
 <center>
-	<img src="immagini/microbit-led-coords.png" alt="windows" width="300"/>
+	<img src="/img/microbit-led-coords.png" alt="windows" width="300"/>
 </center>
 
 É possibile attribuire una diversa luminosità ad ognuno dei LED con un valore da 0 (spento) a 9 (massima luminosità).
@@ -116,7 +116,7 @@ Il magnetometro rileva e isura l'intensità di un campo magnetico individuando i
 Il principio di funzionamento si basa sull'effetto Hall. Applicando ad un conduttore una tensione, gli elettroni lo attraverseranno in modo ordinato seguendo una linea da un polo all'altro del generatore. In presenza di un campo magnetico esterno perpendicolare al conduttore, per esempio ad opera di una calamita, gli elettroni verranno deviati (attratti o respinti a seconda della polarità) accumulandosi in una zona; questo genera uno squilibrio di cariche all'interno del conduttore tra una zona e l'altra generando una differenza di potenziale fra la zona con più elettroni e quella con meno. La differenza di potenziale è piccolissima e viene detta tensione di Hall che rivela la presenza di un campo magnetico esterno. 
 
 <center>
-	<img src="immagini/hall.png" alt="windows" width="500"/>
+	<img src="/img/hall.png" alt="windows" width="500"/>
 </center>
 
 <div style="page-break-after: always;"></div>
@@ -133,7 +133,7 @@ Gli oggetti che compongono il linguaggio sono semplici da manipolare e abbiamo l
 Una volta sicuri del programma scritto lo potremmo inviare al dispositivo, precedentemente connesso e lavorare in autonomia scollegandolo dal computer.
 
 <center>
-	<img src="immagini/interfaccia.png" alt="windows" width="450"/>
+	<img src="/img/interfaccia.png" alt="windows" width="450"/>
 </center>
 
 \####I passi principali per programmare ONLINE
@@ -141,19 +141,19 @@ Una volta sicuri del programma scritto lo potremmo inviare al dispositivo, prece
 1. Collegarsi al sito **microbit.org**.
 
 <center>
-	<img src="immagini/sito1.png" alt="windows" width="450"/>
+	<img src="/img/sito1.png" alt="windows" width="450"/>
 </center>
 
 2. Cliccare su *Let's Code*.
 
 <center>
-	<img src="immagini/sito2.png" alt="windows" width="450"/>
+	<img src="/img/sito2.png" alt="windows" width="450"/>
 </center>
 
 3. Cliccare su *MakeCode Editor*.
 
 <center>
-	<img src="immagini/sito3.png" alt="windows" width="450"/>
+	<img src="/img/sito3.png" alt="windows" width="450"/>
 </center>
 
 4. Selezionare *New Project* oppure il progetto che dovevate completare.
@@ -163,7 +163,7 @@ Una volta sicuri del programma scritto lo potremmo inviare al dispositivo, prece
 1. Avviare il programma installato **MakeCode**.
 
 <center>
-	<img src="immagini/progoffline.png" alt="windows" width="450"/>
+	<img src="/img/progoffline.png" alt="windows" width="450"/>
 </center>
 
 2. Selezionare *New Project* oppure il progetto che dovevate completare.
@@ -171,7 +171,7 @@ Una volta sicuri del programma scritto lo potremmo inviare al dispositivo, prece
 Manca solo un ultimo passaggio, caricare il vostro programma sulla scheda. Per fare questo dovrete collegare micro:bit con il cavo usb al computer e dall'interfaccia cliccare su *Download* e il programma verrà caricato sulla memoria della nostra scheda.
 
 <center>
-	<img src="immagini/download.png" alt="windows" width="450"/>
+	<img src="/img/download.png" alt="windows" width="450"/>
 </center>
 
 Ora siete pronti per dar "vita" alle vostre idee.
