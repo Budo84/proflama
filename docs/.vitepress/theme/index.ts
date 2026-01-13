@@ -1,9 +1,8 @@
 import DefaultTheme from 'vitepress/theme'
-import HomeLayout from './HomeLayout.vue' // <--- Importa il tuo layout
-import './style.css'
+import HomeLayout from './HomeLayout.vue'
 
 export default {
-  ...DefaultTheme,
-  // Diciamo a VitePress di usare il nostro layout quando serve
+  extends: DefaultTheme,
+  // Sovrascrive il layout solo quando serve (es. nella Home)
   Layout: HomeLayout
 }
