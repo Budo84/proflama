@@ -1,6 +1,6 @@
 ---
 title: 03-Laboratorio-MicroBit-Parte-3
-date: 2026-01-13T23:08:00.000+01:00
+date: 2026-01-13T23:31:00.000+01:00
 ---
 #03-Laboratorio-MicroBit-Parte-3
 
