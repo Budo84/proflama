@@ -122,7 +122,7 @@ Come puoi relizzare un conto alla rovescia infinito?
 
 \    <img src="/img/microbit/conto-rovescia-inf.png" style="width: 20%; object-fit: cover;">
 
-\    <img src="immagini/conto-rovescia.gif" style="width: 45%; object-fit: cover;">
+\    <img src="/img/microbit/conto-rovescia.gif" style="width: 45%; object-fit: cover;">
 
 </div>
 
