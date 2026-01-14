@@ -8,6 +8,7 @@ export default defineConfig({
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Blog', link: '/blog/' },
+      { text: 'Microbit', link: '/microbit' },
       { text: 'Admin', link: 'https://proflama.netlify.app/admin.html', target: '_blank' } // Link comodo per te
     ],
 
