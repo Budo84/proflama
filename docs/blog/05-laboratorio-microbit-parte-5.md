@@ -2,6 +2,7 @@
 title: 05-Laboratorio-MicroBit-Parte-5
 date: 2026-01-14T23:24:00.000+01:00
 image: /img/termometro.gif
+category: MicroBit
 ---
 ## Termometro digitale con avviso "Troppo caldo"
 
