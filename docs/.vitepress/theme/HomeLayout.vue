@@ -6,7 +6,7 @@ const { Layout } = DefaultTheme
 // Prendiamo i primi 4 post per la griglia in alto
 const featured = posts.slice(0, 4)
 // Tutti gli altri per la lista
-const list = posts.slice(4)
+const list = posts  //.slice(4)
 </script>
 
 <template>
