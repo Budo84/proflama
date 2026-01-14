@@ -1,12 +1,16 @@
 ---
 title: 03-Laboratorio-MicroBit-Parte-3
-date: 2026-01-13T23:31:00.000+01:00
+date: 2026-01-14T08:46:00.000+01:00
 ---
-#03-Laboratorio-MicroBit-Parte-3
+\---
+title: 03-Laboratorio-MicroBit-Parte-3
+date: 2026-01-14
+image: /img/microbit/matrice-item.gif
+---
 
 Vogliamo realizzare un programma che alla pressione del pulsante A incrementi di 5 i LED sulla matrice della microbit e alla pressione del pulsante B elimini 5 LED sulla matrice della microbit. Per realizzarlo abbiamo bisono di introdurre tre concetti fondamentali: **Variabili**, **Visualizzazione LED** e **Logica Condizionale** (*if...then*).
 
-####Fase 1: Introduzione alla Variabile (Programma 1)
+\####Fase 1: Introduzione alla Variabile (Programma 1)
 
 **Concetto chiave**: una variabile è come una scatola o un contenitore in memoria che può contenere un valore (un numero o un testo) e il cui contenuto può cambiare.
 
@@ -14,13 +18,11 @@ Vogliamo realizzare un programma che alla pressione del pulsante A incrementi di
 Dichiarazione e Inizializzazione".
 
 * In *on start (all'avvio)*, creiamo la nostra variabile, chiamandola *item* (come nel codice finale).
-
 * Le diamo un valore iniziale, *set item to 0*. Iniziare da zero è una pratica comune.
 
 **Modifica**
 
 * Quando premiamo *on button A pressed*, usiamo *change item by 1*. Questo aumenta il valore di 1.
-
 * Quando premiamo *on button B pressed*, usiamo *change item by -1*. Questo diminuisce il valore di 1.
 
 **Visualizzazione**
@@ -31,7 +33,7 @@ Dichiarazione e Inizializzazione".
 	<img src="/img/microbit/variabile.png" alt="windows" width="350"/>
 </center>
 
-####Fase 2: Visualizzare i Dati sulla Matrice LED (Programma 2)
+\####Fase 2: Visualizzare i Dati sulla Matrice LED (Programma 2)
 
 **Concetto chiave**: come trasformare un numero (la variabile) in una rappresentazione visiva sulla griglia 5x5 di LED, usando un grafico a barre.
 
@@ -47,7 +49,7 @@ Dichiarazione e Inizializzazione".
 
 **Domanda di Verifica**: se impostassi il valore massimo a 100, quanti LED si accenderebbero con un valore di item pari a 50? (*Risposta: Metà della matrice LED, o 2 colonne e mezza*).
 
-####Fase 3: Aggiungere i Limiti (Programma 3 e Codice Finale)
+\####Fase 3: Aggiungere i Limiti (Programma 3 e Codice Finale)
 
 **Concetto chiave**: la logica condizionale (if...then) ci permette di impostare delle "regole di sicurezza" per evitare che la variabile vada oltre i valori che ci interessano (lo spoiler del codice finale).
 
@@ -78,7 +80,6 @@ Visualizzazione: plot bar graph per mostrare il progresso.
 Logica Condizionale: I blocchi if per assicurarsi che il contatore (la variabile item) rimanga sempre tra 0 e 25.
 
 Questa struttura garantisce che il grafico a barre sulla matrice LED non "overflow" o non vada in negativo, mantenendo l'interazione dei pulsanti sempre all'interno del range visibile e utile.
-
 
 Proviamo a comporre questo programma:
 
