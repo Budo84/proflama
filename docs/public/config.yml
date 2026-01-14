@@ -14,6 +14,7 @@ collections:
     fields:
       - {label: "Titolo", name: "title", widget: "string"}
       - {label: "Data", name: "date", widget: "datetime"}
+      - { label: "Immagine Copertina", name: "image", widget: "image" }
       - {label: "Corpo", name: "body", widget: "markdown"}
   
   - name: "pages"
