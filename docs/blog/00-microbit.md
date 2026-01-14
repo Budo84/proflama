@@ -2,6 +2,7 @@
 title: 00-MicroBit
 date: 2026-01-14T23:13:00.000+01:00
 image: /img/microbit-led-coords.png
+category: MicroBit
 ---
 ## Cos'è Micro:Bit
 BBC micro:bit è una piccola scheda elettronica utilizzata per fare coding in modo semplice. Prima di iniziare a descrive i componenti che la compongono facciamo una panoramica sulle tipologie di schede e vediamo qual è il *cervello* che coordina tutto. 
