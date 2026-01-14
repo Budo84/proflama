@@ -16,6 +16,13 @@ collections:
       - {label: "Data", name: "date", widget: "datetime"}
       - { label: "Immagine Copertina", name: "image", widget: "image" }
       - {label: "Corpo", name: "body", widget: "markdown"}
+      - {
+          label: "Categoria",
+          name: "category",
+          widget: "select",
+          options: ["MicroBit", "Unplugged", "Mbot", "Arduino"],
+          default: "News"
+        }
   
   - name: "pages"
     label: "Pagine Sito"
