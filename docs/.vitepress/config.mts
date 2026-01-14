@@ -1,7 +1,6 @@
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({
-  base: '/proflama/',
   title: "Proflama",
   description: "Il blog del Prof Lama",
   themeConfig: {
