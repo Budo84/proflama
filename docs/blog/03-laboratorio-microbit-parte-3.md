@@ -1,12 +1,12 @@
 ---
 title: 03-Laboratorio-MicroBit-Parte-3
-date: 2026-01-14T08:46:00.000+01:00
+date: 2026-01-14T23:16:00.000+01:00
 image: /img/matrice-item.gif
 ---
 
 Vogliamo realizzare un programma che alla pressione del pulsante A incrementi di 5 i LED sulla matrice della microbit e alla pressione del pulsante B elimini 5 LED sulla matrice della microbit. Per realizzarlo abbiamo bisono di introdurre tre concetti fondamentali: **Variabili**, **Visualizzazione LED** e **Logica Condizionale** (*if...then*).
 
-\####Fase 1: Introduzione alla Variabile (Programma 1)
+#### Fase 1: Introduzione alla Variabile (Programma 1)
 
 **Concetto chiave**: una variabile è come una scatola o un contenitore in memoria che può contenere un valore (un numero o un testo) e il cui contenuto può cambiare.
 
@@ -29,7 +29,7 @@ Dichiarazione e Inizializzazione".
 	<img src="/img/microbit/variabile.png" alt="windows" width="350"/>
 </center>
 
-\####Fase 2: Visualizzare i Dati sulla Matrice LED (Programma 2)
+#### Fase 2: Visualizzare i Dati sulla Matrice LED (Programma 2)
 
 **Concetto chiave**: come trasformare un numero (la variabile) in una rappresentazione visiva sulla griglia 5x5 di LED, usando un grafico a barre.
 
@@ -45,7 +45,7 @@ Dichiarazione e Inizializzazione".
 
 **Domanda di Verifica**: se impostassi il valore massimo a 100, quanti LED si accenderebbero con un valore di item pari a 50? (*Risposta: Metà della matrice LED, o 2 colonne e mezza*).
 
-\####Fase 3: Aggiungere i Limiti (Programma 3 e Codice Finale)
+#### Fase 3: Aggiungere i Limiti (Programma 3 e Codice Finale)
 
 **Concetto chiave**: la logica condizionale (if...then) ci permette di impostare delle "regole di sicurezza" per evitare che la variabile vada oltre i valori che ci interessano (lo spoiler del codice finale).
 
