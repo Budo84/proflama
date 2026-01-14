@@ -2,6 +2,7 @@
 title: 03-Laboratorio-MicroBit-Parte-3
 date: 2026-01-14T23:16:00.000+01:00
 image: /img/matrice-item.gif
+category: MicroBit
 ---
 
 Vogliamo realizzare un programma che alla pressione del pulsante A incrementi di 5 i LED sulla matrice della microbit e alla pressione del pulsante B elimini 5 LED sulla matrice della microbit. Per realizzarlo abbiamo bisono di introdurre tre concetti fondamentali: **Variabili**, **Visualizzazione LED** e **Logica Condizionale** (*if...then*).
