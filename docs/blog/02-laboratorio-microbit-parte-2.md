@@ -1,6 +1,6 @@
 ---
 title: 02-Laboratorio-MicroBit-Parte-2
-date: 2026-01-13T23:30:00.000+01:00
+date: 2026-01-14T23:14:00.000+01:00
 image: /img/matriceled2.gif
 ---
 ### Matrice LED
