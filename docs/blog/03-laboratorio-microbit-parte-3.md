@@ -1,7 +1,7 @@
 ---
 title: 03-Laboratorio-MicroBit-Parte-3
 date: 2026-01-14T08:46:00.000+01:00
-image: /img/matriceled.png
+image: /img/matrice-item.gif
 ---
 \---
 title: 03-Laboratorio-MicroBit-Parte-3
