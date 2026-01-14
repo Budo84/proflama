@@ -1,6 +1,7 @@
 ---
 title: 01-Laboratorio-MicroBit-Parte 1
 date: 2026-01-13T23:30:00.000+01:00
+image: /img/cuore-pulse.gif
 ---
 \#01-Laboratorio-MicroBit-Parte 1
 
