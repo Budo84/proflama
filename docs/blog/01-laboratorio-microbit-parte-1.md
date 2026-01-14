@@ -2,6 +2,7 @@
 title: 01-Laboratorio-MicroBit-Parte 1
 date: 2026-01-14T23:14:00.000+01:00
 image: /img/cuore-pulse.gif
+category: MicroBit
 ---
 # 01-Laboratorio-MicroBit-Parte 1
 
