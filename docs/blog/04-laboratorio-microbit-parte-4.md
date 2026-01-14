@@ -2,6 +2,7 @@
 title: 04-Laboratorio-MicroBit-Parte-4
 date: 2026-01-14T23:17:00.000+01:00
 image: /img/dado-elettronico.gif
+category: MicroBit
 ---
 ## Dado Elettronico
 
