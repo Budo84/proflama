@@ -1,10 +1,9 @@
 ---
 title: 02-Laboratorio-MicroBit-Parte-2
 date: 2026-01-13T23:30:00.000+01:00
+image: /img/matriceled2.gif
 ---
-#02-Laboratorio-MicroBit-Parte-2
-
-###Matrice LED
+### Matrice LED
 
 La nostra scheda ha a disposizione una matrice frontale composta da 25 LED, ognuno ha due coordinate di riferimento (x,y) secondo il seguente ordine:
 
@@ -12,12 +11,12 @@ La nostra scheda ha a disposizione una matrice frontale composta da 25 LED, ognu
 	<img src="/img/microbit/matriceled.png" alt="windows" width="300"/>
 </center>
 
-####Esercizio 1
+#### Esercizio 1
 
 Proviamo a far accendere in modo intermittente il secondo LED da sinistra nella riga in alto e il penultimo LED da sinistra nell'ultima riga. A quali coordinate corrispondono? 
 
 
-####Soluzioni
+#### Soluzioni
 
 **(1,0) e (3,4)**.
 
@@ -27,7 +26,7 @@ Proviamo a far accendere in modo intermittente il secondo LED da sinistra nella 
      <img src="/img/microbit/matriceled2.gif" style="width: 45%; object-fit: cover;">
 </div>
 
-####Esercizio 2
+#### Esercizio 2
 
 Proviamo a visualizzare la sequenza 1, 2, 3, 4, 5 e un ciclo come segue:
 
@@ -38,7 +37,7 @@ Proviamo a visualizzare la sequenza 1, 2, 3, 4, 5 e un ciclo come segue:
 
 Dove hai inserito la sequenza di numeri? E il ciclo?
 
-####Soluzioni
+#### Soluzioni
 
 La sequenza numerica va inserirla nel blocco ***on star***
 
