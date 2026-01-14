@@ -1,6 +1,9 @@
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({
+// FONDAMENTALE: Serve per far funzionare i link su GitHub Pages
+  base: '/proflama/',
+
   title: "Proflama",
   description: "Il blog del Prof Lama",
   themeConfig: {
