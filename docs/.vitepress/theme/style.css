@@ -1,0 +1,23 @@
+/* Sovrascrittura delle variabili CSS di VitePress 
+  Qui puoi cambiare i colori di tutto il sito.
+*/
+
+:root {
+  /* -- COLORE PRINCIPALE (Brand) -- */
+  /* Usato per link, bottoni, logo e accenti */
+  --vp-c-brand-1: #3451b2; /* Blu scuro (Principale) */
+  --vp-c-brand-2: #3a5ccc; /* Blu medio (Hover) */
+  --vp-c-brand-3: #5672cd; /* Blu chiaro (Active) */
+
+  /* -- SFONDO HERO (Titolo Home Page) -- */
+  /* Se vuoi un colore fisso invece del gradiente, metti lo stesso colore in tutti i punti */
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: -webkit-linear-gradient(120deg, #bd34fe 30%, #41d1ff);
+}
+
+/* -- MODALITÀ SCURA (Opzionale) -- */
+.dark {
+  --vp-c-brand-1: #5672cd; /* Un blu più luminoso per il tema scuro */
+  --vp-c-brand-2: #3a5ccc;
+  --vp-c-brand-3: #3451b2;
+}
