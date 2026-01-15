@@ -10,28 +10,88 @@ Qui trovi tutte le lezioni e gli esercizi dedicati alla scheda MicroBit.
 <script setup>
 import { data as posts } from './.vitepress/theme/posts.data.ts'
 
-// FILTRO MAGICO: Prende solo gli articoli con categoria 'MicroBit'
-const filteredPosts = posts.filter(post => post.category === 'MicroBit')
+// FILTRO AGGIORNATO:
+// 1. Filtra per categoria 'MicroBit'
+// 2. Nasconde le bozze (!post.frontmatter.draft)
+const filteredPosts = posts.filter(post => 
+  post.frontmatter.category === 'MicroBit' && !post.frontmatter.draft
+)
 </script>
 
-<div v-for="post in filteredPosts" :key="post.url" class="post-item">
-  <a :href="post.url">
-    <h3>{{ post.title }}</h3>
-    <p v-if="post.date">{{ new Date(post.date).toLocaleDateString('it-IT') }}</p>
-  </a>
+<div class="posts-grid">
+  <div v-for="post in filteredPosts" :key="post.url" class="post-item">
+    <a :href="post.url">
+      
+      <div v-if="post.frontmatter.image" class="image-wrapper">
+        <img :src="post.frontmatter.image" :alt="post.frontmatter.title" />
+      </div>
+
+      <div class="content">
+        <h3>{{ post.frontmatter.title }}</h3>
+        <p v-if="post.frontmatter.date" class="date">
+          {{ new Date(post.frontmatter.date).toLocaleDateString('it-IT') }}
+        </p>
+      </div>
+    </a>
+  </div>
 </div>
 
 <style>
-.post-item {
-  margin-bottom: 20px;
-  padding: 15px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background-color: var(--vp-c-bg-soft);
+/* Griglia per affiancare i post (facoltativo, rende tutto più ordinato) */
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
 }
+
+.post-item {
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  background-color: var(--vp-c-bg-soft);
+  overflow: hidden; /* Fondamentale per i bordi arrotondati dell'immagine */
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
 .post-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   border-color: var(--vp-c-brand-1);
 }
-h3 { margin-top: 0; color: var(--vp-c-brand-1); }
-a { text-decoration: none; color: inherit; display: block; }
+
+/* Gestione Immagine */
+.image-wrapper {
+  width: 100%;
+  height: 160px; /* Altezza fissa per uniformità */
+  overflow: hidden;
+}
+
+.image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Taglia l'immagine per riempire il box senza deformarla */
+}
+
+.content {
+  padding: 15px;
+}
+
+h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.1rem;
+  color: var(--vp-c-text-1);
+}
+
+.date {
+  font-size: 0.85rem;
+  color: var(--vp-c-text-2);
+  margin: 0;
+}
+
+a { 
+  text-decoration: none !important; 
+  color: inherit; 
+  display: block; 
+  height: 100%;
+}
 </style>
