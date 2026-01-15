@@ -2,6 +2,28 @@ import { defineConfig } from 'vitepress'
 
 export default defineConfig({
 
+  // --- PARTE 1: IDENTITÀ SITO PER GOOGLE ---
+  
+  // Il dominio ufficiale del sito (Serve per generare link corretti nella sitemap)
+  hostname: 'https://www.proflama.it',
+
+  // Generatore automatico della Mappa del Sito (sitemap.xml)
+  sitemap: {
+    hostname: 'https://www.proflama.it'
+  },
+
+  // --- PARTE 2: VERIFICA PROPRIETÀ (Il "Passaporto") ---
+  head: [
+    [
+      'meta', 
+      { 
+        name: 'google-site-verification', 
+        // 👇 SOSTITUISCI LA SCRITTA TRA APICI QUI SOTTO CON IL CODICE DI GOOGLE 👇
+        content: '<meta name="google-site-verification" content="GzkiBHjoPnp9tCGgPuNwO1EtNaBqY-5BOJ3tzW_4pGQ" />' 
+      }
+    ]
+  ],
+
   title: "Proflama",
   description: "Il blog del Prof Lama",
   themeConfig: {
