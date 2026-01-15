@@ -19,7 +19,7 @@ export default defineConfig({
       { 
         name: 'google-site-verification', 
         // 👇 SOSTITUISCI LA SCRITTA TRA APICI QUI SOTTO CON IL CODICE DI GOOGLE 👇
-        content: '<meta name="google-site-verification" content="GzkiBHjoPnp9tCGgPuNwO1EtNaBqY-5BOJ3tzW_4pGQ" />' 
+        content: 'GzkiBHjoPnp9tCGgPuNwO1EtNaBqY-5BOJ3tzW_4pGQ' 
       }
     ]
   ],
