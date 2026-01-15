@@ -4,6 +4,10 @@ export default createContentLoader('blog/*.md', {
   excerpt: true, // Legge l'inizio del testo
   transform(raw) {
     return raw
+      // 1. FILTRO BOZZE (La modifica fondamentale)
+      // Se 'draft' è vero (true), l'articolo viene nascosto.
+      // Se 'draft' non esiste (vecchi articoli), l'articolo viene mostrato.
+      .filter(({ frontmatter }) => !frontmatter.draft)
       .map(({ url, frontmatter, excerpt }) => ({
         title: frontmatter.title,
         url,
