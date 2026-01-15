@@ -13,6 +13,7 @@ collections:
     slug: "{{slug}}"
     fields:
       - {label: "Titolo", name: "title", widget: "string"}
+      - {label: "Bozza (Nascondi dal sito)", name: "draft", widget: "boolean", default: false, required: false}
       - {label: "Descrizione SEO (Riassunto)", name: "description", widget: "text", required: false}
       - {label: "Data", name: "date", widget: "datetime"}
       - { label: "Immagine Copertina", name: "image", widget: "image" }
