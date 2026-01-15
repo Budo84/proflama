@@ -1,5 +1,8 @@
 ---
 title: 01-Laboratorio-MicroBit-Parte 1
+description: >
+  Visualizza un cuore che batte sulla matrice a LED. Fai cambiare umore al
+  Micro:Bit. 
 date: 2026-01-14T23:14:00.000+01:00
 image: /img/cuore-pulse.gif
 category: MicroBit
@@ -26,9 +29,8 @@ Per simulare il battito del cuore manca un ultimo passaggio. Inserisci un'altra 
 	<img src="/img/microbit/cuore-pulse.gif" alt="windows" width="300"/>
 </center>
 
-
-
 #### Esercizio
+
 Cosa succede si inserisco le istruzioni nel blocco **forever**?
 
 Prova a far battere il cuore 5 volte. Quele blocco utilizzerai? A quale tipo di istruzione corrisponde quel blocco?
@@ -57,7 +59,6 @@ Prova ora a far partire il conto alla rovescia solo dopo aver cliccato il **puls
 	<img src="/img/microbit/conto-rovescia-a.png" alt="windows" width="150"/>
 </center>
 
-
 #### Esercizio 2
 
 Come puoi relizzare un conto alla rovescia infinito?
@@ -67,8 +68,7 @@ Come puoi relizzare un conto alla rovescia infinito?
      <img src="/img/microbit/conto-rovescia.gif" style="width: 45%; object-fit: cover;">
 </div>
 
-
-#### 3. Fai cambire umore al Micro:Bit
+#### 3. Fai cambiare umore al Micro:Bit
 
 1. Dalla sezione **Basic** seleziona l'istruzione **show leds**, trascinala nell'are di programmazione nel blocco **on start** e seleziona i quadratini per formare un sorriso, uno sguardo serio e uno triste.
 
@@ -77,6 +77,7 @@ Come puoi relizzare un conto alla rovescia infinito?
 </center>
 
 #### Esercizio
+
 Assegna ogni stato d'animo a un pulsante: 
 
 * A -> Felice
