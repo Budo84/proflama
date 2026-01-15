@@ -1,5 +1,18 @@
 ---
 title: 05-Laboratorio-MicroBit-Parte-5
+draft: true
+description: >-
+  Termometro digitale con avviso "Troppo caldo"
+
+  Per realizzare il nostro progetto abbiamo bisogno di introdurre due concetti: l'interazione con il sensore di temperatura integrato nella scheda e la logica condizionale.
+
+
+  Il Sensore di Temperatura Base
+
+  Questo programma si concentra unicamente sulla lettura e visualizzazione del dato proveniente dal sensore integrato del Microbit.
+
+
+  Concetto Chiave: acquisizione di Dati da un Sensore Microbit può leggere valori dall'ambiente circostante. Il blocco temperature (°C) restituisce la temperatura corrente del chip del Microbit in gradi Celsius.
 date: 2026-01-14T23:24:00.000+01:00
 image: /img/termometro.gif
 category: MicroBit
