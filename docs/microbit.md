@@ -10,9 +10,6 @@ Qui trovi tutte le lezioni e gli esercizi dedicati alla scheda MicroBit.
 <script setup>
 import { data as posts } from './.vitepress/theme/posts.data.ts'
 
-// FILTRO AGGIORNATO:
-// 1. Filtra per categoria 'MicroBit'
-// 2. Nasconde le bozze (!post.frontmatter.draft)
 const filteredPosts = posts.filter(post => 
   post.frontmatter.category === 'MicroBit' && !post.frontmatter.draft
 )
@@ -21,11 +18,9 @@ const filteredPosts = posts.filter(post =>
 <div class="posts-grid">
   <div v-for="post in filteredPosts" :key="post.url" class="post-item">
     <a :href="post.url">
-      
       <div v-if="post.frontmatter.image" class="image-wrapper">
         <img :src="post.frontmatter.image" :alt="post.frontmatter.title" />
       </div>
-
       <div class="content">
         <h3>{{ post.frontmatter.title }}</h3>
         <p v-if="post.frontmatter.date" class="date">
@@ -37,7 +32,6 @@ const filteredPosts = posts.filter(post =>
 </div>
 
 <style>
-/* Griglia per affiancare i post (facoltativo, rende tutto più ordinato) */
 .posts-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -49,7 +43,7 @@ const filteredPosts = posts.filter(post =>
   border: 1px solid var(--vp-c-divider);
   border-radius: 12px;
   background-color: var(--vp-c-bg-soft);
-  overflow: hidden; /* Fondamentale per i bordi arrotondati dell'immagine */
+  overflow: hidden;
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
@@ -59,17 +53,16 @@ const filteredPosts = posts.filter(post =>
   border-color: var(--vp-c-brand-1);
 }
 
-/* Gestione Immagine */
 .image-wrapper {
   width: 100%;
-  height: 160px; /* Altezza fissa per uniformità */
+  height: 160px;
   overflow: hidden;
 }
 
 .image-wrapper img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Taglia l'immagine per riempire il box senza deformarla */
+  object-fit: cover;
 }
 
 .content {
