@@ -25,7 +25,38 @@ export default defineConfig({
   ],
 
   title: "Proflama",
-  description: "Il blog del Prof Lama",
+  description: "Il blog del Lama",
+
+  // --- INIZIO CODICE SEO AUTOMATICO ---
+  transformHead: ({ pageData }) => {
+    const head: [string, Record<string, string>][] = []
+
+    // 1. Genera Titolo per Social
+    if (pageData.frontmatter.title) {
+      head.push(['meta', { property: 'og:title', content: pageData.frontmatter.title }])
+      head.push(['meta', { name: 'twitter:title', content: pageData.frontmatter.title }])
+    }
+
+    // 2. Genera Descrizione (per Google e Social)
+    if (pageData.frontmatter.description) {
+      head.push(['meta', { name: 'description', content: pageData.frontmatter.description }])
+      head.push(['meta', { property: 'og:description', content: pageData.frontmatter.description }])
+      head.push(['meta', { name: 'twitter:description', content: pageData.frontmatter.description }])
+    }
+
+    // 3. Genera Immagine (Anteprima Social)
+    if (pageData.frontmatter.image) {
+      // Assicurati che 'https://www.proflama.it' sia il tuo dominio vero
+      const imageUrl = `https://www.proflama.it${pageData.frontmatter.image}`
+      head.push(['meta', { property: 'og:image', content: imageUrl }])
+      head.push(['meta', { name: 'twitter:image', content: imageUrl }])
+      head.push(['meta', { name: 'twitter:card', content: 'summary_large_image' }])
+    }
+
+    return head
+  },
+  // --- FINE CODICE SEO AUTOMATICO ---
+
   themeConfig: {
     nav: [
       { text: 'Home', link: '/' },
