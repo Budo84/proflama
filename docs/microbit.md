@@ -10,21 +10,23 @@ Qui trovi tutte le lezioni e gli esercizi dedicati alla scheda MicroBit.
 <script setup>
 import { data as posts } from './.vitepress/theme/posts.data.ts'
 
+// NOTA: Se i tuoi dati sono "piatti" (senza .frontmatter), usiamo direttamente le proprietà.
+// Verifica se nel tuo file i campi si chiamano 'category', 'draft', ecc.
 const filteredPosts = posts.filter(post => 
-  post.frontmatter.category === 'MicroBit' && !post.frontmatter.draft
+  post.category === 'MicroBit' && !post.draft
 )
 </script>
 
 <div class="posts-grid">
   <div v-for="post in filteredPosts" :key="post.url" class="post-item">
     <a :href="post.url">
-      <div v-if="post.frontmatter.image" class="image-wrapper">
-        <img :src="post.frontmatter.image" :alt="post.frontmatter.title" />
+      <div v-if="post.image" class="image-wrapper">
+        <img :src="post.image" :alt="post.title" />
       </div>
       <div class="content">
-        <h3>{{ post.frontmatter.title }}</h3>
-        <p v-if="post.frontmatter.date" class="date">
-          {{ new Date(post.frontmatter.date).toLocaleDateString('it-IT') }}
+        <h3>{{ post.title }}</h3>
+        <p v-if="post.date" class="date">
+          {{ new Date(post.date).toLocaleDateString('it-IT') }}
         </p>
       </div>
     </a>
