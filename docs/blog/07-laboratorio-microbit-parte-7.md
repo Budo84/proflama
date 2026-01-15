@@ -1,5 +1,10 @@
 ---
 title: 07-Laboratorio-MicroBit-Parte-7
+draft: true
+description: >-
+  Contatore di Punteggio Interattivo
+
+  Realizziamo un progetto utile per giochi da tavolo, sport o attività in classe, dove i pulsanti A e B controllano due diversi conteggi e la matrice LED mostra il punteggio in tempo reale.
 date: 2026-01-15T10:46:00.000+01:00
 image: /img/punteggio.gif
 category: News
