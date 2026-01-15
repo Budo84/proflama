@@ -10,7 +10,7 @@ description: >-
   Sfrutta lo shake oppure il pulsante A per l'input e la matrice LED per l'output testuale.
 date: 2026-01-15T23:27:00.000+01:00
 image: /img/magic-ball8.gif
-category: News
+category: MicroBit
 ---
 ## Magic 8-Ball Digitale
 
