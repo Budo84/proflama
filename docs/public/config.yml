@@ -13,6 +13,13 @@ collections:
     slug: "{{slug}}"
     fields:
       - {label: "Titolo", name: "title", widget: "string"}
+      - {
+          label: "Classe Destinataria",
+          name: "class_target",
+          widget: "select",
+          options: ["Tutti", "1A", "1B", "2A", "3A", "3B", "4A", "5A"],
+          default: "Tutti"
+        }
       - {label: "Bozza (Nascondi dal sito)", name: "draft", widget: "boolean", default: false, required: false}
       - {label: "Descrizione SEO (Riassunto)", name: "description", widget: "text", required: false}
       - {label: "Data", name: "date", widget: "datetime"}
