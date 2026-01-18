@@ -1,6 +1,6 @@
-layout: doc title: Area Riservata 1A
+layout: doc title: Area Riservata 1
 
-🔒 Area Riservata Classe 1A
+🔒 Area Riservata Classe 1
 
 <script setup>
 import { ref, onMounted } from 'vue'
@@ -22,7 +22,7 @@ if (passwordInserita.value === passwordCorretta) {
 sbloccato.value = true
 errore.value = false
 // Memorizza lo sblocco nel browser (così se ricarica la pagina non deve reinserirla)
-sessionStorage.setItem('sblocco_1a', 'ok')
+sessionStorage.setItem('sblocco_1', 'ok')
 } else {
 errore.value = true
 }
@@ -30,14 +30,14 @@ errore.value = true
 
 // Controllo automatico all'avvio: se l'utente ha già messo la password, sblocca subito
 onMounted(() => {
-if (sessionStorage.getItem('sblocco_1a') === 'ok') {
+if (sessionStorage.getItem('sblocco_1') === 'ok') {
 sbloccato.value = true
 }
 })
 
-// FILTRO CLASSE: Mostra solo gli articoli per "1A" oppure per "Tutti"
-// (Ignora quelli delle altre classi come 3B, 5A, ecc.)
-const classPosts = posts.filter(post => post.class_target === '1A' || post.class_target === 'Tutti')
+// FILTRO CLASSE: Mostra solo gli articoli per "1" oppure per "Tutti"
+// (Ignora quelli delle altre classi come 2, 3.)
+const classPosts = posts.filter(post => post.class_target === '1' || post.class_target === 'Tutti')
 </script>
 
 <!-- === SCHERMATA DI BLOCCO (Visibile se non sbloccato) === -->
@@ -45,7 +45,7 @@ const classPosts = posts.filter(post => post.class_target === '1A' || post.class
 <div v-if="!sbloccato" class="lock-screen">
 <div class="lock-box">
 <h3>Area Protetta</h3>
-<p>Questa pagina è riservata agli studenti della 1A.</p>
+<p>Questa pagina è riservata agli studenti della 1.</p>
 <p>Inserisci la password fornita dal prof.</p>
 
 <div class="input-group">
@@ -67,7 +67,7 @@ const classPosts = posts.filter(post => post.class_target === '1A' || post.class
 <!-- === CONTENUTO SBLOCCATO (Visibile dopo la password) === -->
 
 <div v-else class="content animated-fade">
-<p class="welcome-msg">✅ Accesso effettuato. Ecco i materiali per la 1A:</p>
+<p class="welcome-msg">✅ Accesso effettuato. Ecco i materiali per la 1:</p>
 
 <div v-if="classPosts.length === 0">
 <p>Non ci sono ancora materiali specifici per questa classe.</p>
@@ -84,7 +84,7 @@ const classPosts = posts.filter(post => post.class_target === '1A' || post.class
     <div class="post-content">
       <h3>{{ post.title }}</h3>
       <p class="post-meta">
-         <!-- Mostra un badge se l'articolo è specifico per la 1A -->
+         <!-- Mostra un badge se l'articolo è specifico per la 1 -->
          <span v-if="post.class_target !== 'Tutti'" class="badge-class">{{ post.class_target }}</span>
          {{ new Date(post.date).toLocaleDateString('it-IT') }}
       </p>
