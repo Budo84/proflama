@@ -17,7 +17,7 @@ collections:
           label: "Classe Destinataria",
           name: "class_target",
           widget: "select",
-          options: ["Tutti", "1A", "1B", "2A", "3A", "3B", "4A", "5A"],
+          options: ["Tutti", "1", "2", "3"],
           default: "Tutti"
         }
       - {label: "Bozza (Nascondi dal sito)", name: "draft", widget: "boolean", default: false, required: false}
