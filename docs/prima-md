@@ -8,7 +8,7 @@ import { ref, onMounted } from 'vue'
 import { data as posts } from './.vitepress/theme/posts.data.ts'
 
 // --- IMPOSTA QUI LA TUA PASSWORD ---
-const passwordCorretta = 'microbit2026'
+const passwordCorretta = 'prima2026'
 // -----------------------------------
 
 // Variabili per la logica di sblocco
