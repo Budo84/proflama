@@ -1,8 +1,8 @@
 ---
-layout: doc title: # Area Riservata 2
+layout: doc title: Area Riservata 2
 
 🔒 Area Riservata Classe 2
-
+---
 <script setup>
 import { ref, onMounted } from 'vue'
 // Importiamo i dati dal "cervello" centrale del sito
