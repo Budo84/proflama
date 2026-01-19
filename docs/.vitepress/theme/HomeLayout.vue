@@ -1,22 +1,13 @@
 <script setup>
-// Importiamo tutti i dati dal file centrale
-import { data as allPosts } from './posts.data.ts'
+import { data as posts } from './posts.data.ts'
 import DefaultTheme from 'vitepress/theme'
 
 const { Layout } = DefaultTheme
 
-// --- FILTRO DI SICUREZZA PER LA HOME ---
-// Questo passaggio è fondamentale: controlla ogni articolo.
-// Se la "class_target" è "Tutti", lo tiene.
-// Se è "1A", "3B", ecc., lo nasconde dalla Home Page.
-const publicPosts = allPosts.filter(post => post.class_target === 'Tutti')
-
-// Ora usiamo solo la lista filtrata (publicPosts) per costruire la pagina
-// 1. I primi 4 articoli pubblici vanno nella Vetrina in alto
-const featured = publicPosts.slice(0, 4)
-
-// 2. Tutti gli articoli pubblici vanno nella lista in basso
-const list = publicPosts
+// I primi 4 articoli vanno nella "Vetrina" in alto
+const featured = posts.slice(0, 4)
+// Tutti gli articoli vanno nella lista sotto (così non sembra mai vuota)
+const list = posts
 </script>
 
 <template>
@@ -24,7 +15,6 @@ const list = publicPosts
     <template #home-features-after>
       
       <!-- === SEZIONE 1: VETRINA (4 BOX IN ALTO) === -->
-      <!-- Mostra la vetrina solo se ci sono articoli pubblici -->
       <div v-if="featured.length" class="featured-container">
         <div class="featured-grid">
           <a v-for="post in featured" :key="post.url" :href="post.url" class="featured-card">
@@ -36,7 +26,7 @@ const list = publicPosts
         </div>
       </div>
 
-      <!-- === SEZIONE 2: ULTIME NOTIZIE (LISTA DETTAGLIATA) === -->
+      <!-- === SEZIONE 2: ULTIME NOTIZIE (LISTA CON RIASSUNTO) === -->
       <div class="post-feed">
         <h2 class="section-title">Ultime Notizie</h2>
         
@@ -53,7 +43,7 @@ const list = publicPosts
             <!-- Mostra l'inizio del testo (l'excerpt) -->
             <div v-if="post.excerpt" class="post-excerpt" v-html="post.excerpt"></div>
             
-            <!-- Il Pulsante colorato -->
+            <!-- Pulsante colorato -->
             <a :href="post.url" class="read-more-btn">Continua a leggere →</a>
           </div>
         </div>
