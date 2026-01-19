@@ -4,7 +4,7 @@ date: 2026-01-19
 image: /img/tua-foto.jpg 
 class_target: Tutti 
 description: Breve riassunto per Google. 
-draft: True 
+draft: false 
 ---
 # MODULO 1: LA FISICA CON MICRO:BIT
 
