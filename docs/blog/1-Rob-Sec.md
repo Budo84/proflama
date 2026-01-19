@@ -2,7 +2,7 @@
 title: La Prima Legge di Ohm e i Segreti della Breadboard 
 date: 2026-01-19 
 image: /img/tua-foto.jpg 
-class_target: 2 
+class_target: Tutti 
 description: Breve riassunto per Google. 
 draft: True 
 ---
@@ -114,7 +114,7 @@ Seguite questo percorso (Circuito Serie):
 **Risultato:** Il LED si accende forte.
 
 <center>
-	<img src="/img/sec-robotica/Led3.png" alt="windows" width="300"/>
+	<img src="/img/robotica/Led3.png" alt="windows" width="300"/>
 </center>
 
 
