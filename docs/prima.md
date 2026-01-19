@@ -1,4 +1,7 @@
-layout: doc title: Area Riservata 1
+---
+layout: doc 
+title: Area Riservata 1
+---
 
 🔒 Area Riservata Classe 1
 
