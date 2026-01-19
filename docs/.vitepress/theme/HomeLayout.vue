@@ -1,13 +1,21 @@
 <script setup>
-import { data as posts } from './posts.data.ts'
+// Importiamo tutti i dati (sia pubblici che privati) dal file centrale
+import { data as allPosts } from './posts.data.ts'
 import DefaultTheme from 'vitepress/theme'
 
 const { Layout } = DefaultTheme
 
-// I primi 4 articoli vanno nella "Vetrina" in alto
-const featured = posts.slice(0, 4)
-// Tutti gli articoli vanno nella lista sotto (così non sembra mai vuota)
-const list = posts
+// --- FILTRO DI SICUREZZA (Fondamentale) ---
+// Questo codice controlla ogni articolo prima di mostrarlo.
+// Se la "class_target" è "Tutti", l'articolo passa.
+// Se è "1A", "2B", ecc., viene bloccato e non appare in Home.
+const publicPosts = allPosts.filter(post => post.class_target === 'Tutti')
+
+// 1. Vetrina: Prendiamo i primi 4 articoli SOLO tra quelli pubblici
+const featured = publicPosts.slice(0, 4)
+
+// 2. Lista: Mostriamo tutti gli articoli pubblici (nessun taglio)
+const list = publicPosts
 </script>
 
 <template>
@@ -18,6 +26,7 @@ const list = posts
       <div v-if="featured.length" class="featured-container">
         <div class="featured-grid">
           <a v-for="post in featured" :key="post.url" :href="post.url" class="featured-card">
+            <!-- Immagine di sfondo con fallback a default.jpg -->
             <div class="image-box" :style="{ backgroundImage: 'url(' + (post.image || '/img/default.jpg') + ')' }"></div>
             <div class="card-overlay">
               <div class="card-title">{{ post.title }}</div>
@@ -26,15 +35,20 @@ const list = posts
         </div>
       </div>
 
-      <!-- === SEZIONE 2: ULTIME NOTIZIE (LISTA CON RIASSUNTO) === -->
+      <!-- === SEZIONE 2: ULTIME NOTIZIE (LISTA DETTAGLIATA) === -->
       <div class="post-feed">
         <h2 class="section-title">Ultime Notizie</h2>
         
+        <!-- Se non ci sono articoli pubblici, mostriamo un messaggio cortesia -->
+        <div v-if="list.length === 0" style="text-align: center; color: gray; padding: 20px;">
+          <p>Nessuna notizia pubblica al momento.</p>
+        </div>
+
         <div v-for="post in list" :key="post.url" class="post-row">
-          <!-- Immagine dell'articolo (Cliccabile) -->
+          <!-- Immagine dell'articolo -->
           <a :href="post.url" class="post-thumb" :style="{ backgroundImage: 'url(' + (post.image || '/img/default.jpg') + ')' }"></a>
           
-          <!-- Contenuto: Titolo + Riassunto + Pulsante -->
+          <!-- Contenuto -->
           <div class="post-content">
             <a :href="post.url" class="title-link">
               <h3>{{ post.title }}</h3>
