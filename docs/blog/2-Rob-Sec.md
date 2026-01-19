@@ -120,7 +120,7 @@ Clicca "Avvia".
 
 #### 3. La Sfida Finale (Per chi finisce prima)
 
-"Ora cambiate il condensatore da 1000  a **100 ** e riavviate."
+"Ora cambiate il condensatore da 1000  a **100** e riavviate."
 
 * *Domanda:* Cosa succede?
 * *Risposta:* Il serbatoio è diventato piccolo! Si riempie e si svuota velocissimamente. L'effetto dissolvenza sparisce quasi del tutto.
