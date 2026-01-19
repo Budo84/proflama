@@ -4,7 +4,7 @@ draft: false
 date: 2026-01-19 
 image: /img/robotica/Led-micro1.png
 category: MicroBit
-class_target: 2 
+class_target: "2" 
 description: La Fisica dell'Elettronica (Breadboard e Componenti discreti)
 Obiettivo: Capire cosa succede dentro i fili prima di collegarli a un computer. Uso della Breadboard senza microprocessore.
 ---
