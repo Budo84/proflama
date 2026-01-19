@@ -1,11 +1,14 @@
 --- 
 title: La Prima Legge di Ohm e i Segreti della Breadboard 
+draft: false 
 date: 2026-01-19 
 image: /img/tua-foto.jpg 
+category: MicroBit
 class_target: Tutti 
-description: Breve riassunto per Google. 
-draft: false 
+description: La Fisica dell'Elettronica (Breadboard e Componenti discreti)
+Obiettivo: Capire cosa succede dentro i fili prima di collegarli a un computer. Uso della Breadboard senza microprocessore.
 ---
+
 # MODULO 1: LA FISICA CON MICRO:BIT
 
 **MODULO 1: La Fisica dell'Elettronica (Breadboard e Componenti discreti)**
