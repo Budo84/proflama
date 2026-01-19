@@ -1,5 +1,5 @@
 ---
-title: Il Condensatore
+title: 2.Il Condensatore
 draft: false
 date: 2026-01-19
 image: /img/robotica/condensatore1.png
