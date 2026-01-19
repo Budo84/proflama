@@ -4,18 +4,26 @@ export default createContentLoader('blog/*.md', {
   excerpt: true, // Legge l'inizio del testo
   transform(raw) {
     return raw
-      // 1. FILTRO BOZZE (La modifica fondamentale)
-      // Se 'draft' è vero (true), l'articolo viene nascosto.
-      // Se 'draft' non esiste (vecchi articoli), l'articolo viene mostrato.
+      // 1. FILTRO BOZZE
+      // Se 'draft' è vero, nasconde l'articolo
       .filter(({ frontmatter }) => !frontmatter.draft)
+      
+      // 2. MAPPATURA DATI
       .map(({ url, frontmatter, excerpt }) => ({
         title: frontmatter.title,
         url,
         excerpt,
         date: frontmatter.date,
-        image: frontmatter.image, // Assicurati di avere questo campo nei post
-        category: frontmatter.category
+        image: frontmatter.image,
+        category: frontmatter.category,
+        
+        // --- MODIFICA FONDAMENTALE ---
+        // Leggiamo la classe. Se manca (vecchi post), assumiamo sia per 'Tutti'
+        class_target: frontmatter.class_target || 'Tutti'
+        // -----------------------------
       }))
-      .sort((a, b) => +new Date(b.date) - +new Date(a.date)) // Ordina dal più recente
+      
+      // 3. ORDINAMENTO
+      .sort((a, b) => +new Date(b.date) - +new Date(a.date))
   }
 })
