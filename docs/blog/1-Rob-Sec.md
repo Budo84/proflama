@@ -2,7 +2,7 @@
 title: La Prima Legge di Ohm e i Segreti della Breadboard 
 draft: false 
 date: 2026-01-19 
-image: /img/tua-foto.jpg 
+image: /img/robotica/Led-micro1.png
 category: MicroBit
 class_target: Tutti 
 description: La Fisica dell'Elettronica (Breadboard e Componenti discreti)
