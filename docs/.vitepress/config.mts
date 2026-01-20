@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress'
+import mathjax3 from 'markdown-it-mathjax3'
 
 export default defineConfig({
 
@@ -10,6 +11,13 @@ export default defineConfig({
   // Generatore automatico della Mappa del Sito (sitemap.xml)
   sitemap: {
     hostname: 'https://www.proflama.it'
+  },
+
+// 2. Aggiungi questo blocco markdown
+  markdown: {
+    config: (md) => {
+      md.use(mathjax3)
+    }
   },
 
   // --- PARTE 2: VERIFICA PROPRIETÀ (Il "Passaporto") ---
