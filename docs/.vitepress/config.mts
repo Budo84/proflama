@@ -16,9 +16,9 @@ export default defineConfig({
     markdown: {
     config: (md) => {
       md.use(markdownItKatex)
-    }
-  },
-  },
+      }
+    },
+ },
 
 // 2. Aggiungi questo blocco markdown
   markdown: {
