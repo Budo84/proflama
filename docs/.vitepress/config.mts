@@ -20,13 +20,6 @@ export default defineConfig({
   },
 },
 
-// 2. Aggiungi questo blocco markdown
-  markdown: {
-    config: (md) => {
-      md.use(mathjax3)
-    }
-  },
-
   // --- PARTE 2: VERIFICA PROPRIETÀ (Il "Passaporto") ---
   head: [
     [
