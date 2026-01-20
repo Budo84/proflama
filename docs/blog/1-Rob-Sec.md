@@ -190,7 +190,11 @@ Prima di costruire, prepariamo il "cervello".
 	* *Scrivi Digital Pin P0 a 0* (Spegni corrente)
 	* *Pausa 1000 ms*
 
-* Scaricare il codice sulla Micro:bit.
+<center>
+	<img src="/img/robotica/Led-code.png" alt="windows" width="300"/>
+</center>
+
+Scaricare il codice sulla Micro:bit.
 
 #### Passo 2: Cablaggio su Breadboard
 
