@@ -21,7 +21,7 @@ Obiettivo: Capire cosa succede dentro i fili prima di collegarli a un computer. 
 * **Componenti:** Breadboard, Battery Holder (4xAA o 6xAA), **Red LED**, Resistenze varie (220Ω, 1kΩ, 10kΩ).  
 * **Attività Pratica:**  
   1. Collegare l'alimentazione ai binari rosso (+) e blu (-) della breadboard.  
-  2. Costruire il circuito base: Positivo $\\rightarrow$ Resistenza 220Ω $\\rightarrow$ LED $\\rightarrow$ Negativo. Osservare la luce.  
+  2. Costruire il circuito base: Positivo $\rightarrow$ Resistenza 220Ω $\rightarrow$ LED $\rightarrow$ Negativo. Osservare la luce.  
   3. **L'esperimento:** Sostituire la resistenza da 220Ω con una da 1kΩ e poi da 10kΩ.  
   4. *Domanda:* Perché la luce diminuisce? (Stiamo "strozzando" il tubo dell'acqua).
 
