@@ -2,87 +2,67 @@ import { defineConfig } from 'vitepress'
 import markdownItKatex from 'markdown-it-katex'
 
 export default defineConfig({
-
-  // --- PARTE 1: IDENTITÀ SITO PER GOOGLE ---
-  
-  // Il dominio ufficiale del sito (Serve per generare link corretti nella sitemap)
+  // --- 1. CONFIGURAZIONE SITO ---
   hostname: 'https://www.proflama.it',
-
-  // Generatore automatico della Mappa del Sito (sitemap.xml)
+  title: "Proflama",
+  description: "Il blog del Lama",
+  
   sitemap: {
     hostname: 'https://www.proflama.it'
-    
-  // 2. Aggiungi questo blocco markdown
-    markdown: {
+  },
+
+  // --- 2. PLUGIN MATEMATICA (KATEX) ---
+  // Vedi? Ora è FUORI da sitemap
+  markdown: {
     config: (md) => {
       md.use(markdownItKatex)
     }
   },
-},
 
-  // --- PARTE 2: VERIFICA PROPRIETÀ (Il "Passaporto") ---
+  // --- 3. META TAG & HEAD ---
   head: [
-    [
-      'meta', 
-      { 
-        name: 'google-site-verification', 
-        // 👇 SOSTITUISCI LA SCRITTA TRA APICI QUI SOTTO CON IL CODICE DI GOOGLE 👇
-        content: 'GzkiBHjoPnp9tCGgPuNwO1EtNaBqY-5BOJ3tzW_4pGQ' 
-      }
-    ]
+    ['meta', { name: 'google-site-verification', content: 'GzkiBHjoPnp9tCGgPuNwO1EtNaBqY-5BOJ3tzW_4pGQ' }],
+    // Stile formule
+    ['link', { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css' }]
   ],
 
-  title: "Proflama",
-  description: "Il blog del Lama",
-
-  // --- INIZIO CODICE SEO AUTOMATICO ---
+  // --- 4. SEO AUTOMATICO ---
   transformHead: ({ pageData }) => {
-    const head: [string, Record<string, string>][] = []
-
-    // 1. Genera Titolo per Social
+    const head: any[] = []
     if (pageData.frontmatter.title) {
       head.push(['meta', { property: 'og:title', content: pageData.frontmatter.title }])
       head.push(['meta', { name: 'twitter:title', content: pageData.frontmatter.title }])
     }
-
-    // 2. Genera Descrizione (per Google e Social)
     if (pageData.frontmatter.description) {
       head.push(['meta', { name: 'description', content: pageData.frontmatter.description }])
       head.push(['meta', { property: 'og:description', content: pageData.frontmatter.description }])
       head.push(['meta', { name: 'twitter:description', content: pageData.frontmatter.description }])
     }
-
-    // 3. Genera Immagine (Anteprima Social)
     if (pageData.frontmatter.image) {
-      // Assicurati che 'https://www.proflama.it' sia il tuo dominio vero
       const imageUrl = `https://www.proflama.it${pageData.frontmatter.image}`
       head.push(['meta', { property: 'og:image', content: imageUrl }])
       head.push(['meta', { name: 'twitter:image', content: imageUrl }])
       head.push(['meta', { name: 'twitter:card', content: 'summary_large_image' }])
     }
-
     return head
   },
-  // --- FINE CODICE SEO AUTOMATICO ---
 
+  // --- 5. TEMA E MENU ---
   themeConfig: {
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Blog', link: '/blog/' },
       { text: 'Microbit', link: '/microbit' },
-      { text: 'Admin', link: 'https://proflama.netlify.app/admin.html', target: '_blank' } // Link comodo per te
+      { text: 'Admin', link: 'https://proflama.netlify.app/admin.html', target: '_blank' }
     ],
-
     sidebar: [
       {
         text: 'Articoli',
         items: [
-          { text: 'Indice Blog', link: '/blog/' },
-          // Qui potrai aggiungere altri link rapidi
+          { text: 'Indice Blog', link: '/blog/' }
         ]
       }
     ],
-
     socialLinks: [
       { icon: 'github', link: 'https://github.com/budo84' }
     ]
