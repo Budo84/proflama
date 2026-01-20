@@ -54,7 +54,7 @@ Il LED è delicato. Se lo colleghiamo diretto alla batteria, passa troppa corren
 **La Legge di Ohm:**
 
 <center>
-**$ V = R * I $**
+$ V = R * I $
 </center>
 
 Dove:
