@@ -1,5 +1,5 @@
 import { defineConfig } from 'vitepress'
-import mathjax3 from 'markdown-it-mathjax3'
+import markdownItKatex from 'markdown-it-katex'
 
 export default defineConfig({
 
@@ -15,7 +15,7 @@ export default defineConfig({
   // 2. Aggiungi questo blocco markdown
     markdown: {
     config: (md) => {
-      md.use(mathjax3)
+      md.use(markdownItKatex)
     }
   },
   },
