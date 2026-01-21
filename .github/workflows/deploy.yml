@@ -1,50 +1,42 @@
-name: Deploy VitePress site to Pages
+name: Pubblica su Aruba 🚀
 
 on:
   push:
-    branches: [main] # Assicurati che il tuo branch si chiami main, altrimenti scrivi master
-  workflow_dispatch:
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: pages
-  cancel-in-progress: false
+    branches: [main] # Scatta ogni volta che salvi su main
+  workflow_dispatch: # Ti permette di lanciarlo anche a mano se serve
 
 jobs:
-  build:
+  web-deploy:
+    name: 🎉 Deploy su Aruba
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      # 1. Scarica il codice dal tuo archivio
+      - name: 🚚 Checkout codice
         uses: actions/checkout@v4
       
-      - name: Setup Node
+      # 2. Prepara l'ambiente di lavoro (Node.js)
+      - name: 🟢 Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
-      - name: Install dependencies
-        run: npm install # Installa vitepress leggendo il package.json
+      # 3. Installa e Costruisce il sito
+      - name: 📦 Build Sito
+        run: |
+          npm install
+          npm run docs:build
 
-      - name: Build with VitePress
-        run: npm run docs:build # Crea la cartella dist!
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+      # 4. Spedisce tutto ad Aruba via FTP
+      - name: 📂 Spedisci via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          path: docs/.vitepress/dist # Ora questa cartella esisterà
-
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    needs: build
-    runs-on: ubuntu-latest
-    name: Deploy
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          # La cartella sul PC dove VitePress crea il sito finito:
+          local-dir: docs/.vitepress/dist/
+          # La cartella su Aruba dove mettere i file (la root):
+          server-dir: /
+          # ATTENZIONE: Questo cancella i vecchi file su Aruba prima di mettere i nuovi
+          # È utile per tenere il sito pulito, ma occhio se hai altri file lì!
+          dangerous-clean-slate: true
