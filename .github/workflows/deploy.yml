@@ -31,11 +31,7 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: docs/.vitepress/dist/
           server-dir: /
-          dangerous-clean-slate: true
-          # 👇 QUESTA È LA PARTE NUOVA FONDAMENTALE 👇
-          # Dice al robot di non toccare le cartelle di backup di Aruba
-          exclude: |
-            **/.git*
-            **/node_modules/**
-            proflama.it_Backup*/**
-            restore/**
+          
+          # 👇 MODIFICA FONDAMENTALE: Mettiamo FALSE
+          # Così smette di toccare le cartelle di backup e carica solo il sito
+          dangerous-clean-slate: false
