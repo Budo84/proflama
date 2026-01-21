@@ -32,13 +32,13 @@ onMounted(() => {
   }
 })
 
-// FILTRO ROBUSTO: Accetta sia "1" che ["1", "3"]
+// FILTRO ROBUSTO: Accetta sia "1" che ["1", "3"] che Tutti
 const classPosts = posts.filter(post => {
   const target = post.class_target
   if (Array.isArray(target)) {
-    return target.includes('1')
+    return target.includes('1') || target.includes('Tutti')
   }
-  return target === '1'
+  return target === '1' || target === 'Tutti'
 })
 </script>
 
