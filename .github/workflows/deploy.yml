@@ -30,8 +30,8 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: docs/.vitepress/dist/
-          server-dir: /
           
-          # 👇 MODIFICA FONDAMENTALE: Mettiamo FALSE
-          # Così smette di toccare le cartelle di backup e carica solo il sito
+          # 👇 ECCO LA MODIFICA MAGICA 👇
+          server-dir: www.proflama.it/
+          
           dangerous-clean-slate: false
