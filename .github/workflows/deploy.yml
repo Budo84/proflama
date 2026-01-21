@@ -2,41 +2,40 @@ name: Pubblica su Aruba 🚀
 
 on:
   push:
-    branches: [main] # Scatta ogni volta che salvi su main
-  workflow_dispatch: # Ti permette di lanciarlo anche a mano se serve
+    branches: [main]
+  workflow_dispatch:
 
 jobs:
   web-deploy:
     name: 🎉 Deploy su Aruba
     runs-on: ubuntu-latest
     steps:
-      # 1. Scarica il codice dal tuo archivio
       - name: 🚚 Checkout codice
         uses: actions/checkout@v4
       
-      # 2. Prepara l'ambiente di lavoro (Node.js)
       - name: 🟢 Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
-      # 3. Installa e Costruisce il sito
       - name: 📦 Build Sito
         run: |
           npm install
           npm run docs:build
 
-      # 4. Spedisce tutto ad Aruba via FTP
       - name: 📂 Spedisci via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          # La cartella sul PC dove VitePress crea il sito finito:
           local-dir: docs/.vitepress/dist/
-          # La cartella su Aruba dove mettere i file (la root):
           server-dir: /
-          # ATTENZIONE: Questo cancella i vecchi file su Aruba prima di mettere i nuovi
-          # È utile per tenere il sito pulito, ma occhio se hai altri file lì!
           dangerous-clean-slate: true
+          # 👇 QUESTA È LA PARTE NUOVA FONDAMENTALE 👇
+          # Dice al robot di non toccare le cartelle di backup di Aruba
+          exclude: |
+            **/.git*
+            **/node_modules/**
+            proflama.it_Backup*/**
+            restore/**
