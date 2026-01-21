@@ -36,9 +36,9 @@ onMounted(() => {
 const classPosts = posts.filter(post => {
   const target = post.class_target
   if (Array.isArray(target)) {
-    return target.includes('2')
+    return target.includes('2')|| target.includes('Tutti')
   }
-  return target === '2'
+  return target === '2'|| target === 'Tutti'
 })
 </script>
 
