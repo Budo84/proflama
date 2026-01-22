@@ -23,7 +23,13 @@ export default defineConfig({
   head: [
     ['meta', { name: 'google-site-verification', content: 'GzkiBHjoPnp9tCGgPuNwO1EtNaBqY-5BOJ3tzW_4pGQ' }],
     // Stile formule
-    ['link', { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css' }]
+    ['link', { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css' }],
+  
+  // AGGIUNGI QUESTA RIGA QUI SOTTO:
+    ['link', { rel: 'icon', href: '/favicon.png' }], // ⬅️ Questa è la Favicon
+  
+    ['link', { rel: 'apple-touch-icon', href: '/favicon.png' }] // Smartphone
+
   ],
 
   // --- 4. SEO AUTOMATICO ---
