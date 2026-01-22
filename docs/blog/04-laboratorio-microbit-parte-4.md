@@ -1,18 +1,11 @@
 ---
 title: 04-Laboratorio-MicroBit-Parte-4
-draft: true
-description: >-
-  Dado Elettronico
-
-  Vogliamo realizzare un dado elettronico che funzioni muovendo microbit. Per fare questo introduciamo un concetto importante: la generazione di numeri casuali (random).
-
-
-  La Casualità nel Codice
-
-  I numeri casuali (o "random") sono fondamentali per creare giochi, simulazioni, e qualsiasi programma che necessiti di risultati imprevedibili, come il programma del dado.
+draft: false
 date: 2026-01-14T23:17:00.000+01:00
 image: /img/dado-elettronico.gif
 category: MicroBit
+class_target: "Tutti" 
+description: Dado Elettronico. Vogliamo realizzare un dado elettronico che funzioni muovendo microbit. Per fare questo introduciamo un concetto importante: la generazione di numeri casuali (random). La Casualità nel Codice. I numeri casuali (o "random") sono fondamentali per creare giochi, simulazioni, e qualsiasi programma che necessiti di risultati imprevedibili, come il programma del dado.
 ---
 ## Dado Elettronico
 
