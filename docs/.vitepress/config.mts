@@ -59,7 +59,9 @@ export default defineConfig({
       { text: 'Home', link: '/' },
       { text: 'Blog', link: '/blog/' },
       { text: 'Microbit', link: '/microbit' },
-      { text: 'Admin', link: 'https://proflama.netlify.app/admin.html', target: '_blank' }
+      { text: 'Arduino', link: '/arduino' },
+      { text: 'Scratch', link: '/scratch' },
+      { text: 'Mbot', link: '/mbot' }
     ],
     sidebar: [
       {
