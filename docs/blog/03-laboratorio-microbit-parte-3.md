@@ -1,16 +1,13 @@
 ---
 title: 03-Laboratorio-MicroBit-Parte-3
-draft: true
-description: >-
-  Introduzione alla Variabile (Programma 1)
-
-  Concetto chiave: una variabile è come una scatola o un contenitore in memoria che può contenere un valore (un numero o un testo) e il cui contenuto può cambiare.
-
-
-  Attività: "Il Contatore Interattivo Dichiarazione e Inizializzazione".
+draft: false
 date: 2026-01-14T23:16:00.000+01:00
-image: /img/matrice-item.gif
 category: MicroBit
+class_target: "Tutti" 
+description: Introduzione alla Variabile (Programma 1)
+  Concetto chiave: una variabile è come una scatola o un contenitore in memoria che può contenere un valore (un numero o un testo) e il cui contenuto può cambiare.
+  Attività: "Il Contatore Interattivo Dichiarazione e Inizializzazione".
+image: /img/matrice-item.gif
 ---
 
 Vogliamo realizzare un programma che alla pressione del pulsante A incrementi di 5 i LED sulla matrice della microbit e alla pressione del pulsante B elimini 5 LED sulla matrice della microbit. Per realizzarlo abbiamo bisono di introdurre tre concetti fondamentali: **Variabili**, **Visualizzazione LED** e **Logica Condizionale** (*if...then*).
