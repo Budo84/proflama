@@ -5,7 +5,7 @@ draft: false
 date: 2026-01-24
 category: Microbit
 class_target: 2, 3
-image: /public/img/transistor.png
+image: /img/robotica/transistor.png
 ---
 
 # LEZIONE 3: Il Transistor (L'Amplificatore di Potenza)
