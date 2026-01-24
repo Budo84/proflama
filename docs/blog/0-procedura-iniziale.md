@@ -48,5 +48,5 @@ In ogni squadra vengono assegnati i ruoli a rotazione (cambiano ogni 15 minuti o
 
 
 <center>
-	<img src="img/mbot/procedura.png" alt="windows" width="500"/>
+	<img src="/public/img/mbot/procedura.png" alt="windows" width="500"/>
 </center>
