@@ -3,7 +3,7 @@ title: 0-Procedura Iniziale
 description: Organizzazione della Classe. Programmatore, ingegnere, progettista
 draft: false
 date: 2026-01-24
-category: mbot
+category: Mbot
 class_target: Tutti
 image: /public/img/procedura.png
 ---
