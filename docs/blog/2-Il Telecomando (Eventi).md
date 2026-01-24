@@ -28,7 +28,7 @@ image: /img/mbot/mbot.png
   5\. \[Quando si preme il tasto (Spazio)\] \-\> \[Ferma il movimento\]
 
 <center>
-	<img src="/public/img/mbot/telecomando.png" alt="windows" width="500"/>
+	<img src="/img/mbot/telecomando.png" alt="windows" width="500"/>
 </center>
 
 
