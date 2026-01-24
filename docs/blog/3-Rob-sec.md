@@ -1,5 +1,5 @@
 ---
-title: LEZIONE 3-Il Transistor (L'Amplificatore di Potenza)
+title: 3-LEZIONE-Il Transistor (L'Amplificatore di Potenza)
 description: Scrivi qui una breve sintesi per Google (max 160 caratteri)...
 draft: false
 date: 2026-01-24
