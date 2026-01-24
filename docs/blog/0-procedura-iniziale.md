@@ -5,7 +5,7 @@ draft: false
 date: 2026-01-24
 category: Mbot
 class_target: Tutti
-image: /public/img/procedura.png
+image: /img/mbot/procedura.png
 ---
 
 # 0-Procedura Iniziale
