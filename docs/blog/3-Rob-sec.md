@@ -5,7 +5,7 @@ draft: false
 date: 2026-01-24
 category: Microbit
 class_target: 2, 3
-image: /img/transistor.png
+image: /public/img/transistor.png
 ---
 
 # LEZIONE 3: Il Transistor (L'Amplificatore di Potenza)
@@ -24,7 +24,7 @@ Immaginate un **Rubinetto dell'acqua**:
 	* *Il Concetto:* Basta una forza piccolissima (due dita sulla manopola/Base) per far scorrere un fiume d'acqua (tra Collettore ed Emettitore).
 
 <center>
-	<img src="img/robotica/transistor.png" alt="windows" width="300"/>
+	<img src="/img/robotica/transistor.png" alt="windows" width="300"/>
 </center>
 
 
@@ -48,7 +48,7 @@ Trascina questi componenti sul tavolo di lavoro:
 * 1x **Resistenza** (Imposta a **1 kΩ**).
 
 <center>
-	<img src="img/robotica/transistor2.png" alt="windows" width="300"/>
+	<img src="/img/robotica/transistor2.png" alt="windows" width="300"/>
 </center>
 
 #### 2. Il Cablaggio (Attenzione ai Pin del Transistor!)
@@ -79,7 +79,7 @@ Affinché il sistema funzioni, i due circuiti devono condividere lo "scarico" (G
 	* *Senza questo filo, non funzionerà nulla!*
 
 <center>
-	<img src="img/robotica/transistor3.png" alt="windows" width="300"/>
+	<img src="/img/robotica/transistor3.png" alt="windows" width="300"/>
 </center>
 
 
@@ -100,7 +100,7 @@ Dobbiamo dire alla Micro:bit: *"Quando premo A, manda un piccolo segnale alla Ba
 	* Mostra Icona (No/X).
 
 <center>
-	<img src="img/robotica/transistor4.png" alt="windows" width="300"/>
+	<img src="/img/robotica/transistor4.png" alt="windows" width="300"/>
 </center>
 
 
