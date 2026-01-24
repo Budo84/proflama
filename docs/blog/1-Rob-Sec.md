@@ -1,5 +1,5 @@
 --- 
-title: 1.La Prima Legge di Ohm e i Segreti della Breadboard 
+title: 1-La Prima Legge di Ohm e i Segreti della Breadboard 
 draft: false 
 date: 2026-01-19 
 image: /img/robotica/Led-micro1.png
