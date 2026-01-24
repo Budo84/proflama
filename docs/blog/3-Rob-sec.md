@@ -123,7 +123,7 @@ Dobbiamo dire alla Micro:bit: *"Quando premo A, manda un piccolo segnale alla Ba
 * Il motore si ferma.
 
 
-<video src="/img/transistor5.mp4" autoplay loop muted playsinline width="100%"></video>
+<video src="/img/robotica/transistor5.mp4" autoplay loop muted playsinline width="100%"></video>
 
 #### 2. Domande per la Classe (Debriefing)
 
