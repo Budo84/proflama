@@ -5,7 +5,7 @@ draft: false
 date: 2026-01-27
 category: Microbit
 class_target: "2, 3, Tutti"
-image: /img/potenziometro2.png
+image: /img/robotica/potenziometro2.png
 ---
 
 # 4-Il Partitore di Tensione (Il Potenziometro)
