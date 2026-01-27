@@ -1,11 +1,11 @@
 ---
 title: 01-Laboratorio-MicroBit-Parte 1
-description: >
-  Visualizza un cuore che batte sulla matrice a LED. Fai cambiare umore al
-  Micro:Bit. 
-date: 2026-01-14T23:14:00.000+01:00
+draft: false 
 image: /img/cuore-pulse.gif
 category: MicroBit
+class_target: "1,2,3" 
+description: Visualizza un cuore che batte sulla matrice a LED. Fai cambiare umore al MicroBit. 
+date: 2026-01-14T23:14:00.000+01:00
 ---
 # 01-Laboratorio-MicroBit-Parte 1
 
