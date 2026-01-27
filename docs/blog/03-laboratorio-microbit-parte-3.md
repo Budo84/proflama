@@ -3,7 +3,7 @@ title: 03-Laboratorio-MicroBit-Parte-3
 draft: false
 date: 2026-01-14T23:16:00.000+01:00
 category: MicroBit
-class_target: "1,2,3" 
+class_target: "1,2,3,Tutti" 
 description: Introduzione alla Variabile (Programma 1) Concetto chiave una variabile è come una scatola o un contenitore in memoria che può contenere un valore (un numero o un testo) e il cui contenuto può cambiare. Il Contatore Interattivo Dichiarazione e Inizializzazione.
 image: /img/matrice-item.gif
 ---
