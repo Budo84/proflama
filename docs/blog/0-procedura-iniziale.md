@@ -4,7 +4,7 @@ description: Organizzazione della Classe. Programmatore, ingegnere, progettista
 draft: false
 date: 2026-01-24
 category: Mbot
-class_target: elementari
+class_target: elementari,Tutti
 image: /img/mbot/procedura.png
 ---
 
