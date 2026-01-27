@@ -4,7 +4,7 @@ description: Capire il concetto di Input (tasto premuto) e Output (movimento).
 draft: false
 date: 2026-01-24
 category: Mbot
-class_target: Tutti
+class_target: elementari
 image: /img/mbot/mbot.png
 ---
 # 2-Il Telecomando (Eventi)
