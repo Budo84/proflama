@@ -9,10 +9,20 @@ const { Layout } = DefaultTheme
 // Accetta l'articolo se è "Tutti" OPPURE se la lista contiene "Tutti"
 const publicPosts = allPosts.filter(post => {
   const target = post.class_target
+  // Protezione: se il target è vuoto, lo scarta
+  if (!target) return false
+
+  // 1. Se è una STRINGA (es. "1, 2, Tutti") generata dal nuovo editor
+  if (typeof target === 'string') {
+    return target.includes('Tutti')
+  }
+
+  // 2. Se è un ARRAY (vecchi post o configurazioni diverse)
   if (Array.isArray(target)) {
     return target.includes('Tutti')
   }
-  return target === 'Tutti'
+
+  return false
 })
 
 // 1. Vetrina: Prendiamo i primi 4 articoli SOLO tra quelli pubblici
