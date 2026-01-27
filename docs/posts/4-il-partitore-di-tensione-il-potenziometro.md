@@ -1,6 +1,6 @@
 ---
 title: 4 - Il Partitore di Tensione (Il Potenziometro)
-description: Fino ad ora abbiamo usato l'elettricità come un interruttore: Tutto acceso o Tutto spento. Ma nella vita reale vogliamo regolare le cose: il volume della radio, la luminosità dello schermo, la velocità di un ventilatore. Per fare questo usiamo il Potenziometro (una resistenza variabile).
+description: Fino ad ora abbiamo usato l'elettricità come un interruttore, Tutto acceso o Tutto spento. Ma nella vita reale vogliamo regolare le cose il volume della radio, la luminosità dello schermo, la velocità di un ventilatore. Per fare questo usiamo il Potenziometro (una resistenza variabile).
 draft: false
 date: 2026-01-27
 category: Microbit
