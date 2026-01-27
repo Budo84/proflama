@@ -4,7 +4,7 @@ draft: false
 date: 2026-01-14T23:17:00.000+01:00
 image: /img/dado-elettronico.gif
 category: MicroBit
-class_target: "1,2,3" 
+class_target: "1,2,3,Tutti" 
 description: Dado Elettronico. La Casualità nel Codice. I numeri casuali sono fondamentali per creare giochi, simulazioni, e qualsiasi programma che necessiti di risultati imprevedibili, come il programma del dado.
 ---
 ## Dado Elettronico
