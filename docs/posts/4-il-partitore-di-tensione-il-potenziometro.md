@@ -4,7 +4,7 @@ description: Fino ad ora abbiamo usato l'elettricità come un interruttore, Tutt
 draft: false
 date: 2026-01-27
 category: Microbit
-class_target: 2
+class_target: 2,3
 image: /img/robotica/potenziometro2.jpg
 ---
 
