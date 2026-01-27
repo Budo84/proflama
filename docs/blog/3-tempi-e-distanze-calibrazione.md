@@ -4,7 +4,7 @@ description: Capire che Mbot non conosce i "metri", ma solo il "tempo".
 draft: false
 date: 2026-01-24
 category: Mbot
-class_target: elementari
+class_target: elementari,Tutti
 image: /img/mbot/distanza.png
 ---
 
