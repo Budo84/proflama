@@ -32,13 +32,20 @@ onMounted(() => {
   }
 })
 
-// FILTRO ROBUSTO: Accetta sia "2" che ["2", "Tutti"]
+// --- FILTRO CORRETTO ---
 const classPosts = posts.filter(post => {
-  const target = post.class_target
-  if (Array.isArray(target)) {
-    return target.includes('2')|| target.includes('Tutti')
+  const t = post.class_target
+  if (!t) return false 
+
+  if (typeof t === 'string') {
+    const targets = t.split(',').map(s => s.trim()) 
+    return targets.includes('2') || targets.includes('Tutti')
   }
-  return target === '2'|| target === 'Tutti'
+
+  if (Array.isArray(t)) {
+    return t.includes('2') || t.includes('Tutti')
+  }
+  return false
 })
 </script>
 
