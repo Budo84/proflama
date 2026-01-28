@@ -1,27 +1,3 @@
-
-<video src="/img/robotica/logica-booleana5.mp4" autoplay loop muted playsinline width="100%"></video>
-
-<video src="/img/robotica/logica-booleana5.mov" autoplay loop muted playsinline width="100%"></video>
-
-<center>
-	<img src="/img/robotica/logica-booleana4.png" alt="logica-booleana4.png" width="300"/>
-</center>
-
-<video src="/img/robotica/logica-booleana3.mov" autoplay loop muted playsinline width="100%"></video>
-
-<video src="/img/robotica/logica-booleana2.mp4" autoplay loop muted playsinline width="100%"></video>
-
-<center>
-	<img src="/img/robotica/logica-booleana1.png" alt="logica-booleana1.png" width="300"/>
-</center>
-
-<center>
-	<img src="/img/robotica/logica-booleana0bis.png" alt="logica-booleana0bis.png" width="300"/>
-</center>
-
-<center>
-	<img src="/img/robotica/logica-booleana0.png" alt="logica-booleana0.png" width="300"/>
-</center>
 ---
 title: 5-Logica Booleana Fisica (AND e OR senza chip)
 description: 'I computer capiscono solo due parole: VERO (1) e FALSO (0). Combinando queste due parole, prendono decisioni complesse usando la "Logica Booleana". Oggi costruiremo due "cervelli elettrici" senza usare nessun microchip, solo interruttori. Logica Booleana AND e OR'
