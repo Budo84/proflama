@@ -11,7 +11,7 @@ Qui trovi tutte le lezioni e gli esercizi dedicati alla scheda MicroBit.
 import { data as posts } from './.vitepress/theme/posts.data.ts'
 
 const filteredPosts = posts.filter(post => 
-  post.category === 'MicroBit' && !post.draft
+  post.category === 'Microbit' && !post.draft
 )
 </script>
 
