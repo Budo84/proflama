@@ -3,7 +3,7 @@ title: 00-MicroBit
 draft: false
 date: 2026-01-14T23:13:00.000+01:00
 image: /img/microbit-led-coords.png
-category: MicroBit
+category: Microbit
 class_target: "1,2,3,Tutti" 
 description: BBC micro:bit è una piccola scheda elettronica utilizzata per fare
   coding in modo semplice. Prima di iniziare a descrive i componenti che la
