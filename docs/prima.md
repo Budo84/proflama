@@ -33,12 +33,25 @@ onMounted(() => {
 })
 
 // FILTRO ROBUSTO: Accetta sia "1" che ["1", "3"] che Tutti
+// --- FILTRO CORRETTO PER IL NUOVO EDITOR ---
 const classPosts = posts.filter(post => {
-  const target = post.class_target
-  if (Array.isArray(target)) {
-    return target.includes('1')|| target.includes('Tutti')
+  const t = post.class_target
+  if (!t) return false // Protezione se vuoto
+
+  // 1. Gestione Stringa (Nuovo Editor: "1, 2, Tutti")
+  if (typeof t === 'string') {
+    // Divide la stringa in una lista pulita (es. ["1", "2", "Tutti"])
+    const targets = t.split(',').map(s => s.trim()) 
+    // Controlla se la lista contiene la classe O "Tutti"
+    return targets.includes('1') || targets.includes('Tutti')
   }
-  return target === '1'|| target === 'Tutti'
+
+  // 2. Gestione Array (Vecchi post o configurazioni manuali)
+  if (Array.isArray(t)) {
+    return t.includes('1') || t.includes('Tutti')
+  }
+
+  return false
 })
 </script>
 
