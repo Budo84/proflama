@@ -32,13 +32,20 @@ onMounted(() => {
   }
 })
 
-// FILTRO ROBUSTO: Accetta sia "3" che ["3", "1"]
+// --- FILTRO CORRETTO ---
 const classPosts = posts.filter(post => {
-  const target = post.class_target
-  if (Array.isArray(target)) {
-    return target.includes('elementari')|| target.includes('Tutti')
+  const t = post.class_target
+  if (!t) return false 
+
+  if (typeof t === 'string') {
+    const targets = t.split(',').map(s => s.trim()) 
+    return targets.includes('Elementari') || targets.includes('elementari') || targets.includes('Tutti')
   }
-  return target === 'elementari'|| target === 'Tutti'
+
+  if (Array.isArray(t)) {
+    return t.includes('elementari') || t.includes('Tutti')
+  }
+  return false
 })
 </script>
 
