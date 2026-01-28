@@ -39,11 +39,11 @@ const classPosts = posts.filter(post => {
 
   if (typeof t === 'string') {
     const targets = t.split(',').map(s => s.trim()) 
-    return targets.includes('2') || targets.includes('Tutti')
+    return targets.includes('2')
   }
 
   if (Array.isArray(t)) {
-    return t.includes('2') || t.includes('Tutti')
+    return t.includes('2')
   }
   return false
 })
