@@ -146,7 +146,7 @@ Non serve codice speciale (la Micro:bit è sempre accesa), quindi basta cliccare
 * Premi **Maiusc + Click** (su PC) per tenere premuto A, poi clicca B: **ACCESO!**
 	* *Conclusione:* Servono entrambi.
 
-<video src="/img/robotica/logica-booleana3.mp4" autoplay loop muted playsinline width="100%"></video>
+<video src="/img/robotica/logica-booleana2.mp4" autoplay loop muted playsinline width="100%"></video>
 
 #### 2. Test della Logica OR (Se hai fatto la modifica)
 
