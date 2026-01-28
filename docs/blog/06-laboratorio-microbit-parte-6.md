@@ -1,17 +1,14 @@
 ---
 title: 06-Laboratorio-MicroBit-Parte-6
+description: Contatore di Passi (Pedometro)Questo programma utilizza l'accelerometro e le variabili per contare i passi e introduce la necessità di resettare i dati. Puoi renderlo un dispositivo da polso che traccia i tuoi movimenti o da caviglia, mostrando il potenziale wearable.
 draft: true
-description: >-
-  Contatore di Passi (Pedometro)
-
-  Questo programma utilizza l'accelerometro e le variabili per contare i passi e introduce la necessità di resettare i dati.
-
-
-  Puoi renderlo un dispositivo da polso che traccia i tuoi movimenti o da caviglia, mostrando il potenziale wearable.
-date: 2026-01-15T10:29:00.000+01:00
-image: /img/contapassi.gif
+date: 2026-01-15
 category: MicroBit
+class_target: "1, 2, 3, Tutti"
+image: /img/contapassi.gif
 ---
+# 06-Laboratorio-MicroBit-Parte-6
+
 ## Contatore di Passi (Pedometro)
 
 Questo programma utilizza l'accelerometro e le variabili per contare i passi e introduce la necessità di resettare i dati.
