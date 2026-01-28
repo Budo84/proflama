@@ -3,7 +3,7 @@ title: 02-Laboratorio-MicroBit-Parte-2
 draft: false 
 date: 2026-01-14T23:14:00.000+01:00
 image: /img/matriceled2.gif
-category: MicroBit
+category: Microbit
 class_target: "1,2,3,Tutti" 
 description: La nostra scheda ha a disposizione una matrice frontale composta da 25 LED, ognuno ha due coordinate di riferimento (x,y)
 ---
