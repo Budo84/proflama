@@ -42,13 +42,13 @@ const classPosts = posts.filter(post => {
   if (typeof t === 'string') {
     // Divide la stringa in una lista pulita (es. ["1", "2", "Tutti"])
     const targets = t.split(',').map(s => s.trim()) 
-    // Controlla se la lista contiene la classe O "Tutti"
-    return targets.includes('1') || targets.includes('Tutti')
+    // Controlla se la lista contiene la classe 
+    return targets.includes('1')
   }
 
   // 2. Gestione Array (Vecchi post o configurazioni manuali)
   if (Array.isArray(t)) {
-    return t.includes('1') || t.includes('Tutti')
+    return t.includes('1')
   }
 
   return false
