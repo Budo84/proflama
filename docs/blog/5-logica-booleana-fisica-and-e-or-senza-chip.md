@@ -5,7 +5,7 @@ draft: false
 date: 2026-01-28
 category: Microbit
 class_target: "2, 3, Tutti"
-image: /img/robotica/logica-booleana0bis.png
+image: /img/robotica/logica-booleana00.png
 ---
 
 # 5-Logica Booleana Fisica (AND e OR senza chip)
