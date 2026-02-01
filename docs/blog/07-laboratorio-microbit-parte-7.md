@@ -33,3 +33,5 @@ Realizziamo un progetto utile per giochi da tavolo, sport o attività in classe,
  <center>
 	<img src="/img/microbit/contatore.png" alt="windows" width="450"/>
 </center>
+
+
