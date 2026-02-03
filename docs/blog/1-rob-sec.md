@@ -139,7 +139,7 @@ Seguite questo percorso (Circuito Serie):
 1. **Disegna:** Disegna il simbolo del LED (triangolo con freccette) e della Resistenza (zig-zag).
 
 <div style="display: flex; justify-content: space-around;">
-     <img src="img/robotica/Led.png" style="width: 11%; object-fit: cover;">
+     <img src="/img/robotica/Led.png" style="width: 11%; object-fit: cover;">
      <img src="/img/robotica/Resistor.png" style="width: 28%; object-fit: cover;">
      <img src="/img/robotica/ddp.png" style="width: 25%; object-fit: cover;">
 </div>
