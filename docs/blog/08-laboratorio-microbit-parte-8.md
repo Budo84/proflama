@@ -1,13 +1,14 @@
 ---
 title: 08-Laboratorio-MicroBit-Parte-8
-draft: false
 description: Magic 8-Ball Digitale. Questo progetto trasforma il Microbit in una versione digitale della popolare "Magic 8-Ball", offrendo risposte casuali a domande sì,no.
 Sfrutta lo shake oppure il pulsante A per l'input e la matrice LED per l'output testuale.
+draft: false
 date: 2026-02-03
+category: Microbit
+class_target: "1, 2, 3, Tutti"
 image: /img/magic-ball8.gif
-category: MicroBit
-class target: 1,2,3,Tutti
 ---
+
 ## Magic 8-Ball Digitale
 
 Questo progetto trasforma il Micro:bit in una versione digitale della popolare "Magic 8-Ball", offrendo risposte casuali a domande sì/no. 
@@ -30,6 +31,7 @@ Sfrutta lo **shake** oppure il pulsante **A** per l'input e la matrice LED per l
 </center>
 
 <div style="page-break-after: always;"></div>
+
 
 
 
