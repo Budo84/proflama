@@ -1,15 +1,14 @@
 ---
 title: 09-Laboratorio-MicroBit-Parte-9
-draft: true
-description: >+
-  Allarme con codice segreto
-
-  Questi tre programmi isolano i concetti di Stato, Condizione sul Sensore e Sequenza, preparando i ragazzi per unire il tutto nel progetto finale dell'Allarme con Codice Segreto.
-
-date: 2026-01-16T00:25:00.000+01:00
+draft: false
+description: Allarme con codice segreto Questi tre programmi isolano i concetti di Stato, Condizione sul Sensore e Sequenza, preparando i ragazzi per unire il tutto nel progetto finale dell'Allarme con Codice Segreto.
+date: 2026-01-16
 image: /img/allarme.png
 category: MicroBit
+class target: "1, 2, 3, Tutti"
 ---
+# Allarme con Codice Segreto
+
 ### Introduciamo tre concetti per la realizzazione di un programma che simula un allarme con codice segreto
 
 Questi tre programmi isolano i concetti di **Stato**, **Condizione sul Sensore** e **Sequenza**, preparando i ragazzi per unire il tutto nel progetto finale dell'Allarme con Codice Segreto.
