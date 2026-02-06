@@ -1,0 +1,188 @@
+---
+title: La Palla Calda Radioattiva
+description: 'Creare un gioco multiplayer utilizzando la radio del Micro:bit. Gli studenti impareranno a trasmettere variabili tra dispositivi e a gestire lo "stato" di un programma (Attivo/Inattivo).'
+draft: false
+date: 2026-02-03
+category: Microbit
+class_target: "1, 2, 3, Tutti"
+image: /img/robotica/Led-micro1.png
+---
+
+# La Palla Calda Radioattiva ☢️
+
+**Obiettivo:** Creare un gioco multiplayer utilizzando la radio del Micro:bit. Gli studenti impareranno a trasmettere variabili tra dispositivi e a gestire lo "stato" di un programma (Attivo/Inattivo).
+
+**Concetti Chiave:**
+
+* Comunicazione Radio (Gruppi e Canali).
+* Variabili booleane/di stato (Ho la palla? Sì/No).
+* Algoritmo di passaggio dati.
+
+**Materiali:**
+
+* Almeno 2 Micro:bit (ideale uno per studente o coppia).
+* Battery pack (fondamentale per muoversi liberamente).
+
+
+
+## 1. Introduzione Teorica
+
+Spiega alla classe la logica del gioco:
+
+"Immaginate una bomba a orologeria digitale. Il timer parte da 30 secondi. Chi ha il Micro:bit in mano vede il tempo scorrere. Quando lo scuote, il Micro:bit invia il tempo rimasto (es. 24 secondi) a un altro compagno e si spegne. Il compagno riceve il "24" e continua il conto alla rovescia. Se arriva a zero mentre lo hai in mano... BOOM!"
+
+**La sfida logica:**
+Come fa il Micro:bit a sapere se deve contare o stare zitto?
+
+* Useremo una variabile chiamata **ho_la_palla**.
+* Se è **1**, conto.
+* Se è **0**, aspetto.
+
+
+## 2. Realizzazione del Codice: Passo dopo Passo
+
+
+### PASSO 1: Preparazione e Radio
+
+Dobbiamo assicurarci che tutti parlino la stessa lingua (stesso Gruppo Radio).
+
+* **Blocco:** `on start` (All'avvio)
+* **Azione 1:** `radio set group 1` (Imposta gruppo radio 1).
+	* *Nota: Se ci sono più gruppi in classe, assegna numeri diversi (es. Gruppo A=1, Gruppo B=2).*
+
+* **Azione 2:** Creare variabile `ho_la_palla` e impostarla a `0` (`set ho_la_palla to 0`).
+* **Azione 3:** `show icon (Smile)` (Per confermare che è acceso).
+
+### PASSO 2: L'Innesco (Start)
+
+Solo una persona premerà questo tasto per iniziare la partita.
+
+* **Blocco:** `on button A+B pressed`
+* **Azione 1:** Creare variabile `tempo` e impostarla a `30` (`set tempo to 30`).
+* **Azione 2:** `set ho_la_palla to 1` (Chi preme, inizia con la bomba in mano).
+
+### PASSO 3: Il Cuore del Programma (Il Loop)
+
+Qui gestiamo il passare del tempo, ma **SOLO** se abbiamo la palla.
+
+* **Blocco:** `forever` (Per sempre)
+* **Logica:** Inserire un blocco `if` (Se).
+* Condizione: `if ho_la_palla = 1 then`.
+
+
+* **Dentro il "Se" (Azioni):**
+	1. `show number tempo` (Mostra i secondi).
+	2. `pause (ms) 1000` (Aspetta 1 secondo reale).
+	3. `change tempo by -1` (Togli 1 secondo).
+4. **Controllo Sconfitta:** Inserire un altro `if` qui dentro.
+	* Condizione: `if tempo <= 0 then`.
+	* Azione: `show icon (Skull)` (Teschio).
+	* Azione: `play sound (Sad)` (Opzionale).
+	* Azione: `set ho_la_palla to 0` (Ferma il conteggio).
+
+
+
+### PASSO 4: Il Passaggio (Trasmissione TX)
+
+Quando scuoto, passo il problema a qualcun altro.
+
+* **Blocco:** `on shake` (Quando scuoti)
+* **Logica:** `if ho_la_palla = 1 then` (Controllo di sicurezza: non posso passare la bomba se non ce l'ho!).
+* **Dentro il "Se" (Azioni):**
+	1. `radio send number tempo` (Invia via radio il valore attuale dei secondi).
+	2. `set ho_la_palla to 0` (Io non ho più la palla).
+	3. `clear screen` (Pulisci lo schermo per mostrare che sono salvo).
+
+
+
+### PASSO 5: La Ricezione (Ricezione RX)
+
+Cosa succede quando ricevo il segnale?
+
+* **Blocco:** `on radio received receivedNumber` (Su radio ricevuto numero)
+* **Azioni:**
+	1. `set tempo to receivedNumber` (Aggiorno il mio timer con il numero arrivato via radio).
+	2. `set ho_la_palla to 1` (Ora tocca a me!).
+
+
+
+## 3. Riepilogo Dettagliato dei Blocchi 📝
+
+Ecco la "lista della spesa" dei blocchi che gli studenti devono avere sullo schermo alla fine:
+
+**In `on start`:**
+
+	* `radio set group 1`
+	* `set ho_la_palla to 0`
+	* `show icon (Smile)`
+
+**In `on button A+B pressed`:**
+
+	* `set tempo to 30`
+	* `set ho_la_palla to 1`
+
+**In `on shake`:**
+
+	* `if ho_la_palla = 1 then`
+	* `radio send number tempo`
+	* `set ho_la_palla to 0`
+	* `clear screen`
+
+
+
+**In `on radio received receivedNumber`:**
+
+	* `set tempo to receivedNumber`
+	* `set ho_la_palla to 1`
+
+**In `forever`:**
+
+	* `if ho_la_palla = 1 then`
+	* `show number tempo`
+	* `pause (ms) 1000`
+	* `change tempo by -1`
+	* `if tempo <= 0 then`
+	* `show icon (Skull)`
+	* `set ho_la_palla to 0`
+
+
+<center>
+	<img src="/img/microbit/pallaradio.png" alt="pallaradio.png" width="300"/>
+</center>
+
+
+## 4. Fase di Test e Gioco 🕹️
+
+1. **Download:** Fai scaricare il codice su tutti i Micro:bit.
+2. **Cerchio:** Disponi gli studenti in cerchio (o in piedi sparsi per l'aula).
+3. **Setup:** Collega le batterie. Tutti dovrebbero vedere lo Smile.
+4. **Start:** Chiedi a **uno solo** studente di premere A+B.
+5. **Azione:** Il cronometro parte sul suo display. Dopo qualche secondo, digli di scuotere il Micro:bit (simulando il lancio della palla).
+6. **Verifica:** Controlla che il suo display si spenga e che quello di qualcun altro (a caso!) si accenda continuando il conteggio.
+	* *Nota sulla Radio:* La radio invia a "chiunque ascolti". Se ci sono 20 Micro:bit accesi, scuotendone uno, **tutti gli altri 19** riceveranno il tempo e si attiveranno contemporaneamente!
+
+<video src="/img/microbit/pallaradio1.mp4" autoplay loop muted playsinline width="100%"></video>
+
+
+### Variante "Caos Totale" vs "Coppie"
+
+* **Tutti contro Tutti:** Come descritto sopra. Uno lancia, tutti gli altri ricevono. È caotico ma divertente per vedere la tecnologia funzionare.
+* **A Coppie:** Assegna a ogni coppia un `radio group` diverso (Gruppo 1 per la coppia A, Gruppo 2 per la coppia B, ecc.). Così giocano a "ping pong" digitale.
+
+## 5. Debugging Comune 🔧
+
+* **Problema:** "Scuoto ma il numero resta lì."
+* **Soluzione:** Hai inserito `clear screen` nel blocco `on shake`? Hai impostato `ho_la_palla to 0`?
+
+
+* **Problema:** "Il tempo ricomincia sempre da 30 quando ricevo."
+* **Soluzione:** Hai usato `set tempo to 30` nel blocco `on radio received` invece di `set tempo to receivedNumber`?
+
+
+* **Problema:** "Tutti ricevono la palla contemporaneamente!"
+* **Spiegazione:** È normale! Il segnale radio è broadcast (a tutti). Per passare a una persona specifica servirebbe un codice più complesso (ID univoci), ma per questa lezione il "tutti attivi" è una dimostrazione potente della radio.
+
+
+
+
+
