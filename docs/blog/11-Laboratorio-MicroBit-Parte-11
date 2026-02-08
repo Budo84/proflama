@@ -172,19 +172,23 @@ Ecco la "lista della spesa" dei blocchi che gli studenti devono avere sullo sche
 ### Variante "Caos Totale" vs "Coppie"
 
 * **Tutti contro Tutti:** Come descritto sopra. Uno lancia, tutti gli altri ricevono. È caotico ma divertente per vedere la tecnologia funzionare.
+
 * **A Coppie:** Assegna a ogni coppia un `radio group` diverso (Gruppo 1 per la coppia A, Gruppo 2 per la coppia B, ecc.). Così giocano a "ping pong" digitale.
 
 ## 5. Debugging Comune
 
 * **Problema:** "Scuoto ma il numero resta lì."
+
 * **Soluzione:** Hai inserito `clear screen` nel blocco `on shake`? Hai impostato `ho_la_palla to 0`?
 
 
 * **Problema:** "Il tempo ricomincia sempre da 30 quando ricevo."
+
 * **Soluzione:** Hai usato `set tempo to 30` nel blocco `on radio received` invece di `set tempo to receivedNumber`?
 
 
 * **Problema:** "Tutti ricevono la palla contemporaneamente!"
+
 * **Spiegazione:** È normale! Il segnale radio è broadcast (a tutti). Per passare a una persona specifica servirebbe un codice più complesso (ID univoci), ma per questa lezione il "tutti attivi" è una dimostrazione potente della radio.
 
 
