@@ -1,10 +1,10 @@
 ---
 title: 11-Laboratorio-Microbit-Parte-11
-description: Creare un gioco multiplayer utilizzando la radio del Microbit. Gli studenti impareranno a trasmettere variabili tra dispositivi e a gestire lo stato di un programma(Attivo/Inattivo).
+description: Creare un gioco multiplayer utilizzando la radio del Microbit gli studenti impareranno a trasmettere variabili tra dispositivi e a gestire lo stato di un programma Attivo Inattivo
 draft: false
 date: 2026-02-03
 category: Microbit
-class_target: "1"
+class_target: "1, 2, 3, Tutti"
 image: /img/pallaradio2.gif
 ---
 
