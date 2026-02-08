@@ -4,8 +4,8 @@ draft: false
 description: Allarme con codice segreto Questi tre programmi isolano i concetti di Stato, Condizione sul Sensore e Sequenza, preparando i ragazzi per unire il tutto nel progetto finale dell'Allarme con Codice Segreto.
 date: 2026-01-16
 image: /img/allarme.png
-category: MicroBit
-class target: "1, 2, 3, Tutti"
+category: Microbit
+class_target: "1, 2, 3, Tutti"
 ---
 # Allarme con Codice Segreto
 
