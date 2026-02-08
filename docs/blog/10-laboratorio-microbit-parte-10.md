@@ -8,7 +8,7 @@ class_target: "1, 2, 3, Tutti"
 image: /img/pallaradio2.gif
 ---
 
-## Messaggistica con Due Micro:bit (Radio)
+# Messaggistica con Due Micro:bit (Radio)
 
 Questo è il passo più grande e utile: la comunicazione tra due o più Micro:bit. Ti permette di creare giochi multiplayer, telecomandi, o, in questo caso, un semplice sistema di messaggistica.
 
