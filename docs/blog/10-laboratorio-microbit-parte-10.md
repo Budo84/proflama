@@ -5,7 +5,7 @@ draft: false
 date: 2026-02-08
 category: Microbit
 class_target: "1, 2, 3, Tutti"
-image: /img/pallaradio2.gif
+image: /img/messaggi.gif
 ---
 
 # Messaggistica con Due Micro:bit (Radio)
