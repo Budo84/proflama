@@ -5,6 +5,7 @@ description: Messaggistica con Due Micro:bit (Radio) Questo è il passo più gra
 date: 2026-01-16
 image: /img/messaggi.gif
 category: Microbit
+class_target: "1, 2, 3, Tutti"
 ---
 ## Messaggistica con Due Micro:bit (Radio)
 
