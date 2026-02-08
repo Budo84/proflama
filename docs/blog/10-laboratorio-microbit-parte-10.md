@@ -1,6 +1,6 @@
 ---
 title: 10-Laboratorio-microbit-parte-10
-description: 'Con questo programma impareremo a far comunicare due microbit'
+description: 'con questo programma faremo comunicare due microbit con la radio della microbit'
 draft: false
 date: 2026-02-08
 category: Microbit
@@ -10,7 +10,7 @@ image: /img/pallaradio2.gif
 
 # Messaggistica con Due Micro:bit (Radio)
 
-Questo è il passo più grande e utile: la comunicazione tra due o più Micro:bit. Ti permette di creare giochi multiplayer, telecomandi, o, in questo caso, un semplice sistema di messaggistica.
+### Questo è il passo più grande e utile: la comunicazione tra due o più Micro:bit. Ti permette di creare giochi multiplayer, telecomandi, o, in questo caso, un semplice sistema di messaggistica.
 
 **Concetti**: comunicazione Radio; inviare e ricevere dati senza fili.
 
@@ -78,3 +78,4 @@ dopo aver misurato la temperatura alla prima microbit che mostra sullo schermo i
 <center>
 	<img src="/img/microbit/microbitB.png" alt="windows" width="350"/>
 </center>
+
