@@ -2,7 +2,7 @@
 title: "11-Laboratorio-Microbit-Parte-11"
 description: "Creare un gioco multiplayer utilizzando la radio del Microbit gli studenti impareranno a trasmettere variabili tra dispositivi e a gestire lo stato di un programma Attivo Inattivo"
 draft: false
-date: 2026-03-02
+date: 2026-02-03
 category: Microbit
 class_target: "1, 2, 3, Tutti"
 image: /img/pallaradio2.gif
@@ -84,12 +84,12 @@ Qui gestiamo il passare del tempo, ma **SOLO** se abbiamo la palla.
 
 	3. *change tempo by -1* (Togli 1 secondo).
 
-    4. **Controllo Sconfitta:** Inserire un altro `if` qui dentro.
+    4. **Controllo Sconfitta:** Inserire un altro if qui dentro.
       
-       * Condizione: `if tempo <= 0 then`.
-	   * Azione: `show icon (Skull)` (Teschio).
-	   * Azione: `play sound (Sad)` (Opzionale).
-	   * Azione: `set ho_la_palla to 0` (Ferma il conteggio).
+       * Condizione: `if tempo <= 0 then.
+	   * Azione: show icon (Skull)` (Teschio).
+	   * Azione: play sound (Sad)` (Opzionale).
+	   * Azione: set ho_la_palla to 0` (Ferma il conteggio).
 
 
 
@@ -97,12 +97,13 @@ Qui gestiamo il passare del tempo, ma **SOLO** se abbiamo la palla.
 
 Quando scuoto, passo il problema a qualcun altro.
 
-* **Blocco:** `on shake` (Quando scuoti)
-* **Logica:** `if ho_la_palla = 1 then` (Controllo di sicurezza: non posso passare la bomba se non ce l'ho!).
+* **Blocco:** on shake (Quando scuoti)
+* **Logica:** if ho_la_palla = 1 then (Controllo di sicurezza: non posso passare la bomba se non ce l'ho!).
 * **Dentro il "Se" (Azioni):**
-	1. `radio send number tempo` (Invia via radio il valore attuale dei secondi).
-	2. `set ho_la_palla to 0` (Io non ho più la palla).
-	3. `clear screen` (Pulisci lo schermo per mostrare che sono salvo).
+	1. radio send number tempo (Invia via radio il valore attuale dei secondi).
+	2. set ho_la_palla to 0 (Io non ho più la palla).
+	
+    3. clear screen (Pulisci lo schermo per mostrare che sono salvo).
 
 
 
@@ -110,10 +111,11 @@ Quando scuoto, passo il problema a qualcun altro.
 
 Cosa succede quando ricevo il segnale?
 
-* **Blocco:** `on radio received receivedNumber` (Su radio ricevuto numero)
+* **Blocco:** on radio received receivedNumber (Su radio ricevuto numero)
+
 * **Azioni:**
-	1. `set tempo to receivedNumber` (Aggiorno il mio timer con il numero arrivato via radio).
-	2. `set ho_la_palla to 1` (Ora tocca a me!).
+	1. set tempo to receivedNumber (Aggiorno il mio timer con il numero arrivato via radio).
+	2. set ho_la_palla to 1 (Ora tocca a me!).
 
 
 
@@ -121,40 +123,40 @@ Cosa succede quando ricevo il segnale?
 
 Ecco la "lista della spesa" dei blocchi che gli studenti devono avere sullo schermo alla fine:
 
-**In `on start`:**
+**In on start:**
 
-* `radio set group 1`
-* `set ho_la_palla to 0`
-* `show icon (Smile)`
+* radio set group 1
+* set ho_la_palla to 0
+* show icon (Smile)
 
-**In `on button A+B pressed`:**
+**In on button A+B pressed:**
 
-* `set tempo to 30`
-* `set ho_la_palla to 1`
+* set tempo to 30
+* set ho_la_palla to 1
 
-**In `on shake`:**
+**In on shake:**
 
-* `if ho_la_palla = 1 then`
-* `radio send number tempo`
-* `set ho_la_palla to 0`
-* `clear screen`
+* if ho_la_palla = 1 then
+* radio send number tempo
+* set ho_la_palla to 0
+* clear screen
 
 
 
-**In `on radio received receivedNumber`:**
+**In on radio received receivedNumber:**
 
-* `set tempo to receivedNumber`
-* `set ho_la_palla to 1`
+* set tempo to receivedNumber
+* set ho_la_palla to 1
 
-**In `forever`:**
+**In forever:**
 
-* `if ho_la_palla = 1 then`
-* `show number tempo`
-* `pause (ms) 1000`
-* `change tempo by -1`
-* `if tempo <= 0 then`
-* `show icon (Skull)`
-* `set ho_la_palla to 0`
+* if ho_la_palla = 1 then
+* show number tempo
+* pause (ms) 1000
+* change tempo by -1
+* if tempo <= 0 then
+* show icon (Skull)
+* set ho_la_palla to 0
 
 
 <center>
@@ -184,18 +186,18 @@ Ecco la "lista della spesa" dei blocchi che gli studenti devono avere sullo sche
 
 * **Tutti contro Tutti:** Come descritto sopra. Uno lancia, tutti gli altri ricevono. È caotico ma divertente per vedere la tecnologia funzionare.
 
-* **A Coppie:** Assegna a ogni coppia un `radio group` diverso (Gruppo 1 per la coppia A, Gruppo 2 per la coppia B, ecc.). Così giocano a "ping pong" digitale.
+* **A Coppie:** Assegna a ogni coppia un radio group diverso (Gruppo 1 per la coppia A, Gruppo 2 per la coppia B, ecc.). Così giocano a "ping pong" digitale.
 
 ## 5. Debugging Comune
 
 * **Problema:** "Scuoto ma il numero resta lì."
 
-* **Soluzione:** Hai inserito `clear screen` nel blocco `on shake`? Hai impostato `ho_la_palla to 0`?
+* **Soluzione:** Hai inserito clear screen nel blocco on shake? Hai impostato ho_la_palla to 0?
 
 
 * **Problema:** "Il tempo ricomincia sempre da 30 quando ricevo."
 
-* **Soluzione:** Hai usato `set tempo to 30` nel blocco `on radio received` invece di `set tempo to receivedNumber`?
+* **Soluzione:** Hai usato set tempo to 30 nel blocco on radio received invece di set tempo to receivedNumber?
 
 
 * **Problema:** "Tutti ricevono la palla contemporaneamente!"
