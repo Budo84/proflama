@@ -9,8 +9,7 @@ image: /img/messaggi.gif
 ---
 
 # Messaggistica con Due Micro:bit (Radio)
-
-### Questo è il passo più grande e utile: la comunicazione tra due o più Micro:bit. Ti permette di creare giochi multiplayer, telecomandi, o, in questo caso, un semplice sistema di messaggistica.
+Questo è il passo più grande e utile: la comunicazione tra due o più Micro:bit. Ti permette di creare giochi multiplayer, telecomandi, o, in questo caso, un semplice sistema di messaggistica.
 
 **Concetti**: comunicazione Radio; inviare e ricevere dati senza fili.
 
