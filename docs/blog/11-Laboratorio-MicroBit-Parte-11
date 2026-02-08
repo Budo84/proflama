@@ -47,10 +47,12 @@ Come fa il Micro:bit a sapere se deve contare o stare zitto?
 Dobbiamo assicurarci che tutti parlino la stessa lingua (stesso Gruppo Radio).
 
 * **Blocco:** on start (All'avvio)
+
 * **Azione 1:** *radio set group 1* (Imposta gruppo radio 1).
 	* *Nota: Se ci sono più gruppi in classe, assegna numeri diversi (es. Gruppo A=1, Gruppo B=2).*
 
 * **Azione 2:** Creare variabile *ho_la_palla* e impostarla a *0* (*set ho_la_palla to 0*).
+
 * **Azione 3:** *show icon (Smile)* (Per confermare che è acceso).
 
 ### PASSO 2: L'Innesco (Start)
@@ -58,7 +60,9 @@ Dobbiamo assicurarci che tutti parlino la stessa lingua (stesso Gruppo Radio).
 Solo una persona premerà questo tasto per iniziare la partita.
 
 * **Blocco:** *on button A+B pressed*
+
 * **Azione 1:** Creare variabile *tempo* e impostarla a *30* (*set tempo to 30*).
+
 * **Azione 2:** *set ho_la_palla to 1* (Chi preme, inizia con la bomba in mano).
 
 ### PASSO 3: Il Cuore del Programma (Il Loop)
@@ -66,19 +70,26 @@ Solo una persona premerà questo tasto per iniziare la partita.
 Qui gestiamo il passare del tempo, ma **SOLO** se abbiamo la palla.
 
 * **Blocco:** *forever* (Per sempre)
+
 * **Logica:** Inserire un blocco *if* (Se).
+
 * Condizione: *if ho_la_palla = 1 then*.
 
 
 * **Dentro il "Se" (Azioni):**
+
 	1. *show number tempo* (Mostra i secondi).
+
 	2. *pause (ms) 1000* (Aspetta 1 secondo reale).
+
 	3. *change tempo by -1* (Togli 1 secondo).
-4. **Controllo Sconfitta:** Inserire un altro `if` qui dentro.
-	* Condizione: `if tempo <= 0 then`.
-	* Azione: `show icon (Skull)` (Teschio).
-	* Azione: `play sound (Sad)` (Opzionale).
-	* Azione: `set ho_la_palla to 0` (Ferma il conteggio).
+
+    4. **Controllo Sconfitta:** Inserire un altro `if` qui dentro.
+      
+       * Condizione: `if tempo <= 0 then`.
+	   * Azione: `show icon (Skull)` (Teschio).
+	   * Azione: `play sound (Sad)` (Opzionale).
+	   * Azione: `set ho_la_palla to 0` (Ferma il conteggio).
 
 
 
