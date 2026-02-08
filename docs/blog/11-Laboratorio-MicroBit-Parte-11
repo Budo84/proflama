@@ -106,44 +106,44 @@ Cosa succede quando ricevo il segnale?
 
 
 
-## 3. Riepilogo Dettagliato dei Blocchi 📝
+## 3. Riepilogo Dettagliato dei Blocchi
 
 Ecco la "lista della spesa" dei blocchi che gli studenti devono avere sullo schermo alla fine:
 
 **In `on start`:**
 
-	* `radio set group 1`
-	* `set ho_la_palla to 0`
-	* `show icon (Smile)`
+* `radio set group 1`
+* `set ho_la_palla to 0`
+* `show icon (Smile)`
 
 **In `on button A+B pressed`:**
 
-	* `set tempo to 30`
-	* `set ho_la_palla to 1`
+* `set tempo to 30`
+* `set ho_la_palla to 1`
 
 **In `on shake`:**
 
-	* `if ho_la_palla = 1 then`
-	* `radio send number tempo`
-	* `set ho_la_palla to 0`
-	* `clear screen`
+* `if ho_la_palla = 1 then`
+* `radio send number tempo`
+* `set ho_la_palla to 0`
+* `clear screen`
 
 
 
 **In `on radio received receivedNumber`:**
 
-	* `set tempo to receivedNumber`
-	* `set ho_la_palla to 1`
+* `set tempo to receivedNumber`
+* `set ho_la_palla to 1`
 
 **In `forever`:**
 
-	* `if ho_la_palla = 1 then`
-	* `show number tempo`
-	* `pause (ms) 1000`
-	* `change tempo by -1`
-	* `if tempo <= 0 then`
-	* `show icon (Skull)`
-	* `set ho_la_palla to 0`
+* `if ho_la_palla = 1 then`
+* `show number tempo`
+* `pause (ms) 1000`
+* `change tempo by -1`
+* `if tempo <= 0 then`
+* `show icon (Skull)`
+* `set ho_la_palla to 0`
 
 
 <center>
@@ -151,7 +151,7 @@ Ecco la "lista della spesa" dei blocchi che gli studenti devono avere sullo sche
 </center>
 
 
-## 4. Fase di Test e Gioco 🕹️
+## 4. Fase di Test e Gioco
 
 1. **Download:** Fai scaricare il codice su tutti i Micro:bit.
 2. **Cerchio:** Disponi gli studenti in cerchio (o in piedi sparsi per l'aula).
@@ -169,7 +169,7 @@ Ecco la "lista della spesa" dei blocchi che gli studenti devono avere sullo sche
 * **Tutti contro Tutti:** Come descritto sopra. Uno lancia, tutti gli altri ricevono. È caotico ma divertente per vedere la tecnologia funzionare.
 * **A Coppie:** Assegna a ogni coppia un `radio group` diverso (Gruppo 1 per la coppia A, Gruppo 2 per la coppia B, ecc.). Così giocano a "ping pong" digitale.
 
-## 5. Debugging Comune 🔧
+## 5. Debugging Comune
 
 * **Problema:** "Scuoto ma il numero resta lì."
 * **Soluzione:** Hai inserito `clear screen` nel blocco `on shake`? Hai impostato `ho_la_palla to 0`?
