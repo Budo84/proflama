@@ -154,10 +154,15 @@ Ecco la "lista della spesa" dei blocchi che gli studenti devono avere sullo sche
 ## 4. Fase di Test e Gioco
 
 1. **Download:** Fai scaricare il codice su tutti i Micro:bit.
+
 2. **Cerchio:** Disponi gli studenti in cerchio (o in piedi sparsi per l'aula).
+
 3. **Setup:** Collega le batterie. Tutti dovrebbero vedere lo Smile.
+
 4. **Start:** Chiedi a **uno solo** studente di premere A+B.
+
 5. **Azione:** Il cronometro parte sul suo display. Dopo qualche secondo, digli di scuotere il Micro:bit (simulando il lancio della palla).
+
 6. **Verifica:** Controlla che il suo display si spenga e che quello di qualcun altro (a caso!) si accenda continuando il conteggio.
 	* *Nota sulla Radio:* La radio invia a "chiunque ascolti". Se ci sono 20 Micro:bit accesi, scuotendone uno, **tutti gli altri 19** riceveranno il tempo e si attiveranno contemporaneamente!
 
