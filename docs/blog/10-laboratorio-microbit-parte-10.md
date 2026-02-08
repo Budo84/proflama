@@ -1,6 +1,6 @@
 ---
-title: 10-Laboratorio-microbit-parte-10
-description: 'con questo programma faremo comunicare due microbit con la radio della microbit'
+title: "10-Laboratorio-microbit-parte-10"
+description: "Con questo programma faremo comunicare due microbit con la radio della microbit"
 draft: false
 date: 2026-02-08
 category: Microbit
