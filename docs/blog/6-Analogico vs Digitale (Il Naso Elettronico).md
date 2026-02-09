@@ -5,7 +5,7 @@ draft: false
 date: 2026-02-09
 category: Microbit
 class_target: "2, 3, Tutti"
-image: /img/robotica/gas5.jpg
+image: /img/robotica/gas5.png
 ---
 
 # 6-Analogico vs Digitale (Il Naso Elettronico)
