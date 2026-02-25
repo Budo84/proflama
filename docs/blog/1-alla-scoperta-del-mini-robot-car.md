@@ -40,7 +40,7 @@ Iniziamo esplorando fisicamente il robot e capendo di cosa è capace.
 
 
 <center>
-	<img src="/img/robotica/minicar2.png" alt="minicar2.png" width="300"/>
+	<img src="/img/robotica/minicar2.png" alt="minicar2.png" width="500"/>
 </center>
 
 
