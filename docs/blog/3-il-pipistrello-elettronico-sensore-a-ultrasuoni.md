@@ -5,7 +5,7 @@ draft: false
 date: 2026-02-25
 category: Microbit
 class_target: "1, 2, 3, Tutti"
-image: /img/robotica/minicarled.png
+image: /img/robotica/minicar.png
 ---
 
 # 3-Il Pipistrello Elettronico (Sensore a Ultrasuoni) 
