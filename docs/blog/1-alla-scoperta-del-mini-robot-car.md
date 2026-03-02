@@ -59,8 +59,11 @@ Adesso passiamo ai computer e prepariamo l'ambiente di lavoro.
 | :--- | :--- |
 | **1. Aprire le Estensioni** | Nella Casella degli strumenti (Toolbox), scorrete verso il basso e cliccate sulla categoria **Estensioni** (Extensions).|
 | **2. La Barra di Ricerca** | Si aprirà una finestra che vi offre uno spazio per cercare le estensioni.|
-| **3. Inserire il Link** | Copiate e incollate il seguente link nella casella di ricerca e premete "Invio": `https://github.com/keyestudio2019/MiniCar`.|
-| **4. Installazione** | Cliccate sul riquadro "Mini Car" che appare nei risultati della ricerca.|
-| **5. Verifica** | Dopo aver aggiunto l'estensione, dovreste vedere le nuove categorie **MiniCar** e **IrRemote** apparire nella Casella degli strumenti. I nuovi blocchi sono pronti per essere usati!|
+| **3. Inserire il Link** | Copiate e incollate il seguente link nella casella di ricerca e premete "Invio": 
+||`https://github.com/keyestudio2019/MiniCar` per robot Minicar Keyestudio
+||`https://github.com/lzty634158/yahboom_mbit_en` per il robot M_bitRobot
+|| `https://github.com/YahboomTechnology/Tiny-bitLib` per il robot Tiny Bot.|
+| **4. Installazione** | Cliccate sul riquadro che appare nei risultati della ricerca.|
+| **5. Verifica** | Dopo aver aggiunto l'estensione, dovreste vedere le nuove categorie apparire nella Casella degli strumenti. I nuovi blocchi sono pronti per essere usati!|
 
 *Nota :* Ogni volta che si creerà un nuovo progetto su MakeCode per questo robot, bisognerà ricaricare l'estensione da capo.
