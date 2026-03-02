@@ -32,5 +32,5 @@ image: /img/mbot/rotazione.png
 *Nota: Il valore 0.6 è un esempio, varia in base alla batteria e al pavimento.*
 
 <center>
-	<img src="/img/mbot/rotazione.png" alt="rotazione.png" width="300"/>
+	<img src="/img/mbot/rotazione.png" alt="rotazione.png" width="500"/>
 </center>
