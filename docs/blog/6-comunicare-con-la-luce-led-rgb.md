@@ -42,7 +42,7 @@ image: /img/mbot/polizia.png
 *Nota: Senza "Attendi", le luci cambierebbero così velocemente che l'occhio umano vedrebbe un viola fisso.*
 
 <center>
-	<img src="/img/mbot/polizia.png" alt="polizia2.png" width="300"/>
+	<img src="/img/mbot/polizia.png" alt="polizia2.png" width="500"/>
 </center>
 
 
