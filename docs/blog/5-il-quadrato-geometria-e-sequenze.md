@@ -36,6 +36,8 @@ image: /img/mbot/quadrato.png
 	<img src="/img/mbot/quadrato2.png" alt="quadrato2.png" width="300"/>
 </center>
 
+
+
 <center>
 	<img src="/img/mbot/quadrato.png" alt="quadrato.png" width="500"/>
 </center>
