@@ -36,6 +36,36 @@ image: /img/mbot/quadrato.png
 	<img src="/img/mbot/quadrato2.png" alt="quadrato2.png" width="300"/>
 </center>
 
+## Seconda Parte
+
+**Obiettivo:** Introdurre il blocco "Ripeti" per ottimizzare il codice.
+
+*   **Teoria:**
+    *   "Guardate il codice della lezione scorsa: è lunghissimo! C'è un trucco per scriverlo più corto?".
+    *   Individuare il **Pattern** (lo schema che si ripete): Avanti + Gira.
+*   **Pratica:**
+    *   Riscrivere il programma del quadrato usando il blocco arancione di controllo.
+*   **Il Codice:**
+    
+    [Quando si clicca su bandiera verde]
+    
+    [Ripeti (4) volte]
+    
+       [Vai in (avanti) a potenza (50) per (1) sec]
+        
+       [Gira a (destra) a potenza (50) per (0.6) sec]
+        
+       [Attendi (0.5) secondi] 
+        
+    [Fine Ripeti]
+
+
+
+<center>
+	<img src="/img/mbot/quadrato3.png" alt="quadrato3.png" width="300"/>
+</center>
+
+
 
 
 <center>
