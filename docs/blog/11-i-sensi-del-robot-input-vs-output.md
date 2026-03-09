@@ -5,7 +5,7 @@ draft: false
 date: 2026-03-09
 category: Mbot
 class_target: "Elementari, Tutti"
-image: /img/mbot/mbot.png
+image: /img/mbot/ultrasuoni3.webp
 ---
 
 # 11-I Sensi del Robot (Input vs Output)
