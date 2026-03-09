@@ -35,7 +35,7 @@ image: /img/mbot/ultrasuoni3.webp
 
 * [Quando si clicca su bandiera verde] 
 * [Per sempre] 
-  * [Porta la variabile (Distanza) a (Sensore ultrasuoni porta 3 distanza(cm))]
+  * [Porta la variabile (Distanza) a (Sensore ultrasuoni porta 1 distanza(cm))]
 
 
 <center>
