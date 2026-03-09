@@ -58,3 +58,7 @@ image: /img/mbot/ultrasuoni3.webp
  
     
 **Attività:** I bambini mettono la mano davanti al robot e vedono il numero nel fumetto del Panda cambiare.
+
+<center>
+	<img src="/img/mbot/ultrasuoni3.webp" alt="ultrasuoni3.webp" width="300"/>
+</center>
