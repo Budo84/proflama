@@ -1,0 +1,66 @@
+---
+title: 12-Il Robot Cane da Guardia (SE... ALLORA)
+description: 'Introdurre l''istruzione condizionale (SE... ALLORA) e far prendere decisioni autonome al robot in base alla distanza rilevata.'
+draft: false
+date: 2026-03-09
+category: Mbot
+class_target: "Elementari, Tutti"
+image: /img/cane.webp
+---
+
+# 12-Il Robot Cane da Guardia (SE... ALLORA)
+
+**Obiettivo:** Introdurre l'istruzione condizionale (SE... ALLORA) e far prendere decisioni autonome al robot in base alla distanza rilevata.
+
+**Teoria:** I robot prendono decisioni eseguendo istruzioni basate su condizioni specifiche. 
+
+La struttura logica fondamentale è: 
+
+* SE (la condizione è vera) 
+* ALLORA (esegui l'azione). 
+
+Esempio nella vita reale: 
+
+* SE (Piove) 
+* ALLORA (Apro l'ombrello). 
+
+Nel caso di mBot, usiamo il Sensore Ultrasuoni per misurare la distanza dagli oggetti. 
+
+* SE un oggetto si avvicina troppo 
+* ALLORA il robot reagisce come un cane da guardia mettendosi in allarme.
+
+
+**Pratica:**
+
+1.  Collegare mBot e assicurarsi che il Sensore Ultrasuoni sia connesso alla porta corretta (solitamente la Porta 3).
+   
+2.  L'obiettivo è programmare il robot affinché stia tranquillo (ad esempio con luci verdi), ma se la distanza letta dal sensore scende sotto i 10 cm , deve "abbaiare" emettendo un suono.
+   
+3.  **Attenzione all'errore comune:** Il blocco "SE... ALLORA" fa la domanda al robot una volta sola. Affinché il robot faccia la guardia di continuo, dobbiamo inserire il blocco "SE... ALLORA... ALTRIMENTI" dentro un ciclo "Per sempre".
+   
+
+**Il Codice:** *Vai sulla scheda "Dispositivi" e assicurati di programmare mBot.*
+
+* [Quando si clicca su bandiera verde]
+* [Per sempre] 
+	* [SE (Sensore ultrasuoni porta 3 distanza(cm) < 10) ALLORA] 
+		* [Riproduci suono a frequenza 700 Hz per (1) sec]
+		* [Accendi tutti i LED col colore (Rosso)] 
+	* [ALTRIMENTI] 
+		* [Accendi tutti i LED col colore (Verde)]
+
+
+<center>
+	<img src="/img/mbot/cane2.webp" alt="cane2.webp" width="300"/>
+</center>
+
+
+**Analisi:** Se la distanza scende sotto i 10 cm, la condizione diventa vera e mBot esegue i blocchi subito sotto (Suono e LED rossi) . Quando togliamo la mano, la condizione diventa falsa, quindi mBot salta la parte vera e va a eseguire le istruzioni che si trovano dentro "ALTRIMENTI" (LED verdi).
+
+
+Sei pronto per la prossima? Fammi sapere se vuoi passare direttamente a un'altra lezione in particolare (come il robot inseguitore di linee o il labirinto) o se procediamo in ordine!
+
+
+<center>
+	<img src="/img/mbot/cane.webp" alt="cane.webp" width="500"/>
+</center>
