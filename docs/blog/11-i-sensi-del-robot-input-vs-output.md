@@ -2,9 +2,9 @@
 title: 11-I Sensi del Robot (Input vs Output)
 description: 'Distinguere tra inviare comandi (Output) e leggere dati (Input) e far comunicare il robot fisico con lo schermo del computer.'
 draft: false
-date: 2026-03-09
+date: 2026-03-10
 category: Mbot
-class_target: "Elementari, Tutti"
+class_target: "Tutti"
 image: /img/mbot/ultrasuoni3.webp
 ---
 
@@ -35,7 +35,7 @@ image: /img/mbot/ultrasuoni3.webp
 
 * [Quando si clicca su bandiera verde] 
 * [Per sempre] 
-  * [Porta la variabile (Distanza) a (Sensore ultrasuoni porta 1 distanza(cm))]
+  * [Porta la variabile (Distanza) a (Sensore ultrasuoni porta 3 distanza(cm))]
 
 
 <center>
