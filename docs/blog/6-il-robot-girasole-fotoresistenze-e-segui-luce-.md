@@ -80,3 +80,54 @@ Mettere i robot a terra. Ogni gruppo (o studente) deve usare la **torcia del pro
 *   **Il robot va sempre dritto anche senza torcia:** La soglia (es. 100) è troppo bassa e la normale luce della classe la fa scattare. Aumentate il valore nell'istruzione `if (Luce_L > 100) and (Luce_R > 100)`.
 *   **Il robot "trema" tra destra e sinistra:** I due sensori stanno leggendo valori molto simili. Si può risolvere abbassando leggermente la velocità (es. `speed = 60`) per rendere i movimenti più dolci.
 *   **Sfida Estrema:** Riuscire ad aggiungere l'uso dei fari RGB? (Es: se gira a sinistra, accende solo il faro sinistro lampeggiante, come una freccia della macchina!).
+
+### Modifica Hardware e Software
+
+I robot associati alla seconda (M_bitRobot) e terza estensione (Tiny Bot) non hanno i sensori di luce, per questo bisogna costruire un piccolo circuito e modificare il codice per la lettura dei segnali provenienti dai sensori.
+
+**Materiale**
+
+* Breadboard o una basetta millefori (richiede saldatore)
+* 2 resisteze da $10k\Omega$
+* 2 LDR (Light Dependent Resistor)
+* cavi di collegamento
+
+### Collegamenti Hardware
+
+**M_bitRobot**
+
+* **Sensore LDR_destro** collegare un capo del sensore a 3.3V.
+* **Sensore LDR_destro** collegare l'altro capo del sensore alla **Resistenza** e poi al GND comune.
+* Collegare la giunzione **Sensore LDR_destro** e **Resistenza** al Pin 4 a un capo del sensore.
+* **Sensore LDR_sinistro** collegare un capo del sensore a 3.3V.
+* **Sensore LDR_sinistro** collegare l'altro capo del sensore alla **Resistenza** e poi al GND comune.
+* Collegare la giunzione **Sensore LDR_destro** e **Resistenza** al Pin 10 a un capo del sensore.
+
+**Tiny_Bot**
+
+* **Sensore LDR_destro** collegare un capo del sensore a 3.3V.
+* **Sensore LDR_destro** collegare l'altro capo del sensore alla **Resistenza** e poi al GND comune.
+* Collegare la giunzione **Sensore LDR_destro** e **Resistenza** al Pin 2 a un capo del sensore.
+* **Sensore LDR_sinistro** collegare un capo del sensore a 3.3V.
+* **Sensore LDR_sinistro** collegare l'altro capo del sensore alla **Resistenza** e poi al GND comune.
+* Collegare la giunzione **Sensore LDR_destro** e **Resistenza** al Pin 1 a un capo del sensore.
+
+### Programmazione
+
+A differenza del robot MiniCar che ha dei blocchi specifici per i robot *M_bitRobot* e *Tiny_Bot* dobbiamo sostituire il codice relativo al sensore *LDR* con i rispettivi **PIN** attivi sulla scheda.
+
+
+<center>
+	<img src="/img/robotica/sensore-luce_mbitrobot_opt.webp" alt="sensore-luce_mbitrobot_opt.webp" width="400"/>
+</center>
+
+<center>
+	<img src="/img/robotica/sensore_luce_tinybit_opt.webp" alt="sensore_luce_tinybit_opt.webp" width="400"/>
+</center>
+
+Con questo codice si può valutare la soglia di attivazione dei sensori. Il resto dei programmi va adattato secondo i blocchi delle estensioni specifiche.
+
+
+
+
+ 
