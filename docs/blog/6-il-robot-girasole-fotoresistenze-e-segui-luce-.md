@@ -118,11 +118,11 @@ A differenza del robot MiniCar che ha dei blocchi specifici per i robot *M_bitRo
 
 
 <center>
-	<img src="/img/robotica/sensore-luce_mbitrobot_opt.webp" alt="sensore-luce_mbitrobot_opt.webp" width="400"/>
+	<img src="/img/sensore-luce_mbitrobot_opt.webp" alt="sensore-luce_mbitrobot_opt.webp" width="400"/>
 </center>
 
 <center>
-	<img src="/img/robotica/sensore_luce_tinybit_opt.webp" alt="sensore_luce_tinybit_opt.webp" width="400"/>
+	<img src="/img/sensore_luce_tinybit_opt.webp" alt="sensore_luce_tinybit_opt.webp" width="400"/>
 </center>
 
 Con questo codice si può valutare la soglia di attivazione dei sensori. Il resto dei programmi va adattato secondo i blocchi delle estensioni specifiche.
