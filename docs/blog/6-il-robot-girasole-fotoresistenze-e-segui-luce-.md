@@ -116,11 +116,12 @@ I robot associati alla seconda (M_bitRobot) e terza estensione (Tiny Bot) non ha
 
 A differenza del robot MiniCar che ha dei blocchi specifici per i robot *M_bitRobot* e *Tiny_Bot* dobbiamo sostituire il codice relativo al sensore *LDR* con i rispettivi **PIN** attivi sulla scheda.
 
-
+**M_bitRobot**
 <center>
 	<img src="/img/sensore-luce_mbitrobot_opt.webp" alt="sensore-luce_mbitrobot_opt.webp" width="400"/>
 </center>
 
+**Tiny_Bot**
 <center>
 	<img src="/img/sensore_luce_tinybit_opt.webp" alt="sensore_luce_tinybit_opt.webp" width="400"/>
 </center>
