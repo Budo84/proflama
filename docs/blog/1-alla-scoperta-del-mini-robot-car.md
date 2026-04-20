@@ -7,9 +7,6 @@ category: Microbit
 class_target: "1, 2, 3, Tutti"
 image: /img/robotica/minicar.png
 ---
-
-# 1-Alla-Scoperta-del-Mini-Robot-Car
-
 **Obiettivo:** Conoscere l'hardware del Mini Robot Car, comprendere l'alimentazione necessaria e imparare a installare (e gestire) le estensioni personalizzate nell'ambiente MakeCode.
 
 **Concetti Chiave:**
