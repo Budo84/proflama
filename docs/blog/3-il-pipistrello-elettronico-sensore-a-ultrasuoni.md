@@ -20,13 +20,13 @@ image: /img/robotica/minicar.png
 *   Integrazione con i fari RGB (visti nella lezione precedente).
 
 
-### Fase 1: Teoria - Come "vede" un Pipistrello? 🗣️
+## Fase 1: Teoria - Come "vede" un Pipistrello? 🗣️
 
 *   **L'Ecolocalizzazione:** *Come fanno i pipistrelli o i delfini a non sbattere al buio?"*. Il sensore montato sulla porta frontale (Ultrasonic port) funziona esattamente così: un "occhio" invia un suono acutissimo (invisibile all'orecchio umano, un *ultrasuono*), il suono sbatte contro un ostacolo e torna indietro all'altro "occhio".
 *   **La Matematica del Suono:** Il chip calcola quanto tempo ci ha messo il suono a fare andata e ritorno. Conoscendo la velocità del suono, calcola la distanza in centimetri. Tutto questo avviene in frazioni di secondo!
 *   **La Variabile:** Per usare questo dato, dobbiamo "inscatolarlo" in una Variabile che chiameremo **`distanza`**.
 
-### Fase 2: Lettura dei Dati 📏
+## Fase 2: Lettura dei Dati 📏
 
 Iniziamo scrivendo un programma base per leggere il valore dal sensore e mostrarlo sullo schermo della microbit.
 
@@ -47,7 +47,7 @@ Iniziamo scrivendo un programma base per leggere il valore dal sensore e mostrar
 **Test:** Mettendo una mano davanti al sensore (Ultrasonic port) e allontanandola, si vedranno i numeri sul display del micro:bit cambiare (es. 5, 12, 20...).
 
 
-### Fase 3: Il Sensore di Parcheggio 🚨
+## Fase 3: Il Sensore di Parcheggio 🚨
 
 Ora uniamo le conoscenze! Se l'ostacolo è troppo vicino, accendiamo i fari di rosso (allarme); se la strada è libera, li accendiamo di verde.
 
@@ -71,7 +71,7 @@ Ora uniamo le conoscenze! Se l'ostacolo è troppo vicino, accendiamo i fari di r
 </center>
 
 
-### Fase 4: Sfida e Sperimentazione 🛠️
+## Fase 4: Sfida e Sperimentazione 🛠️
 
 Il programma ora reagisce all'ambiente circostante.
 
