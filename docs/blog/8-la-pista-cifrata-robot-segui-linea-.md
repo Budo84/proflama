@@ -12,7 +12,7 @@ image: /img/robotica/minicar.png
 
 **Obiettivo:** Comprendere il principio della riflessione della luce, leggere i valori digitali dei sensori di tracciamento e programmare un algoritmo di correzione della traiettoria per seguire un percorso nero su fondo bianco.
 
-### Fase 1: Brainstorming e Teoria 🧠
+## Fase 1: Brainstorming e Teoria 🧠
 
 
 *   **Domanda alla classe:** *"Come fanno i treni a seguire i binari senza uno sterzo? E se il nostro robot dovesse seguire una linea disegnata a terra senza avere dei binari fisici?"*
@@ -21,7 +21,7 @@ image: /img/robotica/minicar.png
     *   **Il colore NERO assorbe la luce.** Il sensore non riceve il riflesso e legge "1" (Vero/Linea trovata).
 *   **L'Hardware:** Il robot usa un componente chiamato "Voltage comparator" per trasformare questi riflessi in segnali digitali perfetti (0 o 1) per la nostra microbit.
 
-### Fase 2: Progettazione dello Pseudocodice 📝
+## Fase 2: Progettazione dello Pseudocodice 📝
 
 
 *   *Cosa facciamo se entrambi i sensori leggono BIANCO (0)?* -\> La linea è in mezzo, andiamo DRITTI!
@@ -29,7 +29,7 @@ image: /img/robotica/minicar.png
 *   *Cosa facciamo se il sensore DESTRO legge NERO (1)?* -\> Curviamo a DESTRA.
 *   *E se entrambi leggono NERO (1)?* -\> Siamo arrivati a un incrocio o alla fine della pista. STOP.
 
-### Fase 3: Scrittura del Codice  💻
+## Fase 3: Scrittura del Codice  💻
 
 
 | Sezione | Blocco | Istruzione e Funzione Pedagogica |
@@ -53,7 +53,7 @@ image: /img/robotica/minicar.png
 </center>
 
 
-### Fase 4: Collaudo e "Tuning" 🔧
+## Fase 4: Collaudo e "Tuning" 🔧
 
 *   **Il Tracciato:** Preparate a terra un percorso usando del nastro isolante nero (deve essere largo almeno 1.5 cm) su un pavimento chiaro o cartelloni bianchi. Fate curve dolci all'inizio!
 *   **Debugging Attivo:**  
