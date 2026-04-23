@@ -19,7 +19,7 @@ image: /img/robotica/minicar.png
 *   Calibrazione dei tempi di manovra.
 
 
-### Fase 1: Teoria - Come ragiona un veicolo autonomo? 🧠
+## Fase 1: Teoria - Come ragiona un veicolo autonomo? 🧠
 
 *   **Il Ciclo di Guida Autonoma:** *"Come fa un'auto a guida autonoma a non fare incidenti?"*. Il principio base è sempre lo stesso: 
 	*   **Sente** (legge l'ambiente con i sensori).
@@ -34,7 +34,7 @@ image: /img/robotica/minicar.png
 *   **Sicurezza in Aula:** Poiché i robot si muoveranno da soli, è fondamentale creare uno spazio "recintato" sul pavimento o assicurarsi che non cadano dai tavoli!
 
 
-### Fase 2: Costruzione del "Cervello" 🧩
+## Fase 2: Costruzione del "Cervello" 🧩
 
 Iniziamo a programmare. Questa volta useremo il ciclo `forever` perché il robot non deve mai smettere di guardarsi intorno.
 
@@ -48,7 +48,7 @@ Iniziamo a programmare. Questa volta useremo il ciclo `forever` perché il robot
 
 
 
-### Fase 3: Azione! (Programmare le Manovre)  🚧
+## Fase 3: Azione! (Programmare le Manovre)  🚧
 
 Ora riempiamo l'`if` (cosa fare se c'è pericolo) e l'`else` (cosa fare se la strada è libera).
 
@@ -77,7 +77,7 @@ Ora riempiamo l'`if` (cosa fare se c'è pericolo) e l'`else` (cosa fare se la st
 </center>
 
 
-### Fase 4: Collaudo e Messa a Punto (Tuning) 🔧
+## Fase 4: Collaudo e Messa a Punto (Tuning) 🔧
 
 Questa è la parte più divertente (e caotica) della lezione. Scaricate il programma, accendete l'interruttore delle batterie e posizionate i robot a terra.
 
