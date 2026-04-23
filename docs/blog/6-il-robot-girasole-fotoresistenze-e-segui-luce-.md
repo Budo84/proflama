@@ -19,14 +19,14 @@ image: /img/robotica/minicar.png
 *   Controllo differenziale dei motori in base agli input analogici.
 
 
-### Fase 1: Teoria - Gli "Occhi" per la Luce 👁️
+## Fase 1: Teoria - Gli "Occhi" per la Luce 👁️
 
 *   **La Fotoresistenza:** i due piccoli componenti sulla parte frontale della scheda del robot (vicino ai fari RGB) si chiamano *fotoresistenze*; sono resistenze speciali che fanno passare più o meno corrente a seconda di quanta luce le colpisce.
 *   **Valori Analogici:** A differenza di un pulsante (acceso/spento), le fotoresistenze restituiscono un numero (da 0 a 255 nel nostro caso). Zero significa buio totale, numeri alti indicano molta luce.
 *   **Come fa a seguire la luce?** Se punto una torcia a destra del robot, il sensore destro leggerà un valore più alto di quello sinistro. Il "cervello" (il nostro codice) capirà che deve far girare il robot verso destra.
 
 
-### Fase 2: Il Test del Buio (Lettura dei Sensori) 📊
+## Fase 2: Il Test del Buio (Lettura dei Sensori) 📊
 
 Prima di muoverci, dobbiamo capire che numeri inviano i due sensori.
 
@@ -48,7 +48,7 @@ Prima di muoverci, dobbiamo capire che numeri inviano i due sensori.
 **Test in classe:** Scaricate il codice. Coprire con una mano il sensore sinistro e poi quello destro, osservando come cambiano i numeri sul display. *Qual è il valore di base della luce nell'aula? Qual è il valore se punto la torcia dello smartphone?* Segnatevi questi numeri (es. la luce normale è 50, la torcia è 150).
 
 
-### Fase 3: Azione! (Programmare l'Inseguimento) 🏎️
+## Fase 3: Azione! (Programmare l'Inseguimento) 🏎️
 
 Ora cancelliamo i blocchi `show number` e `pause` e inseriamo la vera intelligenza. Creiamo le condizioni per muoverci confrontando i due sensori.
 
@@ -71,7 +71,7 @@ Ora cancelliamo i blocchi `show number` e `pause` e inseriamo la vera intelligen
 
 
 
-### Fase 4: Collaudo col "Cibo Luminoso" 🔦
+## Fase 4: Collaudo col "Cibo Luminoso" 🔦
 
 Mettere i robot a terra. Ogni gruppo (o studente) deve usare la **torcia del proprio smartphone** come "esca" per far muovere il robot.
 
