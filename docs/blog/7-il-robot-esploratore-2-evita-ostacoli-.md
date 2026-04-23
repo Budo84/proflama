@@ -12,9 +12,7 @@ image: /img/robotica/minicar.png
 
 **Obiettivo:** Progettare, codificare e calibrare un veicolo a guida autonoma. Comprendere il paradigma *Sense-Think-Act* (Senti-Pensa-Agisci) e il concetto di *"Tuning"* (calibrazione) dei parametri fisici.
 
-### Fase 1: Brainstorming e Teoria 🧠
-
-
+## Fase 1: Brainstorming e Teoria 🧠
 
 *   **Domanda alla classe:** *"Pensate ai robot aspirapolvere (come il Roomba) o alle auto a guida autonoma. Come fanno a decidere quando girare senza l'intervento umano?"*
 *   **Il Paradigma S-T-A:** fondamentale della robotica:
@@ -24,7 +22,7 @@ image: /img/robotica/minicar.png
     
 *   **Nozioni Hardware Avanzate (per i più curiosi):** I motori possono raggiungere una velocità di 200 RPM (giri al minuto). Se andiamo alla massima velocità, l'auto percorrerà troppo spazio prima che il sensore riesca a fare una seconda lettura, causando uno schianto!
 
-### Fase 2: Progettazione dello Pseudocodice  📝
+## Fase 2: Progettazione dello Pseudocodice  📝
 
 Scrivere su un foglio (o alla lavagna) le "regole" del robot in italiano semplice.
 
@@ -34,7 +32,7 @@ Scrivere su un foglio (o alla lavagna) le "regole" del robot in italiano semplic
     *   *Regola 1:* SE la distanza è minore di 15 cm, ALLORA frena, fai retromarcia, girati.
     *   *Regola 2:* ALTRIMENTI (la strada è libera), ALLORA vai dritto.
 
-### Fase 3: Scrittura del Codice 💻
+## Fase 3: Scrittura del Codice 💻
 
 Tradurre lo pseudocodice nei blocchi dell'estensione `MiniCar`.
 
@@ -57,7 +55,7 @@ Tradurre lo pseudocodice nei blocchi dell'estensione `MiniCar`.
 </center>
 
 
-### Fase 4: Collaudo e "Tuning" dei Parametri 🔧
+## Fase 4: Collaudo e "Tuning" dei Parametri 🔧
 
 *   **Creare il Recinto:** Usa zaini o libri per creare un labirinto a terra.
 *   **Analisi degli Errori (Debugging Attivo):**
