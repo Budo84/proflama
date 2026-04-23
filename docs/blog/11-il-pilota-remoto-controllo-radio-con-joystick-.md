@@ -44,7 +44,7 @@ Prendiamo il **primo Micro:bit** (il telecomando). Qui tradurremo i movimenti fi
 
 
 <center>
-	<img src="/img/robotica/minicar-radio2.png" alt="minicar-radio2.png" width="300"/>
+	<img src="/img/robotica/minicar-radio2.png" alt="minicar-radio2.png" width="450"/>
 </center>
 
 
@@ -66,7 +66,7 @@ Mettiamo da parte il telecomando e prendiamo il **secondo Micro:bit** (quello da
 
 
 <center>
-	<img src="/img/robotica/minicar-radio3.png" alt="minicar-radio3.png" width="300"/>
+	<img src="/img/robotica/minicar-radio3.png" alt="minicar-radio3.png" width="450"/>
 </center>
 
 
