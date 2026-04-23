@@ -19,14 +19,14 @@ image: /img/robotica/minicar.png
 *   Utilizzo del blocco `LED Show`.
 
 
-### Fase 1: Teoria dei Fari RGB 🌈
+## Fase 1: Teoria dei Fari RGB 🌈
 
 *   **Che cos'è RGB?** I fari del robot non sono semplici lampadine, ma LED RGB. "RGB" sta per Rosso (Red), Verde (Green) e Blu (Blue). Mescolando questi tre colori base, il robot può creare quasi ogni colore.
 *   **Come ragiona il Robot?** Il microbit da solo non ha i pin sufficienti per tutto, quindi invia un messaggio "segreto" (tramite protocollo IIC) a un chip sul robot che si occupa di accendere fisicamente le luci. Noi, grazie all'estensione `MiniCar`, useremo blocchi semplicissimi senza preoccuparci della complessità elettronica.
 *   **La Regola d'Oro dei LED:** Impostare un colore non basta. Bisogna sempre dare il comando di "stampa" o "mostra" per far accendere la luce.
 
 
-### Fase 2: Il Primo Test (Accensione Base)🚦
+## Fase 2: Il Primo Test (Accensione Base)🚦
 
 Apriamo la categoria **MiniCar** nella Toolbox.
 
@@ -47,7 +47,7 @@ Apriamo la categoria **MiniCar** nella Toolbox.
 **Test:** I fari dovrebbero accendersi (uno rosso e uno blu) e rimanere fissi.
 
 
-### Fase 3: Animazione - La Macchina della Polizia 🚓
+## Fase 3: Animazione - La Macchina della Polizia 🚓
 
 Ora che sappiamo accendere i fari, rendiamolo dinamico usando il blocco `forever` per creare un'animazione lampeggiante in stile sirena della polizia.
 
@@ -71,7 +71,7 @@ Ora che sappiamo accendere i fari, rendiamolo dinamico usando il blocco `forever
 **Risultato Atteso:** I due fari frontali lampeggeranno alternando rosso e blu continuamente, dando un bellissimo effetto visivo.
 
 
-### Fase 4: Esplorazione Libera e Debugging 🛠️
+## Fase 4: Esplorazione Libera e Debugging 🛠️
 
 *   **Sfida 1:** Creare un effetto 'Semaforo' usando il verde, il giallo e il rosso, temporizzati correttamente
 *   **Sfida 2:** Esplorare i blocchi che gestiscono l'intensità (PWM) per creare un effetto di luce che "respira" (diventa gradualmente più luminosa e poi si abbassa).
