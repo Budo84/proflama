@@ -42,9 +42,11 @@ Prendiamo il **primo Micro:bit** (il telecomando). Qui tradurremo i movimenti fi
 | **Logic** | `else` | **`else`**_(La Zona Morta: se il joystick è al centro tra 400 e 600)_  $\to$  **`radio send number 0`** |
 
 
+
 <center>
 	<img src="/img/robotica/minicar-radio2.png" alt="minicar-radio2.png" width="300"/>
 </center>
+
 
 
 ## Fase 3: Il Ricevitore (Programmare la Mini Car)💻
@@ -62,9 +64,11 @@ Mettiamo da parte il telecomando e prendiamo il **secondo Micro:bit** (quello da
 | **Logic** | `else` | **`else`**  $\to$  `motor All Forward speed 0` (Freno!). |
 
 
+
 <center>
 	<img src="/img/robotica/minicar-radio3.png" alt="minicar-radio3.png" width="300"/>
 </center>
+
 
 
 ## Fase 4: Collaudo, Cablaggio e "Tuning"  🔧
