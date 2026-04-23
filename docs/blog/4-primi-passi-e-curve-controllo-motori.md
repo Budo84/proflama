@@ -19,7 +19,7 @@ image: /img/robotica/minicar.png
 *   Sequenze temporizzate (l'uso del blocco `pause`).
 
 
-### Fase 1: Teoria - La Meccanica del Movimento ⚙️
+## Fase 1: Teoria - La Meccanica del Movimento ⚙️
 
 *   **I Due Motori:** Il robot ha due motori indipendenti già integrati nella piastra di base. Non c'è uno sterzo come nelle automobili normali!
 *   **Come Curva? (Guida Differenziale):** 
@@ -33,7 +33,7 @@ image: /img/robotica/minicar.png
 *   **Energia Critica:** Imotori consumano molta energia. Il robot deve essere alimentato dalle tre batterie AAA (che forniscono 4.5V in totale ) inserite nell'apposito alloggiamento. Senza batterie accese, il robot non si muoverà!
     
 
-### Fase 2: Avanti e Indietro (Il Test di Base) 🛣️
+## Fase 2: Avanti e Indietro (Il Test di Base) 🛣️
 
 Facciamo avanzare il robot per 2 secondi, poi lo facciamo indietreggiare per 2 secondi e infine lo fermiamo.
 
@@ -56,7 +56,7 @@ Facciamo avanzare il robot per 2 secondi, poi lo facciamo indietreggiare per 2 s
 
 
 
-### Fase 3: La Danza del Robot (Curvare) 🔄
+## Fase 3: La Danza del Robot (Curvare) 🔄
 
 Ora che sappiamo andare dritti, impariamo a curvare modificando la direzione dei singoli motori.
 
@@ -110,7 +110,7 @@ Dobbiamo programmare il robot affinché, alla pressione del **Tasto A**, esegua 
 
 
 
-### Fase 4: Sfida e Debugging 🏁
+## Fase 4: Sfida e Debugging 🏁
 
 
 *   **La Sfida del Quadrato:** "Riuscire a programmare il robot in modo che, premendo A+B, percorra un quadrato perfetto sul pavimento e torni al punto di partenza?"
