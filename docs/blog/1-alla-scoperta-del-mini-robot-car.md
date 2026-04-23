@@ -18,7 +18,7 @@ image: /img/robotica/minicar.png
 * Gestione avanzata dell'interfaccia MakeCode .
 
 
-### Fase 1. Esplorazione dell'Hardware  🔍
+## Fase 1. Esplorazione dell'Hardware  🔍
 
 Iniziamo esplorando fisicamente il robot e capendo di cosa è capace.
 
@@ -43,14 +43,14 @@ Iniziamo esplorando fisicamente il robot e capendo di cosa è capace.
 </center>
 
 
-### Fase 2. Cos'è un'Estensione? 🧩
+## Fase 2. Cos'è un'Estensione? 🧩
 
 Per comandare tutti questi nuovi sensori, i blocchi standard di Microbit non bastano.
 
 * **Teoria:** Le estensioni sono moduli di codice funzionali che vengono installati dall'esterno dell'editor MakeCode e aggiungono nuovi blocchi alla Casella degli strumenti (Toolbox). È una collezione di codice che estende le funzionalità del linguaggio di programmazione di base.
 
 
-### Fase 3. Aggiungere l'Estensione in MakeCode 💻
+## Fase 3. Aggiungere l'Estensione in MakeCode 💻
 
 Adesso passiamo ai computer e prepariamo l'ambiente di lavoro.
 
