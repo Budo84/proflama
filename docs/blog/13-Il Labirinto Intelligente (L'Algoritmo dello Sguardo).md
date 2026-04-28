@@ -60,7 +60,7 @@ Come si comporta un esploratore quando arriva a un vicolo cieco? Non gira a caso
 
 
 <center>
-	<img src="/img/robotica/labirinto2.webp" alt="Screenshot_2026-04-24_alle_12_opt.webp" width="300"/>
+	<img src="/img/robotica/labirinto2.png" alt="labirinto2.png" width="300"/>
 </center>
 
 
