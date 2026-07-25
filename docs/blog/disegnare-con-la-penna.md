@@ -31,22 +31,22 @@ Ora proviamo a disegnare: quadrato, triangolo, esagono, decagono.
 
 <div style="display: flex; justify-content: space-around;">
      <img src="/img/qua1.png" style="width: 45%; object-fit: cover;">
-     <img src="/img/quad.png" style="width: 45%; object-fit: cover;">
+     <img src="/img/quad.png" style="width: 25%; object-fit: cover;">
 </div>
 
 <div style="display: flex; justify-content: space-around;">
      <img src="/img/tria1.png" style="width: 45%; object-fit: cover;">
-     <img src="/img/tria.png" style="width: 45%; object-fit: cover;">
+     <img src="/img/tria.png" style="width: 25%; object-fit: cover;">
 </div>
 
 <div style="display: flex; justify-content: space-around;">
      <img src="/img/esa1.png" style="width: 45%; object-fit: cover;">
-     <img src="/img/esa.png" style="width: 45%; object-fit: cover;">
+     <img src="/img/esa.png" style="width: 25%; object-fit: cover;">
 </div>
 
 <div style="display: flex; justify-content: space-around;">
      <img src="/img/deca1.png" style="width: 45%; object-fit: cover;">
-     <img src="/img/deca.png" style="width: 45%; object-fit: cover;">
+     <img src="/img/deca.png" style="width: 25%; object-fit: cover;">
 </div>
 
 
