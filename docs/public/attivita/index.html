@@ -1,0 +1,1807 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coding e Robotica per Tutti — 4 giochi inclusivi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Baloo+2:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F5F6FB;
+    --surface:#FFFFFF;
+    --surface-soft:#F0F1F8;
+    --ink:#232336;
+    --ink-soft:#55566B;
+    --border:#DADCE8;
+    --radius:18px;
+    --radius-sm:10px;
+    --accent-1:#E76F51;
+    --accent-2:#3A86A8;
+    --accent-3:#D69A22;
+    --accent-4:#4C9A6B;
+    --accent-5:#7B67A6;
+    --accent-6:#C1447E;
+    --focus:#1D4ED8;
+    --scale:1;
+  }
+  html{ font-size: calc(100% * var(--scale)); }
+  html.contrast{
+    --bg:#0E0E14; --surface:#1B1B26; --surface-soft:#262636;
+    --ink:#FFFFFF; --ink-soft:#DEDEF0; --border:#4A4A5C;
+    --accent-1:#FF8266; --accent-2:#5CB3DA; --accent-3:#F0BE4E; --accent-4:#6FC090; --accent-5:#A491D6; --accent-6:#E267A0;
+  }
+  html.readable body{ letter-spacing:0.02em; word-spacing:0.08em; text-transform:uppercase; }
+  html.readable button, html.readable select, html.readable option, html.readable input, html.readable label{ text-transform:uppercase; }
+  html.readable p, html.readable li{ line-height:1.85; }
+  *{ box-sizing:border-box; }
+  @media (prefers-reduced-motion: reduce){ *{ animation-duration:0.001ms !important; transition-duration:0.001ms !important; } }
+  html,body{ height:100%; }
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:'Atkinson Hyperlegible', system-ui, -apple-system, sans-serif;
+    line-height:1.55; font-size:1.05rem; min-height:100vh; display:flex; flex-direction:column;
+  }
+  h1,h2,h3{ font-family:'Baloo 2', 'Atkinson Hyperlegible', sans-serif; font-weight:700; line-height:1.25; margin:0; }
+  button{ font-family:inherit; cursor:pointer; }
+  select,input{ font-family:inherit; }
+  :focus-visible{ outline:3px solid var(--focus); outline-offset:2px; border-radius:4px; }
+  .skip-link{ position:absolute; left:-999px; top:0; background:var(--ink); color:var(--bg); padding:10px 16px; z-index:200; border-radius:0 0 8px 0; }
+  .skip-link:focus{ left:0; }
+
+  /* ---------- Top bar ---------- */
+  .topbar{
+    background:var(--surface); border-bottom:1px solid var(--border); position:sticky; top:0; z-index:100;
+  }
+  .topbar-row{ display:flex; align-items:center; justify-content:space-between; gap:10px; padding:8px 18px; flex-wrap:wrap; }
+  .brand{ font-family:'Baloo 2',sans-serif; font-weight:800; font-size:1.15rem; white-space:nowrap; }
+  .a11y-controls{ display:flex; gap:8px; flex-wrap:wrap; }
+  .tbtn{ background:var(--surface-soft); border:1px solid var(--border); color:var(--ink); padding:6px 12px; border-radius:999px; font-size:0.85rem; font-weight:700; }
+  .tbtn[aria-pressed="true"]{ background:var(--ink); color:var(--surface); border-color:var(--ink); }
+
+  nav.tabs{ display:flex; gap:6px; padding:0 18px 10px; flex-wrap:wrap; }
+  nav.tabs button{
+    border:2px solid var(--border); background:var(--surface-soft); color:var(--ink);
+    padding:12px 20px; border-radius:14px 14px 0 0; font-weight:700; font-size:1.02rem;
+    display:flex; align-items:center; gap:8px;
+  }
+  nav.tabs button[aria-selected="true"]{
+    background:var(--tab-color, var(--accent-1)); color:#fff; border-color:var(--tab-color, var(--accent-1));
+  }
+
+  /* ---------- Pages ---------- */
+  main{ flex:1; display:flex; flex-direction:column; }
+  .page{ display:none; flex:1; flex-direction:column; padding:22px 26px 40px; max-width:1280px; margin:0 auto; width:100%; }
+  .page.active{ display:flex; }
+  .page-header{ margin-bottom:14px; border-left:8px solid var(--page-color, var(--accent-1)); padding-left:16px; }
+  .page-header h1{ font-size:1.7rem; }
+  .page-header p{ color:var(--ink-soft); margin:6px 0 0; max-width:75ch; }
+  .page-body{ flex:1; display:flex; gap:28px; flex-wrap:wrap; align-items:flex-start; margin-top:14px; }
+  .panel{ background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:20px; }
+  .controls-panel{ flex:0 0 300px; min-width:260px; }
+  .stage-panel{ flex:1; min-width:320px; display:flex; flex-direction:column; align-items:center; }
+  .field{ margin-bottom:16px; }
+  .field label{ display:block; font-weight:700; margin-bottom:6px; font-size:0.92rem; }
+  .field select, .field input[type=number]{ width:100%; padding:8px 10px; border-radius:8px; border:1px solid var(--border); background:var(--surface); color:var(--ink); }
+  .btn{ background:var(--page-color, var(--accent-1)); color:#fff; border:none; border-radius:999px; padding:10px 18px; font-weight:700; font-size:0.95rem; }
+  .btn.secondary{ background:transparent; color:var(--ink); border:2px solid var(--border); }
+  .btn.block{ width:100%; margin-bottom:10px; }
+  .btn:disabled{ opacity:0.45; cursor:not-allowed; }
+  .row{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
+  .msg{ margin-top:12px; font-weight:700; min-height:1.4em; }
+  .msg.ok{ color:var(--accent-4); }
+  .msg.warn{ color:var(--accent-1); }
+  details.adapt{ margin-top:20px; background:var(--surface-soft); border-radius:var(--radius-sm); padding:12px 16px; }
+  details.adapt summary{ font-weight:700; cursor:pointer; }
+  details.adapt ul{ margin:10px 0 0; padding-left:20px; }
+  details.adapt li{ margin-bottom:6px; }
+  .hidden-input{ position:absolute; width:1px; height:1px; overflow:hidden; opacity:0; }
+
+  /* Pixel art */
+  #pixelGrid{ display:grid; gap:0; background:transparent; border:2px solid var(--border); width:100%; max-width:520px; aspect-ratio:1/1; position:relative; z-index:1; }
+  #pixelGrid .px{ background:#fff; border:0.5px solid rgba(0,0,0,0.12); }
+  .pixel-stage{ position:relative; width:100%; max-width:520px; }
+  #pixelWatermarkImg{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.38; border-radius:8px; display:none; z-index:0; pointer-events:none; }
+  #pixelDragLayer{ position:absolute; inset:0; z-index:2; display:none; cursor:grab; border-radius:8px; }
+  #pixelDragLayer.active{ display:block; background:rgba(29,78,216,0.06); border:2px dashed var(--focus); }
+  #pixelDragLayer.dragging{ cursor:grabbing; }
+  .watermark-align-controls{ display:none; margin-top:8px; }
+  .watermark-align-controls.visible{ display:block; }
+  .zoom-label{ display:block; font-size:0.85rem; font-weight:700; margin:8px 0 4px; }
+  #zoomImg{ width:100%; }
+  .img-mode-picker{ display:flex; flex-direction:column; gap:6px; margin:10px 0 4px; }
+  .img-mode-opt{ display:flex; align-items:center; gap:8px; font-size:0.9rem; font-weight:600; cursor:pointer; }
+  .img-mode-opt input{ width:18px; height:18px; }
+  .pixel-side-image{ display:none; margin-top:22px; width:100%; max-width:420px; text-align:center; }
+  .pixel-side-image.active{ display:block; }
+  .pixel-side-label{ font-weight:700; margin:0 0 8px; color:var(--ink-soft); font-size:0.9rem; }
+  .pixel-side-image img{ width:100%; border-radius:var(--radius-sm); border:2px solid var(--border); display:block; }
+  .gallery-details summary{ font-weight:700; cursor:pointer; }
+  .gallery-note{ font-size:0.82rem; color:var(--ink-soft); margin:8px 0; }
+  .gallery-group-title{ font-weight:700; font-size:0.85rem; margin:10px 0 6px; color:var(--ink-soft); }
+  .gallery-grid{ display:flex; flex-wrap:wrap; gap:8px; }
+  .gallery-thumb{ width:56px; height:56px; border-radius:8px; border:2px solid var(--border); padding:0; overflow:hidden; background:#fff; }
+  .gallery-thumb img{ width:100%; height:100%; display:block; }
+  .gallery-thumb:hover{ border-color:var(--page-color, var(--accent-1)); }
+  .palette{ display:flex; flex-wrap:wrap; gap:8px; margin:6px 0 14px; }
+  .swatch{ width:32px; height:32px; border-radius:8px; border:2px solid var(--border); padding:0; }
+  .swatch[aria-pressed="true"]{ outline:3px solid var(--ink); outline-offset:2px; }
+  .swatch.eraser{ background:repeating-conic-gradient(#ccc 0% 25%, #fff 0% 50%) 50% / 10px 10px; }
+  .color-add{ display:flex; align-items:center; gap:8px; margin-bottom:14px; }
+  .color-add input[type=color]{ width:40px; height:36px; border:1px solid var(--border); border-radius:8px; padding:2px; background:var(--surface); }
+
+  /* Maze */
+  .level-picker{ display:flex; flex-wrap:wrap; gap:10px; margin-bottom:6px; }
+  .level-btn{ border:2px solid var(--border); background:var(--surface-soft); border-radius:14px; padding:10px 14px; text-align:left; min-width:150px; }
+  .level-btn[aria-current="true"]{ border-color:var(--page-color); background:var(--surface); }
+  .level-btn .lt{ font-weight:700; display:block; }
+  .level-btn .le{ font-size:1.5rem; }
+  .level-btn:disabled{ opacity:0.5; }
+  .story-box{ background:var(--surface-soft); border-radius:var(--radius-sm); padding:14px 16px; margin:14px 0; max-width:640px; }
+  #mazeGrid{ display:grid; gap:4px; margin:0 auto; width:100%; aspect-ratio:1/1; }
+  #mazeGrid .cell{ background:var(--surface); border:2px solid var(--border); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:clamp(1rem, 6vw, 2rem); }
+  #mazeGrid .cell.wall{ background:var(--ink-soft); }
+  .arrow-pad{ display:grid; grid-template-columns:repeat(3,64px); grid-template-rows:repeat(2,64px); gap:8px; margin:0 auto; }
+  .arrow-pad button{ font-size:1.8rem; border-radius:12px; border:1px solid var(--border); background:var(--surface-soft); }
+  .row[role="group"] .btn.secondary[aria-pressed="true"]{ background:var(--page-color, var(--accent-2)); color:#fff; border-color:var(--page-color, var(--accent-2)); }
+  #btnMoveImg[aria-pressed="true"]{ background:var(--accent-1); color:#fff; border-color:var(--accent-1); }
+  .queue{ display:flex; flex-wrap:wrap; gap:6px; min-height:40px; margin:10px 0; justify-content:center; }
+  .queue span{ background:var(--surface-soft); border-radius:8px; padding:6px 10px; font-size:1rem; }
+  .queue span button{ background:none; border:none; margin-left:6px; font-weight:700; }
+
+  /* Ordering */
+  .scenario-picker{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px; }
+  .scenario-picker button{ border:2px solid var(--border); background:var(--surface-soft); border-radius:12px; padding:8px 14px; font-weight:700; font-size:0.9rem; }
+  .scenario-picker button[aria-current="true"]{ background:var(--page-color); color:#fff; border-color:var(--page-color); }
+  .order-list{ list-style:none; padding:0; margin:0; display:grid; gap:10px; width:100%; max-width:620px; }
+  .order-list li{ background:var(--surface-soft); border-radius:var(--radius-sm); padding:10px 14px; display:flex; align-items:center; gap:14px; }
+  .order-list li .step-emoji{ font-size:2rem; width:50px; text-align:center; flex:none; }
+  .order-list li .step-text{ flex:1; font-size:1.02rem; }
+  .order-list li .step-btns{ display:flex; flex-direction:column; gap:4px; }
+  .order-list li .step-btns button{ background:var(--surface); border:1px solid var(--border); border-radius:6px; padding:2px 8px; }
+  .order-list li.correct{ outline:3px solid var(--accent-4); }
+  .order-list li.wrong{ outline:3px solid var(--accent-1); }
+
+  /* Memory */
+  #memoryGrid{ display:grid; gap:8px; margin:0 auto; width:100%; }
+  .mcard{ width:100%; aspect-ratio:1/1; border-radius:10px; background:var(--surface-soft); border:1px solid var(--border); font-size:clamp(1.1rem, 5.5vw, 1.8rem); display:flex; align-items:center; justify-content:center; }
+  .mcard-empty{ width:100%; aspect-ratio:1/1; }
+  .mcard.matched{ background:var(--accent-4); opacity:0.55; }
+  .stat-line{ font-weight:700; margin-bottom:8px; }
+
+  /* Dobble */
+  .dobble-wrap{ display:flex; flex-wrap:wrap; gap:28px; justify-content:center; width:100%; }
+  .dobble-card{ background:var(--surface); border:3px solid var(--border); border-radius:50%; width:400px; height:400px; position:relative; }
+  .dobble-card.reference{ background:var(--surface-soft); }
+  .dobble-card .sym{ font-size:3.4rem; background:none; border:none; padding:8px; line-height:1; }
+  .dobble-card .sym.clickable{ cursor:pointer; border-radius:12px; }
+  .dobble-card .sym.clickable:hover{ background:var(--surface-soft); }
+  .dobble-card-label{ position:absolute; top:-14px; left:50%; transform:translateX(-50%); background:var(--page-color); color:#fff; font-size:0.78rem; font-weight:700; padding:3px 12px; border-radius:999px; white-space:nowrap; }
+
+  /* Sorting */
+  .sort-tray{ display:flex; flex-wrap:wrap; gap:16px; justify-content:center; max-width:720px; margin:0 auto 26px; min-height:110px; }
+  .sort-item{ font-size:4.2rem; background:var(--surface-soft); border:3px solid var(--border); border-radius:18px; width:130px; height:130px; cursor:grab; }
+  .sort-item[aria-pressed="true"]{ outline:4px solid var(--page-color); }
+  .sort-item.dragging{ opacity:0.4; }
+  .sort-bins{ display:flex; flex-wrap:wrap; gap:22px; justify-content:center; width:100%; }
+  .sort-bin{ background:var(--surface); border:4px dashed var(--border); border-radius:var(--radius); padding:20px; min-width:270px; min-height:250px; text-align:center; cursor:pointer; }
+  .sort-bin.dragover{ border-color:var(--page-color); background:var(--surface-soft); }
+  .sort-bin .bin-title{ font-weight:700; margin-bottom:14px; font-size:1.25rem; }
+  .sort-bin .bin-items{ display:flex; flex-wrap:wrap; gap:8px; justify-content:center; min-height:56px; }
+  .sort-bin .bin-items span{ font-size:2.8rem; }
+
+  /* Rush hour puzzle */
+  #rushGrid{ display:grid; gap:2px; background:var(--border); border:3px solid var(--border); border-radius:10px; margin:0 auto; width:min(90vw,420px); aspect-ratio:1/1; }
+  #rushGrid .bgcell{ background:var(--surface); }
+  #rushGrid .bgcell.exit{ background:var(--surface-soft); font-size:1.4rem; display:flex; align-items:center; justify-content:center; }
+  .rush-piece{ border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:1.6rem; border:2px solid rgba(0,0,0,0.15); z-index:2; background:var(--accent-3); }
+  .rush-piece.target{ background:var(--accent-1); }
+  .rush-piece.selected{ outline:4px solid var(--ink); outline-offset:-4px; }
+
+  footer{ text-align:center; padding:16px; color:var(--ink-soft); font-size:0.85rem; }
+  html,body{ overflow-x:hidden; }
+
+  #page-pixelart .stage-panel{
+    position:sticky; top:var(--toolbar-h, 90px); align-self:flex-start;
+    z-index:5; background:var(--bg); box-shadow:0 10px 14px -12px rgba(0,0,0,0.28);
+    border-radius:12px; max-height:calc(100vh - var(--toolbar-h, 90px) - 16px); overflow:auto;
+  }
+
+  @media (max-width:760px){
+    .page-body{ flex-direction:column; }
+    .controls-panel{ flex:none !important; width:100%; }
+    .stage-panel{ min-width:0; width:100%; }
+    .page{ padding:16px 14px 32px; }
+    .page-header{ padding-left:12px; border-left-width:6px; }
+    .page-header h1{ font-size:1.35rem; }
+    .dobble-wrap{ gap:16px; }
+    #page-pixelart .stage-panel{
+      order:-1; padding:10px 0 14px; margin-bottom:6px;
+    }
+  }
+  @media (max-width:480px){
+    .brand{ font-size:1rem; }
+    .a11y-controls .tbtn{ font-size:0.78rem; padding:5px 10px; }
+    nav.tabs button{ padding:9px 14px; font-size:0.9rem; }
+    .page-header p{ font-size:0.95rem; }
+    .arrow-pad{ grid-template-columns:repeat(3,50px); grid-template-rows:repeat(2,50px); }
+    .arrow-pad button{ font-size:1.4rem; }
+    .swatch{ width:28px; height:28px; }
+    .sort-item{ width:96px; height:96px; font-size:3.2rem; }
+    .sort-bin{ min-width:100%; }
+    .level-btn{ min-width:120px; padding:8px 10px; }
+    .btn, .btn.secondary{ padding:9px 14px; font-size:0.9rem; }
+  }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Vai al contenuto principale</a>
+
+<div class="topbar">
+  <div class="topbar-row">
+    <div class="brand">🤖 Coding &amp; Robotica per Tutti</div>
+    <div class="a11y-controls" role="group" aria-label="Impostazioni di accessibilità">
+      <button class="tbtn" id="btnTextSize" aria-pressed="false">🔤 Testo: Normale</button>
+      <button class="tbtn" id="btnContrast" aria-pressed="false">🌗 Alto contrasto</button>
+      <button class="tbtn" id="btnReadable" aria-pressed="false">📖 Lettura facilitata</button>
+    </div>
+  </div>
+  <nav class="tabs" role="tablist" aria-label="Scegli il gioco" id="tabNav"></nav>
+</div>
+
+<main id="main">
+
+  <!-- PIXEL ART -->
+  <section class="page" id="page-pixelart" data-color="var(--accent-1)" role="tabpanel" aria-labelledby="tab-pixelart">
+    <div class="page-header">
+      <h1>🎨 Pixel art</h1>
+      <p>Disegna sulla griglia oppure importa un'immagine da usare come riferimento: puoi vederla in filigrana sotto la griglia, oppure affiancata, e ricrearla colorando i quadretti.</p>
+    </div>
+    <div class="page-body">
+      <div class="panel controls-panel">
+        <div class="field">
+          <label>Tavolozza colori</label>
+          <div class="palette" id="palette" role="group" aria-label="Scegli un colore"></div>
+          <div class="color-add">
+            <input type="color" id="colorPicker" value="#e76f51" aria-label="Scegli un colore personalizzato">
+            <button class="btn secondary" id="btnAddColor">Aggiungi colore</button>
+          </div>
+        </div>
+
+        <div class="row" style="gap:8px; margin-bottom:10px;">
+          <button class="btn secondary" id="btnUndo" disabled>↶ Annulla</button>
+          <button class="btn secondary" id="btnRedo" disabled>↷ Ripeti</button>
+        </div>
+        <button class="btn secondary block" id="btnClearPixel">🧹 Pulisci griglia</button>
+        <button class="btn block" id="btnDownloadPixel">💾 Scarica disegno</button>
+
+        <hr style="border:none; border-top:1px solid var(--border); margin:18px 0;">
+
+        <div class="field">
+          <label for="gridSize">Dimensione griglia</label>
+          <select id="gridSize">
+            <option value="8">8 × 8 (più semplice)</option>
+            <option value="12">12 × 12</option>
+            <option value="16" selected>16 × 16</option>
+            <option value="20">20 × 20</option>
+            <option value="24">24 × 24</option>
+            <option value="32">32 × 32 (più dettagliata)</option>
+          </select>
+        </div>
+        <button class="btn block" id="btnApplySize">Applica dimensione (pulisce la griglia)</button>
+
+        <div class="field">
+          <label>Immagine di riferimento</label>
+          <button class="btn secondary block" id="btnImportImg">📁 Scegli immagine dal dispositivo</button>
+          <input class="hidden-input" type="file" id="fileImg" accept="image/*">
+          <div class="img-mode-picker" role="radiogroup" aria-label="Come mostrare l'immagine importata">
+            <label class="img-mode-opt">
+              <input type="radio" name="imgMode" value="watermark" checked>
+              <span>🖼️ In filigrana sotto la griglia</span>
+            </label>
+            <label class="img-mode-opt">
+              <input type="radio" name="imgMode" value="side">
+              <span>📎 Affiancata alla griglia</span>
+            </label>
+          </div>
+          <button class="btn secondary block" id="btnRemoveImg" style="margin-top:8px;">🗑️ Rimuovi immagine</button>
+          <div class="watermark-align-controls" id="watermarkAlignControls">
+            <button class="btn secondary block" id="btnMoveImg" aria-pressed="false">🖐️ Sposta immagine per allinearla</button>
+            <label class="zoom-label" for="zoomImg">🔍 Zoom immagine</label>
+            <input type="range" id="zoomImg" min="50" max="250" value="100">
+            <button class="btn secondary block" id="btnResetAlign">↺ Reimposta posizione e zoom</button>
+          </div>
+          <p style="font-size:0.85rem; color:var(--ink-soft); margin:4px 0 0;">Usa l'immagine come guida e ricreala colorando i quadretti della griglia.</p>
+        </div>
+
+        <div class="field">
+          <details class="gallery-details">
+            <summary>🖼️ Immagini pronte da riprodurre (20)</summary>
+            <p class="gallery-note">Sono disegni originali creati apposta per questa pagina (non personaggi con diritti d'autore). Cliccane uno per caricarlo come riferimento.</p>
+            <p class="gallery-group-title">Forme e oggetti</p>
+            <div class="gallery-grid" id="galleryShapes"></div>
+            <p class="gallery-group-title">Personaggi</p>
+            <div class="gallery-grid" id="galleryCharacters"></div>
+          </details>
+        </div>
+
+        <details class="adapt">
+          <summary>Adattamenti (DSA / BES / Autismo)</summary>
+          <ul>
+            <li>🧩 Parti da una griglia 8×8: meno quadretti da gestire, più facile da completare.</li>
+            <li>🌈 Prova entrambe le modalità immagine: la filigrana aiuta chi ha difficoltà a "saltare lo sguardo" tra due immagini separate, l'affiancata aiuta chi si distrae se ci sono troppi elementi sovrapposti.</li>
+            <li>⭐ "Pulisci griglia" è sempre disponibile: nessun errore è definitivo, si può ricominciare quando si vuole.</li>
+          </ul>
+        </details>
+      </div>
+      <div class="stage-panel">
+        <div class="pixel-stage" id="pixelStage">
+          <img id="pixelWatermarkImg" alt="" aria-hidden="true">
+          <div id="pixelGrid" role="group" aria-label="Griglia pixel art"></div>
+          <div id="pixelDragLayer" aria-hidden="true"></div>
+        </div>
+        <div class="pixel-side-image" id="pixelSideImage">
+          <p class="pixel-side-label">Immagine di riferimento</p>
+          <img id="pixelSideImg" alt="Immagine importata come riferimento">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LABIRINTO -->
+  <section class="page" id="page-maze" data-color="var(--accent-2)" role="tabpanel" aria-labelledby="tab-maze">
+    <div class="page-header">
+      <h1>🧭 Il viaggio di Pixel</h1>
+      <p>Pixel è un piccolo robot esploratore che vuole scoprire dieci mondi diversi, cambiando forma e amici lungo il cammino. Scegli come giocare: muovi Pixel subito ad ogni clic, oppure componi tutta la sequenza di comandi e falla eseguire in un secondo momento.</p>
+    </div>
+    <div class="level-picker" id="levelPicker"></div>
+    <div class="story-box" id="mazeStory"></div>
+    <div class="page-body" style="justify-content:center;">
+      <div class="stage-panel" style="flex:1; min-width:0;">
+        <div id="mazeGrid" role="img" aria-label="Griglia del labirinto"></div>
+      </div>
+      <div class="panel controls-panel" style="flex:0 0 260px;">
+        <div class="row" role="group" aria-label="Modalità di gioco" style="justify-content:center; margin-bottom:14px;">
+          <button class="btn secondary" id="btnModeImmediate" aria-pressed="false">⚡ Movimento immediato</button>
+          <button class="btn secondary" id="btnModeQueue" aria-pressed="true">📝 Costruisci sequenza</button>
+        </div>
+        <div class="arrow-pad">
+          <span></span><button data-dir="up" aria-label="Su">⬆️</button><span></span>
+          <button data-dir="left" aria-label="Sinistra">⬅️</button>
+          <button data-dir="down" aria-label="Giù">⬇️</button>
+          <button data-dir="right" aria-label="Destra">➡️</button>
+        </div>
+        <div id="queueSection">
+          <p style="font-weight:700; margin:14px 0 4px;">Comandi:</p>
+          <div class="queue" id="mazeQueue" aria-live="polite"></div>
+          <div class="row" style="justify-content:center;">
+            <button class="btn" id="btnRunMaze">▶️ Esegui percorso</button>
+            <button class="btn secondary" id="btnResetMaze">Cancella comandi</button>
+          </div>
+        </div>
+        <div class="row" id="immediateResetRow" style="justify-content:center; display:none;">
+          <button class="btn secondary" id="btnResetImmediate">🔄 Ricomincia livello</button>
+        </div>
+        <div class="msg" id="mazeMsg" aria-live="polite" style="text-align:center;"></div>
+      </div>
+    </div>
+    <details class="adapt">
+      <summary>Adattamenti (DSA / BES / Autismo)</summary>
+      <ul>
+        <li>🧩 Inizia sempre dal livello 1: meno passaggi da tenere a mente riduce il carico di memoria di lavoro.</li>
+        <li>🌈 Fai raccontare a voce alta la sequenza prima di cliccare, così chi fatica con la scrittura può comunque partecipare.</li>
+        <li>⭐ Ogni mondo ha una storia breve e prevedibile, senza suoni improvvisi né limiti di tempo: si può fermare e riprendere quando serve.</li>
+      </ul>
+    </details>
+  </section>
+
+  <!-- METTI IN ORDINE -->
+  <section class="page" id="page-order" data-color="var(--accent-3)" role="tabpanel" aria-labelledby="tab-order">
+    <div class="page-header">
+      <h1>🧩 Metti in ordine i passaggi</h1>
+      <p>Un algoritmo è una sequenza di istruzioni chiare. Osserva le immagini e rimetti i passaggi nell'ordine giusto usando le frecce ▲▼.</p>
+    </div>
+    <div class="scenario-picker" id="scenarioPicker"></div>
+    <div class="page-body" style="flex-direction:column; align-items:center;">
+      <ol class="order-list" id="orderList"></ol>
+      <div class="row" style="margin-top:16px;">
+        <button class="btn" id="btnCheckOrder">✅ Controlla ordine</button>
+        <button class="btn secondary" id="btnShuffleOrder">🔀 Rimescola</button>
+      </div>
+      <div class="msg" id="orderMsg" aria-live="polite"></div>
+    </div>
+    <details class="adapt">
+      <summary>Adattamenti (DSA / BES / Autismo)</summary>
+      <ul>
+        <li>🧩 Le immagini accanto al testo aiutano chi fatica con la lettura a riconoscere subito ogni passaggio.</li>
+        <li>🌈 Scegli scenari diversi in base agli interessi del bambino: routine di cura personale, cucina, giardinaggio...</li>
+        <li>⭐ Usa i bottoni ▲▼ invece del trascinamento: più semplice per chi ha difficoltà motorie fini.</li>
+      </ul>
+    </details>
+  </section>
+
+  <!-- MEMORY -->
+  <section class="page" id="page-memory" data-color="var(--accent-4)" role="tabpanel" aria-labelledby="tab-memory">
+    <div class="page-header">
+      <h1>🃏 Memory dei simboli del coding</h1>
+      <p>Trova le coppie di simboli usati spesso in programmazione e robotica. Scegli tu quante coppie usare.</p>
+    </div>
+    <div class="page-body" style="flex-direction:column; align-items:center;">
+      <div class="row" style="margin-bottom:14px;">
+        <label for="pairCount" style="font-weight:700;">Numero di coppie:</label>
+        <select id="pairCount">
+          <option value="3">3 coppie (6 carte)</option>
+          <option value="4">4 coppie (8 carte)</option>
+          <option value="6" selected>6 coppie (12 carte)</option>
+          <option value="8">8 coppie (16 carte)</option>
+          <option value="10">10 coppie (20 carte)</option>
+          <option value="12">12 coppie (24 carte)</option>
+        </select>
+        <button class="btn" id="btnMemoryNew">🔄 Nuovo gioco</button>
+      </div>
+      <p class="stat-line" id="memoryStats"></p>
+      <div id="memoryGrid" role="group" aria-label="Gioco del memory"></div>
+      <div class="msg" id="memoryMsg" aria-live="polite"></div>
+    </div>
+    <details class="adapt">
+      <summary>Adattamenti (DSA / BES / Autismo)</summary>
+      <ul>
+        <li>🧩 Inizia con 3 coppie per non sovraccaricare la memoria di lavoro, poi aumenta gradualmente.</li>
+        <li>🌈 Gioca a turni con un compagno: chi trova una coppia spiega a cosa serve quel simbolo.</li>
+        <li>⭐ Nessun cronometro: le carte restano scoperte finché non si decide di girarle di nuovo.</li>
+      </ul>
+    </details>
+  </section>
+
+  <!-- TROVA L'UGUALE (DOBBLE) -->
+  <section class="page" id="page-dobble" data-color="var(--accent-5)" role="tabpanel" aria-labelledby="tab-dobble">
+    <div class="page-header">
+      <h1>🔎 Trova l'uguale</h1>
+      <p>Due carte, un solo simbolo in comune. Osserva la carta di riferimento e clicca, sull'altra carta, il simbolo che ritrovi su entrambe.</p>
+    </div>
+    <div class="page-body" style="flex-direction:column; align-items:center;">
+      <div class="row" style="margin-bottom:6px;">
+        <label for="dobbleSize" style="font-weight:700;">Simboli per carta:</label>
+        <select id="dobbleSize">
+          <option value="4">4 (più semplice)</option>
+          <option value="5" selected>5</option>
+          <option value="6">6</option>
+          <option value="8">8</option>
+          <option value="10">10</option>
+          <option value="12">12</option>
+          <option value="16">16</option>
+          <option value="20">20 (più difficile)</option>
+        </select>
+        <button class="btn" id="btnDobbleNew">🔄 Nuova coppia di carte</button>
+      </div>
+      <p class="stat-line" id="dobbleStats"></p>
+      <div class="dobble-wrap">
+        <div class="dobble-card reference" id="dobbleCardB"><span class="dobble-card-label">Carta di riferimento</span></div>
+        <div class="dobble-card" id="dobbleCardA"><span class="dobble-card-label">Trova il simbolo uguale qui</span></div>
+      </div>
+      <div class="msg" id="dobbleMsg" aria-live="polite" style="text-align:center;"></div>
+    </div>
+    <details class="adapt">
+      <summary>Adattamenti (DSA / BES / Autismo)</summary>
+      <ul>
+        <li>🧩 Inizia con 4 simboli per carta: meno elementi da confrontare, più facile individuare la coppia.</li>
+        <li>🌈 Nomina ad alta voce ogni simbolo mentre lo cerchi, per collegare parola e immagine.</li>
+        <li>⭐ Nessun tempo limite: le due carte restano ferme finché non si trova la coppia, si può osservare con calma.</li>
+      </ul>
+    </details>
+  </section>
+
+  <!-- ORDINA PER CATEGORIA -->
+  <section class="page" id="page-sort" data-color="var(--accent-6)" role="tabpanel" aria-labelledby="tab-sort">
+    <div class="page-header">
+      <h1>🗂️ Ordina per categoria</h1>
+      <p>Trascina un elemento nella categoria giusta, oppure selezionalo con un clic e poi clicca sulla categoria a cui appartiene. Riordinare per categorie aiuta a riconoscere schemi e somiglianze, proprio come fa un computer quando organizza i dati.</p>
+    </div>
+    <div class="scenario-picker" id="sortScenarioPicker"></div>
+    <div class="page-body" style="flex-direction:column; align-items:center;">
+      <p class="stat-line" id="sortStats"></p>
+      <div class="sort-tray" id="sortTray" role="group" aria-label="Elementi da sistemare"></div>
+      <div class="sort-bins" id="sortBins" role="group" aria-label="Categorie"></div>
+      <div class="msg" id="sortMsg" aria-live="polite" style="text-align:center;"></div>
+    </div>
+    <details class="adapt">
+      <summary>Adattamenti (DSA / BES / Autismo)</summary>
+      <ul>
+        <li>🧩 Inizia dallo scenario "Grande o piccolo": solo due categorie molto distinguibili tra loro.</li>
+        <li>🌈 Fai nominare ad alta voce categoria e oggetto prima di confermare la scelta.</li>
+        <li>⭐ Un elemento sbagliato torna semplicemente nell'elenco, senza penalità: si può sempre riprovare.</li>
+      </ul>
+    </details>
+  </section>
+
+  <!-- PUZZLE LOGICO (RUSH HOUR) -->
+  <section class="page" id="page-rush" data-color="var(--accent-1)" role="tabpanel" aria-labelledby="tab-rush">
+    <div class="page-header">
+      <h1>🚦 Sblocca la strada</h1>
+      <p>Un piccolo puzzle di logica, senza limiti di tempo: sposta gli altri veicoli per liberare la strada al veicolo colorato e farlo uscire dal lato destro.</p>
+    </div>
+    <div class="level-picker" id="rushLevelPicker"></div>
+    <div class="page-body" style="justify-content:center;">
+      <div class="stage-panel" style="flex:none;">
+        <div id="rushGrid" role="img" aria-label="Griglia del puzzle del traffico"></div>
+      </div>
+      <div class="panel controls-panel" style="flex:0 0 260px;">
+        <p style="font-weight:700; margin:0 0 8px;">1. Clicca un veicolo per selezionarlo.</p>
+        <p style="font-weight:700; margin:0 0 10px;">2. Usa le frecce per spostarlo.</p>
+        <div class="arrow-pad">
+          <span></span><button data-dir="up" id="rushUp" aria-label="Su">⬆️</button><span></span>
+          <button data-dir="left" id="rushLeft" aria-label="Sinistra">⬅️</button>
+          <button data-dir="down" id="rushDown" aria-label="Giù">⬇️</button>
+          <button data-dir="right" id="rushRight" aria-label="Destra">➡️</button>
+        </div>
+        <div class="row" style="justify-content:center; margin-top:14px;">
+          <button class="btn secondary" id="btnRushReset">🔄 Ricomincia livello</button>
+        </div>
+        <div class="msg" id="rushMsg" aria-live="polite" style="text-align:center;"></div>
+      </div>
+    </div>
+    <details class="adapt">
+      <summary>Adattamenti (DSA / BES / Autismo)</summary>
+      <ul>
+        <li>🧩 Inizia dal livello 1, con un solo veicolo da spostare.</li>
+        <li>🌈 Lascia esplorare liberamente i movimenti possibili prima di puntare alla soluzione.</li>
+        <li>⭐ Nessun punteggio, nessun tempo: è un puzzle solitario che si può riprendere quando si vuole, anche più volte.</li>
+      </ul>
+    </details>
+  </section>
+
+</main>
+
+<footer>Pagina pensata come punto di partenza: adatta liberamente tempi, materiali e difficoltà. 🌟</footer>
+
+<script>
+(function(){
+  /* Misura l'altezza reale della barra in alto, per posizionare correttamente gli elementi "sticky" */
+  function updateToolbarHeight(){
+    var tb = document.querySelector(".topbar");
+    if (tb) document.documentElement.style.setProperty("--toolbar-h", tb.offsetHeight + "px");
+  }
+  updateToolbarHeight();
+  window.addEventListener("resize", updateToolbarHeight);
+  window.addEventListener("orientationchange", updateToolbarHeight);
+
+  /* ============ TOOLBAR ============ */
+  var root = document.documentElement;
+  var sizes = [1, 1.15, 1.3];
+  var sizeLabels = ["Normale","Grande","Molto grande"];
+  var sizeIdx = 0;
+  var btnTextSize = document.getElementById("btnTextSize");
+  btnTextSize.addEventListener("click", function(){
+    sizeIdx = (sizeIdx + 1) % sizes.length;
+    root.style.setProperty("--scale", sizes[sizeIdx]);
+    btnTextSize.textContent = "🔤 Testo: " + sizeLabels[sizeIdx];
+    btnTextSize.setAttribute("aria-pressed", sizeIdx !== 0 ? "true" : "false");
+    setTimeout(updateToolbarHeight, 50);
+  });
+  document.getElementById("btnContrast").addEventListener("click", function(){
+    var on = root.classList.toggle("contrast");
+    this.setAttribute("aria-pressed", on ? "true" : "false");
+  });
+  document.getElementById("btnReadable").addEventListener("click", function(){
+    var on = root.classList.toggle("readable");
+    this.setAttribute("aria-pressed", on ? "true" : "false");
+    setTimeout(updateToolbarHeight, 50);
+  });
+
+  /* ============ TABS / PAGES ============ */
+  var pages = [
+    { id:"pixelart", label:"Pixel art", icon:"🎨", color:"var(--accent-1)" },
+    { id:"maze", label:"Labirinto", icon:"🧭", color:"var(--accent-2)" },
+    { id:"order", label:"Metti in ordine", icon:"🧩", color:"var(--accent-3)" },
+    { id:"memory", label:"Memory", icon:"🃏", color:"var(--accent-4)" },
+    { id:"dobble", label:"Trova l'uguale", icon:"🔎", color:"var(--accent-5)" },
+    { id:"sort", label:"Ordina per categoria", icon:"🗂️", color:"var(--accent-6)" },
+    { id:"rush", label:"Sblocca la strada", icon:"🚦", color:"var(--accent-1)" }
+  ];
+  var tabNav = document.getElementById("tabNav");
+  pages.forEach(function(p){
+    var b = document.createElement("button");
+    b.id = "tab-" + p.id;
+    b.setAttribute("role","tab");
+    b.setAttribute("aria-selected","false");
+    b.setAttribute("aria-controls","page-" + p.id);
+    b.style.setProperty("--tab-color", p.color);
+    b.textContent = p.icon + " " + p.label;
+    b.addEventListener("click", function(){ showPage(p.id); });
+    tabNav.appendChild(b);
+  });
+  function showPage(id){
+    pages.forEach(function(p){
+      var sec = document.getElementById("page-" + p.id);
+      var tab = document.getElementById("tab-" + p.id);
+      var active = p.id === id;
+      sec.classList.toggle("active", active);
+      tab.setAttribute("aria-selected", active ? "true" : "false");
+    });
+    window.location.hash = id;
+  }
+  var initial = (window.location.hash || "#pixelart").replace("#","");
+  if (!pages.some(function(p){ return p.id === initial; })) initial = "pixelart";
+  showPage(initial);
+
+  /* ============ HELPERS ============ */
+  function shuffle(arr){
+    var a = arr.slice();
+    for (var i = a.length - 1; i > 0; i--){
+      var j = Math.floor(Math.random() * (i+1));
+      var t = a[i]; a[i] = a[j]; a[j] = t;
+    }
+    return a;
+  }
+
+  /* ============ PIXEL ART ============ */
+  var pixelState = { cols:16, rows:16, imageSrc:null, watermarkOn:true, imgOffsetX:0, imgOffsetY:0, imgScale:1 };
+  var baseColors = ["#232336","#E76F51","#3A86A8","#D69A22","#4C9A6B","#7B67A6","#C1447E","#8D6E63"];
+  var currentColor = baseColors[0];
+  var paletteEl = document.getElementById("palette");
+  var pixelGridEl = document.getElementById("pixelGrid");
+  var pixelWatermarkImgEl = document.getElementById("pixelWatermarkImg");
+  var pixelSideImageEl = document.getElementById("pixelSideImage");
+  var pixelSideImgEl = document.getElementById("pixelSideImg");
+  var ERASE = "__erase__";
+
+  function addSwatch(color, selectAfter){
+    var b = document.createElement("button");
+    b.className = "swatch";
+    b.style.background = color;
+    b.setAttribute("aria-label", "Colore " + color);
+    b.setAttribute("aria-pressed","false");
+    b.addEventListener("click", function(){ selectSwatch(b, color); });
+    paletteEl.appendChild(b);
+    if (selectAfter) selectSwatch(b, color);
+    return b;
+  }
+  function selectSwatch(el, color){
+    currentColor = color;
+    Array.prototype.forEach.call(paletteEl.children, function(ch){ ch.setAttribute("aria-pressed","false"); });
+    el.setAttribute("aria-pressed","true");
+  }
+  function buildPalette(){
+    paletteEl.innerHTML = "";
+    baseColors.forEach(function(c, i){ addSwatch(c, i === 0); });
+    var eraser = document.createElement("button");
+    eraser.className = "swatch eraser";
+    eraser.setAttribute("aria-label","Gomma (cancella)");
+    eraser.setAttribute("aria-pressed","false");
+    eraser.addEventListener("click", function(){ selectSwatch(eraser, ERASE); });
+    paletteEl.appendChild(eraser);
+  }
+  buildPalette();
+
+  document.getElementById("btnAddColor").addEventListener("click", function(){
+    var c = document.getElementById("colorPicker").value;
+    if (baseColors.indexOf(c) === -1 && baseColors.length < 20){
+      baseColors.push(c);
+      addSwatch(c, true);
+    }
+  });
+
+  function cellDefaultBg(){
+    return (pixelState.imageSrc && pixelState.watermarkOn) ? "rgba(255,255,255,0.28)" : "#ffffff";
+  }
+  /* Cronologia annulla/ripeti per la pixel art */
+  var pixelHistory = [];
+  var pixelRedoStack = [];
+  var btnUndoEl = document.getElementById("btnUndo");
+  var btnRedoEl = document.getElementById("btnRedo");
+  function updateUndoRedoButtons(){
+    btnUndoEl.disabled = pixelHistory.length === 0;
+    btnRedoEl.disabled = pixelRedoStack.length === 0;
+  }
+  function pushPixelHistory(entry){
+    pixelHistory.push(entry);
+    pixelRedoStack = [];
+    updateUndoRedoButtons();
+  }
+  function applyPixelEntry(entry, which){
+    var data = entry[which];
+    if (entry.type === "cell"){
+      var cell = pixelGridEl.children[entry.index];
+      if (cell){ cell.style.background = data.bg; cell.dataset.painted = data.painted; }
+    } else if (entry.type === "clear"){
+      data.forEach(function(s, i){
+        var cell = pixelGridEl.children[i];
+        if (cell){ cell.style.background = s.bg; cell.dataset.painted = s.painted; }
+      });
+    }
+  }
+  function pixelUndo(){
+    if (pixelHistory.length === 0) return;
+    var entry = pixelHistory.pop();
+    applyPixelEntry(entry, "before");
+    pixelRedoStack.push(entry);
+    updateUndoRedoButtons();
+  }
+  function pixelRedo(){
+    if (pixelRedoStack.length === 0) return;
+    var entry = pixelRedoStack.pop();
+    applyPixelEntry(entry, "after");
+    pixelHistory.push(entry);
+    updateUndoRedoButtons();
+  }
+  btnUndoEl.addEventListener("click", pixelUndo);
+  btnRedoEl.addEventListener("click", pixelRedo);
+
+  function paintCell(cell){
+    var index = Array.prototype.indexOf.call(pixelGridEl.children, cell);
+    var before = { bg: cell.style.background, painted: cell.dataset.painted || "" };
+    if (currentColor === ERASE){
+      cell.style.background = cellDefaultBg();
+      cell.dataset.painted = "";
+    } else {
+      cell.style.background = currentColor;
+      cell.dataset.painted = "1";
+    }
+    var after = { bg: cell.style.background, painted: cell.dataset.painted || "" };
+    pushPixelHistory({ type:"cell", index:index, before:before, after:after });
+  }
+  function buildPixelGrid(){
+    pixelGridEl.style.gridTemplateColumns = "repeat(" + pixelState.cols + ", 1fr)";
+    pixelGridEl.style.gridTemplateRows = "repeat(" + pixelState.rows + ", 1fr)";
+    pixelGridEl.innerHTML = "";
+    var total = pixelState.cols * pixelState.rows;
+    for (var i = 0; i < total; i++){
+      var cell = document.createElement("div");
+      cell.className = "px";
+      cell.style.background = cellDefaultBg();
+      cell.tabIndex = 0;
+      cell.setAttribute("role","button");
+      cell.setAttribute("aria-label","Pixel " + (i+1));
+      cell.addEventListener("click", function(){ paintCell(this); });
+      cell.addEventListener("keydown", function(e){ if (e.key === "Enter" || e.key === " "){ e.preventDefault(); paintCell(this); } });
+      pixelGridEl.appendChild(cell);
+    }
+    pixelHistory = []; pixelRedoStack = []; updateUndoRedoButtons();
+  }
+  buildPixelGrid();
+
+  document.getElementById("btnApplySize").addEventListener("click", function(){
+    var n = parseInt(document.getElementById("gridSize").value, 10);
+    pixelState.cols = n; pixelState.rows = n;
+    buildPixelGrid();
+  });
+  document.getElementById("btnClearPixel").addEventListener("click", function(){
+    var beforeSnap = Array.prototype.map.call(pixelGridEl.children, function(c){ return { bg:c.style.background, painted:c.dataset.painted || "" }; });
+    Array.prototype.forEach.call(pixelGridEl.children, function(c){ c.style.background = cellDefaultBg(); c.dataset.painted = ""; });
+    var afterSnap = Array.prototype.map.call(pixelGridEl.children, function(c){ return { bg:c.style.background, painted:c.dataset.painted || "" }; });
+    pushPixelHistory({ type:"clear", before:beforeSnap, after:afterSnap });
+  });
+
+  function refreshUnpaintedCells(){
+    Array.prototype.forEach.call(pixelGridEl.children, function(c){
+      if (!c.dataset.painted){ c.style.background = cellDefaultBg(); }
+    });
+  }
+  function resetImageAlign(){
+    pixelState.imgOffsetX = 0; pixelState.imgOffsetY = 0; pixelState.imgScale = 1;
+    var zoomEl = document.getElementById("zoomImg");
+    if (zoomEl) zoomEl.value = 100;
+  }
+  function applyWatermarkTransform(){
+    pixelWatermarkImgEl.style.transform = "translate(" + pixelState.imgOffsetX + "px, " + pixelState.imgOffsetY + "px) scale(" + pixelState.imgScale + ")";
+  }
+  function applyImageDisplayMode(){
+    var mode = document.querySelector('input[name="imgMode"]:checked').value;
+    pixelState.watermarkOn = (mode === "watermark");
+    var alignControls = document.getElementById("watermarkAlignControls");
+    var dragLayer = document.getElementById("pixelDragLayer");
+    if (!pixelState.imageSrc){
+      pixelWatermarkImgEl.style.display = "none";
+      pixelSideImageEl.classList.remove("active");
+      alignControls.classList.remove("visible");
+      dragLayer.classList.remove("active");
+      refreshUnpaintedCells();
+      return;
+    }
+    if (mode === "watermark"){
+      pixelWatermarkImgEl.src = pixelState.imageSrc;
+      pixelWatermarkImgEl.style.display = "block";
+      pixelSideImageEl.classList.remove("active");
+      alignControls.classList.add("visible");
+      applyWatermarkTransform();
+    } else {
+      pixelWatermarkImgEl.style.display = "none";
+      pixelSideImgEl.src = pixelState.imageSrc;
+      pixelSideImageEl.classList.add("active");
+      alignControls.classList.remove("visible");
+      dragLayer.classList.remove("active");
+      document.getElementById("btnMoveImg").setAttribute("aria-pressed", "false");
+    }
+    refreshUnpaintedCells();
+  }
+  document.querySelectorAll('input[name="imgMode"]').forEach(function(radio){
+    radio.addEventListener("change", applyImageDisplayMode);
+  });
+  document.getElementById("btnRemoveImg").addEventListener("click", function(){
+    pixelState.imageSrc = null;
+    applyImageDisplayMode();
+  });
+
+  /* Sposta e ridimensiona la filigrana per allinearla alla griglia */
+  var pixelDragLayerEl = document.getElementById("pixelDragLayer");
+  var btnMoveImgEl = document.getElementById("btnMoveImg");
+  var zoomImgEl = document.getElementById("zoomImg");
+  var dragState = { active:false, startX:0, startY:0, startOffsetX:0, startOffsetY:0 };
+
+  btnMoveImgEl.addEventListener("click", function(){
+    var on = pixelDragLayerEl.classList.toggle("active");
+    btnMoveImgEl.setAttribute("aria-pressed", on ? "true" : "false");
+  });
+  zoomImgEl.addEventListener("input", function(){
+    pixelState.imgScale = parseInt(zoomImgEl.value, 10) / 100;
+    applyWatermarkTransform();
+  });
+  document.getElementById("btnResetAlign").addEventListener("click", function(){
+    resetImageAlign();
+    applyWatermarkTransform();
+  });
+  function dragPointerDown(e){
+    if (!pixelDragLayerEl.classList.contains("active")) return;
+    dragState.active = true;
+    pixelDragLayerEl.classList.add("dragging");
+    dragState.startX = e.clientX; dragState.startY = e.clientY;
+    dragState.startOffsetX = pixelState.imgOffsetX; dragState.startOffsetY = pixelState.imgOffsetY;
+    if (pixelDragLayerEl.setPointerCapture && e.pointerId !== undefined){ pixelDragLayerEl.setPointerCapture(e.pointerId); }
+  }
+  function dragPointerMove(e){
+    if (!dragState.active) return;
+    pixelState.imgOffsetX = dragState.startOffsetX + (e.clientX - dragState.startX);
+    pixelState.imgOffsetY = dragState.startOffsetY + (e.clientY - dragState.startY);
+    applyWatermarkTransform();
+  }
+  function dragPointerUp(){
+    dragState.active = false;
+    pixelDragLayerEl.classList.remove("dragging");
+  }
+  pixelDragLayerEl.addEventListener("pointerdown", dragPointerDown);
+  pixelDragLayerEl.addEventListener("pointermove", dragPointerMove);
+  pixelDragLayerEl.addEventListener("pointerup", dragPointerUp);
+  pixelDragLayerEl.addEventListener("pointercancel", dragPointerUp);
+  pixelDragLayerEl.addEventListener("pointerleave", dragPointerUp);
+
+  document.getElementById("btnImportImg").addEventListener("click", function(){
+    document.getElementById("fileImg").click();
+  });
+  document.getElementById("fileImg").addEventListener("change", function(e){
+    var file = e.target.files && e.target.files[0];
+    if (!file) return;
+    var reader = new FileReader();
+    reader.onload = function(ev){
+      var img = new Image();
+      img.onload = function(){
+        pixelState.imageSrc = ev.target.result;
+        resetImageAlign();
+        // Estrae una piccola tavolozza di colori dominanti dall'immagine, come aiuto per la colorazione manuale.
+        var cols = pixelState.cols, rows = pixelState.rows;
+        var canvas = document.createElement("canvas");
+        canvas.width = cols; canvas.height = rows;
+        var ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0, cols, rows);
+        var data = ctx.getImageData(0, 0, cols, rows).data;
+        var newColors = {};
+        for (var p = 0; p < cols * rows; p++){
+          var idx = p * 4;
+          var r = data[idx], g = data[idx+1], b = data[idx+2];
+          var hex = "#" + [r,g,b].map(function(v){ return v.toString(16).padStart(2,"0"); }).join("");
+          newColors[hex] = true;
+        }
+        var uniqueHexes = Object.keys(newColors).slice(0, 16);
+        uniqueHexes.forEach(function(hex){
+          if (baseColors.indexOf(hex) === -1 && baseColors.length < 40){ baseColors.push(hex); }
+        });
+        buildPalette();
+        applyImageDisplayMode();
+      };
+      img.src = ev.target.result;
+    };
+    reader.readAsDataURL(file);
+  });
+
+  /* ---- Galleria di 20 immagini pronte (disegni originali, non personaggi protetti da copyright) ---- */
+  var PIXEL_PALETTE = {
+    ".":"#FFFFFF", k:"#232336", r:"#E4573D", o:"#F2994A", y:"#F2C94C", g:"#4C9A6B",
+    b:"#3A86A8", p:"#7B67A6", m:"#C1447E", n:"#8D6E63", w:"#FFFFFF", s:"#F2C9A0", c:"#7FD1D6", e:"#B7B7C2"
+  };
+  var defaultImages = [
+    { id:"cuore", title:"Cuore", category:"forme", rows:["..rr....rr..",".rrrr..rrrr.","rrrrrrrrrrrr","rrrrrrrrrrrr","rrrrrrrrrrrr",".rrrrrrrrrr.","..rrrrrrrr..","...rrrrrr...","....rrrr....",".....rr.....","............","............"] },
+    { id:"stella", title:"Stella", category:"forme", rows:[".....yy.....",".....yy.....","....yyyy....","...yyyyyy...","yyyyyyyyyyyy",".yyyyyyyyyy.","..yyyyyyyy..","..yyyyyyyy..",".yyy....yyy.","yy........yy","y..........y","............"] },
+    { id:"casa", title:"Casa", category:"forme", rows:[".....kk.....","....kkkk....","...kkkkkk...","..kkkkkkkk..",".kkkkkkkkkk.","kkkkkkkkkkkk","nnnnnnnnnnnn","nnbb....bbnn","nnbb....bbnn","nnnnnnnnnnnn","nnnneeeennnn","nnnneeeennnn"] },
+    { id:"sole", title:"Sole", category:"forme", rows:[".y........y.","..y......y..","...yyyyyy...","y..yyyyyy..y","..yooooooy..",".yyooooooyy.",".yyooooooyy.","..yooooooy..","y..yyyyyy..y","...yyyyyy...","..y......y..",".y........y."] },
+    { id:"fiore", title:"Fiore", category:"forme", rows:["...mm..mm...","..mmmmmmmm..",".mmmmmmmmmm.","mmmyyyyyymmm","mmyyooooyymm",".myooooooym.",".myooooooym.","mmyyooooyymm","mmmyyyyyymmm",".mmmmmmmmmm.","..mmmmmmmm..","...gg..gg..."] },
+    { id:"mela", title:"Mela", category:"forme", rows:[".....nn.....","....gnng....","...rrrrrr...","..rrrrrrrr..",".rrrrrrrrrr.","rrrrrwwrrrrr","rrrrrrrrrrrr","rrrrrrrrrrrr",".rrrrrrrrrr.","..rrrrrrrr..","...rrrrrr...","....rrrr...."] },
+    { id:"farfalla", title:"Farfalla", category:"forme", rows:["...k....k...","....k..k....",".mm..kk..mm.","mmmm.kk.mmmm","mmmmmkkmmmmm",".mmmmkkmmmm.",".mmmmkkmmmm.","mmmmmkkmmmmm","mmmm.kk.mmmm",".mm..kk..mm.",".....kk.....","............"] },
+    { id:"ombrello", title:"Ombrello", category:"forme", rows:["...kkkkkk...","..kkkkkkkk..",".kkbbkkbbkk.","kkbbbbbbbbkk","kbbbbbbbbbbk","rrrrrrrrrrrr",".....kk.....",".....kk.....",".....nn.....",".....nn.....","............","............"] },
+    { id:"palloncino", title:"Palloncino", category:"forme", rows:["....mmmm....","..mmmmmmmm..",".mmmmmmmmmm.","mmmmmmmmmmmm","mmmmmmmmmmmm","mmmmmmmmmmmm",".mmmmmmmmmm.","..mmmmmmmm..",".....mm.....",".....kk.....",".....kk.....",".....kk....."] },
+    { id:"albero", title:"Albero", category:"forme", rows:[".....gg.....","...gggggg...",".gggggggggg.","gggggggggggg",".gggggggggg.","..gggggggg..","...gggggg...",".....nn.....",".....nn.....",".....nn.....","...nnnnnn...","............"] },
+    { id:"robot", title:"Robot", category:"personaggi", rows:["..kkkkkkkk..",".keeeeeeeek.","keebbeebbeek","keebbeebbeek","keeeeeeeeeek","keeeyyyyeeek","keeeeeeeeeek",".keeeeeeeek.","..kkeeeekk..","...keeeek...","....kkkk....","............"] },
+    { id:"gatto", title:"Gatto", category:"personaggi", rows:["k..........k","kk........kk","knk......knk",".knnnnnnnnk.",".knnnnnnnnk.",".knwwnnwwnk.",".knwwnnwwnk.",".knnnnnnnnk.",".knnrnnrnnk.",".knnnnnnnnk.","..kkkkkkkk..","............"] },
+    { id:"astronauta", title:"Astronauta", category:"personaggi", rows:["...eeeeee...","..eeeeeeee..","eeeeeeeeeeee","eebbbbbbbbee","ebbccccccbbe","ebccccccccbe","ebccssssccbe","ebbcsssscbbe","eeebbbbbbeee",".eeeeeeeeee.","..eeeeeeee..","...eeeeee..."] },
+    { id:"unicorno", title:"Unicorno", category:"personaggi", rows:[".....yy.....","....yyyy....","....yyyy....","...ssssss...","..ssssssss..",".msswwwwssm.",".msswwwwssm.","..ssssssss..","...ssssss...","....mmmm....","............","............"] },
+    { id:"pirata", title:"Pirata", category:"personaggi", rows:["..rrrrrrrr..",".rrrrrrrrrr.","rrrrrrrrrrrr","rrssssssssrr",".ssssssssss.",".skssssssks.",".ssssssssss.",".ssnnnnnnss.","..ssssssss..","...k....k...","............","............"] },
+    { id:"mago", title:"Mago", category:"personaggi", rows:[".....pp.....","....pppp....","...pppppp...","..pppppppp..",".pppppppppp.","pppppppppppp",".ssssssssss.",".ssksssskss.","..ssnnnnss..","...snnnns...","....nnnn....","............"] },
+    { id:"drago", title:"Drago", category:"personaggi", rows:[".g........g.",".gg......gg.","..gggggggg..",".gggggggggg.","ggggrrrrgggg","gggrrrrrrggg","gggryyyyrggg","ggggrrrrgggg",".gggggggggg.","..ggnnnngg..","....nnnn....","............"] },
+    { id:"fantasma", title:"Fantasma", category:"personaggi", rows:["...wwwwww...","..wwwwwwww..",".wwwwwwwwww.","wwwwwwwwwwww","wwkkwwwwkkww","wwwwwwwwwwww","wwwwwwwwwwww","wwwwwwwwwwww","wwwwwwwwwwww","wwwwwwwwwwww","www.wwww.www","ww...ww...ww"] },
+    { id:"sirena", title:"Sirena", category:"personaggi", rows:["....yyyy....","...yyyyyy...","..yyssssyy..","...ssssss...","...skssks...","...ssssss...","...mmmmmm...","..mmccccmm..",".mmccccccmm.","mmccccccccmm",".mcc....ccm.","..cc....cc.."] },
+    { id:"orso", title:"Orso", category:"personaggi", rows:["n..........n","nn........nn","nnnnnnnnnnnn","nnnnnnnnnnnn","nnnnnnnnnnnn","nnknnnnnnknn","nnnnnnnnnnnn","nnnssssssnnn","nnssssssssnn","nnssksskssnn",".nnssssssnn.","..nnnnnnnn.."] }
+  ];
+  function patternToDataURL(rows, cellPx){
+    var size = rows.length;
+    var canvas = document.createElement("canvas");
+    canvas.width = size * cellPx; canvas.height = size * cellPx;
+    var ctx = canvas.getContext("2d");
+    ctx.fillStyle = "#F4F4F9";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    for (var r = 0; r < size; r++){
+      var row = rows[r];
+      for (var c = 0; c < row.length; c++){
+        var ch = row[c];
+        var hex = PIXEL_PALETTE[ch];
+        if (ch !== "." && hex){
+          ctx.fillStyle = hex;
+          ctx.fillRect(c*cellPx, r*cellPx, cellPx, cellPx);
+        }
+      }
+    }
+    return canvas.toDataURL("image/png");
+  }
+  function loadDefaultImage(entry){
+    document.getElementById("gridSize").value = "12";
+    pixelState.cols = 12; pixelState.rows = 12;
+    buildPixelGrid();
+    pixelState.imageSrc = patternToDataURL(entry.rows, 40);
+    resetImageAlign();
+    var used = {};
+    entry.rows.forEach(function(row){
+      row.split("").forEach(function(ch){
+        var hex = PIXEL_PALETTE[ch];
+        if (ch !== "." && hex) used[hex] = true;
+      });
+    });
+    Object.keys(used).forEach(function(hex){
+      if (baseColors.indexOf(hex) === -1 && baseColors.length < 40){ baseColors.push(hex); }
+    });
+    buildPalette();
+    applyImageDisplayMode();
+  }
+  function renderGallery(containerId, category){
+    var container = document.getElementById(containerId);
+    defaultImages.filter(function(im){ return im.category === category; }).forEach(function(entry){
+      var b = document.createElement("button");
+      b.className = "gallery-thumb";
+      b.setAttribute("aria-label", "Carica " + entry.title);
+      b.title = entry.title;
+      var img = document.createElement("img");
+      img.src = patternToDataURL(entry.rows, 6);
+      img.alt = entry.title;
+      b.appendChild(img);
+      b.addEventListener("click", function(){ loadDefaultImage(entry); });
+      container.appendChild(b);
+    });
+  }
+  renderGallery("galleryShapes", "forme");
+  renderGallery("galleryCharacters", "personaggi");
+
+  document.getElementById("btnDownloadPixel").addEventListener("click", function(){
+    var cols = pixelState.cols, rows = pixelState.rows;
+    var scale = 20;
+    var canvas = document.createElement("canvas");
+    canvas.width = cols * scale; canvas.height = rows * scale;
+    var ctx = canvas.getContext("2d");
+    ctx.fillStyle = "#ffffff";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    Array.prototype.forEach.call(pixelGridEl.children, function(cell, i){
+      var r = Math.floor(i / cols), c = i % cols;
+      if (cell.dataset.painted){
+        ctx.fillStyle = getComputedStyle(cell).backgroundColor;
+        ctx.fillRect(c*scale, r*scale, scale, scale);
+      }
+    });
+    var link = document.createElement("a");
+    link.download = "pixel-art.png";
+    link.href = canvas.toDataURL("image/png");
+    link.click();
+  });
+
+  /* ============ LABIRINTO ============ */
+  var mazeLevels = [
+    { id:1, title:"Il giardino", character:"🤖", wallEmoji:"🌵", goalEmoji:"🌻",
+      story:"Pixel si sveglia in un giardino pieno di sole e deve raggiungere il grande girasole per ricaricarsi.",
+      rows:5, cols:5, wallCount:2 },
+    { id:2, title:"La foresta incantata", character:"🚶", wallEmoji:"🌲", goalEmoji:"🏡",
+      story:"Tra gli alberi della foresta, Pixel scorge una piccola capanna: forse lì troverà nuovi amici.",
+      rows:6, cols:6, wallCount:5 },
+    { id:3, title:"Il fondale marino", character:"🤿", wallEmoji:"🪨", goalEmoji:"🎁",
+      story:"Con la muta da sommozzatore, Pixel esplora il mare alla ricerca di uno scrigno misterioso.",
+      rows:7, cols:7, wallCount:8 },
+    { id:4, title:"Lo spazio profondo", character:"🧑‍🚀", wallEmoji:"☄️", goalEmoji:"🪐",
+      story:"Con la tuta spaziale, Pixel punta dritto verso un nuovo pianeta da esplorare.",
+      rows:7, cols:7, wallCount:9 },
+    { id:5, title:"Il deserto infuocato", character:"🐫", wallEmoji:"🌵", goalEmoji:"🌴",
+      story:"In sella a un cammello, Pixel attraversa le dune roventi in cerca della grande oasi.",
+      rows:8, cols:8, wallCount:11 },
+    { id:6, title:"La banchisa artica", character:"🐧", wallEmoji:"🧊", goalEmoji:"🐟",
+      story:"Pixel indossa un cappottino caldo e scivola sul ghiaccio alla ricerca di un pesce per pranzo.",
+      rows:8, cols:8, wallCount:11 },
+    { id:7, title:"La città dei robot", character:"🚗", wallEmoji:"🚧", goalEmoji:"🏆",
+      story:"Al volante di una piccola auto, Pixel sfreccia tra i cantieri della città per arrivare al trofeo.",
+      rows:8, cols:8, wallCount:12 },
+    { id:8, title:"Il castello magico", character:"🧙", wallEmoji:"🕸️", goalEmoji:"👑",
+      story:"Il mago Pixel attraversa corridoi pieni di ragnatele incantate per raggiungere la corona.",
+      rows:9, cols:9, wallCount:16 },
+    { id:9, title:"La giungla misteriosa", character:"🐒", wallEmoji:"🌿", goalEmoji:"🍌",
+      story:"Dondolandosi tra le liane, Pixel-scimmietta cerca il casco di banane più goloso della giungla.",
+      rows:9, cols:9, wallCount:17 },
+    { id:10, title:"Il vulcano di fuoco", character:"🐉", wallEmoji:"🔥", goalEmoji:"💎",
+      story:"Ultima sfida: il piccolo drago Pixel vola tra i fiumi di lava per conquistare il diamante più prezioso.",
+      rows:10, cols:10, wallCount:21 }
+  ];
+  var unlockedUpTo = 1;
+  var mazeState = { levelIdx:0, pos:null, queue:[], running:false, mode:"queue", layout:null };
+  var levelPickerEl = document.getElementById("levelPicker");
+  var mazeStoryEl = document.getElementById("mazeStory");
+  var mazeGridEl = document.getElementById("mazeGrid");
+  var mazeQueueEl = document.getElementById("mazeQueue");
+  var mazeMsgEl = document.getElementById("mazeMsg");
+  var queueSectionEl = document.getElementById("queueSection");
+  var immediateResetRowEl = document.getElementById("immediateResetRow");
+  var btnModeImmediate = document.getElementById("btnModeImmediate");
+  var btnModeQueue = document.getElementById("btnModeQueue");
+
+  /* Genera un percorso casuale (partenza, arrivo, muri) verificato risolvibile, così il labirinto cambia ad ogni partita. */
+  function cellKey(r,c){ return r + "_" + c; }
+  function bfsPathExists(rows, cols, wallsSet, start, goal){
+    var startKey = cellKey(start.r, start.c), goalKey = cellKey(goal.r, goal.c);
+    if (wallsSet[startKey] || wallsSet[goalKey]) return false;
+    var visited = {}; visited[startKey] = true;
+    var queue = [start];
+    var dirs = [[-1,0],[1,0],[0,-1],[0,1]];
+    while (queue.length){
+      var cur = queue.shift();
+      if (cur.r === goal.r && cur.c === goal.c) return true;
+      for (var i = 0; i < 4; i++){
+        var nr = cur.r + dirs[i][0], nc = cur.c + dirs[i][1];
+        if (nr < 0 || nc < 0 || nr >= rows || nc >= cols) continue;
+        var k = cellKey(nr, nc);
+        if (wallsSet[k] || visited[k]) continue;
+        visited[k] = true;
+        queue.push({ r:nr, c:nc });
+      }
+    }
+    return false;
+  }
+  function generateMazeLayout(rows, cols, wallCount){
+    var minDist = Math.floor((rows + cols) / 2);
+    for (var attempt = 0; attempt < 400; attempt++){
+      var start = { r: Math.floor(Math.random()*rows), c: Math.floor(Math.random()*cols) };
+      var goal = { r: Math.floor(Math.random()*rows), c: Math.floor(Math.random()*cols) };
+      var dist = Math.abs(start.r-goal.r) + Math.abs(start.c-goal.c);
+      if (dist < minDist) continue;
+      var wallsSet = {}; var walls = []; var tries = 0;
+      while (walls.length < wallCount && tries < wallCount*25){
+        tries++;
+        var wr = Math.floor(Math.random()*rows), wc = Math.floor(Math.random()*cols);
+        if ((wr===start.r && wc===start.c) || (wr===goal.r && wc===goal.c)) continue;
+        var k = cellKey(wr, wc);
+        if (wallsSet[k]) continue;
+        wallsSet[k] = true;
+        walls.push({ r:wr, c:wc });
+      }
+      if (walls.length < wallCount) continue;
+      if (bfsPathExists(rows, cols, wallsSet, start, goal)){
+        return { start:start, goal:goal, walls:walls };
+      }
+    }
+    return { start:{r:0,c:0}, goal:{r:rows-1,c:cols-1}, walls:[] };
+  }
+
+  function renderLevelPicker(){
+    levelPickerEl.innerHTML = "";
+    mazeLevels.forEach(function(lvl, i){
+      var b = document.createElement("button");
+      b.className = "level-btn";
+      var locked = lvl.id > unlockedUpTo;
+      b.disabled = locked;
+      b.setAttribute("aria-current", i === mazeState.levelIdx ? "true" : "false");
+      b.innerHTML = '<span class="le">' + (locked ? "🔒" : lvl.character) + '</span><span class="lt">Livello ' + lvl.id + "<br>" + lvl.title + "</span>";
+      b.addEventListener("click", function(){ if (!locked){ mazeState.levelIdx = i; loadLevel(); } });
+      levelPickerEl.appendChild(b);
+    });
+  }
+  function isWall(r, c){ return mazeState.layout.walls.some(function(w){ return w.r === r && w.c === c; }); }
+  function setMode(mode){
+    mazeState.mode = mode;
+    btnModeImmediate.setAttribute("aria-pressed", mode === "immediate" ? "true" : "false");
+    btnModeQueue.setAttribute("aria-pressed", mode === "queue" ? "true" : "false");
+    queueSectionEl.style.display = mode === "queue" ? "block" : "none";
+    immediateResetRowEl.style.display = mode === "immediate" ? "flex" : "none";
+    loadLevel();
+  }
+  btnModeImmediate.addEventListener("click", function(){ setMode("immediate"); });
+  btnModeQueue.addEventListener("click", function(){ setMode("queue"); });
+  document.getElementById("btnResetImmediate").addEventListener("click", function(){ loadLevel(); });
+
+  function loadLevel(){
+    var level = mazeLevels[mazeState.levelIdx];
+    var layout = generateMazeLayout(level.rows, level.cols, level.wallCount);
+    mazeState.layout = layout;
+    mazeStoryEl.textContent = "Livello " + level.id + " — " + level.title + ": " + level.story;
+    mazeGridEl.style.maxWidth = Math.min(620, level.cols * 74) + "px";
+    mazeGridEl.style.gridTemplateColumns = "repeat(" + level.cols + ", 1fr)";
+    mazeGridEl.style.gridTemplateRows = "repeat(" + level.rows + ", 1fr)";
+    mazeGridEl.innerHTML = "";
+    for (var r = 0; r < level.rows; r++){
+      for (var c = 0; c < level.cols; c++){
+        var cell = document.createElement("div");
+        cell.className = "cell";
+        cell.dataset.r = r; cell.dataset.c = c;
+        if (isWall(r, c)){ cell.classList.add("wall"); cell.textContent = level.wallEmoji; }
+        if (r === layout.goal.r && c === layout.goal.c){ cell.classList.add("goal"); cell.textContent = level.goalEmoji; }
+        mazeGridEl.appendChild(cell);
+      }
+    }
+    mazeState.pos = { r: layout.start.r, c: layout.start.c };
+    mazeState.queue = [];
+    mazeState.running = false;
+    mazeMsgEl.textContent = ""; mazeMsgEl.className = "msg";
+    renderMazeQueue();
+    drawRobot();
+    renderLevelPicker();
+  }
+  function drawRobot(){
+    var level = mazeLevels[mazeState.levelIdx];
+    var layout = mazeState.layout;
+    Array.prototype.forEach.call(mazeGridEl.children, function(cell){
+      var r = +cell.dataset.r, c = +cell.dataset.c;
+      if (r === mazeState.pos.r && c === mazeState.pos.c){ cell.textContent = level.character; }
+      else if (isWall(r, c)){ cell.textContent = level.wallEmoji; }
+      else if (r === layout.goal.r && c === layout.goal.c){ cell.textContent = level.goalEmoji; }
+      else { cell.textContent = ""; }
+    });
+  }
+  function renderMazeQueue(){
+    mazeQueueEl.innerHTML = "";
+    var symbols = { up:"⬆️", down:"⬇️", left:"⬅️", right:"➡️" };
+    mazeState.queue.forEach(function(dir, i){
+      var span = document.createElement("span");
+      span.textContent = symbols[dir];
+      var rm = document.createElement("button");
+      rm.textContent = "×";
+      rm.setAttribute("aria-label","Rimuovi comando " + (i+1));
+      rm.addEventListener("click", function(){ mazeState.queue.splice(i,1); renderMazeQueue(); });
+      span.appendChild(rm);
+      mazeQueueEl.appendChild(span);
+    });
+  }
+  // Prova a muovere Pixel di un passo; usata sia in modalità immediata sia durante l'esecuzione della sequenza.
+  // Ritorna "ok", "blocked" oppure "goal".
+  function tryMove(dir){
+    var level = mazeLevels[mazeState.levelIdx];
+    var layout = mazeState.layout;
+    var next = { r: mazeState.pos.r, c: mazeState.pos.c };
+    if (dir === "up") next.r--; if (dir === "down") next.r++;
+    if (dir === "left") next.c--; if (dir === "right") next.c++;
+    var outOfBounds = next.r < 0 || next.c < 0 || next.r >= level.rows || next.c >= level.cols;
+    if (outOfBounds || isWall(next.r, next.c)) return "blocked";
+    mazeState.pos = next;
+    drawRobot();
+    if (next.r === layout.goal.r && next.c === layout.goal.c) return "goal";
+    return "ok";
+  }
+  function handleLevelComplete(){
+    var level = mazeLevels[mazeState.levelIdx];
+    mazeMsgEl.textContent = "🎉 Bravo/a! Pixel ha completato il livello " + level.id + "!";
+    mazeMsgEl.className = "msg ok";
+    if (level.id === unlockedUpTo && unlockedUpTo < mazeLevels.length){ unlockedUpTo++; }
+    renderLevelPicker();
+  }
+
+  document.querySelectorAll(".arrow-pad button").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      if (mazeState.running) return;
+      if (mazeState.mode === "immediate"){
+        if (mazeState.pos && isAtGoal()) return;
+        var result = tryMove(btn.dataset.dir);
+        if (result === "blocked"){
+          mazeMsgEl.textContent = "🚧 Ops, di là non si passa! Prova un'altra direzione.";
+          mazeMsgEl.className = "msg warn";
+        } else if (result === "goal"){
+          handleLevelComplete();
+        } else {
+          mazeMsgEl.textContent = "";
+          mazeMsgEl.className = "msg";
+        }
+      } else {
+        mazeState.queue.push(btn.dataset.dir);
+        renderMazeQueue();
+      }
+    });
+  });
+  function isAtGoal(){
+    var layout = mazeState.layout;
+    return mazeState.pos.r === layout.goal.r && mazeState.pos.c === layout.goal.c;
+  }
+  document.getElementById("btnResetMaze").addEventListener("click", function(){
+    if (mazeState.running) return;
+    loadLevel();
+  });
+  document.getElementById("btnRunMaze").addEventListener("click", function(){
+    if (mazeState.running || mazeState.queue.length === 0) return;
+    mazeState.running = true;
+    mazeMsgEl.textContent = ""; mazeMsgEl.className = "msg";
+    var i = 0;
+    function step(){
+      if (i >= mazeState.queue.length){
+        mazeState.running = false;
+        mazeMsgEl.textContent = "Pixel si è fermato qui. Aggiungi altri comandi o riprova! 💪";
+        mazeMsgEl.className = "msg warn";
+        return;
+      }
+      var result = tryMove(mazeState.queue[i]);
+      if (result === "blocked"){
+        mazeState.running = false;
+        mazeMsgEl.textContent = "🚧 Ops, di là non si passa! Prova un altro percorso.";
+        mazeMsgEl.className = "msg warn";
+        return;
+      }
+      if (result === "goal"){
+        mazeState.running = false;
+        handleLevelComplete();
+        return;
+      }
+      i++;
+      setTimeout(step, 550);
+    }
+    step();
+  });
+  setMode("queue");
+
+  /* ============ METTI IN ORDINE ============ */
+  var scenarios = [
+    { id:"denti", label:"🪥 Lavarsi i denti", steps:[
+      {e:"🪥", t:"Prendi lo spazzolino"}, {e:"🧴", t:"Metti il dentifricio"}, {e:"😁", t:"Spazzola i denti"}, {e:"💧", t:"Sciacqua la bocca"} ] },
+    { id:"panino", label:"🥪 Preparare un panino", steps:[
+      {e:"🍞", t:"Prendi due fette di pane"}, {e:"🧈", t:"Spalma il condimento"}, {e:"🥬", t:"Aggiungi il ripieno"}, {e:"🥪", t:"Chiudi il panino"} ] },
+    { id:"vestirsi", label:"👕 Vestirsi per uscire", steps:[
+      {e:"🩲", t:"Metti la biancheria"}, {e:"👕", t:"Metti la maglietta"}, {e:"👖", t:"Metti i pantaloni"}, {e:"🧥", t:"Metti la giacca"}, {e:"👟", t:"Metti le scarpe"} ] },
+    { id:"pianta", label:"🌱 Piantare un seme", steps:[
+      {e:"🪴", t:"Prendi il vaso"}, {e:"🟫", t:"Metti la terra"}, {e:"🌰", t:"Pianta il seme"}, {e:"💧", t:"Annaffia"} ] },
+    { id:"tavola", label:"🍽️ Apparecchiare la tavola", steps:[
+      {e:"🍽️", t:"Metti il piatto"}, {e:"🍴", t:"Metti le posate"}, {e:"🥤", t:"Metti il bicchiere"}, {e:"🧻", t:"Metti il tovagliolo"} ] },
+    { id:"torta", label:"🧁 Preparare un dolce", steps:[
+      {e:"🥚", t:"Rompi le uova"}, {e:"🌾", t:"Aggiungi la farina"}, {e:"🥄", t:"Mescola bene"}, {e:"🔥", t:"Inforna con un adulto"} ] }
+  ];
+  var currentScenarioIdx = 0;
+  var currentOrder = [];
+  var scenarioPickerEl = document.getElementById("scenarioPicker");
+  var orderListEl = document.getElementById("orderList");
+  var orderMsgEl = document.getElementById("orderMsg");
+
+  function renderScenarioPicker(){
+    scenarioPickerEl.innerHTML = "";
+    scenarios.forEach(function(sc, i){
+      var b = document.createElement("button");
+      b.textContent = sc.label;
+      b.setAttribute("aria-current", i === currentScenarioIdx ? "true" : "false");
+      b.addEventListener("click", function(){ currentScenarioIdx = i; renderOrder(); });
+      scenarioPickerEl.appendChild(b);
+    });
+  }
+  function renderOrder(){
+    var sc = scenarios[currentScenarioIdx];
+    currentOrder = shuffle(sc.steps);
+    orderMsgEl.textContent = ""; orderMsgEl.className = "msg";
+    drawOrderList();
+    renderScenarioPicker();
+  }
+  function drawOrderList(){
+    orderListEl.innerHTML = "";
+    currentOrder.forEach(function(step, i){
+      var li = document.createElement("li");
+      var emoji = document.createElement("span");
+      emoji.className = "step-emoji";
+      emoji.textContent = step.e;
+      var span = document.createElement("span");
+      span.className = "step-text";
+      span.textContent = (i+1) + ". " + step.t;
+      var btns = document.createElement("span");
+      btns.className = "step-btns";
+      var up = document.createElement("button");
+      up.textContent = "▲"; up.setAttribute("aria-label","Sposta su");
+      up.addEventListener("click", function(){
+        if (i > 0){ var t = currentOrder[i-1]; currentOrder[i-1] = currentOrder[i]; currentOrder[i] = t; drawOrderList(); }
+      });
+      var down = document.createElement("button");
+      down.textContent = "▼"; down.setAttribute("aria-label","Sposta giù");
+      down.addEventListener("click", function(){
+        if (i < currentOrder.length - 1){ var t = currentOrder[i+1]; currentOrder[i+1] = currentOrder[i]; currentOrder[i] = t; drawOrderList(); }
+      });
+      btns.appendChild(up); btns.appendChild(down);
+      li.appendChild(emoji); li.appendChild(span); li.appendChild(btns);
+      orderListEl.appendChild(li);
+    });
+  }
+  document.getElementById("btnShuffleOrder").addEventListener("click", renderOrder);
+  document.getElementById("btnCheckOrder").addEventListener("click", function(){
+    var correct = scenarios[currentScenarioIdx].steps;
+    var allRight = true;
+    Array.prototype.forEach.call(orderListEl.children, function(li, i){
+      li.classList.remove("correct","wrong");
+      if (currentOrder[i].t === correct[i].t){ li.classList.add("correct"); }
+      else { li.classList.add("wrong"); allRight = false; }
+    });
+    orderMsgEl.textContent = allRight ? "🎉 Perfetto, ordine corretto!" : "Quasi! Guarda i passaggi segnati e riprova.";
+    orderMsgEl.className = allRight ? "msg ok" : "msg warn";
+  });
+  renderOrder();
+
+  /* ============ MEMORY ============ */
+  var memoryPool = ["⬆️","⬇️","⬅️","➡️","🔁","⭐","🔺","🔵","🟢","🟡","🤖","🚩"];
+  var memoryGridEl = document.getElementById("memoryGrid");
+  var memoryMsgEl = document.getElementById("memoryMsg");
+  var memoryStatsEl = document.getElementById("memoryStats");
+  var memoryState = { cards:[], first:null, second:null, matched:0, lock:false, moves:0, total:0 };
+
+  function setupMemory(){
+    var pairCount = parseInt(document.getElementById("pairCount").value, 10);
+    var symbols = shuffle(memoryPool).slice(0, pairCount);
+    var deck = shuffle(symbols.concat(symbols));
+    memoryState = { cards:deck, first:null, second:null, matched:0, lock:false, moves:0, total:pairCount };
+    memoryMsgEl.textContent = ""; memoryMsgEl.className = "msg";
+    updateMemoryStats();
+    var side = Math.ceil(Math.sqrt(deck.length));
+    memoryGridEl.style.maxWidth = (side * 84) + "px";
+    memoryGridEl.style.gridTemplateColumns = "repeat(" + side + ", 1fr)";
+    memoryGridEl.style.gridTemplateRows = "repeat(" + side + ", 1fr)";
+    memoryGridEl.innerHTML = "";
+    deck.forEach(function(sym, i){
+      var card = document.createElement("button");
+      card.className = "mcard";
+      card.dataset.index = i;
+      card.setAttribute("aria-label","Carta " + (i+1) + ", coperta");
+      card.textContent = "❔";
+      card.addEventListener("click", function(){ flipMemoryCard(i, card); });
+      memoryGridEl.appendChild(card);
+    });
+    var emptySlots = side * side - deck.length;
+    for (var e = 0; e < emptySlots; e++){
+      var spacer = document.createElement("div");
+      spacer.className = "mcard-empty";
+      spacer.setAttribute("aria-hidden", "true");
+      memoryGridEl.appendChild(spacer);
+    }
+  }
+  function updateMemoryStats(){
+    memoryStatsEl.textContent = "Coppie trovate: " + memoryState.matched + " / " + memoryState.total + " — Mosse: " + memoryState.moves;
+  }
+  function flipMemoryCard(i, card){
+    if (memoryState.lock || card.classList.contains("matched") || card === memoryState.firstEl) return;
+    card.textContent = memoryState.cards[i];
+    if (memoryState.first === null){
+      memoryState.first = i; memoryState.firstEl = card;
+    } else {
+      memoryState.second = i; memoryState.secondEl = card;
+      memoryState.lock = true;
+      memoryState.moves++;
+      if (memoryState.cards[memoryState.first] === memoryState.cards[memoryState.second]){
+        memoryState.firstEl.classList.add("matched");
+        memoryState.secondEl.classList.add("matched");
+        memoryState.matched++;
+        updateMemoryStats();
+        resetMemoryPicks();
+        if (memoryState.matched === memoryState.total){
+          memoryMsgEl.textContent = "🎉 Hai trovato tutte le coppie, bravissimo/a!";
+          memoryMsgEl.className = "msg ok";
+        }
+      } else {
+        updateMemoryStats();
+        setTimeout(function(){
+          memoryState.firstEl.textContent = "❔";
+          memoryState.secondEl.textContent = "❔";
+          resetMemoryPicks();
+        }, 900);
+      }
+    }
+  }
+  function resetMemoryPicks(){ memoryState.first = null; memoryState.second = null; memoryState.lock = false; }
+  document.getElementById("btnMemoryNew").addEventListener("click", setupMemory);
+  setupMemory();
+
+  /* ============ TROVA L'UGUALE (DOBBLE) ============ */
+  var dobblePool = ["🌟","⚡","🔺","🔵","🟢","🟡","🎈","🍀","🎯","🎲","🔔","🎨","🚀","🐢","🦋","🌈","☀️","🌙","💧","🔥",
+    "🍎","🍌","🍇","🍉","🐶","🐱","🐸","🦁","🐘","🦄","⚽","🏀","🎵","🎁","📚","🧩","🚗","✈️","⭐","🍕"];
+  var dobbleState = { common:null, score:0 };
+  var dobbleCardAEl = document.getElementById("dobbleCardA");
+  var dobbleCardBEl = document.getElementById("dobbleCardB");
+  var dobbleMsgEl = document.getElementById("dobbleMsg");
+  var dobbleStatsEl = document.getElementById("dobbleStats");
+
+  function scatterPositions(containerPx, count, symPx){
+    var radius = containerPx/2 - symPx*0.6;
+    var center = containerPx/2;
+    var minGap = symPx * 0.95;
+    var placed = [];
+    for (var i = 0; i < count; i++){
+      var best = null;
+      for (var attempt = 0; attempt < 250; attempt++){
+        var rr = radius * Math.sqrt(Math.random());
+        var theta = Math.random() * 2 * Math.PI;
+        var x = center + rr * Math.cos(theta);
+        var y = center + rr * Math.sin(theta);
+        var ok = true;
+        for (var j = 0; j < placed.length; j++){
+          var dx = placed[j].x - x, dy = placed[j].y - y;
+          if (Math.sqrt(dx*dx + dy*dy) < minGap){ ok = false; break; }
+        }
+        if (ok){ best = { x:x, y:y }; break; }
+        if (attempt === 249) best = { x:x, y:y };
+      }
+      placed.push(best);
+    }
+    return placed;
+  }
+  function newDobbleRound(){
+    var n = parseInt(document.getElementById("dobbleSize").value, 10);
+    var pool = shuffle(dobblePool);
+    var common = pool[0];
+    var extraA = pool.slice(1, n);
+    var extraB = pool.slice(n, n + n - 1);
+    var cardA = shuffle(extraA.concat([common]));
+    var cardB = shuffle(extraB.concat([common]));
+    dobbleState.common = common;
+    dobbleMsgEl.textContent = ""; dobbleMsgEl.className = "msg";
+    dobbleStatsEl.textContent = "Coppie trovate: " + dobbleState.score;
+
+    var cardPx = Math.min(window.innerWidth * 0.92, 380 + Math.min(n, 20) * 12);
+    var symRem = Math.max(1.5, 4.8 - n * 0.16);
+    var symPx = symRem * 16;
+    [dobbleCardAEl, dobbleCardBEl].forEach(function(el){
+      el.style.width = cardPx + "px";
+      el.style.height = cardPx + "px";
+    });
+
+    dobbleCardBEl.innerHTML = '<span class="dobble-card-label">Carta di riferimento</span>';
+    var posB = scatterPositions(cardPx, cardB.length, symPx);
+    cardB.forEach(function(sym, i){
+      var s = document.createElement("span");
+      s.className = "sym";
+      s.style.fontSize = symRem + "rem";
+      s.style.position = "absolute";
+      s.style.left = posB[i].x + "px";
+      s.style.top = posB[i].y + "px";
+      s.textContent = sym;
+      s.style.transform = "translate(-50%,-50%) rotate(" + (Math.random()*50-25) + "deg)";
+      dobbleCardBEl.appendChild(s);
+    });
+
+    dobbleCardAEl.innerHTML = '<span class="dobble-card-label">Trova il simbolo uguale qui</span>';
+    var posA = scatterPositions(cardPx, cardA.length, symPx);
+    cardA.forEach(function(sym, i){
+      var b = document.createElement("button");
+      b.className = "sym clickable";
+      b.style.fontSize = symRem + "rem";
+      b.style.position = "absolute";
+      b.style.left = posA[i].x + "px";
+      b.style.top = posA[i].y + "px";
+      b.textContent = sym;
+      b.style.transform = "translate(-50%,-50%) rotate(" + (Math.random()*50-25) + "deg)";
+      b.setAttribute("aria-label", "Simbolo " + sym);
+      b.addEventListener("click", function(){
+        if (sym === dobbleState.common){
+          dobbleState.score++;
+          dobbleMsgEl.textContent = "🎉 Esatto, era proprio " + sym + "!";
+          dobbleMsgEl.className = "msg ok";
+          dobbleStatsEl.textContent = "Coppie trovate: " + dobbleState.score;
+          setTimeout(newDobbleRound, 1100);
+        } else {
+          dobbleMsgEl.textContent = "Non è questo, riprova a confrontare le due carte!";
+          dobbleMsgEl.className = "msg warn";
+        }
+      });
+      dobbleCardAEl.appendChild(b);
+    });
+  }
+  document.getElementById("btnDobbleNew").addEventListener("click", newDobbleRound);
+  document.getElementById("dobbleSize").addEventListener("change", newDobbleRound);
+  newDobbleRound();
+
+  /* ============ ORDINA PER CATEGORIA ============ */
+  var sortCollections = [
+    { id:"animali-frutta", label:"🐾 Animali e frutta", categories:[
+      { label:"Animali", emoji:"🐾", items:["🐶","🐱","🐰","🦁","🐘","🐸"] },
+      { label:"Frutta e verdura", emoji:"🥕", items:["🍎","🍌","🍇","🥕","🍅","🥦"] }
+    ] },
+    { id:"dove-vivono", label:"🌍 Dove vivono gli animali", categories:[
+      { label:"Acqua", emoji:"💧", items:["🐟","🐬","🦈","🐙"] },
+      { label:"Aria", emoji:"☁️", items:["🐦","🦋","🦅","🐝"] },
+      { label:"Terra", emoji:"🌍", items:["🐕","🐴","🐢","🐿️"] }
+    ] },
+    { id:"grande-piccolo", label:"🐘 Grande o piccolo", categories:[
+      { label:"Grande", emoji:"🐘", items:["🐘","🦒","🚌","🏠"] },
+      { label:"Piccolo", emoji:"🐜", items:["🐜","🐭","🔑","🍬"] }
+    ] },
+    { id:"caldo-freddo", label:"☀️ Caldo o freddo", categories:[
+      { label:"Estate", emoji:"☀️", items:["☀️","🏖️","🍦","🌻"] },
+      { label:"Inverno", emoji:"❄️", items:["❄️","⛄","🧣","🌨️"] }
+    ] }
+  ];
+  var sortState = { collectionIdx:0, tray:[], selected:null, placedCount:0, total:0 };
+  var sortScenarioPickerEl = document.getElementById("sortScenarioPicker");
+  var sortTrayEl = document.getElementById("sortTray");
+  var sortBinsEl = document.getElementById("sortBins");
+  var sortMsgEl = document.getElementById("sortMsg");
+  var sortStatsEl = document.getElementById("sortStats");
+
+  function renderSortScenarioPicker(){
+    sortScenarioPickerEl.innerHTML = "";
+    sortCollections.forEach(function(col, i){
+      var b = document.createElement("button");
+      b.textContent = col.label;
+      b.setAttribute("aria-current", i === sortState.collectionIdx ? "true" : "false");
+      b.addEventListener("click", function(){ sortState.collectionIdx = i; startSortGame(); });
+      sortScenarioPickerEl.appendChild(b);
+    });
+  }
+  function startSortGame(){
+    var col = sortCollections[sortState.collectionIdx];
+    var tray = [];
+    col.categories.forEach(function(cat){
+      cat.items.forEach(function(item){ tray.push({ item:item, category:cat.label }); });
+    });
+    sortState.tray = shuffle(tray);
+    sortState.selected = null;
+    sortState.placedCount = 0;
+    sortState.total = tray.length;
+    sortMsgEl.textContent = ""; sortMsgEl.className = "msg";
+    renderSortScenarioPicker();
+    drawSortTray();
+    drawSortBins();
+    updateSortStats();
+  }
+  function updateSortStats(){
+    sortStatsEl.textContent = "Sistemati: " + sortState.placedCount + " / " + sortState.total;
+  }
+  function drawSortTray(){
+    sortTrayEl.innerHTML = "";
+    sortState.tray.forEach(function(entry, i){
+      var b = document.createElement("button");
+      b.className = "sort-item";
+      b.textContent = entry.item;
+      b.draggable = true;
+      b.setAttribute("aria-label", "Elemento " + entry.item);
+      b.setAttribute("aria-pressed", sortState.selected === i ? "true" : "false");
+      b.addEventListener("click", function(){
+        sortState.selected = (sortState.selected === i) ? null : i;
+        drawSortTray();
+      });
+      b.addEventListener("dragstart", function(ev){
+        ev.dataTransfer.setData("text/plain", String(i));
+        ev.dataTransfer.effectAllowed = "move";
+        b.classList.add("dragging");
+      });
+      b.addEventListener("dragend", function(){ b.classList.remove("dragging"); });
+      sortTrayEl.appendChild(b);
+    });
+  }
+  function drawSortBins(){
+    var col = sortCollections[sortState.collectionIdx];
+    sortBinsEl.innerHTML = "";
+    col.categories.forEach(function(cat){
+      var bin = document.createElement("div");
+      bin.className = "sort-bin";
+      bin.setAttribute("role", "button");
+      bin.setAttribute("tabindex", "0");
+      bin.setAttribute("aria-label", "Categoria " + cat.label + ": clicca o trascina qui un elemento");
+      var title = document.createElement("div");
+      title.className = "bin-title";
+      title.textContent = cat.emoji + " " + cat.label;
+      var itemsWrap = document.createElement("div");
+      itemsWrap.className = "bin-items";
+      bin.appendChild(title);
+      bin.appendChild(itemsWrap);
+      bin.addEventListener("click", function(){ placeInBin(sortState.selected, cat.label, itemsWrap); });
+      bin.addEventListener("keydown", function(e){
+        if (e.key === "Enter" || e.key === " "){ e.preventDefault(); placeInBin(sortState.selected, cat.label, itemsWrap); }
+      });
+      bin.addEventListener("dragover", function(ev){ ev.preventDefault(); bin.classList.add("dragover"); });
+      bin.addEventListener("dragleave", function(){ bin.classList.remove("dragover"); });
+      bin.addEventListener("drop", function(ev){
+        ev.preventDefault();
+        bin.classList.remove("dragover");
+        var idx = parseInt(ev.dataTransfer.getData("text/plain"), 10);
+        placeInBin(idx, cat.label, itemsWrap);
+      });
+      sortBinsEl.appendChild(bin);
+    });
+  }
+  function placeInBin(index, categoryLabel, itemsWrap){
+    if (index === null || index === undefined || isNaN(index) || !sortState.tray[index]){
+      sortMsgEl.textContent = "Seleziona o trascina prima un elemento dall'elenco qui sopra.";
+      sortMsgEl.className = "msg warn";
+      return;
+    }
+    var entry = sortState.tray[index];
+    if (entry.category === categoryLabel){
+      var span = document.createElement("span");
+      span.textContent = entry.item;
+      itemsWrap.appendChild(span);
+      sortState.tray.splice(index, 1);
+      sortState.selected = null;
+      sortState.placedCount++;
+      updateSortStats();
+      drawSortTray();
+      sortMsgEl.textContent = "✅ Giusto!";
+      sortMsgEl.className = "msg ok";
+      if (sortState.placedCount === sortState.total){
+        sortMsgEl.textContent = "🎉 Hai sistemato tutto correttamente!";
+        sortMsgEl.className = "msg ok";
+      }
+    } else {
+      sortMsgEl.textContent = "Non è la categoria giusta, riprova!";
+      sortMsgEl.className = "msg warn";
+    }
+  }
+  startSortGame();
+
+  /* ============ SBLOCCA LA STRADA (PUZZLE LOGICO) ============ */
+  var rushLevels = [
+    { id:1, title:"Livello 1", grid:6, target:{ id:"T", orient:"h", len:2, fixed:2, pos:0, emoji:"🚗" },
+      pieces:[ { id:"A", orient:"h", len:2, fixed:5, pos:0, emoji:"🚙" } ] },
+    { id:2, title:"Livello 2", grid:6, target:{ id:"T", orient:"h", len:2, fixed:2, pos:2, emoji:"🚗" },
+      pieces:[ { id:"A", orient:"v", len:3, fixed:5, pos:0, emoji:"🚚" }, { id:"B", orient:"h", len:3, fixed:5, pos:1, emoji:"🚛" } ] },
+    { id:3, title:"Livello 3", grid:6, target:{ id:"T", orient:"h", len:2, fixed:2, pos:0, emoji:"🚗" },
+      pieces:[ { id:"A", orient:"v", len:2, fixed:1, pos:3, emoji:"🚙" }, { id:"B", orient:"v", len:3, fixed:5, pos:0, emoji:"🚚" } ] },
+    { id:4, title:"Livello 4", grid:6, target:{ id:"T", orient:"h", len:2, fixed:2, pos:0, emoji:"🚗" },
+      pieces:[ { id:"A", orient:"h", len:3, fixed:0, pos:2, emoji:"🚛" }, { id:"B", orient:"v", len:3, fixed:5, pos:1, emoji:"🚚" }, { id:"C", orient:"h", len:2, fixed:1, pos:3, emoji:"🚕" } ] },
+    { id:5, title:"Livello 5", grid:6, target:{ id:"T", orient:"h", len:2, fixed:2, pos:0, emoji:"🚗" },
+      pieces:[ { id:"A", orient:"v", len:2, fixed:4, pos:4, emoji:"🚙" }, { id:"B", orient:"h", len:2, fixed:3, pos:0, emoji:"🚕" }, { id:"C", orient:"v", len:3, fixed:2, pos:0, emoji:"🚚" } ] },
+    { id:6, title:"Livello 6", grid:6, target:{ id:"T", orient:"h", len:2, fixed:2, pos:0, emoji:"🚗" },
+      pieces:[ { id:"A", orient:"v", len:3, fixed:3, pos:0, emoji:"🚛" }, { id:"B", orient:"v", len:2, fixed:5, pos:2, emoji:"🚙" }, { id:"C", orient:"h", len:2, fixed:1, pos:0, emoji:"🚕" }, { id:"D", orient:"h", len:3, fixed:4, pos:1, emoji:"🚚" } ] },
+    { id:7, title:"Livello 7", grid:6, target:{ id:"T", orient:"h", len:2, fixed:2, pos:0, emoji:"🚗" },
+      pieces:[ { id:"A", orient:"h", len:2, fixed:3, pos:3, emoji:"🚙" }, { id:"B", orient:"v", len:3, fixed:3, pos:0, emoji:"🚛" }, { id:"C", orient:"h", len:3, fixed:1, pos:0, emoji:"🚚" }, { id:"D", orient:"v", len:2, fixed:5, pos:2, emoji:"🚕" } ] },
+    { id:8, title:"Livello 8", grid:6, target:{ id:"T", orient:"h", len:2, fixed:2, pos:0, emoji:"🚗" },
+      pieces:[ { id:"A", orient:"h", len:2, fixed:3, pos:0, emoji:"🚙" }, { id:"B", orient:"v", len:3, fixed:4, pos:0, emoji:"🚚" }, { id:"C", orient:"v", len:3, fixed:5, pos:1, emoji:"🚛" }, { id:"D", orient:"h", len:2, fixed:5, pos:1, emoji:"🚕" }, { id:"E", orient:"h", len:2, fixed:3, pos:2, emoji:"🚌" } ] },
+    { id:9, title:"Livello 9", grid:6, target:{ id:"T", orient:"h", len:2, fixed:2, pos:0, emoji:"🚗" },
+      pieces:[ { id:"A", orient:"v", len:3, fixed:4, pos:0, emoji:"🚚" }, { id:"B", orient:"h", len:2, fixed:3, pos:1, emoji:"🚙" }, { id:"C", orient:"h", len:3, fixed:5, pos:3, emoji:"🚛" }, { id:"D", orient:"v", len:2, fixed:0, pos:4, emoji:"🚕" }, { id:"E", orient:"v", len:2, fixed:3, pos:3, emoji:"🚌" } ] },
+    { id:10, title:"Livello 10", grid:6, target:{ id:"T", orient:"h", len:2, fixed:2, pos:0, emoji:"🚗" },
+      pieces:[ { id:"A", orient:"v", len:2, fixed:5, pos:4, emoji:"🚙" }, { id:"B", orient:"v", len:3, fixed:3, pos:0, emoji:"🚚" }, { id:"C", orient:"h", len:2, fixed:5, pos:2, emoji:"🚕" }, { id:"D", orient:"h", len:3, fixed:4, pos:1, emoji:"🚛" }, { id:"E", orient:"h", len:2, fixed:0, pos:0, emoji:"🚌" }, { id:"F", orient:"h", len:2, fixed:3, pos:0, emoji:"🚙" } ] }
+  ];
+
+  var rushState = { levelIdx:0, pieces:[], selectedId:null };
+  var rushLevelPickerEl = document.getElementById("rushLevelPicker");
+  var rushGridEl = document.getElementById("rushGrid");
+  var rushMsgEl = document.getElementById("rushMsg");
+
+  function renderRushLevelPicker(){
+    rushLevelPickerEl.innerHTML = "";
+    rushLevels.forEach(function(lvl, i){
+      var b = document.createElement("button");
+      b.className = "level-btn";
+      b.setAttribute("aria-current", i === rushState.levelIdx ? "true" : "false");
+      b.innerHTML = '<span class="le">' + lvl.target.emoji + '</span><span class="lt">' + lvl.title + "</span>";
+      b.addEventListener("click", function(){ rushState.levelIdx = i; loadRushLevel(); });
+      rushLevelPickerEl.appendChild(b);
+    });
+  }
+  function rushPieceCells(p){
+    var cells = [];
+    for (var k = 0; k < p.len; k++){
+      if (p.orient === "h") cells.push({ r:p.fixed, c:p.pos + k });
+      else cells.push({ r:p.pos + k, c:p.fixed });
+    }
+    return cells;
+  }
+  function loadRushLevel(){
+    var level = rushLevels[rushState.levelIdx];
+    rushState.pieces = [ Object.assign({}, level.target, { isTarget:true }) ].concat(level.pieces.map(function(p){ return Object.assign({}, p); }));
+    rushState.selectedId = null;
+    rushMsgEl.textContent = ""; rushMsgEl.className = "msg";
+    renderRushLevelPicker();
+    drawRush();
+  }
+  function drawRush(){
+    var level = rushLevels[rushState.levelIdx];
+    var n = level.grid;
+    rushGridEl.style.gridTemplateColumns = "repeat(" + n + ", 1fr)";
+    rushGridEl.style.gridTemplateRows = "repeat(" + n + ", 1fr)";
+    rushGridEl.innerHTML = "";
+    for (var r = 0; r < n; r++){
+      for (var c = 0; c < n; c++){
+        var bg = document.createElement("div");
+        bg.className = "bgcell";
+        if (r === level.target.fixed && c === n - 1){
+          bg.classList.add("exit");
+          bg.textContent = "🏁";
+        }
+        rushGridEl.appendChild(bg);
+      }
+    }
+    rushState.pieces.forEach(function(p){
+      var el = document.createElement("div");
+      el.className = "rush-piece" + (p.isTarget ? " target" : "") + (rushState.selectedId === p.id ? " selected" : "");
+      el.textContent = p.emoji;
+      el.setAttribute("role","button");
+      el.setAttribute("tabindex","0");
+      el.setAttribute("aria-label", (p.isTarget ? "Veicolo da guidare fuori" : "Veicolo ostacolo") + " " + p.emoji);
+      if (p.orient === "h"){
+        el.style.gridColumn = (p.pos + 1) + " / span " + p.len;
+        el.style.gridRow = (p.fixed + 1) + " / span 1";
+      } else {
+        el.style.gridRow = (p.pos + 1) + " / span " + p.len;
+        el.style.gridColumn = (p.fixed + 1) + " / span 1";
+      }
+      el.addEventListener("click", function(){
+        rushState.selectedId = (rushState.selectedId === p.id) ? null : p.id;
+        drawRush();
+        updateRushArrowState();
+      });
+      rushGridEl.appendChild(el);
+    });
+    updateRushArrowState();
+  }
+  function updateRushArrowState(){
+    var upB = document.getElementById("rushUp"), downB = document.getElementById("rushDown");
+    var leftB = document.getElementById("rushLeft"), rightB = document.getElementById("rushRight");
+    var piece = rushState.pieces.filter(function(p){ return p.id === rushState.selectedId; })[0];
+    if (!piece){
+      upB.disabled = downB.disabled = leftB.disabled = rightB.disabled = true;
+      return;
+    }
+    if (piece.orient === "h"){
+      upB.disabled = downB.disabled = true;
+      leftB.disabled = rightB.disabled = false;
+    } else {
+      leftB.disabled = rightB.disabled = true;
+      upB.disabled = downB.disabled = false;
+    }
+  }
+  function occupiedCells(excludeId){
+    var occ = {};
+    rushState.pieces.forEach(function(p){
+      if (p.id === excludeId) return;
+      rushPieceCells(p).forEach(function(cell){ occ[cell.r + "_" + cell.c] = true; });
+    });
+    return occ;
+  }
+  function moveRushPiece(dir){
+    var level = rushLevels[rushState.levelIdx];
+    var piece = rushState.pieces.filter(function(p){ return p.id === rushState.selectedId; })[0];
+    if (!piece) return;
+    var delta = (dir === "up" || dir === "left") ? -1 : 1;
+    if ((piece.orient === "h" && (dir === "up" || dir === "down")) || (piece.orient === "v" && (dir === "left" || dir === "right"))) return;
+    var newPos = piece.pos + delta;
+    if (newPos < 0 || newPos + piece.len - 1 > level.grid - 1){
+      rushMsgEl.textContent = "Non puoi andare oltre il bordo della strada!";
+      rushMsgEl.className = "msg warn";
+      return;
+    }
+    var occ = occupiedCells(piece.id);
+    var testPiece = Object.assign({}, piece, { pos:newPos });
+    var blocked = rushPieceCells(testPiece).some(function(cell){ return occ[cell.r + "_" + cell.c]; });
+    if (blocked){
+      rushMsgEl.textContent = "🚧 Un altro veicolo blocca il passaggio.";
+      rushMsgEl.className = "msg warn";
+      return;
+    }
+    piece.pos = newPos;
+    rushMsgEl.textContent = ""; rushMsgEl.className = "msg";
+    drawRush();
+    if (piece.isTarget && piece.pos + piece.len - 1 === level.grid - 1){
+      rushMsgEl.textContent = "🎉 Complimenti, hai liberato la strada!";
+      rushMsgEl.className = "msg ok";
+    }
+  }
+  document.getElementById("rushUp").addEventListener("click", function(){ moveRushPiece("up"); });
+  document.getElementById("rushDown").addEventListener("click", function(){ moveRushPiece("down"); });
+  document.getElementById("rushLeft").addEventListener("click", function(){ moveRushPiece("left"); });
+  document.getElementById("rushRight").addEventListener("click", function(){ moveRushPiece("right"); });
+  document.getElementById("btnRushReset").addEventListener("click", loadRushLevel);
+  loadRushLevel();
+})();
+</script>
+</body>
+</html>
