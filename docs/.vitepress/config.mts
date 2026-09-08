@@ -61,7 +61,8 @@ export default defineConfig({
       { text: 'Microbit', link: '/microbit' },
       { text: 'Arduino', link: '/arduino' },
       { text: 'Scratch', link: '/scratch' },
-      { text: 'Mbot', link: '/mbot' }
+      { text: 'Mbot', link: '/mbot' },
+      { text: 'Giochi Online', link: '/attivita/' }
     ],
     sidebar: [
       {
