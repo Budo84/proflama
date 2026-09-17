@@ -12,7 +12,7 @@ image: /img/default.jpg
 # 00-Introduzione
 
 <center>
-<img src="img/scratch/Screenshot_2025-08-08_alle_15.17.29.png" alt="" width="500"/>
+<img src="img/scratch/Screenshot-2025-08-08-alle-15-17-29.png" alt="" width="500"/>
 </center>
 
 Questa è la schermata iniziale dell’ambiente di sviluppo di Scratch 3.0 nella versione online.
@@ -25,7 +25,7 @@ Partendo da sinistra abbiamo il menù dei blocchi, l’area Script e lo stage.
 
 Ogni menù dei blocchi contiene una varietà di blocchi dello stesso colore.
 
-<img src="img/scratch/Screenshot_2025-08-09_alle_15.45.36.png" alt="" width="50" hspace="20" align="right" />
+<img src="img/scratch/Screenshot-2025-08-09-alle-15-45-36.png" alt="" width="50" hspace="20" align="right" />
 
 - **Movimento**: sono blocchi impilabili rettangolari detti stack e contengono le istruzioni per far muovere gli sprite nello stage.
 - **Aspetto**: gestiscono l’aspetto di sfondo e sprite, consentono di far apparire pensieri e parole (fumetti), controllano gli effetti speciali. I blocchi ovali rappresentano differenti variabili (con nomi o numeri), vanno inseriti in altri blocchi e non si possono usare da soli.
@@ -38,7 +38,7 @@ Ogni menù dei blocchi contiene una varietà di blocchi dello stesso colore.
 - **I Miei Blocchi**: permette di creare blocchi personalizzati ognuno dei quali contiene una porzione di codice riutilizzabile. I programmatori usano questa strategia detta procedura.
 
 <center>
-<img src="img/scratch/Screenshot_2025-08-09_alle_16.03.59.png" alt="" width="50"/>
+<img src="img/scratch/Screenshot-2025-08-09-alle-16-03-59.png" alt="" width="50"/>
 </center>
 
 - **Estensioni**: contiene menù e blocchi extra (es. Penna, Musica).
