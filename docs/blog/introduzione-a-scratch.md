@@ -9,11 +9,11 @@ image: /img/default.jpg
 ---
 
 # Introduzione a Scratch
-# 00-Introduzione
+
 
 
 <center>
-	<img src="/img/Screenshot-2025-08-08-alle-15-17-29.webp" alt="Screenshot_2025-08-08_alle_15.17.29.webp" width="300"/>
+	<img src="/img/scratch/Screenshot-2025-08-08-alle-15-17-29.png" alt="Screenshot_2025-08-08_alle_15.17.29.webp" width="300"/>
 </center>
 
 
