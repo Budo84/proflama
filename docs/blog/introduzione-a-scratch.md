@@ -11,9 +11,11 @@ image: /img/default.jpg
 # Introduzione a Scratch
 # 00-Introduzione
 
+
 <center>
-<img src="img/scratch/Screenshot-2025-08-08-alle-15-17-29.png" alt="" width="500"/>
+	<img src="/img/Screenshot-2025-08-08-alle-15-17-29.webp" alt="Screenshot_2025-08-08_alle_15.17.29.webp" width="300"/>
 </center>
+
 
 Questa è la schermata iniziale dell’ambiente di sviluppo di Scratch 3.0 nella versione online.
 
