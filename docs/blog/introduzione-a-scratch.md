@@ -5,13 +5,12 @@ draft: false
 date: 2026-09-17
 category: Scratch
 class_target: "Elementari, Tutti"
-image: /img/default.jpg
+image: /img/scratch-logo.webp
 ---
 
 # Introduzione a Scratch
 
-
-
+## Introduzione
 <center>
 	<img src="/img/scratch/Screenshot-2025-08-08-alle-15-17-29.png" alt="Screenshot_2025-08-08_alle_15.17.29.webp" width="300"/>
 </center>
