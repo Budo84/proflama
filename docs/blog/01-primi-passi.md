@@ -40,6 +40,6 @@ Per farlo muovere automaticamente dobbiamo inserire un blocco ripeti. Selezional
 
 Al posto del 10 puoi scegliere qualsiasi numero e il blocco verrà ripetuto quanto vuoi tu.
 
-##Cosa abbiamo imparato?
+## Cosa abbiamo imparato?
 
 I Loop sono molto usati nella programmazione perchè permettono di eseguire una parte di programma tante volte senza doverla riscrivere. In questo modo rendono il codice più corto, più rapido da scrivere e permettono di usare meno memoria.
