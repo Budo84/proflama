@@ -10,7 +10,7 @@ image: /img/scratch-logo.webp
 
 # 02-Primo-gioco-Gatto e Topo
 
-##Parte 1 - Impostiamo il gioco
+## Parte 1 - Impostiamo il gioco
 
 Lo scopo del gioco è scappare dal gatto che cerca di inseguire il puntatore del mouse. Per realizzarlo abbiamo bisogno di un loop diverso dal precedente: **ripeti fino a quando**.
 
@@ -33,7 +33,7 @@ Correggi questo problema inserendo un blocco **rimbalza quando tocchi il bordo**
 	<img src="/img/scratch/Screenshot4.png" alt="windows" width="300"/>
 </center>
 
-####Cosa abbiamo imparato?
+### Cosa abbiamo imparato?
 
 L'istruzione che abbiamo usato (**ripeti fino a quando** fa parte di quelle istruzioni dette **CONDIZIONALI**.
 
@@ -50,13 +50,13 @@ Prova ora a rendere lo script più facile da usare aggiungendo all'inizio il blo
 Adesso lo script verrà eseguito solo dopo aver cliccato sulla bandierina verde. Per interromperlo clicca sul cerchio rosso.
 
 
-####Cosa abbiamo imparato?
+### Cosa abbiamo imparato?
 
 I blocchi hanno una forma per cui possono unirsi solo in certi modi, sono simili a un puzzle.
 
 La **sintassi** cioè il modo in cui è scritto un codice è molto importante perchè se ci sono degli errori il computer non riesce ad eseguire correttamente tutte le istruzioni fermandosi o generando errori. In Scratch i blocchi si uniranno solo se la sintassi è corretta, gli incastri dei blocchi permettono di avere un controllo sulla sintassi.
 
-##Parte 2 - Posizioniamoci al centro
+## Parte 2 - Posizioniamoci al centro
 
 Miglioriamo la giocabilità del nostro gioco facendo partire il gatto dal centro dello **stage**.
 
@@ -68,12 +68,12 @@ Aggiungiamo il blocco **vai a** dal menù **Movimento**.
 
 Ora possiamo impostare la posizione di partenza usando le coordinate cartesiane.
 
-####Cosa abbiamo imparato?
+### Cosa abbiamo imparato?
 
 Per definire qualsiasi punto dello stage abbiamo bisogno delle coordinate cartesiane (x,y) che descrivono un punto nello spazio dello stage.
 
 
-##Parte 3 - Assegnamo un punteggio
+## Parte 3 - Assegnamo un punteggio
 
 Per assegnare un punteggio abbiamo bisogno di introdurre un nuovo concetto: le **variabili**.
 
@@ -90,7 +90,7 @@ Inserisci un blocco **porta punteggio** all'inizio. Inserisci infine un blocco *
 
 Ora prova a giocare, in un angolo dello **stage** vedrai un segnapunti. Il punteggio aumenta finchè il mouse non verrà preso dal gatto.
 
-##Parte 3 - Aggiungiamo un vero Mouse
+## Parte 4 - Aggiungiamo un vero Mouse
 
 Per concludere il nostro gioco inseriamo un vero Mouse al posto del puntatore del mouse.
 
@@ -119,12 +119,12 @@ L'ultimo passaggio consiste nel cambiare la condizione sul loop del gatto e inse
 
 Ora sei pronto per sfidare il gatto...Vinca il più veloce.
 
-####Come faccio a salvare?
+### Come faccio a salvare?
 
 Per salvare i progetti scrivi il nome nella barra del titolo e clicca su salva ora. Potrai trovarlo nella schermata principale cliccando sul simbolo di una cartellina con scritto *"LE MIE COSE"*.
 
 
-####Per i più esperti
+### Per i più esperti
 
 Prova ora ad aggiungere una condizione sul punteggio del Topo. Come avrai notato il topo raccoglie molti più punti del gatto, prova a migliorare questo aspetto.
 
