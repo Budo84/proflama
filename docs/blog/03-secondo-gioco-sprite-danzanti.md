@@ -40,7 +40,7 @@ Non notate niente di strano? Il dinosauro quando tocca il bordo rimbalza ma si c
 	<img src="/img/scratch/dino-dance2.png" alt="windows" width="200"/>
 </center>
 
-##Cosa abbiamo imparato?
+## Cosa abbiamo imparato?
 
 Tutte le animazioni sono formate da tante immagini in successione, anche i cartoni animati venivano fatti in questo modo, tanti fotogrammi (circa 25-30) in successione per realizzare un movimento.
 
@@ -54,7 +54,7 @@ Ora dovrai creare un blocco di codice per avviare la musica.
 	<img src="/img/scratch/dino-dance3.png" alt="windows" width="250"/>
 </center>
 
-####Cosa abbiamo imparato?
+## Cosa abbiamo imparato?
 
 Possiamo aggiungere più blocchi separati che iniziano con la situazione *quando si clicca sulla bandiera verde*
 
