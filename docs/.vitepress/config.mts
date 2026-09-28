@@ -62,7 +62,8 @@ export default defineConfig({
       { text: 'Arduino', link: '/arduino' },
       { text: 'Scratch', link: '/scratch' },
       { text: 'Mbot', link: '/mbot' },
-      { text: 'Attività Online', link: 'https://www.proflama.it/attivita/' }
+      { text: 'Attività Online', link: 'https://www.proflama.it/attivita/' },
+      { text: 'Officina-Robotica', link: 'https://www.proflama.it/officina-robotica/' }
     ],
     sidebar: [
       {
