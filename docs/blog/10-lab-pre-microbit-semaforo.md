@@ -3,7 +3,7 @@ title: 10-Lab-pre-Microbit-Semaforo
 description: 'Programma per simulare un semaforo'
 draft: false
 date: 2026-09-30
-category: Microbit
+category: Scratch
 class_target: "1, 2, 3, Tutti"
 image: /img/scratch/semaforo-1.gif
 ---
