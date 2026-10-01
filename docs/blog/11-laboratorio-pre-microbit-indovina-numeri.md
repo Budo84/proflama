@@ -5,7 +5,7 @@ draft: false
 date: 2026-10-01
 category: Scratch
 class_target: "1, 2, 3, Tutti"
-image: /img/scratch/scratch-logo.webp
+image: /img/scratch-logo.webp
 ---
 
 # 12-Laboratorio pre-Microbit-Indovina Numeri
