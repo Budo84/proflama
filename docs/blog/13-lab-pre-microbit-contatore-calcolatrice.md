@@ -113,7 +113,7 @@ Crea uno Sprite per il tasto "+".
 * Porta [*scrivi-nuovo*] a [1]
 
 <center>
-	<img src="i/img/scratch/tasto-operatore-calc3.png" alt="windows" width="250"/>
+	<img src="/img/scratch/tasto-operatore-calc3.png" alt="windows" width="250"/>
 </center>
 
 
