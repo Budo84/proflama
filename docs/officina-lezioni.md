@@ -1,11 +1,11 @@
 ---
 layout: doc
-title: Laboratorio MicroBit
+title: Officina Robotica
 ---
 
-# 🤖 Tutto su MicroBit
+# 🤖 Lezioni generali per i progetti di 
 
-Qui trovi tutte le lezioni e gli esercizi dedicati alla scheda MicroBit.
+Qui trovi tutte le lezioni di preparazione per affrontare il tuo progetto di robotica.
 
 <script setup>
 import { data as posts } from './.vitepress/theme/posts.data.ts'
