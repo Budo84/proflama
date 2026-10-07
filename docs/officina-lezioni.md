@@ -3,7 +3,7 @@ layout: doc
 title: Officina Robotica
 ---
 
-# 🤖 Lezioni generali per i progetti di 
+# 🤖 Lezioni generali per i progetti di Robotica
 
 Qui trovi tutte le lezioni di preparazione per affrontare il tuo progetto di robotica.
 
