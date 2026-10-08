@@ -48,6 +48,7 @@ La **tensione** (Volt) è la "spinta" che muove le cariche, la **corrente** (Amp
 <center>
 	<img src="/img/robotica/base-arduino-breadboard-cablaggio.webp" alt="breadboard con resistore collegato ai binari 5V e GND di Arduino" width="300"/>
 </center>
+<center>
 " alt="breadboard con resistore collegato ai binari 5V e GND di Arduino" width="300"/>
 </center>
 
