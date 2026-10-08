@@ -1,5 +1,5 @@
 ---
-title: Base-microbit-01-led-resistenza
+title: 2-Base-microbit-01-led-resistenza
 description: 'Colleghiamo un LED classico al micro:bit con la resistenza giusta e lo facciamo lampeggiare con MakeCode.'
 draft: false
 date: 2026-10-08
