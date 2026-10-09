@@ -1,5 +1,5 @@
 ---
-title: 2-Base-microbit-01-led-resistenza
+title: 2-led-resistenza-(microbit)
 description: 'Colleghiamo un LED classico al micro:bit con la resistenza giusta e lo facciamo lampeggiare con MakeCode.'
 draft: false
 date: 2026-10-08
@@ -8,7 +8,7 @@ class_target: "2, 3"
 image: /img/robotica/base-microbit-led-cablaggio.webp
 ---
 
-# Base-microbit-01-led-resistenza
+# 2-led-resistenza-(microbit)
 **Obiettivo:** Collegare un **LED esterno** al micro:bit con la **resistenza di protezione** e farlo lampeggiare con MakeCode.
 
 **Concetti Chiave:**
