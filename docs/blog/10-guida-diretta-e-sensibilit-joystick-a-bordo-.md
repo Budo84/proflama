@@ -1,5 +1,5 @@
 ---
-title: 10-Guida Diretta e Sensibilità (Joystick a Bordo) 🕹️🏎️
+title: 20-Guida Diretta e Sensibilità (Joystick a Bordo) 🕹️🏎️
 description: 'Leggere i valori analogici del joystick, creare una "Zona Morta" personalizzata (300-700) e trasformare i comandi in movimento fisico dei motori.'
 draft: false
 date: 2026-04-20
@@ -8,7 +8,7 @@ class_target: "1, 2, 3"
 image: /img/robotica/minicar-telecomandata.webp
 ---
 
-# 10-Guida Diretta e Sensibilità (Joystick a Bordo) 🕹️🏎️
+# 20-Guida Diretta e Sensibilità (Joystick a Bordo) 🕹️🏎️
 
 **Obiettivo:** Leggere i valori analogici del joystick, creare una "Zona Morta" personalizzata (300-700) e trasformare i comandi in movimento fisico dei motori.
 
