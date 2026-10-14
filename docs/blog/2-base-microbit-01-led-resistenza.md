@@ -84,14 +84,3 @@ Scarica il programma sul micro:bit: il LED deve accendersi e spegnersi ogni seco
 ::: tip 💡 CONSIGLIO
 Cambia i tempi di pausa da 1000 a 200: il LED lampeggia più veloce. Che valore serve perché sembri sempre acceso?
 :::
-<center>
-	<img src="/img/robotica/base-microbit-led-blocchi.webp" alt="base-microbit-led-blocchi.webp" width="300"/>
-</center>
-
-<center>
-	<img src="/img/robotica/base-microbit-led-cablaggio.webp" alt="base-microbit-led-cablaggio.webp" width="300"/>
-</center>
-
-<center>
-	<img src="/img/robotica/base-microbit-led.webp" alt="base-microbit-led.webp" width="300"/>
-</center>
