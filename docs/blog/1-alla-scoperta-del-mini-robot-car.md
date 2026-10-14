@@ -1,5 +1,5 @@
 ---
-title: 1-Alla-Scoperta-del-Mini-Robot-Car
+title: 12-Alla-Scoperta-del-Mini-Robot-Car
 description: 'Conoscere l''hardware del Mini Robot Car, comprendere l''alimentazione necessaria e imparare a installare (e gestire) le estensioni personalizzate nell''ambiente MakeCode'
 draft: false
 date: 2026-02-25
@@ -7,7 +7,7 @@ category: Microbit
 class_target: "1, 2, 3, Tutti"
 image: /img/robotica/minicar.png
 ---
-# 1-Alla-Scoperta-del-Mini-Robot-Car
+# 12-Alla-Scoperta-del-Mini-Robot-Car
 
 **Obiettivo:** Conoscere l'hardware del Mini Robot Car, comprendere l'alimentazione necessaria e imparare a installare (e gestire) le estensioni personalizzate nell'ambiente MakeCode.
 
