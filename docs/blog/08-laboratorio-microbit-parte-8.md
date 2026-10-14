@@ -1,5 +1,5 @@
 ---
-title: 08-Laboratorio-MicroBit-Parte-8
+title: 08-Magic 8-Ball Digitale
 description: Magic 8-Ball Digitale. Questo progetto trasforma il Microbit in una versione digitale della popolare Magic 8-Ball, offrendo risposte casuali a domande si,no. Sfrutta lo shake oppure il pulsante A per l'input e la matrice LED per l'output testuale.
 draft: false
 date: 2026-02-03
@@ -8,7 +8,7 @@ class_target: "1, 2, 3, Tutti"
 image: /img/magic-ball8.gif
 ---
 
-## Magic 8-Ball Digitale
+# Magic 8-Ball Digitale
 
 Questo progetto trasforma il Micro:bit in una versione digitale della popolare "Magic 8-Ball", offrendo risposte casuali a domande sì/no. 
 
@@ -17,7 +17,7 @@ Sfrutta lo **shake** oppure il pulsante **A** per l'input e la matrice LED per l
 * **Shake** / **Pulsante  A**: 	Avvia la generazione della risposta.
 * **Matrice LED**: Mostra la risposta in scorrimento.
 
-#### Soluzione
+## Programmazione
 * Input: quando si preme il Pulsante A, il Microbit genera un numero casuale tra 1 e 5 (o più, a seconda di quante risposte vuoi).
 * Logica: Utilizzando la struttura se/altrimenti se/altrimenti, a ogni numero casuale (es. 1, 2, 3, 4, 5) viene associata una risposta diversa.
 
