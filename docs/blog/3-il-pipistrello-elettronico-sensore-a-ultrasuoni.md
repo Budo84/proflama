@@ -1,5 +1,5 @@
 ---
-title: 3-Il Pipistrello Elettronico (Sensore a Ultrasuoni) 
+title: 14-Il Pipistrello Elettronico (Sensore a Ultrasuoni) 
 description: 'Comprendere il funzionamento dell''ecolocalizzazione, leggere i dati dal sensore a ultrasuoni e usare la logica condizionale per creare un sensore di parcheggio visivo.'
 draft: false
 date: 2026-02-25
@@ -8,7 +8,7 @@ class_target: "1, 2, 3, Tutti"
 image: /img/robotica/minicar.png
 ---
 
-# 3-Il Pipistrello Elettronico (Sensore a Ultrasuoni) 
+# 14-Il Pipistrello Elettronico (Sensore a Ultrasuoni) 
 
 **Obiettivo:** Comprendere il funzionamento dell'ecolocalizzazione, leggere i dati dal sensore a ultrasuoni e usare la logica condizionale per creare un "sensore di parcheggio" visivo.
 
