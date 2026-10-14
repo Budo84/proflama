@@ -1,5 +1,5 @@
 ---
-title: 9-Il Cestino Smart con Sensore e Servo 🗑️🤖
+title: 23-Il Cestino Smart con Sensore e Servo 🗑️🤖
 description: 'Costruzione cestino smart con sensore a ultrasuoni e servomotore'
 draft: false
 date: 2026-04-20
@@ -8,7 +8,7 @@ class_target: "1, 2, 3"
 image: /img/robotica/secchio-smart.webp
 ---
 
-# 9-Il Cestino Smart con Sensore e Servo 🗑️🤖
+# 23-Il Cestino Smart con Sensore e Servo 🗑️🤖
 
 ## 1. Analisi del Problema
 
