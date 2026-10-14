@@ -1,5 +1,5 @@
 ---
-title: 8-La Pista Cifrata (Robot Segui-Linea) 🏁
+title: 19-La Pista Cifrata (Robot Segui-Linea) 🏁
 description: 'Comprendere il principio della riflessione della luce, leggere i valori digitali dei sensori di tracciamento e programmare un algoritmo di correzione della traiettoria per seguire un percorso nero su fondo bianco.'
 draft: false
 date: 2026-02-25
@@ -8,7 +8,7 @@ class_target: "1, 2, 3, Tutti"
 image: /img/robotica/minicar.png
 ---
 
-# 8-La Pista Cifrata (Robot Segui-Linea) 🏁
+# 19-La Pista Cifrata (Robot Segui-Linea) 🏁
 
 **Obiettivo:** Comprendere il principio della riflessione della luce, leggere i valori digitali dei sensori di tracciamento e programmare un algoritmo di correzione della traiettoria per seguire un percorso nero su fondo bianco.
 
