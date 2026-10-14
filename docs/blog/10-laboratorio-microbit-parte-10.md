@@ -1,5 +1,5 @@
 ---
-title: 10-Laboratorio-microbit-parte-10
+title: 10-Messaggistica con Due Microbit (Radio)
 description: Con questo programma faremo comunicare due microbit con la radio della microbit
 draft: false
 date: 2026-02-08
@@ -16,7 +16,7 @@ Questo è il passo più grande e utile: la comunicazione tra due o più Micro:bi
 
 **Struttura del Programma (Da caricare su DUE Micro:bit)**
 
-### Micro:bit 1 (Trasmettitore A)
+## Micro:bit 1 (Trasmettitore A)
 
 |Blocco/Azione| Dettagli Tecnici|
 |:--------|:--------|
@@ -30,7 +30,7 @@ Questo è il passo più grande e utile: la comunicazione tra due o più Micro:bi
 	<img src="/img/microbit/trasmettitore.png" alt="windows" width="350"/>
 </center>
 
-### Micro:bit 2 (Ricevitore + Risponditore)
+## Micro:bit 2 (Ricevitore + Risponditore)
 
 |Blocco/Azione| Dettagli Tecnici|
 |:---------|:--------|
@@ -50,7 +50,7 @@ radio send string "Saluti!"
 La prima microbit chiede che temperatura fa e la seconda mostra la temperatura.
 
 
-### Micro:bit 1 (Trasmettitore)
+## Micro:bit 1 (Trasmettitore)
 
 
 <center>
@@ -58,7 +58,7 @@ La prima microbit chiede che temperatura fa e la seconda mostra la temperatura.
 </center>
 
 
-### Micro:bit 2 (Ricevitore)
+## Micro:bit 2 (Ricevitore)
 
 <center>
 	<img src="/img/microbit/ricevitoreTemp.png" alt="windows" width="350"/>
@@ -69,12 +69,12 @@ La prima microbit chiede che temperatura fa e la seconda mostra la temperatura.
 La prima microbit chiede che temperatura fa e la seconda risponde 
 dopo aver misurato la temperatura alla prima microbit che mostra sullo schermo il valore.
 
-### Microbit A
+## Microbit A
 <center>
 	<img src="/img/microbit/microbitA.png" alt="windows" width="350"/>
 </center>
 
-### Microbit B
+## Microbit B
 <center>
 	<img src="/img/microbit/microbitB.png" alt="windows" width="350"/>
 </center>
