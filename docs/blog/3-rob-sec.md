@@ -1,5 +1,5 @@
 ---
-title: 3-Il Transistor (L'Amplificatore di Potenza)
+title: M3-Il Transistor (L'Amplificatore di Potenza)
 description: Scrivi qui una breve sintesi per Google (max 160 caratteri)...
 draft: false
 date: 2026-01-24
@@ -8,9 +8,9 @@ class_target: 2, 3
 image: /img/robotica/transistor.png
 ---
 
-# LEZIONE 3: Il Transistor (L'Amplificatore di Potenza)
+# Modulo 3: Il Transistor (L'Amplificatore di Potenza)
 
-### INTRODUZIONE TEORICA
+## INTRODUZIONE TEORICA
 
 **L'analogia Idraulica (Il Rubinetto)**
 
@@ -32,9 +32,9 @@ Immaginate un **Rubinetto dell'acqua**:
 **In Elettronica:**
 Noi useremo la Micro:bit per girare la manopola (Base) delicatamente, e il Transistor farà passare la corrente di una potente batteria da 9V verso un motore.
 
-### MONTAGGIO DEL CIRCUITO (Tinkercad)
+## MONTAGGIO DEL CIRCUITO (Tinkercad)
 
-#### 1. Prepara i Componenti
+### 1. Prepara i Componenti
 
 Trascina questi componenti sul tavolo di lavoro:
 
@@ -51,7 +51,7 @@ Trascina questi componenti sul tavolo di lavoro:
 	<img src="/img/robotica/transistor2.png" alt="windows" width="300"/>
 </center>
 
-#### 2. Il Cablaggio (Attenzione ai Pin del Transistor!)
+### 2. Il Cablaggio (Attenzione ai Pin del Transistor!)
 
 In Tinkercad, se passi il mouse sui piedini del Transistor, ti dice i nomi: **E** (Emettitore), **B** (Base), **C** (Collettore).
 
@@ -83,7 +83,7 @@ Affinché il sistema funzioni, i due circuiti devono condividere lo "scarico" (G
 </center>
 
 
-### IL CODICE (Makecode / Tinkercad)
+## IL CODICE (Makecode / Tinkercad)
 
 Dobbiamo dire alla Micro:bit: *"Quando premo A, manda un piccolo segnale alla Base per aprire il rubinetto"*.
 
@@ -104,9 +104,9 @@ Dobbiamo dire alla Micro:bit: *"Quando premo A, manda un piccolo segnale alla Ba
 </center>
 
 
-### SIMULAZIONE E ANALISI
+## SIMULAZIONE E ANALISI
 
-#### 1. Avvia la Simulazione
+### 1. Avvia la Simulazione
 
 * Clicca **Avvia**.
 * Il motore dovrebbe essere fermo (0 RPM).
@@ -125,7 +125,7 @@ Dobbiamo dire alla Micro:bit: *"Quando premo A, manda un piccolo segnale alla Ba
 
 <video src="/img/robotica/transistor5.mp4" autoplay loop muted playsinline width="100%"></video>
 
-#### 2. Domande per la Classe (Debriefing)
+## 2. Domande per la Classe (Debriefing)
 
 * **Prof:** "Chi sta facendo girare il motore? L'energia viene dalla Micro:bit?"
 * **Risposta:** No! L'energia viene dalla Batteria 9V. La Micro:bit sta solo dando l'ordine, come un vigile che dirige il traffico pesante.
@@ -133,6 +133,6 @@ Dobbiamo dire alla Micro:bit: *"Quando premo A, manda un piccolo segnale alla Ba
 * **Esperimento:** Provate a staccarlo in simulazione.
 * **Risultato:** Non funziona più. L'elettricità non ha una strada comune per tornare indietro.
 
-#### 3. Conclusione
+## 3. Conclusione
 
 Avete costruito un **Amplificatore Digitale**. Con un segnale piccolissimo e sicuro (Microbit), avete controllato un motore potente e separato. È così che funzionano le auto elettriche, i droni e i robot industriali!
