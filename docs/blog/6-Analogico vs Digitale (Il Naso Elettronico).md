@@ -1,5 +1,5 @@
 ---
-title: 6-Analogico vs Digitale (Il Naso Elettronico)
+title: M6-Analogico vs Digitale (Il Naso Elettronico)
 description: 'Costruire un sensore di gas funzionante, capire perché servono batterie esterne per i carichi pesanti e imparare a tarare uno strumento scientifico.'
 draft: false
 date: 2026-02-09
@@ -8,12 +8,12 @@ class_target: "2, 3, Tutti"
 image: /img/robotica/gas5.png
 ---
 
-# 6-Analogico vs Digitale (Il Naso Elettronico)
+# Modulo 6-Analogico vs Digitale (Il Naso Elettronico)
 
 **Obiettivo:** Costruire un sensore di gas funzionante, capire perché servono batterie esterne per i carichi pesanti e imparare a "tarare" uno strumento scientifico.
 
 
-### INTRODUZIONE TEORICA
+## INTRODUZIONE TEORICA
 
 **Analogico e "Rumore di Fondo"**
 
@@ -28,10 +28,10 @@ Spiega alla classe:
 3. **Il Problema dello Zero:** L'aria pura non esiste. C'è sempre un po' di resistenza. Quindi il nostro sensore non segnerà mai "0" perfetto. Dovremo usare la matematica per "tararlo" (Calibrazione).
 
 
-### MONTAGGIO DEL CIRCUITO
+## MONTAGGIO DEL CIRCUITO
 
 
-#### 1. I Componenti
+### 1. I Componenti
 
 Trascina sul tavolo di lavoro:
 
@@ -48,7 +48,7 @@ Trascina sul tavolo di lavoro:
 </center>
 
 
-#### 2. Il Cablaggio (Attenzione alla doppia alimentazione!)
+### 2. Il Cablaggio (Attenzione alla doppia alimentazione!)
 
 Dobbiamo separare i circuiti: le Batterie alimentano la Breadboard, la Micro:bit si collega solo per "spiare".
 
@@ -99,7 +99,7 @@ Collega tutti e tre i piedini superiori alla linea rossa (+) della breadboard.
 
 
 
-### IL CODICE BASE (Senza Calibrazione)
+## IL CODICE BASE (Senza Calibrazione)
 
 Per ora leggiamo i valori grezzi per vedere "l'errore".
 
@@ -121,9 +121,9 @@ Per ora leggiamo i valori grezzi per vedere "l'errore".
 </center>
 
 
-### LA CALIBRAZIONE (Teoria e Pratica)
+## LA CALIBRAZIONE (Teoria e Pratica)
 
-#### 📘 Teoria: Perché non leggo 0 e 1023?
+### 📘 Teoria: Perché non leggo 0 e 1023?
 
 Spiega alla lavagna/LIM:
 
@@ -146,7 +146,7 @@ Per leggere il valore esatto puoi inserire nel codice *mostra numero* con all'in
 </center>
 
 
-#### 🛠️ Pratica: Correggiamo il Codice
+### 🛠️ Pratica: Correggiamo il Codice
 
 Diciamo alla Micro:bit: *"Prendi il valore, togli 120 (così partiamo da zero) e disegna il grafico considerando che il massimo è 750, non 1023"*.
 
