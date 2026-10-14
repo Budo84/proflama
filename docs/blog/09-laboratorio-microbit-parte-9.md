@@ -1,5 +1,5 @@
 ---
-title: 09-Laboratorio-MicroBit-Parte-9
+title: 09-Allarme con Codice Segreto
 draft: false
 description: Allarme con codice segreto Questi tre programmi isolano i concetti di Stato, Condizione sul Sensore e Sequenza, preparando i ragazzi per unire il tutto nel progetto finale dell'Allarme con Codice Segreto.
 date: 2026-01-16
@@ -7,19 +7,19 @@ image: /img/allarme.png
 category: Microbit
 class_target: "1, 2, 3, Tutti"
 ---
-# Allarme con Codice Segreto
+# 09-Allarme con Codice Segreto
 
-### Introduciamo tre concetti per la realizzazione di un programma che simula un allarme con codice segreto
+## Introduciamo tre concetti per la realizzazione di un programma che simula un allarme con codice segreto
 
 Questi tre programmi isolano i concetti di **Stato**, **Condizione sul Sensore** e **Sequenza**, preparando i ragazzi per unire il tutto nel progetto finale dell'Allarme con Codice Segreto.
 
-#### a. Interruttore a Levetta Digitale (Gestione dello Stato)
+## a. Interruttore a Levetta Digitale (Gestione dello Stato)
 
 Questo programma introduce il concetto di *Stato* utilizzando una variabile che agisce come un interruttore ON/OFF.
 
 La variabile di stato ("stato_luce") è cruciale per il progetto dell'allarme ("stato_allarme"). Qui, 0 significa "Spento" e 1 significa "Acceso".
 
-#### Soluzione
+### Programmazione
 
 * Variabile: crea una variabile chiamata "stato_luce".
 
@@ -36,13 +36,13 @@ La variabile di stato ("stato_luce") è cruciale per il progetto dell'allarme ("
 <div style="page-break-after: always;"></div>
 
 
-#### b. Allarme Condizionato al Movimento (Trigger e Condizione)
+## b. Allarme Condizionato al Movimento (Trigger e Condizione)
 
 Questo programma introduce l'uso di un evento sensore (al vibrare) e la logica condizionale (SE...) basata sullo stato.
 
 Il Micro:bit esegue un'azione (allarme) solo se una condizione ("stato_allarme" = 1) è soddisfatta. Questo è il cuore del progetto finale.
 
-#### Soluzione
+### Programmazione
 
 * Variabile: usa la variabile "stato_luce" del progetto precedente (o rinominala "stato_allarme").
 
@@ -63,12 +63,12 @@ Il Micro:bit esegue un'azione (allarme) solo se una condizione ("stato_allarme" 
 <div style="page-break-after: always;"></div>
 
 
-#### c. Sequenza Semplice a Due Passi (Logica Sequenziale)
+## c. Sequenza Semplice a Due Passi (Logica Sequenziale)
 
 Questo programma introduce la variabile che traccia il progresso di una sequenza corretta (sequenza_codice), fondamentale per il codice segreto.
 Una variabile (passo) viene incrementata solo se l'input del pulsante è corretto. Ogni errore riporta la variabile a zero.
 
-#### Soluzione
+### Programmazione
 
 Variabile: Crea una variabile chiamata "passo_codice" (inizializzata a 0).
 
@@ -106,7 +106,7 @@ ALTRIMENTI (errore):
 <div style="page-break-after: always;"></div>
 
 
-### 3. Allarme con Codice Segreto
+## 3. Allarme con Codice Segreto
 Questo progetto è un vero "mini-sistema di sicurezza". La Microbit mostra una X se l'allarme è attivo e una faccina felice se è disattivato. L'allarme (un suono e un teschio sulla matrice Led) suona se la scheda viene mossa e se il codice segreto non viene inserito correttamente.
 
 * **Pulsante A**: inserisce il "Primo numero" del codice.
@@ -114,7 +114,7 @@ Questo progetto è un vero "mini-sistema di sicurezza". La Microbit mostra una X
 * **Matrice LED**: visualizza lo stato (luce rossa/verde) e le icone di successo/fallimento.
 * **Scuotimento**: attiva l'allarme (simulando un "furto").
 
-#### Soluzione
+### Programmazione
 
 * Stato: Definisci una variabile Stato_Allarme (attivo/disattivo).
 * Codice: Definisci una variabile codice segreto (es. una sequenza di 3 A e 3 B).
@@ -125,13 +125,13 @@ Questo progetto è un vero "mini-sistema di sicurezza". La Microbit mostra una X
 * **SE** Stato_Allarme è "Attivo", mostra un'icona di allarme (es. un teschio o una X rossa) e avvia un suono ripetuto o una vibrazione (se hai un motore collegato al pin 0).
 * **ALTRIMENTI**, non succede nulla, solo una spunta verde.
 
-##### Impostazione Iniziale Nel blocco all'avvio
+#### Impostazione Iniziale Nel blocco all'avvio
 
 * Imposta la variabile stato_allarme a 0 (Disattivo). L'allarme parte spento.
 * Mostra una faccina felice sulla matrice LED per confermare che il sistema è disattivato.
 
 
-##### Attivazione dell'Allarme
+#### Attivazione dell'Allarme
 Usiamo il pulsante A+B per attivare il sistema di sicurezza prima di allontanarci.
 
 Nel blocco all'accensione dei pulsanti A+B:
@@ -140,7 +140,7 @@ Nel blocco all'accensione dei pulsanti A+B:
 * Mostra una "X" sulla matrice LED per indicare che il sistema è armato.
 * Resetta la variabile sequenza_codice a 0.
 
-##### Inserimento del Codice Segreto (Disattivazione)
+#### Inserimento del Codice Segreto (Disattivazione)
 Questa è la parte più complessa, dove l'utente deve premere i pulsanti nella sequenza corretta per evitare l'allarme.
 
 **Passaggio 1** Nel blocco all'accensione del pulsante A:
