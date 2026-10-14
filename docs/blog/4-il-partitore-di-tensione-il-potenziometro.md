@@ -1,5 +1,5 @@
 ---
-title: 4-Il Partitore di Tensione (Il Potenziometro)
+title: M4-Il Partitore di Tensione (Il Potenziometro)
 description: 'Fino ad ora abbiamo usato l''elettricità come un interruttore Tutto acceso o Tutto spento. Ma nella vita reale vogliamo regolare le cose il volume della radio, la luminosità dello schermo, la velocità di un ventilatore. Per fare questo usiamo il Potenziometro (una resistenza variabile)'
 draft: false
 date: 2026-01-27
@@ -8,9 +8,9 @@ class_target: "2, 3, Tutti"
 image: /img/robotica/potenziometro2.png
 ---
 
-# 4-Il Partitore di Tensione (Il Potenziometro)
+# Modulo 4-Il Partitore di Tensione (Il Potenziometro)
 
-### INTRODUZIONE TEORICA
+## INTRODUZIONE TEORICA
 
 **Come dosare l'elettricità?**
 
@@ -34,9 +34,9 @@ Questo meccanismo di divisione del voltaggio si chiama **Partitore di Tensione**
 </div>
 
 
-### MONTAGGIO DEL CIRCUITO (Tinkercad)
+## MONTAGGIO DEL CIRCUITO (Tinkercad)
 
-#### 1. Prepara i Componenti
+### 1. Prepara i Componenti
 
 Trascina sul tavolo di lavoro:
 
@@ -52,7 +52,7 @@ Trascina sul tavolo di lavoro:
 	<img src="/img/robotica/potenziometro3.png" alt="windows" width="300"/>
 </center>
 
-#### 2. Il Cablaggio (Segui con attenzione!)
+### 2. Il Cablaggio (Segui con attenzione!)
 
 Il potenziometro ha 3 gambe in fila. Dobbiamo collegarle tutte.
 
@@ -86,7 +86,7 @@ Vogliamo controllare un LED esterno per vedere l'effetto dimmer.
 </center>
 
 
-### IL CODICE A BLOCCHI
+## IL CODICE A BLOCCHI
 
 Dobbiamo leggere il valore della manopola e usarlo per regolare la luminosità del LED.
 
@@ -120,16 +120,16 @@ Dobbiamo leggere il valore della manopola e usarlo per regolare la luminosità d
 
 
 
-### SIMULAZIONE E VERIFICA
+## SIMULAZIONE E VERIFICA
 
-#### 1. Avvia la Simulazione
+### 1. Avvia la Simulazione
 
 * Clicca sul tasto **Avvia simulazione**.
 * **Azione:** Clicca con il mouse sul Potenziometro blu. Apparirà un cerchio intorno alla manopola bianca. Clicca sul pallino e trascinalo per ruotare.
 
 <video src="/img/robotica/potenziometro6.mp4" autoplay loop muted playsinline width="100%"></video>
 
-#### 2. Checklist di funzionamento
+### 2. Checklist di funzionamento
 
 Fai controllare agli studenti:
 
@@ -141,12 +141,12 @@ Fai controllare agli studenti:
 
 
 
-#### 3. Risoluzione Problemi comuni
+### 3. Risoluzione Problemi comuni
 
 * **Il LED esterno si accende solo tutto o niente:** Hai usato il blocco "Scrittura **Digitale**" (0 o 1) invece di "Scrittura **Analogica**" (0-1023). Cambia il blocco nel codice.
 * **Il LED esterno non si accende mai:** Controlla se il LED è girato al contrario (Gamba lunga/corta scambiate) o se manca il filo di GND.
 
-#### 4. Sfida Rapida (Per chi finisce prima)
+### 4. Sfida Rapida (Per chi finisce prima)
 
 "Riuscite a fare in modo che il LED esterno si comporti al contrario?" (Manopola al massimo = LED spento).
 
