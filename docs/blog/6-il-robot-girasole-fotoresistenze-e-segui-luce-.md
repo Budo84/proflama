@@ -1,5 +1,5 @@
 ---
-title: 6-Il Robot Girasole (Fotoresistenze e Segui-Luce) 🌻🔦
+title: 17-Il Robot Girasole (Fotoresistenze e Segui-Luce) 🌻🔦
 description: 'Scoprire come funzionano i sensori di luce (fotoresistenze), leggere i loro valori e programmare il robot per inseguire una fonte luminosa, come una falena o un girasole'
 draft: false
 date: 2026-02-25
@@ -8,7 +8,7 @@ class_target: "1, 2, 3, Tutti"
 image: /img/robotica/minicar.png
 ---
 
-# 6-Il Robot Girasole (Fotoresistenze e Segui-Luce) 🌻🔦
+# 17-Il Robot Girasole (Fotoresistenze e Segui-Luce) 🌻🔦
 
 **Obiettivo:** Scoprire come funzionano i sensori di luce (fotoresistenze), leggere i loro valori e programmare il robot per inseguire una fonte luminosa, come una falena o un girasole.
 
