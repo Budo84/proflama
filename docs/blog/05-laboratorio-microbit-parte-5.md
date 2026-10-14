@@ -1,5 +1,5 @@
 ---
-title: 05-Laboratorio-MicroBit-Parte-5
+title: 05-Termometro-digitale-con-avviso-"Troppo-caldo"
 description: 'Termometro digitale con avviso Troppo caldo per realizzare il nostro progetto abbiamo bisogno di introdurre due concetti l''interazione con il sensore di temperatura integrato nella scheda e la logica condizionale.'
 draft: false
 date: 2026-01-28
@@ -8,7 +8,7 @@ class_target: "1, 2, 3, Tutti"
 image: /img/termometro.gif
 ---
 
-# 05-Laboratorio-MicroBit-Parte-5
+# 05-Termometro digitale con avviso "Troppo caldo-
 
 ## Termometro digitale con avviso "Troppo caldo"
 
