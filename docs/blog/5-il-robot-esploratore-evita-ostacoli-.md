@@ -1,5 +1,5 @@
 ---
-title: 5-Il Robot Esploratore (Evita-Ostacoli) 🤖
+title: 16-Il Robot Esploratore (Evita-Ostacoli) 🤖
 description: 'Integrare input (sensore) e output (motori) in un ciclo continuo per permettere al robot di navigare in autonomia in una stanza senza sbattere.'
 draft: false
 date: 2026-02-25
@@ -8,7 +8,7 @@ class_target: "1, 2, 3, Tutti"
 image: /img/robotica/minicar.png
 ---
 
-# 5-Il Robot Esploratore (Evita-Ostacoli) 🤖
+# 16-Il Robot Esploratore (Evita-Ostacoli) 🤖
 
 **Obiettivo:** Integrare input (sensore) e output (motori) in un ciclo continuo per permettere al robot di navigare in autonomia in una stanza senza sbattere.
 
