@@ -5,7 +5,7 @@ draft: false
 date: 2026-10-14
 category: Officina-Robotica
 class_target: "2, 3"
-image: /img/base-microbit-potenziometro.webp
+image: /img/robotica/base-microbit-potenziometro.webp
 ---
 
 # 5-Il potenziometro - leggere un valore analogico con il micro:bit
