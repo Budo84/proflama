@@ -10,9 +10,11 @@ Qui trovi tutte le lezioni e gli esercizi dedicati alla scheda Scratch.
 <script setup>
 import { data as posts } from './.vitepress/theme/posts.data.ts'
 
-const filteredPosts = posts.filter(post => 
-  post.category === 'Scratch' && !post.draft
-)
+const filteredPosts = posts
+  .filter(post => post.category === 'Scratch' && !post.draft)
+  .sort((a, b) =>
+    a.title.localeCompare(b.title, 'it', { numeric: true, sensitivity: 'base' })
+  )
 </script>
 
 <div class="post-list">
