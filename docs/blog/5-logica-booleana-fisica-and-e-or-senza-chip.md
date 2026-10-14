@@ -1,5 +1,5 @@
 ---
-title: 5-Logica Booleana Fisica (AND e OR senza chip)
+title: M5-Logica Booleana Fisica (AND e OR senza chip)
 description: 'I computer capiscono solo due parole: VERO (1) e FALSO (0). Combinando queste due parole, prendono decisioni complesse usando la "Logica Booleana". Oggi costruiremo due "cervelli elettrici" senza usare nessun microchip, solo interruttori. Logica Booleana AND e OR'
 draft: false
 date: 2026-01-28
@@ -8,9 +8,9 @@ class_target: "2, 3, Tutti"
 image: /img/robotica/logica-booleana00.png
 ---
 
-# 5-Logica Booleana Fisica (AND e OR senza chip)
+# Modulo 5-Logica Booleana Fisica (AND e OR senza chip)
 
-### INTRODUZIONE TEORICA
+## INTRODUZIONE TEORICA
 
 **Come ragionano le macchine?**
 
@@ -39,11 +39,11 @@ Oggi costruiremo due "cervelli elettrici" senza usare nessun microchip, solo int
 	* *Fisica:* Interruttori su strade diverse che si riuniscono (Parallelo).
 
 
-### CIRCUITO 1 - LOGICA "AND" (La Cassaforte)
+## CIRCUITO 1 - LOGICA "AND" (La Cassaforte)
 
 *In questa lezione la Micro:bit serve SOLO come batteria (Power Bank). Non scriveremo codice per la logica!*
 
-#### 1. Componenti
+### 1. Componenti
 
 * 1x **Micro:bit** (usata solo per dare corrente).
 * 1x **Breadboard** (Mini).
@@ -55,7 +55,7 @@ Oggi costruiremo due "cervelli elettrici" senza usare nessun microchip, solo int
 	<img src="/img/robotica/logica-booleana.png" alt="windows" width="400"/>
 </center>
 
-#### 2. Il Cablaggio AND (In Serie)
+### 2. Il Cablaggio AND (In Serie)
 
 Dobbiamo costringere la corrente a passare attraverso il primo bottone E POI attraverso il secondo.
 
@@ -90,7 +90,7 @@ Dobbiamo costringere la corrente a passare attraverso il primo bottone E POI att
 
 
 
-### CIRCUITO 2 - LOGICA "OR" (Il Campanello)
+## CIRCUITO 2 - LOGICA "OR" (Il Campanello)
 
 Ora modifichiamo il circuito senza smontare tutto. Vogliamo che basti premere uno qualsiasi dei due.
 
@@ -111,11 +111,11 @@ Dobbiamo creare due strade separate per la corrente.
 </center>
 
 
-### SIMULAZIONE E SFIDA
+## SIMULAZIONE E SFIDA
 
 Non serve codice speciale (la Micro:bit è sempre accesa), quindi basta cliccare **Avvia Simulazione**.
 
-#### 1. Test della Logica AND (Se hai tenuto il primo circuito)
+### 1. Test della Logica AND (Se hai tenuto il primo circuito)
 
 * Premi tasto A: **Spento**.
 * Premi tasto B: **Spento**.
@@ -124,7 +124,7 @@ Non serve codice speciale (la Micro:bit è sempre accesa), quindi basta cliccare
 
 <video src="/img/robotica/logica-booleana2.mp4" autoplay loop muted playsinline width="100%"></video>
 
-#### 2. Test della Logica OR (Se hai fatto la modifica)
+### 2. Test della Logica OR (Se hai fatto la modifica)
 
 * Premi tasto A: **Acceso**.
 * Premi tasto B: **Acceso**.
@@ -133,7 +133,7 @@ Non serve codice speciale (la Micro:bit è sempre accesa), quindi basta cliccare
 	
 <video src="/img/robotica/logica-booleana5.mp4" autoplay loop muted playsinline width="100%"></video>
 
-#### 3. Domanda Finale
+### 3. Domanda Finale
 
 "Ragazzi, le luci di Natale che se ne rompe una si spengono tutte... che logica usano? AND o OR?"
 
