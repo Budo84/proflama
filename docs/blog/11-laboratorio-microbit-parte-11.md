@@ -1,5 +1,5 @@
 ---
-title: 11-Laboratorio-microbit-parte-11
+title: 11-La Palla Calda Radioattiva
 description: 'Creare un gioco multiplayer utilizzando la radio del Microbit'
 draft: false
 date: 2026-02-08
@@ -8,7 +8,7 @@ class_target: "1, 2, 3, Tutti"
 image: /img/pallaradio2.gif
 ---
 
-# La Palla Calda Radioattiva
+# 11-La Palla Calda Radioattiva
 
 **Obiettivo:** Creare un gioco multiplayer utilizzando la radio del Micro:bit. Gli studenti impareranno a trasmettere variabili tra dispositivi e a gestire lo "stato" di un programma (Attivo/Inattivo).
 
