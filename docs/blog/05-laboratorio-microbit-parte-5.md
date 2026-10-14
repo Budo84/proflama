@@ -10,11 +10,10 @@ image: /img/termometro.gif
 
 # 05-Termometro digitale con avviso "Troppo caldo-
 
-## Termometro digitale con avviso "Troppo caldo"
 
 Per realizzare il nostro progetto abbiamo bisogno di introdurre due concetti: l'interazione con il sensore di temperatura integrato nella scheda e la logica condizionale.
 
-### Il Sensore di Temperatura Base
+## Il Sensore di Temperatura Base
 
 Questo programma si concentra unicamente sulla lettura e visualizzazione del dato proveniente dal sensore integrato del Microbit.
 
@@ -53,7 +52,7 @@ Visualizza un messaggio all'avvio per indicare che il programma è pronto.
 </div>
 
 
-### La Logica Condizionale Semplice (Allarme)
+## La Logica Condizionale Semplice (Allarme)
 Questo programma si concentra sull'uso della logica if/else per prendere decisioni basate sui dati, simulando la parte di allarme del codice finale.
 
 **Concetto Chiave**: la Decisione (If/Else)
@@ -99,7 +98,7 @@ Questo progetto introduce la lettura del sensore di temperatura e l'uso della lo
 </div>
 
 
-### Progetto Finale: Termometro digitale con avviso "Troppo caldo"
+## Progetto Finale: Termometro digitale con avviso "Troppo caldo"
 
 **Ciclo Continuo**: utilizza il blocco *forever* per leggere continuamente la temperatura.
 
