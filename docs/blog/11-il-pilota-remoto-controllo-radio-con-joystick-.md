@@ -1,5 +1,5 @@
 ---
-title: 11-Il Pilota Remoto (Controllo Radio con Joystick) 🕹️🏎️
+title: 21-Il Pilota Remoto (Controllo Radio con Joystick) 🕹️🏎️
 description: 'Leggere i valori analogici dei pin X e Y del joystick, creare una "Zona Morta" di sicurezza e far comunicare due Micro:bit usando un canale radio privato.'
 draft: false
 date: 2026-04-22
@@ -8,7 +8,7 @@ class_target: "1, 2, 3"
 image: /img/robotica/minicar-radio.webp
 ---
 
-# 11-Il Pilota Remoto (Controllo Radio con Joystick) 🕹️🏎️
+# 21-Il Pilota Remoto (Controllo Radio con Joystick) 🕹️🏎️
 
 
 ## Fase 1: Brainstorming e Teoria 🧠
