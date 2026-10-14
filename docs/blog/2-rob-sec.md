@@ -1,17 +1,18 @@
 ---
-title: 2-Il Condensatore
+title: M2-Il Condensatore
 draft: false
 date: 2026-01-19
 image: /img/robotica/condensatore1.png
 category: MicroBit
-class_target: ["2","3"]
+class_target: ["2","3","Tutti"]
 description: Visualizzare la carica e scarica dell'energia elettrica usando i LED della Micro:bit come indicatore di livello.
 ---
 **Obiettivo:** Visualizzare la carica e scarica dell'energia elettrica usando i LED della Micro:bit come indicatore di livello.
 
 ---
+# M2-Il Condensatore
 
-### INTRODUZIONE TEORICA
+## INTRODUZIONE TEORICA
 
 **L'analogia dell'acqua**
 
@@ -28,11 +29,11 @@ description: Visualizzare la carica e scarica dell'energia elettrica usando i LE
 
 In elettronica, il condensatore accumula energia.
 
-### MONTAGGIO DEL CIRCUITO (Tinkercad)
+## MONTAGGIO DEL CIRCUITO (Tinkercad)
 
 **Tinkercad**
 
-#### 1. Prepara i Componenti (Attenzione ai valori!)
+### 1. Prepara i Componenti (Attenzione ai valori!)
 
 Trascina questi componenti sul tavolo di lavoro e **modifica subito i loro valori** cliccandoci sopra:
 
@@ -44,7 +45,7 @@ Trascina questi componenti sul tavolo di lavoro e **modifica subito i loro valor
 * 1x **Resistenza** (per il LED). Imposta a **$220\Omega$** .
 
 
-#### 2. Il Cablaggio
+### 2. Il Cablaggio
 
 Seguiamo il percorso della corrente:
 
@@ -67,7 +68,7 @@ Seguiamo il percorso della corrente:
 </center>
 
 
-### IL CODICE
+## IL CODICE
 
 Andiamo su "Codice" -> "Blocchi".
 
@@ -98,9 +99,9 @@ Andiamo su "Codice" -> "Blocchi".
 	<img src="/img/robotica/condensatore2.png" alt="windows" width="300"/>
 </center>
 
-### SIMULAZIONE E SFIDA
+## SIMULAZIONE E SFIDA
 
-#### 1. Avvia la Simulazione
+### 1. Avvia la Simulazione
 
 Clicca "Avvia".
 
@@ -112,13 +113,13 @@ Clicca "Avvia".
 	<img src="/img/robotica/condensatore.gif" alt="windows" width="300"/>
 </center>
 
-#### 2. Risoluzione Problemi (Se non va)
+### 2. Risoluzione Problemi (Se non va)
 
 * *Si riempie troppo veloce (non vedo l'animazione):* Hai messo il condensatore a 1000 ? Se è a 1  è istantaneo. Hai messo la resistenza P0 a 1 ?
 * *I LED non arrivano in cima:* Nel blocco "grafico a barre", abbassa il numero da 700 a **600**.
 * *I LED sono sempre tutti accesi:* Aumenta il numero da 700 a **800**.
 
-#### 3. La Sfida Finale (Per chi finisce prima)
+## 3. La Sfida Finale (Per chi finisce prima)
 
 "Ora cambiate il condensatore da 1000  a **100** e riavviate."
 
