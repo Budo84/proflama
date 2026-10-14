@@ -1,5 +1,5 @@
 ---
-title: 4-Primi Passi e Curve (Controllo Motori)
+title: 15-Primi Passi e Curve (Controllo Motori)
 description: 'Comprendere il sistema di trazione a due ruote (guida differenziale), imparare a controllare la velocità e la direzione dei motori e creare una sequenza di movimento (Avanti, Indietro, Destra, Sinistra). Imparare a far ruotare il robot agendo sulla velocità dei singoli motori.'
 draft: false
 date: 2026-02-25
@@ -8,7 +8,7 @@ class_target: "1, 2, 3, Tutti"
 image: /img/robotica/minicar.png
 ---
 
-# 4-Primi Passi e Curve (Controllo Motori) 🏎️
+# 15-Primi Passi e Curve (Controllo Motori) 🏎️
 
 **Obiettivo:** Comprendere il sistema di trazione a due ruote (guida differenziale), imparare a controllare la velocità e la direzione dei motori e creare una sequenza di movimento (Avanti, Indietro, Destra, Sinistra). Imparare a far ruotare il robot agendo sulla velocità dei singoli motori.
 
