@@ -1,5 +1,5 @@
 ---
-title: 12-Il Parcheggio Smart (Accesso Automatizzato con Conteggio) 🅿️🤖
+title: 22-Il Parcheggio Smart (Accesso Automatizzato con Conteggio) 🅿️🤖
 description: 'Comprendere il controllo angolare di un servo, usare variabili come contatori e gestire la logica "a cascata" (if-then-else if) per realizzare un parcheggio smart.'
 draft: false
 date: 2026-05-07
@@ -7,7 +7,7 @@ category: Microbit
 class_target: "1, 2, 3"
 image: /img/robotica/parcheggio.webp
 ---
-# 12-Il Parcheggio Smart (Accesso Automatizzato con Conteggio) 🅿️🤖
+# 22-Il Parcheggio Smart (Accesso Automatizzato con Conteggio) 🅿️🤖
 
 **Hardware:**  Micro:bit + Microcar, 1x Servo SG90 (sbarra su P10), Sensore Ultrasuoni.
 
