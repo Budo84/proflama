@@ -1,5 +1,5 @@
 ---
-title: 04-Laboratorio-MicroBit-Parte-4
+title: 04-Dado-elettronico-Numeri-Random
 draft: false
 date: 2026-01-14T23:17:00.000+01:00
 image: /img/dado-elettronico.gif
@@ -7,11 +7,11 @@ category: Microbit
 class_target: "1,2,3,Tutti" 
 description: Dado Elettronico. La Casualità nel Codice. I numeri casuali sono fondamentali per creare giochi, simulazioni, e qualsiasi programma che necessiti di risultati imprevedibili, come il programma del dado.
 ---
-## Dado Elettronico
+# Dado elettronico Numeri Random
 
 Vogliamo realizzare un dado elettronico che funzioni muovendo microbit. Per fare questo introduciamo un concetto importante: la generazione di numeri casuali (random).
 
-### La Casualità nel Codice
+## La Casualità nel Codice
 
 I numeri casuali (o "random") sono fondamentali per creare giochi, simulazioni, e qualsiasi programma che necessiti di risultati imprevedibili, come il programma del dado.
 
@@ -56,7 +56,7 @@ Simuliamo il lancio di una moneta. Abbiamo bisogno di due risultati: Testa o Cro
 </div>
 
 
-### Personalizzare gli Intervalli
+## Personalizzare gli Intervalli
 
 Nel programma del dado, l'intervallo è 1 a 6. Ma possiamo usare numeri casuali per molti scopi.
 
@@ -82,7 +82,7 @@ Supponiamo di voler simulare la temperatura in una stanza, che può variare tra 
 </div>
 
 
-### Applicazione Avanzata: Coordinate Casuali
+## Applicazione Avanzata: Coordinate Casuali
 
 I numeri casuali non servono solo a generare numeri in sequenza, ma possono essere usati per generare coordinate per il display LED.
 
@@ -122,7 +122,7 @@ In sintesi, i numeri casuali sono il tuo strumento per introdurre l'imprevedibil
 
 Questo è un progetto base per introdurre l'uso del sensore di movimento e della generazione casuale.
 
-### Progetto finale: Dado elettronico
+## Progetto finale: Dado elettronico
 
 * **Trigger**: utilizza il blocco quando scosso. Quando il Microbit viene agitato, si attiva il lancio del dado.
 
