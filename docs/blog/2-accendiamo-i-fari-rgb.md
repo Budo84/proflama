@@ -1,5 +1,5 @@
 ---
-title: 2-Accendiamo i Fari RGB
+title: 13-Accendiamo i Fari RGB
 description: 'Imparare a controllare i due fari LED RGB del robot, comprendendo la differenza tra l''impostazione di un colore e la sua effettiva visualizzazione.'
 draft: false
 date: 2026-02-25
@@ -8,7 +8,7 @@ class_target: "1, 2, 3, Tutti"
 image: /img/robotica/minicar.png
 ---
 
-# 2-Accendiamo i Fari RGB
+# 13-Accendiamo i Fari RGB
 
 **Obiettivo:** Imparare a controllare i due fari LED RGB del robot, comprendendo la differenza tra l'impostazione di un colore e la sua effettiva visualizzazione.
 
