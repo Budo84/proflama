@@ -1,5 +1,5 @@
 ---
-title: 1-La Legge di Ohm e i Segreti della Breadboard
+title: M1-La Legge di Ohm e i Segreti della Breadboard
 description: 'Comprendere come limitare il flusso di corrente per proteggere i componenti e imparare a usare la breadboard per prototipare circuiti senza saldature'
 draft: false
 date: 2026-02-03
