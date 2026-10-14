@@ -1,5 +1,5 @@
 ---
-title: 7-Il Robot Esploratore 2 (Evita-Ostacoli) 🤖
+title: 18-Il Robot Esploratore 2 (Evita-Ostacoli) 🤖
 description: 'Progettare, codificare e calibrare un veicolo a guida autonoma. Comprendere il paradigma Sense Think Act(Senti Pensa Agisci) e il concetto di "Tuning" (calibrazione) dei parametri fisici.'
 draft: false
 date: 2026-02-25
@@ -8,7 +8,7 @@ class_target: "1, 2, 3, Tutti"
 image: /img/robotica/minicar.png
 ---
 
-# 7-Il Robot Esploratore 2 (Evita-Ostacoli) 🤖
+# 18-Il Robot Esploratore 2 (Evita-Ostacoli) 🤖
 
 **Obiettivo:** Progettare, codificare e calibrare un veicolo a guida autonoma. Comprendere il paradigma *Sense-Think-Act* (Senti-Pensa-Agisci) e il concetto di *"Tuning"* (calibrazione) dei parametri fisici.
 
