@@ -43,7 +43,7 @@ La **frequenza** (in Hertz) è quante volte al secondo vibra l'aria: più è alt
 3. Per il buzzer **attivo** usa lo stesso collegamento.
 
 <center>
-	<img src="/img/robotica/base-arduino-buzzer-cablaggio.jpg" alt="buzzer collegato al pin 8 e a GND di Arduino su breadboard" width="300"/>
+	<img src="/img/robotica/base-arduino-buzzer-cablaggio.webp" alt="buzzer collegato al pin 8 e a GND di Arduino su breadboard" width="300"/>
 </center>
 
 ::: warning ⚠️ ATTENZIONE
