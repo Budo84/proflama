@@ -16,7 +16,7 @@ image: /img/robotica/base-arduino-buzzer.webp
 - Buzzer attivo (nota fissa) e passivo (nota comandata)
 - Frequenza del suono in Hertz
 - Funzioni `tone()` e `noTone()`
-- Pulsante con `INPUT_PULLUP`: premuto = LOW
+- Pulsante con resistenza di pull-down: premuto = HIGH
 
 ## Fase 1: Teoria 🧠
 
@@ -29,7 +29,7 @@ La **frequenza** (in Hertz) è quante volte al secondo vibra l'aria: più è alt
 
 In questa lezione usiamo un buzzer **passivo** e lo comandiamo con un **pulsante**: la funzione `tone(pin, frequenza)` fa partire il suono, `noTone(pin)` lo ferma.
 
-Il pulsante lo colleghiamo tra il pin **D7** e **GND**, senza resistore esterno, usando il **pull-up interno** con `INPUT_PULLUP`. Con questo collegamento il pin legge **HIGH** a riposo e **LOW** quando il pulsante è premuto.
+Il pulsante lo leggiamo con una resistenza di **pull-down** da 10 kΩ: un lato del pulsante va a **5V**, l'altro lato va al pin **D7** e, tramite il resistore, a **GND**. A riposo il resistore tiene il pin a **LOW**; quando premiamo il pulsante arrivano i 5V e il pin legge **HIGH**.
 
 - **Domanda alla classe:** *"Come possiamo capire se un buzzer è attivo o passivo senza guardare la scatola?"*
 
@@ -40,15 +40,18 @@ Il pulsante lo colleghiamo tra il pin **D7** e **GND**, senza resistore esterno,
 * 1x **Breadboard**
 * 1x **Buzzer passivo**
 * 1x **Pulsante** a 4 zampe
-* 4x Cavi jumper maschio-maschio
+* 1x **Resistore da 10 kΩ** (marrone-nero-arancio)
+* 6x Cavi jumper maschio-maschio
 
 #### Cablaggio
 1. Collega la gamba **+** del buzzer (la più lunga o quella marcata) al pin digitale **D4**.
 2. Collega l'altra gamba del buzzer al binario **-** e al pin **GND**.
-3. Monta il pulsante a cavallo dell'incavo centrale della breadboard: un lato → pin **D7**; l'altro lato → binario **-** (**GND**).
+3. Monta il pulsante a cavallo dell'incavo centrale della breadboard e usa due terminali **in diagonale** (angoli opposti): due terminali dello stesso lato sono già uniti dentro il pulsante.
+4. Un terminale del pulsante → **5V** (binario **+**).
+5. L'altro terminale → pin **D7** e, sulla stessa riga, il resistore da **10 kΩ** verso il binario **-** (**GND**).
 
 <center>
-	<img src="/img/robotica/base-arduino-buzzer-cablaggio.webp" alt="buzzer passivo sul pin D4 e pulsante sul pin D7 con l'altro lato a GND su breadboard con Arduino" width="300"/>
+	<img src="/img/robotica/base-arduino-buzzer-cablaggio.webp" alt="buzzer passivo sul pin D4 e pulsante sul pin D7 con resistenza di pull-down da 10 kiloohm su breadboard con Arduino" width="300"/>
 </center>
 
 ::: warning ⚠️ ATTENZIONE
@@ -57,7 +60,7 @@ Se il buzzer è **attivo** il collegamento è lo stesso, ma suonerà sempre la s
 
 ## Fase 3: Progettazione dello Pseudocodice 📝
 
-- *All'avvio* -> pin 4 come uscita, pin 7 come ingresso con pull-up
+- *All'avvio* -> pin 4 come uscita, pin 7 come ingresso
 - *Per sempre* -> se il pulsante è premuto suona a 1000 Hz, altrimenti stai in silenzio
 
 ## Fase 4: Scrittura del Codice 💻
@@ -65,25 +68,25 @@ Se il buzzer è **attivo** il collegamento è lo stesso, ma suonerà sempre la s
 | Sezione | Istruzione | Funzione |
 |---|---|---|
 | `setup()` | `pinMode(4, OUTPUT);` | Il pin 4 pilota il buzzer |
-| `setup()` | `pinMode(7, INPUT_PULLUP);` | Il pin 7 legge il pulsante con pull-up interno |
-| `loop()` | `digitalRead(7) == LOW` | Vero quando il pulsante è premuto |
+| `setup()` | `pinMode(7, INPUT);` | Il pin 7 legge il pulsante (con pull-down esterno) |
+| `loop()` | `digitalRead(7) == HIGH` | Vero quando il pulsante è premuto |
 | `loop()` | `tone(4, 1000);` | Il buzzer suona a 1000 Hz |
 | `loop()` | `noTone(4);` | Ferma il suono |
 
 **Il buzzer suona finché tieni premuto il pulsante**
 
 ```cpp
-// Buzzer passivo sul pin D4, pulsante sul pin D7 (l'altro lato va a GND)
+// Buzzer passivo sul pin D4, pulsante sul pin D7 (5V sul pulsante, resistenza da 10k verso GND)
 const int pinBuzzer = 4;
 const int pinPulsante = 7;
 
 void setup() {
   pinMode(pinBuzzer, OUTPUT);
-  pinMode(pinPulsante, INPUT_PULLUP);
+  pinMode(pinPulsante, INPUT);
 }
 
 void loop() {
-  if (digitalRead(pinPulsante) == LOW) {
+  if (digitalRead(pinPulsante) == HIGH) {
     // Pulsante premuto: il buzzer suona a 1000 Hz
     tone(pinBuzzer, 1000);
   } else {
@@ -101,11 +104,11 @@ const int pinPulsante = 7;
 int note[] = {262, 294, 330, 349, 392, 440, 494, 523};
 
 void setup() {
-  pinMode(pinPulsante, INPUT_PULLUP);
+  pinMode(pinPulsante, INPUT);
 }
 
 void loop() {
-  if (digitalRead(pinPulsante) == LOW) {
+  if (digitalRead(pinPulsante) == HIGH) {
     for (int i = 0; i < 8; i++) {
       tone(pinBuzzer, note[i], 400);
       delay(500);
@@ -117,7 +120,7 @@ void loop() {
 **Sfida finale: la melodia (Fra Martino) con note e durate**
 
 ```cpp
-// Buzzer passivo sul pin D4, pulsante sul pin D7 (l'altro lato va a GND)
+// Buzzer passivo sul pin D4, pulsante sul pin D7 (5V sul pulsante, resistenza da 10k verso GND)
 const int pinBuzzer = 4;
 const int pinPulsante = 7;
 
@@ -142,11 +145,11 @@ int durate[]  = {4, 4, 4, 4,  4, 4, 4, 4,
 const int NUM_NOTE = sizeof(melodia) / sizeof(melodia[0]);
 
 void setup() {
-  pinMode(pinPulsante, INPUT_PULLUP);
+  pinMode(pinPulsante, INPUT);
 }
 
 void loop() {
-  if (digitalRead(pinPulsante) == LOW) {
+  if (digitalRead(pinPulsante) == HIGH) {
     for (int i = 0; i < NUM_NOTE; i++) {
       int durataNota = 1000 / durate[i];       // 4 = 250 ms, 2 = 500 ms, 8 = 125 ms
       tone(pinBuzzer, melodia[i], durataNota);
@@ -160,7 +163,7 @@ void loop() {
 
 ## Fase 5: Verifica 🔍
 
-Tieni premuto il pulsante: senti un suono continuo a 1000 Hz. Rilascialo: silenzio. Se il suono parte da solo, controlla che il pulsante abbia un lato su D7 e l'altro su GND. Se non suona mai, controlla il verso del buzzer e il pin D4. Nella sfida finale premi il pulsante e ascolti **Fra Martino**: se una nota sembra stonata, controlla la frequenza corrispondente nell'elenco delle note.
+Tieni premuto il pulsante: senti un suono continuo a 1000 Hz. Rilascialo: silenzio. Se il suono parte da solo o non parte mai, controlla che un terminale del pulsante vada a 5V e che il resistore da 10 kΩ colleghi D7 a GND. Se non suona mai, controlla il verso del buzzer e il pin D4. Nella sfida finale premi il pulsante e ascolti **Fra Martino**: se una nota sembra stonata, controlla la frequenza corrispondente nell'elenco delle note.
 
 ::: tip 💡 CONSIGLIO
 Nella melodia la **durata** di ogni nota è 1000 diviso il valore nell'array: 4 = quarto (250 ms), 2 = metà (500 ms), 8 = ottavo (125 ms). Cambia i valori per fare una melodia più veloce o più lenta, oppure scrivi la tua canzone preferita.
@@ -169,5 +172,5 @@ Cambia `1000` in `500` e poi in `2000`: la nota diventa più grave o più acuta.
 :::
 
 ::: info ℹ️ PER ANDARE OLTRE
-Il pulsante può essere letto anche con una resistenza di **pull-down** esterna (10 kΩ verso GND e l'altro lato a 5V): in quel caso premuto = HIGH. Lo trovi nella lezione sul pulsante. Con il collegamento a GND di questa lezione, invece, serve `INPUT_PULLUP` e il confronto con `LOW`.
+Si può leggere il pulsante anche **senza** resistore esterno: basta collegarlo tra D7 e GND e scrivere `pinMode(7, INPUT_PULLUP);` con `digitalRead(7) == LOW` come condizione. Attenzione: **non** mischiare i due metodi. Con il resistore di pull-down e `INPUT_PULLUP` insieme il pin resta basso e il buzzer suona anche senza premere.
 :::
