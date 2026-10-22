@@ -48,7 +48,7 @@ Il pulsante lo colleghiamo tra il pin **D7** e **GND**, senza resistore esterno,
 3. Monta il pulsante a cavallo dell'incavo centrale della breadboard: un lato → pin **D7**; l'altro lato → binario **-** (**GND**).
 
 <center>
-	<img src="/img/robotica/base-arduino-buzzer-cablaggio.jpg" alt="buzzer passivo sul pin D4 e pulsante sul pin D7 con l'altro lato a GND su breadboard con Arduino" width="300"/>
+	<img src="/img/robotica/base-arduino-buzzer-cablaggio.webp" alt="buzzer passivo sul pin D4 e pulsante sul pin D7 con l'altro lato a GND su breadboard con Arduino" width="300"/>
 </center>
 
 ::: warning ⚠️ ATTENZIONE
