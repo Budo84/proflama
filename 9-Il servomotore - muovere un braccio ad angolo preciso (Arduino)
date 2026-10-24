@@ -1,0 +1,118 @@
+---
+title: 
+description: 'Controlliamo un servomotore SG90 con la libreria Servo, scegliendo l''''angolo da 0 a 180 gradi.'
+draft: false
+date: 2026-10-24
+category: Officina-Robotica
+class_target: "2, 3"
+image: /img/robotica/base-arduino-servo.webp
+---
+
+# 
+
+**Obiettivo:** Collegare un **servomotore** e comandarne l'angolo con la libreria **Servo**, anche con un potenziometro.
+
+**Concetti Chiave:**
+- Differenza tra motore DC e servomotore
+- Segnale PWM di posizione
+- Libreria `Servo`
+- Angolo da 0° a 180°
+
+## Fase 1: Teoria 🧠
+
+Un **servomotore** (come l'SG90) contiene un piccolo motore, un riduttore e un circuito che controlla la posizione. Non gira all'infinito: si ferma all'**angolo** che gli diciamo, tra **0° e 180°**.
+
+Ha tre fili:
+
+- **Marrone** (o nero): **GND**
+- **Rosso**: **5V**
+- **Arancione** (o giallo): **segnale** → pin digitale di Arduino
+
+Per comandarlo si usa la libreria **Servo**, già inclusa nell'IDE.
+
+- **Domanda alla classe:** *"Dove vediamo servomotori nella vita reale? Pensate a robot, aerei radiocomandati, sterzi."*
+
+## Fase 2: Montaggio 🔌
+
+#### Componenti
+* 1x **Arduino Uno**
+* 1x **Servomotore SG90**
+* 1x **Potenziometro 10 kΩ** (per la seconda prova)
+* Cavi jumper maschio-maschio
+
+#### Cablaggio
+1. Filo **marrone** → **GND**.
+2. Filo **rosso** → **5V**.
+3. Filo **arancione** → pin digitale **9**.
+4. Per la seconda prova: potenziometro come nella lezione precedente (centrale su **A0**).
+
+<center>
+	<img src="/img/robotica/base-arduino-servo-cablaggio.webp" alt="servomotore SG90 con fili collegati a GND, 5V e al pin 9 di Arduino" width="300"/>
+</center>
+
+::: warning ⚠️ ATTENZIONE
+Un solo servo piccolo si può alimentare da Arduino. Con due o più servo, o servo più grandi, serve un'alimentazione esterna (con il GND in comune con Arduino), altrimenti Arduino si riavvia.
+:::
+
+## Fase 3: Progettazione dello Pseudocodice 📝
+
+- *Prima prova* -> sposta il servo da 0° a 180° e ritorno, un grado alla volta
+- *Seconda prova* -> leggi il potenziometro e imposta l'angolo corrispondente
+
+## Fase 4: Scrittura del Codice 💻
+
+| Sezione | Istruzione | Funzione |
+|---|---|---|
+| inizio | `#include <Servo.h>` | Carica la libreria |
+| `setup()` | `servo.attach(9);` | Dice quale pin comanda il servo |
+| `loop()` | `servo.write(angolo);` | Muove il servo all'angolo indicato |
+
+**Sweep: avanti e indietro**
+
+```cpp
+#include <Servo.h>
+
+Servo servo;
+
+void setup() {
+  servo.attach(9);
+}
+
+void loop() {
+  for (int angolo = 0; angolo <= 180; angolo++) {
+    servo.write(angolo);
+    delay(15);
+  }
+  for (int angolo = 180; angolo >= 0; angolo--) {
+    servo.write(angolo);
+    delay(15);
+  }
+}
+```
+
+**Controllo con il potenziometro**
+
+```cpp
+#include <Servo.h>
+
+Servo servo;
+
+void setup() {
+  servo.attach(9);
+}
+
+void loop() {
+  int valore = analogRead(A0);
+  int angolo = map(valore, 0, 1023, 0, 180);
+  servo.write(angolo);
+  delay(15);
+}
+```
+
+## Fase 5: Verifica 🔍
+
+Nella prima prova il braccetto del servo oscilla avanti e indietro. Nella seconda segue la manopola del potenziometro. Se vibra a fine corsa, riduci l'intervallo (ad esempio da 10° a 170°).
+
+::: tip 💡 CONSIGLIO
+Incolla una cannuccia o un pezzo di cartoncino sul braccetto: diventa una lancetta, e l'angolo si vede meglio.
+:::
