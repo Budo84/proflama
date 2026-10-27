@@ -8,7 +8,7 @@ class_target: "2, 3"
 image: /img/robotica/base-arduino-servo.webp
 ---
 
-# 
+# 9-Il servomotore - muovere un braccio ad angolo preciso (Arduino)
 
 **Obiettivo:** Collegare un **servomotore** e comandarne l'angolo con la libreria **Servo**, anche con un potenziometro.
 
