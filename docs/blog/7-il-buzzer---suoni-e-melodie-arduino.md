@@ -161,6 +161,60 @@ void loop() {
 }
 ```
 
+**Sfida finale: la melodia (Jingle Bells) con note e durate**
+
+```cpp
+// Melodia: Jingle Bells
+// Buzzer passivo su D8, pulsante su D2.
+// Per cambiare brano modifica gli array melodia[] e durata[].
+
+const int PIN_BUZZER = 8;
+const int PIN_PULSANTE = 2;
+
+// Frequenze delle note in Hz (C4 = do centrale)
+#define REST 0
+#define NOTE_C4 262
+#define NOTE_D4 294
+#define NOTE_E4 330
+#define NOTE_F4 349
+#define NOTE_G4 392
+
+const int TEMPO = 130;   // battiti al minuto (una semiminima = 4 unità)
+
+int melodia[] = {
+  NOTE_E4, NOTE_E4, NOTE_E4, NOTE_E4, NOTE_E4, NOTE_E4, NOTE_E4, NOTE_G4,
+  NOTE_C4, NOTE_D4, NOTE_E4, NOTE_F4, NOTE_F4, NOTE_F4, NOTE_F4, NOTE_F4,
+  NOTE_E4, NOTE_E4, NOTE_E4, NOTE_E4, NOTE_E4, NOTE_D4, NOTE_D4, NOTE_E4,
+  NOTE_D4, NOTE_G4
+};
+// durate in unità (semicrome): 4 = semiminima, 2 = croma, 8 = minima
+int durata[] = {
+  4, 4, 8, 4, 4, 8, 4, 4, 6, 2, 16, 4, 4, 6, 2, 4,
+  4, 4, 2, 2, 4, 4, 4, 4, 8, 8
+};
+
+void setup() {
+  pinMode(PIN_BUZZER, OUTPUT);
+  pinMode(PIN_PULSANTE, INPUT_PULLUP);
+}
+
+void suona() {
+  int totale = sizeof(melodia) / sizeof(melodia[0]);
+  for (int i = 0; i < totale; i++) {
+    long ms = (long)durata[i] * 15000 / TEMPO;   // durata della nota in millisecondi
+    if (melodia[i] > 0) tone(PIN_BUZZER, melodia[i], ms * 9 / 10);
+    delay(ms);
+  }
+  noTone(PIN_BUZZER);
+}
+
+void loop() {
+  if (digitalRead(PIN_PULSANTE) == LOW) {   // pulsante premuto
+    suona();
+  }
+}
+```
+
 ## Fase 5: Verifica 🔍
 
 Tieni premuto il pulsante: senti un suono continuo a 1000 Hz. Rilascialo: silenzio. Se il suono parte da solo o non parte mai, controlla che un terminale del pulsante vada a 5V e che il resistore da 10 kΩ colleghi D7 a GND. Se non suona mai, controlla il verso del buzzer e il pin D4. Nella sfida finale premi il pulsante e ascolti **Fra Martino**: se una nota sembra stonata, controlla la frequenza corrispondente nell'elenco delle note.
