@@ -1,5 +1,5 @@
 ---
-title: 11-Laboratorio pre-Microbit-L'Indovina Numeri (Concetto: Variabili e Input Utente)
+title: 11-Laboratorio pre-Microbit-L'Indovina Numeri (Variabili e Input Utente)
 description: 'Questo progetto insegna a gestire le variabili e a prendere decisioni in base all''input esterno (in questo caso, l''utente che digita; sulla microbit, l''input sarà il sensore o un pulsante).'
 draft: false
 date: 2026-10-28
