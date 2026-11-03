@@ -79,6 +79,34 @@ export default defineConfig({
         ]
       }
     ],
+    // Ricerca integrata (funziona offline, nessun servizio esterno)
+    search: {
+      provider: 'local',
+      options: {
+        locales: {
+          root: {
+            translations: {
+              button: { buttonText: 'Cerca', buttonAriaLabel: 'Cerca nel sito' },
+              modal: {
+                displayDetails: 'Mostra dettagli',
+                resetButtonTitle: 'Cancella ricerca',
+                backButtonTitle: 'Chiudi ricerca',
+                noResultsText: 'Nessun risultato per',
+                footer: {
+                  selectText: 'seleziona',
+                  selectKeyAriaLabel: 'invio',
+                  navigateText: 'naviga',
+                  navigateUpKeyAriaLabel: 'freccia su',
+                  navigateDownKeyAriaLabel: 'freccia giù',
+                  closeText: 'chiudi',
+                  closeKeyAriaLabel: 'esc'
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     socialLinks: [
       { icon: 'github', link: 'https://github.com/budo84' }
     ]
