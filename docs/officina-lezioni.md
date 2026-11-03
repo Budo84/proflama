@@ -10,26 +10,57 @@ Qui trovi tutte le lezioni di preparazione per affrontare il tuo progetto di rob
 <script setup>
 import { data as posts } from './.vitepress/theme/posts.data.ts'
 
-const filteredPosts = posts
-  .filter(post => post.category === 'Officina-Robotica' && !post.draft)
-  .sort((a, b) =>
-    a.title.localeCompare(b.title, 'it', { numeric: true, sensitivity: 'base' })
-  )
+const ordina = (a, b) =>
+  a.title.localeCompare(b.title, 'it', { numeric: true, sensitivity: 'base' })
+
+const officina = posts.filter(p => p.category === 'Officina-Robotica' && !p.draft)
+
+// Se nel titolo compare "micro:bit" o "microbit" -> colonna micro:bit, altrimenti Arduino
+const isMicrobit = p => /micro:?bit/i.test(p.title)
+
+const lezioniArduino = officina.filter(p => !isMicrobit(p)).sort(ordina)
+const lezioniMicrobit = officina.filter(isMicrobit).sort(ordina)
 </script>
 
-<div class="post-list">
-  <div v-for="post in filteredPosts" :key="post.url" class="post-item">
-    <a :href="post.url" class="post-link">
-      <div v-if="post.image" class="post-image"><img :src="post.image" :alt="post.title" /></div>
-      <div class="post-content">
-        <h3>{{ post.title }}</h3>
-        <p v-if="post.date" class="date">{{ new Date(post.date).toLocaleDateString('it-IT') }}</p>
+<div class="two-cols">
+  <section>
+    <h2 class="col-title">🟩 Arduino</h2>
+    <div class="post-list">
+      <div v-for="post in lezioniArduino" :key="post.url" class="post-item">
+        <a :href="post.url" class="post-link">
+          <div v-if="post.image" class="post-image"><img :src="post.image" :alt="post.title" /></div>
+          <div class="post-content">
+            <h3>{{ post.title }}</h3>
+            <p v-if="post.date" class="date">{{ new Date(post.date).toLocaleDateString('it-IT') }}</p>
+          </div>
+        </a>
       </div>
-    </a>
-  </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="col-title">🟦 micro:bit</h2>
+    <div class="post-list">
+      <div v-for="post in lezioniMicrobit" :key="post.url" class="post-item">
+        <a :href="post.url" class="post-link">
+          <div v-if="post.image" class="post-image"><img :src="post.image" :alt="post.title" /></div>
+          <div class="post-content">
+            <h3>{{ post.title }}</h3>
+            <p v-if="post.date" class="date">{{ new Date(post.date).toLocaleDateString('it-IT') }}</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
 </div>
 
 <style>
+.two-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
+.col-title { margin: 0 0 8px; border-top: none; padding-top: 0; }
+/* nelle colonne strette l'immagine va sopra il testo */
+.two-cols .post-link { flex-direction: column; align-items: flex-start; }
+.two-cols .post-image { width: 100%; height: 130px; border-right: none; border-bottom: 1px solid var(--vp-c-divider); }
+@media (max-width: 800px) { .two-cols { grid-template-columns: 1fr; } }
 .post-list { margin-top: 20px; }
 .post-item {
   margin-bottom: 20px;
