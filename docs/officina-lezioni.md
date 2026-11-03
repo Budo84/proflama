@@ -39,7 +39,7 @@ const lezioniMicrobit = officina.filter(isMicrobit).sort(ordina)
   </section>
 
   <section>
-    <h2 class="col-title">🟦 micro:bit</h2>
+    <h2 class="col-title">🟦 Micro:bit</h2>
     <div class="post-list">
       <div v-for="post in lezioniMicrobit" :key="post.url" class="post-item">
         <a :href="post.url" class="post-link">
