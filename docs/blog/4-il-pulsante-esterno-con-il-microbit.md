@@ -1,5 +1,5 @@
 ---
-title: 4-Il pulsante esterno con il micro:bit
+title: 4-Il pulsante esterno (micro:bit)
 description: 'Leggiamo un pulsante esterno con un pin del micro:bit e il pull-up interno, e lo usiamo per accendere un LED.'
 draft: false
 date: 2026-10-09
@@ -8,7 +8,7 @@ class_target: "2, 3"
 image: /img/robotica/base-microbit-pulsante-cablaggio.webp
 ---
 
-# 4-Il pulsante esterno con il micro:bit
+# 4-Il pulsante esterno (micro:bit)
 
 **Obiettivo:** Leggere un **pulsante esterno** con un ingresso digitale e usarlo per accendere un LED, sfruttando il **pull-up** interno del micro:bit.
 
