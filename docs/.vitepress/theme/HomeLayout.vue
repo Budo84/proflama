@@ -45,10 +45,10 @@ onMounted(() => {
 // 2. Colonne per categoria: 4 articoli più recenti (già ordinati per data) per ciascuna
 const PER_COLONNA = 4
 const colonne = [
-  { nome: 'Microbit', titolo: 'micro:bit', icona: '🟦', link: '/microbit' },
+  { nome: 'Microbit', titolo: 'Micro:bit', icona: '🟦', link: '/microbit' },
   { nome: 'Arduino',  titolo: 'Arduino',   icona: '🟩', link: '/arduino' },
   { nome: 'Scratch',  titolo: 'Scratch',   icona: '🟧', link: '/scratch' },
-  { nome: 'Mbot',     titolo: 'mBot',      icona: '🟪', link: '/mbot' }
+  { nome: 'Mbot',     titolo: 'Mbot',      icona: '🟪', link: '/mbot' }
 ].map(c => {
   const tutti = publicPosts.filter(p => p.category === c.nome)
   return { ...c, articoli: tutti.slice(0, PER_COLONNA), altri: tutti.length - PER_COLONNA }
