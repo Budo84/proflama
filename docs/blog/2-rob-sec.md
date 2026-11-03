@@ -3,7 +3,7 @@ title: M2-Il Condensatore
 draft: false
 date: 2026-01-19
 image: /img/robotica/condensatore1.png
-category: MicroBit
+category: Microbit
 class_target: ["2","3","Tutti"]
 description: Visualizzare la carica e scarica dell'energia elettrica usando i LED della Micro:bit come indicatore di livello.
 ---
