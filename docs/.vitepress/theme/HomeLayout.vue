@@ -1,7 +1,7 @@
 <script setup>
 // Importiamo tutti i dati (sia pubblici che privati) dal file centrale
 import { data as allPosts } from './posts.data.ts'
-import { ref, onMounted } from 'vue'   // <-- aggiungi questa riga in cima
+import { ref, onMounted } from 'vue'
 import DefaultTheme from 'vitepress/theme'
 
 const { Layout } = DefaultTheme
@@ -42,8 +42,17 @@ onMounted(() => {
   featured.value = mix.slice(0, 4)
 })
 
-// 2. Lista: Mostriamo tutti gli articoli pubblici
-const list = publicPosts
+// 2. Colonne per categoria: 4 articoli più recenti (già ordinati per data) per ciascuna
+const PER_COLONNA = 4
+const colonne = [
+  { nome: 'Microbit', titolo: 'micro:bit', icona: '🟦', link: '/microbit' },
+  { nome: 'Arduino',  titolo: 'Arduino',   icona: '🟩', link: '/arduino' },
+  { nome: 'Scratch',  titolo: 'Scratch',   icona: '🟧', link: '/scratch' },
+  { nome: 'Mbot',     titolo: 'mBot',      icona: '🟪', link: '/mbot' }
+].map(c => {
+  const tutti = publicPosts.filter(p => p.category === c.nome)
+  return { ...c, articoli: tutti.slice(0, PER_COLONNA), altri: tutti.length - PER_COLONNA }
+})
 </script>
 
 <template>
@@ -61,20 +70,20 @@ const list = publicPosts
         </div>
       </div>
 
-      <div class="post-feed">
-        <h2 class="section-title">Ultime Notizie</h2>
-        
-        <div v-if="list.length === 0" style="text-align: center; color: gray; padding: 20px;">
-          <p>Nessuna notizia pubblica al momento.</p>
-        </div>
+      <div class="cat-section">
+        <div class="cat-grid">
+          <section v-for="col in colonne" :key="col.nome" class="cat-col">
+            <h2 class="cat-title"><a :href="col.link">{{ col.icona }} {{ col.titolo }}</a></h2>
 
-        <div v-for="post in list" :key="post.url" class="post-row">
-          <a :href="post.url" class="post-thumb" :style="{ backgroundImage: 'url(' + (post.image || '/img/default.jpg') + ')' }"></a>
-          <div class="post-content">
-            <a :href="post.url" class="title-link"><h3>{{ post.title }}</h3></a>
-            <div v-if="post.excerpt" class="post-excerpt" v-html="post.excerpt"></div>
-            <a :href="post.url" class="read-more-btn">Continua a leggere →</a>
-          </div>
+            <p v-if="col.articoli.length === 0" class="cat-empty">Presto nuove lezioni.</p>
+
+            <a v-for="post in col.articoli" :key="post.url" :href="post.url" class="cat-card">
+              <span class="cat-thumb" :style="{ backgroundImage: 'url(' + (post.image || '/img/default.jpg') + ')' }"></span>
+              <span class="cat-card-title">{{ post.title }}</span>
+            </a>
+
+            <a :href="col.link" class="cat-more">Mostra altri →</a>
+          </section>
         </div>
       </div>
 
@@ -91,22 +100,20 @@ const list = publicPosts
 .card-overlay { position: absolute; bottom: 0; width: 100%; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); padding: 15px; }
 .card-title { color: white; font-weight: bold; font-size: 1.1rem; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
 
-/* --- STILE ULTIME NOTIZIE --- */
-.post-feed { max-width: 900px; margin: 60px auto; padding: 0 20px; }
-.section-title { border-bottom: 3px solid var(--vp-c-brand-1); padding-bottom: 10px; margin-bottom: 40px; font-size: 2rem; }
-.post-row { display: flex; gap: 30px; margin-bottom: 50px; align-items: flex-start; border-bottom: 1px solid var(--vp-c-divider); padding-bottom: 30px; }
-.post-thumb { width: 280px; height: 180px; background-size: cover; background-position: center; border-radius: 10px; flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.1); display: block; transition: opacity 0.2s; }
-.post-thumb:hover { opacity: 0.9; }
-.post-content { flex: 1; display: flex; flex-direction: column; }
-.title-link { text-decoration: none; color: inherit; }
-.title-link h3 { margin-top: 0; font-size: 1.6rem; margin-bottom: 10px; transition: color 0.2s; }
-.title-link:hover h3 { color: var(--vp-c-brand-1); }
-.post-excerpt { color: var(--vp-c-text-2); font-size: 1.05rem; line-height: 1.6; margin-bottom: 20px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+/* --- COLONNE PER CATEGORIA --- */
+.cat-section { max-width: 1200px; margin: 50px auto; padding: 0 20px; }
+.cat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; align-items: start; }
+.cat-title { margin: 0 0 16px; padding: 0 0 10px; border-top: none; border-bottom: 3px solid var(--vp-c-brand-1); font-size: 1.3rem; }
+.cat-title a { color: inherit; text-decoration: none; }
+.cat-title a:hover { color: var(--vp-c-brand-1); }
+.cat-card { display: block; margin-bottom: 14px; border: 1px solid var(--vp-c-divider); border-radius: 10px; background: var(--vp-c-bg-soft); overflow: hidden; text-decoration: none; color: inherit; transition: border-color 0.2s, transform 0.2s; }
+.cat-card:hover { border-color: var(--vp-c-brand-1); transform: translateY(-2px); }
+.cat-thumb { display: block; width: 100%; aspect-ratio: 16 / 9; background-size: cover; background-position: center; }
+.cat-card-title { display: block; padding: 10px 12px; font-weight: 600; font-size: 0.95rem; line-height: 1.35; }
+.cat-empty { color: var(--vp-c-text-2); font-style: italic; margin: 0 0 14px; }
+.cat-more { display: inline-block; font-weight: 600; font-size: 0.95rem; color: var(--vp-c-brand-1); text-decoration: none; }
+.cat-more:hover { text-decoration: underline; }
+@media (max-width: 1100px) { .cat-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px)  { .cat-grid { grid-template-columns: 1fr; } }
 
-/* --- STILE PULSANTE --- */
-.read-more-btn { display: inline-block; background-color: var(--vp-c-brand-1); color: white !important; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 0.95rem; width: fit-content; transition: background-color 0.2s, transform 0.2s; }
-.read-more-btn:hover { background-color: var(--vp-c-brand-2); transform: translateY(-2px); }
-
-/* --- MOBILE --- */
-@media (max-width: 768px) { .post-row { flex-direction: column; gap: 15px; } .post-thumb { width: 100%; height: 200px; } .title-link h3 { font-size: 1.4rem; } }
 </style>
