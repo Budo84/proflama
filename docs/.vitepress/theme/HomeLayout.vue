@@ -1,6 +1,7 @@
 <script setup>
 // Importiamo tutti i dati (sia pubblici che privati) dal file centrale
 import { data as allPosts } from './posts.data.ts'
+import { ref, onMounted } from 'vue'   // <-- aggiungi questa riga in cima
 import DefaultTheme from 'vitepress/theme'
 
 const { Layout } = DefaultTheme
@@ -26,7 +27,20 @@ const publicPosts = allPosts.filter(post => {
 })
 
 // 1. Vetrina: Prendiamo i primi 4 articoli SOLO tra quelli pubblici
-const featured = publicPosts.slice(0, 4)
+//const featured = publicPosts.slice(0, 4)
+
+// Vetrina: all'inizio i 4 più recenti (è ciò che viene generato nel build),
+// poi nel browser vengono sostituiti con 4 a caso a ogni visita
+const featured = ref(publicPosts.slice(0, 4))
+
+onMounted(() => {
+  const mix = [...publicPosts]
+  for (let i = mix.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[mix[i], mix[j]] = [mix[j], mix[i]]
+  }
+  featured.value = mix.slice(0, 4)
+})
 
 // 2. Lista: Mostriamo tutti gli articoli pubblici
 const list = publicPosts
