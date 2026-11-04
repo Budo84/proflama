@@ -1,6 +1,6 @@
 ---
 title: 13-Il display LCD I2C con due pulsanti - un contatore
-description: 'olleghiamo un display LCD 16x2 I2C e due pulsanti ad Arduino: un pulsante aumenta il contatore, l''''altro lo azzera.'
+description: 'Colleghiamo un display LCD 16x2 I2C e due pulsanti ad Arduino: un pulsante aumenta il contatore, l''''altro lo azzera.'
 draft: false
 date: 2026-11-04
 category: Officina-Robotica
@@ -14,7 +14,7 @@ image: /img/robotica/base-arduino-22-lcd-i2c-due-pulsanti.webp
 **Obiettivo:** Costruire un **contatore** con Arduino: un **pulsante** aumenta il numero, l'altro lo **azzera**, e il valore compare su un **display LCD 16x2 I2C**.
 
 **Concetti Chiave:**
-- Display LCD con zaino I2C (SDA = A4, SCL = A5)
+- Display LCD con modulo I2C (SDA = A4, SCL = A5)
 - Libreria `LiquidCrystal_I2C`
 - Pulsanti con `INPUT_PULLUP` (premuto = LOW)
 - Variabile contatore e `if`
