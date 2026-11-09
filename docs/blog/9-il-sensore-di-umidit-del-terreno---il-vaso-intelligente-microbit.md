@@ -4,7 +4,7 @@ description: ''
 draft: false
 date: 2026-11-09
 category: Officina-Robotica
-class_target: "Tutti"
+class_target: "2, 3"
 image: /img/robotica/base-microbit-umidita.webp
 ---
 
