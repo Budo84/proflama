@@ -1,5 +1,5 @@
 ---
-title: 8-Il pulsante e la resistenza di pull-down (Arduino)
+title: 4-Il pulsante e la resistenza di pull-down (Arduino)
 description: 'Leggiamo un pulsante con un ingresso digitale e capiamo perché serve una resistenza di pull-down o di pull-up.'
 draft: false
 date: 2026-10-23
@@ -8,7 +8,7 @@ class_target: "2, 3"
 image: /img/robotica/base-arduino-pulsante.webp
 ---
 
-# 8-Il pulsante e la resistenza di pull-down (Arduino)
+# 4-Il pulsante e la resistenza di pull-down (Arduino)
 
 **Obiettivo:** Leggere lo stato di un **pulsante** con un ingresso digitale e usarlo per accendere un LED, evitando gli ingressi "fluttuanti".
 
