@@ -1,5 +1,5 @@
 ---
-title: 14-Animazione-Inclinazione 
+title: 11-Animazione-Inclinazione
 description: 'Questo progetto prepara i ragazzi a usare l''accelerometro della micro:bit per rilevare l''inclinazione e controllare il movimento. In Scratch, si userà il mouse o i tasti, ma il concetto di spostamento nello spazio rimane lo stesso.'
 draft: false
 date: 2026-10-01
@@ -8,7 +8,7 @@ class_target: "1, 2, 3, Tutti"
 image: /img/scratch-logo.webp
 ---
 
-# 14-Animazione-Inclinazione 
+# 11-Animazione-Inclinazione
 
 Questo progetto prepara i ragazzi a usare l'accelerometro della micro:bit per rilevare l'inclinazione e controllare il movimento. In Scratch, si userà il mouse o i tasti, ma il concetto di spostamento nello spazio rimane lo stesso.
 

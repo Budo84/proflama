@@ -1,5 +1,5 @@
 ---
-title: Introduzione a Scratch
+title: 0-Introduzione a Scratch
 description: 'introduzione alla programmazione co scratch'
 draft: false
 date: 2026-09-17
@@ -8,7 +8,7 @@ class_target: "Elementari, Tutti"
 image: /img/scratch-logo.webp
 ---
 
-# Introduzione a Scratch
+# 0-Introduzione a Scratch
 
 ## Introduzione
 <center>

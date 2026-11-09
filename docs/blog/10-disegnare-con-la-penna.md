@@ -1,5 +1,5 @@
 ---
-title: Disegnare con la Penna
+title: 10-Disegnare con la Penna
 description: 'trasformare lo sprite in una penna e usare i loop per fargli disegnare figure geometriche.'
 draft: false
 date: 2026-07-25
@@ -8,7 +8,7 @@ class_target: "Elementari"
 image: /img/disegnare.jpg
 ---
 
-# Disegnare con la Penna
+# 10-Disegnare con la Penna
 
 ## Parte 1 - I blocchi da usare
 I blocchi **Penna** si trovano in *estensioni*
