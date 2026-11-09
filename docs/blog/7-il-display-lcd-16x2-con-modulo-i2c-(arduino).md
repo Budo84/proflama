@@ -1,5 +1,5 @@
 ---
-title: 11-Il display LCD 16x2 con modulo I2C (Arduino)
+title: 7-Il display LCD 16x2 con modulo I2C (Arduino)
 description: 'Scriviamo testi e valori su un display LCD 16x2 collegato con soli quattro fili grazie al modulo I2C.'
 draft: false
 date: 2026-10-29
@@ -8,7 +8,7 @@ class_target: "2, 3"
 image: /img/robotica/base-arduino-lcd.webp
 ---
 
-# 11-Il display LCD 16x2 con modulo I2C (Arduino)
+# 7-Il display LCD 16x2 con modulo I2C (Arduino)
 
 **Obiettivo:** Collegare un **display LCD 16x2 con adattatore I2C** e scrivere messaggi e valori misurati.
 

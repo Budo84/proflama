@@ -1,5 +1,5 @@
 ---
-title: 22-Il sensore di umidità del terreno - il vaso intelligente (Arduino)
+title: 18-Il sensore di umidità del terreno - il vaso intelligente (Arduino)
 description: 'Misuriamo l''''umidità della terra di una pianta e accendiamo un LED quando serve annaffiare.'
 draft: false
 date: 2026-11-07
@@ -8,7 +8,7 @@ class_target: "2, 3"
 image: /img/robotica/base-arduino-umidita.webp
 ---
 
-# 22-Il sensore di umidità del terreno - il vaso intelligente (Arduino)
+# 18-Il sensore di umidità del terreno - il vaso intelligente (Arduino)
 
 **Obiettivo:** Misurare l'**umidità del terreno** con un sensore analogico e segnalare con un LED quando la pianta ha **sete**.
 

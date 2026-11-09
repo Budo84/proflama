@@ -1,5 +1,5 @@
 ---
-title: 9-Il servomotore muovere un braccio ad angolo preciso (Arduino)
+title: 5-Il servomotore muovere un braccio ad angolo preciso (Arduino)
 description: 'Controlliamo un servomotore SG90 con la libreria Servo, scegliendo l''''angolo da 0 a 180 gradi.'
 draft: false
 date: 2026-10-27
@@ -8,7 +8,7 @@ class_target: "2, 3"
 image: /img/robotica/base-arduino-servo.webp
 ---
 
-# 9-Il servomotore muovere un braccio ad angolo preciso (Arduino)
+# 5-Il servomotore muovere un braccio ad angolo preciso (Arduino)
 
 **Obiettivo:** Collegare un **servomotore** e comandarne l'angolo con la libreria **Servo**, anche con un potenziometro.
 

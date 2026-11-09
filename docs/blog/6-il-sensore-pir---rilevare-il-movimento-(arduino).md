@@ -1,5 +1,5 @@
 ---
-title: 10-Il sensore PIR - rilevare il movimento (Arduino)
+title: 6-Il sensore PIR - rilevare il movimento (Arduino)
 description: 'Rileviamo il passaggio di una persona con il sensore di movimento PIR e accendiamo un LED.'
 draft: false
 date: 2026-10-27
@@ -8,7 +8,7 @@ class_target: "2, 3"
 image: /img/robotica/base-arduino-pir.webp
 ---
 
-# 10-Il sensore PIR - rilevare il movimento (Arduino)
+# 6-Il sensore PIR - rilevare il movimento (Arduino)
 
 
 **Obiettivo:** Usare un sensore **PIR** per rilevare il movimento di una persona e costruire un piccolo **allarme**.

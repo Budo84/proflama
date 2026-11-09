@@ -1,5 +1,5 @@
 ---
-title: "14-Il potenziometro e l'ingresso analogico (Arduino)"
+title: 10-Il potenziometro e l'ingresso analogico (Arduino)
 description: 'Leggiamo il valore di un potenziometro con analogRead e lo usiamo per regolare la luminosità di un LED.'
 draft: false
 date: 2026-11-05
@@ -8,7 +8,7 @@ class_target: "2, 3"
 image: /img/robotica/base-arduino-potenziometro.webp
 ---
 
-# 14-Il potenziometro e l'ingresso analogico (Arduino)
+# 10-Il potenziometro e l'ingresso analogico (Arduino)
 
 **Obiettivo:** Leggere un **ingresso analogico** con un potenziometro e usare il valore per controllare la luminosità di un LED.
 

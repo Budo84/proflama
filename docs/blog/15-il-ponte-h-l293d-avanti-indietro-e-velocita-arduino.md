@@ -1,5 +1,5 @@
 ---
-title: "19-Il ponte H L293D - avanti, indietro e velocità (Arduino)"
+title: 15-Il ponte H L293D - avanti, indietro e velocità (Arduino)
 description: 'Comandiamo il verso di rotazione e la velocità di un motore DC con il driver L293D.'
 draft: false
 date: 2026-11-06
@@ -8,7 +8,7 @@ class_target: "2, 3"
 image: /img/robotica/base-arduino-ponte-h.webp
 ---
 
-# 19-Il ponte H L293D - avanti, indietro e velocità (Arduino)
+# 15-Il ponte H L293D - avanti, indietro e velocità (Arduino)
 
 **Obiettivo:** Far girare un motore DC **in entrambi i versi** e regolarne la velocità con il driver **L293D** (ponte H).
 

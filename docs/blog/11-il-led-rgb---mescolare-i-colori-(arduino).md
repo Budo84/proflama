@@ -1,5 +1,5 @@
 ---
-title: 15-Il LED RGB - mescolare i colori (Arduino)
+title: 11-Il LED RGB - mescolare i colori (Arduino)
 description: 'Usiamo un LED RGB a catodo comune e il PWM di Arduino per creare tutti i colori della luce.'
 draft: false
 date: 2026-11-05
@@ -8,7 +8,7 @@ class_target: "2, 3"
 image: /img/robotica/base-arduino-rgb.webp
 ---
 
-# 15-Il LED RGB - mescolare i colori (Arduino)
+# 11-Il LED RGB - mescolare i colori (Arduino)
 
 **Obiettivo:** Collegare un **LED RGB** e controllare la luminosità di rosso, verde e blu con il **PWM** per ottenere colori diversi.
 
