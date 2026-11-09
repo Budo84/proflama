@@ -1,5 +1,5 @@
 ---
-title: 3-Il LED, la resistenza e il verso giusto (Arduino)
+title: 2-Il LED, la resistenza e il verso giusto (Arduino)
 description: 'Accendiamo un LED classico con anodo e catodo, calcolando la resistenza che lo protegge dal bruciarsi.'
 draft: false
 date: 2026-10-09
@@ -8,7 +8,7 @@ class_target: "2, 3"
 image: /img/robotica/base-arduino-led-cablaggio.webp
 ---
 
-# 3-Il LED, la resistenza e il verso giusto (Arduino)
+# 2-Il LED, la resistenza e il verso giusto (Arduino)
 
 **Obiettivo:** Collegare un **LED** nel verso corretto (anodo e catodo), calcolare la **resistenza di protezione** e farlo lampeggiare con Arduino.
 
