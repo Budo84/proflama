@@ -1,5 +1,5 @@
 ---
-title: "7-Il sensore PIR - rilevare il movimento (micro:bit)"
+title: '5-Il sensore PIR - rilevare il movimento (micro:bit)'
 description: 'Rileviamo il passaggio di una persona con il sensore PIR e lo segnaliamo sul display del micro:bit.'
 draft: false
 date: 2026-11-09
@@ -8,7 +8,7 @@ class_target: "2, 3"
 image: /img/robotica/base-microbit-pir.webp
 ---
 
-# 7-Il sensore PIR - rilevare il movimento (micro:bit)
+# 5-Il sensore PIR - rilevare il movimento (micro:bit)
 
 **Obiettivo:** Usare un sensore **PIR** per rilevare il movimento di una persona e segnalarlo con un'icona sul micro:bit.
 

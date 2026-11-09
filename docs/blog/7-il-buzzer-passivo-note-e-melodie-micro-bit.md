@@ -1,5 +1,5 @@
 ---
-title: "8-Il buzzer passivo - note e melodie (micro:bit)"
+title: '7-Il buzzer passivo - note e melodie (micro:bit)'
 description: 'Colleghiamo un buzzer passivo al micro:bit e facciamo suonare note e una semplice melodia.'
 draft: false
 date: 2026-11-07
@@ -8,7 +8,7 @@ class_target: "2, 3"
 image: /img/robotica/base-microbit-buzzer.webp
 ---
 
-# 8-Il buzzer passivo - note e melodie (micro:bit)
+# 7-Il buzzer passivo - note e melodie (micro:bit)
 
 **Obiettivo:** Collegare un **buzzer passivo** al micro:bit e far suonare **note e melodie** con i blocchi musicali.
 

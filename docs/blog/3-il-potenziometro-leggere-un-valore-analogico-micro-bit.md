@@ -1,5 +1,5 @@
 ---
-title: 5-Il potenziometro - leggere un valore analogico (micro:bit)
+title: '3-Il potenziometro - leggere un valore analogico (micro:bit)'
 description: 'Leggiamo un potenziometro con un ingresso analogico del micro:bit e mostriamo il valore sulla matrice LED.'
 draft: false
 date: 2026-10-14
@@ -8,7 +8,7 @@ class_target: "2, 3"
 image: /img/robotica/base-microbit-potenziometro.webp
 ---
 
-# 5-Il potenziometro - leggere un valore analogico (micro:bit)
+# 3-Il potenziometro - leggere un valore analogico (micro:bit)
 
 
 **Obiettivo:** Leggere un **potenziometro** con un ingresso analogico e visualizzarne il valore sul display del micro:bit.

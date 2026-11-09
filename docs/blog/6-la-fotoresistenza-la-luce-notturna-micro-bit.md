@@ -1,5 +1,5 @@
 ---
-title: "7-La fotoresistenza - la luce notturna (micro:bit)"
+title: '6-La fotoresistenza - la luce notturna (micro:bit)'
 description: 'Misuriamo la luce con una fotoresistenza e accendiamo un LED esterno quando è buio.'
 draft: false
 date: 2026-11-07
@@ -8,7 +8,7 @@ class_target: "2, 3"
 image: /img/robotica/base-microbit-fotoresistenza.webp
 ---
 
-# 7-La fotoresistenza - la luce notturna (micro:bit)
+# 6-La fotoresistenza - la luce notturna (micro:bit)
 
 **Obiettivo:** Misurare la luce con una **fotoresistenza (LDR)** in un partitore di tensione e costruire una **luce notturna automatica**.
 

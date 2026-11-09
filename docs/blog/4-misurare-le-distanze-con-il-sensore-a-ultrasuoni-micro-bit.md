@@ -1,5 +1,5 @@
 ---
-title: 6-Misurare le distanze con il sensore a ultrasuoni (micro:bit)
+title: '4-Misurare le distanze con il sensore a ultrasuoni (micro:bit)'
 description: 'Misuriamo la distanza da un ostacolo in centimetri con il sensore HC-SR04 collegato al micro:bit.'
 draft: false
 date: 2026-10-15
@@ -8,7 +8,7 @@ class_target: "2, 3"
 image: /img/robotica/base-microbit-ultrasuoni.webp
 ---
 
-# 6-Misurare le distanze con il sensore a ultrasuoni (micro:bit)
+# 4-Misurare le distanze con il sensore a ultrasuoni (micro:bit)
 
 **Obiettivo:** Misurare una **distanza in centimetri** con il sensore **HC-SR04** e mostrarla sul micro:bit, proteggendo il pin di ingresso dai 5 V del sensore.
 
