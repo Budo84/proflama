@@ -151,6 +151,7 @@
 
   /* Ordering */
   .scenario-picker{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px; }
+  .scenario-picker .picker-group-label{ flex-basis:100%; font-weight:700; font-size:0.85rem; color:var(--ink-soft); margin-top:4px; }
   .scenario-picker button{ border:2px solid var(--border); background:var(--surface-soft); border-radius:12px; padding:8px 14px; font-weight:700; font-size:0.9rem; }
   .scenario-picker button[aria-current="true"]{ background:var(--page-color); color:#fff; border-color:var(--page-color); }
   .order-list{ list-style:none; padding:0; margin:0; display:grid; gap:10px; width:100%; max-width:620px; }
@@ -176,6 +177,7 @@
   .dobble-card .sym{ font-size:3.4rem; background:none; border:none; padding:8px; line-height:1; }
   .dobble-card .sym.clickable{ cursor:pointer; border-radius:12px; }
   .dobble-card .sym.clickable:hover{ background:var(--surface-soft); }
+  .dobble-card .sym.found{ background:rgba(76,154,107,0.28); outline:3px solid var(--accent-4); }
   .dobble-card-label{ position:absolute; top:-14px; left:50%; transform:translateX(-50%); background:var(--page-color); color:#fff; font-size:0.78rem; font-weight:700; padding:3px 12px; border-radius:999px; white-space:nowrap; }
 
   /* Sorting */
@@ -198,10 +200,69 @@
   .rush-piece.target{ background:var(--accent-1); }
   .rush-piece.selected{ outline:4px solid var(--ink); outline-offset:-4px; }
 
+
+  /* Blocchi: robot e tartaruga */
+  .bstage{ width:min(100%,560px); height:auto; max-height:calc(100vh - var(--toolbar-h,90px) - 40px); background:var(--surface); border:3px solid var(--border); border-radius:12px; display:block; margin:0 auto; }
+  .block-panel{ flex:1 1 380px; min-width:300px; }
+  .blk-title{ font-weight:700; margin:0 0 8px; }
+  .blk-info{ margin:0 0 8px; color:var(--ink-soft); font-size:0.92rem; }
+  .blk-palette{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:14px; }
+  .blk-pal, .blk{ --blk-c:var(--accent-2); }
+  .t-f{ --blk-c:var(--accent-2); } .t-l, .t-r{ --blk-c:var(--accent-5); } .t-c{ --blk-c:var(--accent-3); }
+  .t-rep{ --blk-c:var(--accent-4); } .t-until, .t-ifwall{ --blk-c:var(--accent-1); }
+  .t-pu, .t-pd{ --blk-c:var(--accent-6); } .t-col{ --blk-c:var(--accent-3); }
+  .blk-pal{ background:var(--surface); color:var(--ink); border:2px solid var(--border); border-left:10px solid var(--blk-c); border-radius:12px; padding:10px 14px; min-height:48px; font-weight:700; font-size:1rem; text-align:left; }
+  .blk-pal:hover:not(:disabled){ border-color:var(--blk-c); }
+  .blk-pal:disabled{ opacity:0.5; cursor:not-allowed; }
+  .blk-program{ min-height:170px; max-height:55vh; overflow:auto; border:2px dashed var(--border); border-radius:12px; padding:10px; background:var(--surface-soft); }
+  .blk-program.target{ border-color:var(--accent-2); }
+  .blk-main-head{ display:block; width:100%; text-align:left; background:transparent; border:none; font-weight:700; color:var(--ink-soft); padding:4px 2px 8px; }
+  .blk-empty{ color:var(--ink-soft); font-style:italic; padding:8px 6px; }
+  .blk{ background:var(--surface); border:2px solid var(--border); border-left:10px solid var(--blk-c); border-radius:10px; margin:6px 0; padding:6px 8px; }
+  .blk.running{ outline:4px solid var(--accent-3); outline-offset:1px; background:var(--surface-soft); }
+  .blk-head{ display:flex; align-items:center; flex-wrap:wrap; gap:8px; }
+  .blk-text{ font-weight:700; }
+  .blk-num{ min-width:4.5em; text-align:center; }
+  .blk-step{ width:40px; height:40px; border-radius:50%; border:2px solid var(--border); background:var(--surface-soft); font-size:1.3rem; font-weight:700; color:var(--ink); }
+  .blk-step:disabled{ opacity:0.4; }
+  .blk-in{ border:2px solid var(--border); background:var(--surface-soft); color:var(--ink); border-radius:999px; padding:6px 12px; font-weight:700; font-size:0.85rem; min-height:40px; }
+  .blk-in.on{ border-color:var(--accent-2); }
+  .blk-x{ margin-left:auto; width:40px; height:40px; border:none; background:transparent; font-size:1.2rem; color:var(--ink); }
+  .blk-x:disabled{ opacity:0.3; }
+  .blk-body{ margin:8px 0 4px 12px; padding:6px; border:2px dashed var(--border); border-radius:10px; min-height:44px; }
+  .blk-body.target{ border-color:var(--accent-2); background:rgba(58,134,168,0.10); }
+
+
+  /* Pixel art codificata */
+  .pc-grid{ display:grid; gap:2px; width:min(100%,460px); background:var(--border); border:3px solid var(--border); border-radius:10px; padding:2px; touch-action:none; user-select:none; -webkit-user-select:none; }
+  .pc-cell{ aspect-ratio:1/1; border:none; border-radius:3px; padding:0; font-weight:800; font-size:1.2rem; min-width:0; box-shadow:inset 0 0 0 1px rgba(0,0,0,0.12); }
+  .pc-grid.big .pc-cell{ font-size:0.95rem; }
+  .pc-cell.wrong{ outline:4px solid var(--accent-1); outline-offset:-4px; }
+  .pc-lab{ display:flex; align-items:center; justify-content:center; font-weight:700; font-size:0.85rem; background:var(--surface); color:var(--ink); padding:2px 4px; }
+  .pc-lab.left{ font-size:0.9rem; }
+  .pc-swatch{ display:inline-flex; align-items:center; gap:8px; background:var(--surface); color:var(--ink); border:2px solid var(--border); border-radius:12px; padding:10px 14px; min-height:48px; font-weight:700; }
+  .pc-swatch[aria-pressed="true"]{ border-color:var(--ink); box-shadow:0 0 0 3px var(--accent-3); }
+  .pc-dot{ width:26px; height:26px; border-radius:6px; border:2px solid var(--ink); display:inline-block; }
+  .pc-codebox{ margin-top:16px; border-top:2px dashed var(--border); padding-top:14px; }
+  .pc-code-title{ font-weight:700; margin:0 0 8px; }
+  .pc-code-grid{ display:grid; gap:4px; width:min(100%,360px); font-family:ui-monospace,Menlo,Consolas,monospace; font-size:1.35rem; font-weight:700; }
+  .pc-code-grid span{ text-align:center; background:var(--surface-soft); border-radius:6px; padding:4px 0; }
+  .pc-legend{ margin:10px 0 0; color:var(--ink-soft); font-size:0.92rem; }
+  .pc-runs{ margin:0; padding-left:0; list-style:none; }
+  .pc-runs li{ display:flex; flex-wrap:wrap; gap:8px; align-items:center; padding:6px 0; border-bottom:1px solid var(--border); }
+  .pc-rowlab{ font-weight:700; min-width:4.5em; color:var(--ink-soft); }
+  .run{ background:var(--surface-soft); border-radius:8px; padding:4px 8px; font-weight:700; font-size:1.1rem; white-space:nowrap; }
+  .pc-dec{ font-size:1.4rem; font-family:ui-monospace,Menlo,Consolas,monospace; }
+  .pc-coords{ margin:0 0 10px; display:flex; flex-wrap:wrap; gap:6px; align-items:center; }
+  .pc-chip-head{ font-weight:700; }
+  .chip{ background:var(--surface-soft); border:1px solid var(--border); border-radius:8px; padding:3px 8px; font-weight:700; font-family:ui-monospace,Menlo,Consolas,monospace; }
+  .pc-model{ display:grid; width:min(70%,220px); gap:2px; background:var(--border); border:3px solid var(--border); padding:2px; margin-bottom:10px; aspect-ratio:1/1; }
+  .pc-model span{ display:block; }
+
   footer{ text-align:center; padding:16px; color:var(--ink-soft); font-size:0.85rem; }
   html,body{ overflow-x:hidden; }
 
-  #page-pixelart .stage-panel{
+  #page-pixelart .stage-panel, #page-robot .stage-panel, #page-turtle .stage-panel, #page-pixcode .stage-panel{
     position:sticky; top:var(--toolbar-h, 90px); align-self:flex-start;
     z-index:5; background:var(--bg); box-shadow:0 10px 14px -12px rgba(0,0,0,0.28);
     border-radius:12px; max-height:calc(100vh - var(--toolbar-h, 90px) - 16px); overflow:auto;
@@ -215,9 +276,13 @@
     .page-header{ padding-left:12px; border-left-width:6px; }
     .page-header h1{ font-size:1.35rem; }
     .dobble-wrap{ gap:16px; }
-    #page-pixelart .stage-panel{
+    #page-pixelart .stage-panel, #page-robot .stage-panel, #page-turtle .stage-panel, #page-pixcode .stage-panel{
       order:-1; padding:10px 0 14px; margin-bottom:6px;
     }
+    #page-robot .bstage, #page-turtle .bstage{ max-height:34vh; }
+    #page-pixcode .pc-grid{ width:min(100%,40vh); margin:0 auto; }
+    nav.tabs{ flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:thin; }
+    nav.tabs button{ flex:none; white-space:nowrap; }
   }
   @media (max-width:480px){
     .brand{ font-size:1rem; }
@@ -436,6 +501,10 @@
           <option value="8">8 coppie (16 carte)</option>
           <option value="10">10 coppie (20 carte)</option>
           <option value="12">12 coppie (24 carte)</option>
+          <option value="15">15 coppie (30 carte)</option>
+          <option value="18">18 coppie (36 carte)</option>
+          <option value="24">24 coppie (48 carte)</option>
+          <option value="32">32 coppie (64 carte, sfida!)</option>
         </select>
         <button class="btn" id="btnMemoryNew">🔄 Nuovo gioco</button>
       </div>
@@ -471,6 +540,12 @@
           <option value="12">12</option>
           <option value="16">16</option>
           <option value="20">20 (più difficile)</option>
+        </select>
+        <label for="dobbleCommon" style="font-weight:700;">Simboli uguali da trovare:</label>
+        <select id="dobbleCommon">
+          <option value="1" selected>1</option>
+          <option value="2">2</option>
+          <option value="3">3 (più difficile)</option>
         </select>
         <button class="btn" id="btnDobbleNew">🔄 Nuova coppia di carte</button>
       </div>
@@ -550,6 +625,149 @@
     </details>
   </section>
 
+  <!-- 🤖 Robot a blocchi -->
+  <section class="page" id="page-robot" data-color="var(--accent-2)" role="tabpanel" aria-labelledby="tab-robot">
+    <div class="page-header">
+      <h1>🤖 Robot a blocchi</h1>
+      <p>Programma il robot Bip mettendo in fila dei blocchi: lui eseguirà i comandi uno alla volta. Nessun tempo, puoi provare e riprovare quante volte vuoi.</p>
+    </div>
+    <div class="level-picker" id="rbLevelPicker"></div>
+    <div class="story-box" id="rbStory" aria-live="polite"></div>
+    <div class="page-body">
+      <div class="stage-panel">
+        <svg class="bstage" id="rbStage" role="img" aria-label="Scena del gioco" preserveAspectRatio="xMidYMid meet"></svg>
+      </div>
+      <div class="panel block-panel">
+        <p class="blk-title">1. Scegli i blocchi:</p>
+        <div class="blk-palette" id="rbPalette"></div>
+        <p class="blk-title">2. Il tuo programma:</p>
+        <p class="blk-info" id="rbInfo"></p>
+        <div class="blk-program" id="rbProgram"></div>
+        <div class="row" style="margin-top:12px;">
+          <button class="btn" id="rbRun" type="button">▶️ Esegui</button>
+          <button class="btn secondary" id="rbStep" type="button">👣 Passo passo</button>
+          <button class="btn secondary" id="rbUndo" type="button">↩️ Annulla</button>
+          <button class="btn secondary" id="rbClear" type="button">🗑️ Svuota</button>
+          <button class="btn secondary" id="rbReset" type="button">🔄 Dall’inizio</button>
+        </div>
+        <div class="field" style="margin-top:12px; max-width:260px;">
+          <label for="rbSpeed">Velocità dell’animazione</label>
+          <select id="rbSpeed">
+            <option value="1000">Lenta</option>
+            <option value="550" selected>Normale</option>
+            <option value="220">Veloce</option>
+          </select>
+        </div>
+        <div class="msg" id="rbMsg" aria-live="polite"></div>
+        <button class="btn" id="rbNext" type="button" hidden>➡️ Livello successivo</button>
+      </div>
+    </div>
+    <details class="adapt">
+      <summary>Adattamenti (DSA / BES / Autismo)</summary>
+      <ul>
+        <li>👣 «Passo passo» fa eseguire un blocco alla volta: il blocco in uso si evidenzia, così si vede cosa fa ogni comando.</li>
+        <li>🐢 La velocità dell’animazione si può rallentare; con «movimento ridotto» attivo sul dispositivo il risultato appare subito.</li>
+        <li>🌈 Ogni tipo di blocco ha un’icona e un colore costante sul bordo: non serve leggere per riconoscerli.</li>
+        <li>🤝 Gli errori non hanno penalità: il robot si ferma e un messaggio gentile spiega cosa controllare.</li>
+        <li>🔁 I blocchi Ripeti sono introdotti gradualmente (dal livello 2) e si usano solo quando serve.</li>
+      </ul>
+    </details>
+  </section>
+
+  <!-- 🐢 La tartaruga che disegna -->
+  <section class="page" id="page-turtle" data-color="var(--accent-4)" role="tabpanel" aria-labelledby="tab-turtle">
+    <div class="page-header">
+      <h1>🐢 La tartaruga che disegna</h1>
+      <p>Fai muovere la tartaruga con i blocchi per disegnare la stessa figura del modello grigio. Disegnare è il modo migliore per scoprire come si ripetono le cose!</p>
+    </div>
+    <div class="level-picker" id="ttLevelPicker"></div>
+    <div class="story-box" id="ttStory" aria-live="polite"></div>
+    <div class="page-body">
+      <div class="stage-panel">
+        <svg class="bstage" id="ttStage" role="img" aria-label="Scena del gioco" preserveAspectRatio="xMidYMid meet"></svg>
+      </div>
+      <div class="panel block-panel">
+        <p class="blk-title">1. Scegli i blocchi:</p>
+        <div class="blk-palette" id="ttPalette"></div>
+        <p class="blk-title">2. Il tuo programma:</p>
+        <p class="blk-info" id="ttInfo"></p>
+        <div class="blk-program" id="ttProgram"></div>
+        <div class="row" style="margin-top:12px;">
+          <button class="btn" id="ttRun" type="button">▶️ Esegui</button>
+          <button class="btn secondary" id="ttStep" type="button">👣 Passo passo</button>
+          <button class="btn secondary" id="ttUndo" type="button">↩️ Annulla</button>
+          <button class="btn secondary" id="ttClear" type="button">🗑️ Svuota</button>
+          <button class="btn secondary" id="ttReset" type="button">🔄 Dall’inizio</button>
+        </div>
+        <div class="field" style="margin-top:12px; max-width:260px;">
+          <label for="ttSpeed">Velocità dell’animazione</label>
+          <select id="ttSpeed">
+            <option value="1000">Lenta</option>
+            <option value="550" selected>Normale</option>
+            <option value="220">Veloce</option>
+          </select>
+        </div>
+        <div class="msg" id="ttMsg" aria-live="polite"></div>
+        <button class="btn" id="ttNext" type="button" hidden>➡️ Livello successivo</button>
+      </div>
+    </div>
+    <details class="adapt">
+      <summary>Adattamenti (DSA / BES / Autismo)</summary>
+      <ul>
+        <li>🩶 Il modello da copiare è sempre visibile sotto il disegno, con linee grigie larghe e ben distinguibili.</li>
+        <li>💬 Se il disegno non è uguale, il messaggio dice quante linee mancano o sono in più, senza giudizi.</li>
+        <li>👣 «Passo passo» permette di seguire la tartaruga un movimento alla volta.</li>
+        <li>🎨 I colori hanno anche il nome scritto e un pallino colorato (non solo il colore).</li>
+        <li>🔁 Le figure con lati uguali sono pensate per scoprire il concetto di ripetizione da soli.</li>
+      </ul>
+    </details>
+  </section>
+
+  <!-- PIXEL ART CODIFICATA -->
+  <section class="page" id="page-pixcode" data-color="var(--accent-5)" role="tabpanel" aria-labelledby="tab-pixcode">
+    <div class="page-header">
+      <h1>🧬 Pixel art codificata</h1>
+      <p>I computer descrivono le immagini con dei codici fatti di numeri. Qui sei un detective: leggi il codice e ricostruisci il disegno, quadretto per quadretto. Nessun tempo, puoi correggere quando vuoi.</p>
+    </div>
+    <div class="level-picker" id="pcLevelPicker"></div>
+    <div class="story-box" id="pcStory" aria-live="polite"></div>
+    <div class="page-body">
+      <div class="stage-panel">
+        <div class="pc-grid" id="pcGrid" role="group" aria-label="Griglia da colorare"></div>
+      </div>
+      <div class="panel block-panel">
+        <div id="pcBrushWrap">
+          <p class="blk-title">1. Scegli il colore:</p>
+          <div class="blk-palette" id="pcPalette"></div>
+        </div>
+        <div class="row" style="margin-bottom:12px;">
+          <button class="btn" id="pcCheck" type="button">✅ Controlla</button>
+          <button class="btn secondary" id="pcHelp" type="button">💡 Aiuto</button>
+          <button class="btn secondary" id="pcUndo" type="button">↩️ Annulla</button>
+          <button class="btn secondary" id="pcClear" type="button">🗑️ Svuota</button>
+          <button class="btn secondary" id="pcSolution" type="button">🖼️ Mostra soluzione</button>
+        </div>
+        <div class="msg" id="pcMsg" aria-live="polite"></div>
+        <button class="btn" id="pcNext" type="button" hidden>➡️ Livello successivo</button>
+        <div class="pc-codebox">
+          <div id="pcModelWrap" hidden><div class="pc-model" id="pcModel" aria-label="Disegno da trasformare in codice" role="img"></div></div>
+          <div id="pcCode"></div>
+        </div>
+      </div>
+    </div>
+    <details class="adapt">
+      <summary>Adattamenti (DSA / BES / Autismo)</summary>
+      <ul>
+        <li>🔍 Il codice è sempre visibile accanto alla griglia: non bisogna ricordarlo a memoria.</li>
+        <li>📏 I livelli partono da griglie piccole (5×5) e crescono gradualmente fino a 8×8; i tipi di codice cambiano uno alla volta.</li>
+        <li>💡 «Aiuto» indica le righe da rivedere e bordi arancioni sui quadretti da sistemare, senza dare la soluzione.</li>
+        <li>🖱️ Si può colorare anche trascinando il dito o il mouse; c’è sempre «Annulla».</li>
+        <li>🚫 Nessun tempo e nessun punteggio: gli errori sono solo un’occasione per rileggere il codice.</li>
+        <li>⌨️ Ogni quadretto è un pulsante usabile anche da tastiera (Tab, Invio).</li>
+      </ul>
+    </details>
+  </section>
+
 </main>
 
 <footer>Pagina pensata come punto di partenza: adatta liberamente tempi, materiali e difficoltà. 🌟</footer>
@@ -596,7 +814,10 @@
     { id:"memory", label:"Memory", icon:"🃏", color:"var(--accent-4)" },
     { id:"dobble", label:"Trova l'uguale", icon:"🔎", color:"var(--accent-5)" },
     { id:"sort", label:"Ordina per categoria", icon:"🗂️", color:"var(--accent-6)" },
-    { id:"rush", label:"Sblocca la strada", icon:"🚦", color:"var(--accent-1)" }
+    { id:"rush", label:"Sblocca la strada", icon:"🚦", color:"var(--accent-1)" },
+    { id:"robot", label:"Robot a blocchi", icon:"🤖", color:"var(--accent-2)" },
+    { id:"turtle", label:"Tartaruga che disegna", icon:"🐢", color:"var(--accent-4)" },
+    { id:"pixcode", label:"Pixel art codificata", icon:"🧬", color:"var(--accent-5)" }
   ];
   var tabNav = document.getElementById("tabNav");
   pages.forEach(function(p){
@@ -617,6 +838,7 @@
       var active = p.id === id;
       sec.classList.toggle("active", active);
       tab.setAttribute("aria-selected", active ? "true" : "false");
+      if (active && tab.scrollIntoView){ try{ tab.scrollIntoView({ inline:"center", block:"nearest" }); }catch(e){} }
     });
     window.location.hash = id;
   }
@@ -1038,10 +1260,25 @@
       rows:9, cols:9, wallCount:17 },
     { id:10, title:"Il vulcano di fuoco", character:"🐉", wallEmoji:"🔥", goalEmoji:"💎",
       story:"Ultima sfida: il piccolo drago Pixel vola tra i fiumi di lava per conquistare il diamante più prezioso.",
-      rows:10, cols:10, wallCount:21 }
+      rows:10, cols:10, wallCount:21 },
+    { id:11, title:"La miniera misteriosa", character:"👷", wallEmoji:"🪨", goalEmoji:"🚂", starCount:2,
+      story:"Nuova sfida! Nella miniera Pixel deve raccogliere 2 stelle ⭐ e poi raggiungere il trenino per uscire.",
+      rows:10, cols:10, wallCount:22 },
+    { id:12, title:"L'isola dei pirati", character:"🦜", wallEmoji:"🌴", goalEmoji:"🗺️", starCount:3,
+      story:"Il pappagallo Pixel vola sull'isola: deve trovare 3 stelle ⭐ prima di arrivare alla mappa del tesoro.",
+      rows:11, cols:11, wallCount:28 },
+    { id:13, title:"Il castello di ghiaccio", character:"⛷️", wallEmoji:"🧊", goalEmoji:"🏰", starCount:3,
+      story:"Sugli sci, Pixel scivola tra i blocchi di ghiaccio, raccoglie 3 stelle ⭐ e arriva al castello.",
+      rows:11, cols:11, wallCount:30 },
+    { id:14, title:"La stazione spaziale", character:"👽", wallEmoji:"🛰️", goalEmoji:"🚀", starCount:4,
+      story:"Nello spazio Pixel deve recuperare 4 stelle ⭐ sparse tra i satelliti, poi salire sul razzo.",
+      rows:12, cols:12, wallCount:38 },
+    { id:15, title:"Il tempio segreto", character:"🧗", wallEmoji:"🗿", goalEmoji:"🏆", starCount:5,
+      story:"Ultima grande avventura: 5 stelle ⭐ nascoste nel tempio, e solo dopo si può prendere il trofeo!",
+      rows:12, cols:12, wallCount:44 }
   ];
   var unlockedUpTo = 1;
-  var mazeState = { levelIdx:0, pos:null, queue:[], running:false, mode:"queue", layout:null };
+  var mazeState = { levelIdx:0, pos:null, queue:[], running:false, mode:"queue", layout:null, collected:{} };
   var levelPickerEl = document.getElementById("levelPicker");
   var mazeStoryEl = document.getElementById("mazeStory");
   var mazeGridEl = document.getElementById("mazeGrid");
@@ -1074,7 +1311,24 @@
     }
     return false;
   }
-  function generateMazeLayout(rows, cols, wallCount){
+  function reachableCells(rows, cols, wallsSet, start){
+    var visited = {}; visited[cellKey(start.r, start.c)] = true;
+    var queue = [start]; var list = [];
+    var dirs = [[-1,0],[1,0],[0,-1],[0,1]];
+    while (queue.length){
+      var cur = queue.shift(); list.push(cur);
+      for (var i = 0; i < 4; i++){
+        var nr = cur.r + dirs[i][0], nc = cur.c + dirs[i][1];
+        if (nr < 0 || nc < 0 || nr >= rows || nc >= cols) continue;
+        var k = cellKey(nr, nc);
+        if (wallsSet[k] || visited[k]) continue;
+        visited[k] = true; queue.push({ r:nr, c:nc });
+      }
+    }
+    return list;
+  }
+  function generateMazeLayout(rows, cols, wallCount, starCount){
+    starCount = starCount || 0;
     var minDist = Math.floor((rows + cols) / 2);
     for (var attempt = 0; attempt < 400; attempt++){
       var start = { r: Math.floor(Math.random()*rows), c: Math.floor(Math.random()*cols) };
@@ -1093,10 +1347,18 @@
       }
       if (walls.length < wallCount) continue;
       if (bfsPathExists(rows, cols, wallsSet, start, goal)){
-        return { start:start, goal:goal, walls:walls };
+        var stars = [];
+        if (starCount > 0){
+          var free = reachableCells(rows, cols, wallsSet, start).filter(function(cc){
+            return !(cc.r===start.r && cc.c===start.c) && !(cc.r===goal.r && cc.c===goal.c);
+          });
+          if (free.length < starCount) continue;
+          stars = shuffle(free).slice(0, starCount);
+        }
+        return { start:start, goal:goal, walls:walls, stars:stars };
       }
     }
-    return { start:{r:0,c:0}, goal:{r:rows-1,c:cols-1}, walls:[] };
+    return { start:{r:0,c:0}, goal:{r:rows-1,c:cols-1}, walls:[], stars:[] };
   }
 
   function renderLevelPicker(){
@@ -1127,9 +1389,17 @@
 
   function loadLevel(){
     var level = mazeLevels[mazeState.levelIdx];
-    var layout = generateMazeLayout(level.rows, level.cols, level.wallCount);
+    var layout = generateMazeLayout(level.rows, level.cols, level.wallCount, level.starCount || 0);
     mazeState.layout = layout;
+    mazeState.collected = {};
     mazeStoryEl.textContent = "Livello " + level.id + " — " + level.title + ": " + level.story;
+    if (layout.stars.length){
+      var starStatus = document.createElement("strong");
+      starStatus.id = "mazeStarStatus";
+      starStatus.style.display = "block";
+      starStatus.style.marginTop = "6px";
+      mazeStoryEl.appendChild(starStatus);
+    }
     mazeGridEl.style.maxWidth = Math.min(620, level.cols * 74) + "px";
     mazeGridEl.style.gridTemplateColumns = "repeat(" + level.cols + ", 1fr)";
     mazeGridEl.style.gridTemplateRows = "repeat(" + level.rows + ", 1fr)";
@@ -1150,7 +1420,22 @@
     mazeMsgEl.textContent = ""; mazeMsgEl.className = "msg";
     renderMazeQueue();
     drawRobot();
+    updateStarStatus();
     renderLevelPicker();
+  }
+  function isStar(r, c){
+    return mazeState.layout.stars.some(function(s){ return s.r === r && s.c === c; });
+  }
+  function starsLeft(){
+    var total = mazeState.layout.stars.length;
+    return total - Object.keys(mazeState.collected).length;
+  }
+  function updateStarStatus(){
+    var el = document.getElementById("mazeStarStatus");
+    if (!el) return;
+    var total = mazeState.layout.stars.length;
+    var got = total - starsLeft();
+    el.textContent = "⭐ Stelle raccolte: " + got + " / " + total;
   }
   function drawRobot(){
     var level = mazeLevels[mazeState.levelIdx];
@@ -1160,6 +1445,7 @@
       if (r === mazeState.pos.r && c === mazeState.pos.c){ cell.textContent = level.character; }
       else if (isWall(r, c)){ cell.textContent = level.wallEmoji; }
       else if (r === layout.goal.r && c === layout.goal.c){ cell.textContent = level.goalEmoji; }
+      else if (isStar(r, c) && !mazeState.collected[cellKey(r, c)]){ cell.textContent = "⭐"; }
       else { cell.textContent = ""; }
     });
   }
@@ -1188,8 +1474,14 @@
     var outOfBounds = next.r < 0 || next.c < 0 || next.r >= level.rows || next.c >= level.cols;
     if (outOfBounds || isWall(next.r, next.c)) return "blocked";
     mazeState.pos = next;
+    if (isStar(next.r, next.c) && !mazeState.collected[cellKey(next.r, next.c)]){
+      mazeState.collected[cellKey(next.r, next.c)] = true;
+      updateStarStatus();
+    }
     drawRobot();
-    if (next.r === layout.goal.r && next.c === layout.goal.c) return "goal";
+    if (next.r === layout.goal.r && next.c === layout.goal.c){
+      return starsLeft() > 0 ? "goal-missing" : "goal";
+    }
     return "ok";
   }
   function handleLevelComplete(){
@@ -1204,13 +1496,16 @@
     btn.addEventListener("click", function(){
       if (mazeState.running) return;
       if (mazeState.mode === "immediate"){
-        if (mazeState.pos && isAtGoal()) return;
+        if (mazeState.pos && isAtGoal() && starsLeft() === 0) return;
         var result = tryMove(btn.dataset.dir);
         if (result === "blocked"){
           mazeMsgEl.textContent = "🚧 Ops, di là non si passa! Prova un'altra direzione.";
           mazeMsgEl.className = "msg warn";
         } else if (result === "goal"){
           handleLevelComplete();
+        } else if (result === "goal-missing"){
+          mazeMsgEl.textContent = "⭐ Sei alla meta, ma ti mancano ancora " + starsLeft() + " stelle: vai a prenderle!";
+          mazeMsgEl.className = "msg warn";
         } else {
           mazeMsgEl.textContent = "";
           mazeMsgEl.className = "msg";
@@ -1237,7 +1532,9 @@
     function step(){
       if (i >= mazeState.queue.length){
         mazeState.running = false;
-        mazeMsgEl.textContent = "Pixel si è fermato qui. Aggiungi altri comandi o riprova! 💪";
+        mazeMsgEl.textContent = starsLeft() > 0
+          ? "Pixel si è fermato qui e mancano ancora " + starsLeft() + " stelle ⭐. Aggiungi altri comandi o riprova! 💪"
+          : "Pixel si è fermato qui. Aggiungi altri comandi o riprova! 💪";
         mazeMsgEl.className = "msg warn";
         return;
       }
@@ -1273,7 +1570,25 @@
     { id:"tavola", label:"🍽️ Apparecchiare la tavola", steps:[
       {e:"🍽️", t:"Metti il piatto"}, {e:"🍴", t:"Metti le posate"}, {e:"🥤", t:"Metti il bicchiere"}, {e:"🧻", t:"Metti il tovagliolo"} ] },
     { id:"torta", label:"🧁 Preparare un dolce", steps:[
-      {e:"🥚", t:"Rompi le uova"}, {e:"🌾", t:"Aggiungi la farina"}, {e:"🥄", t:"Mescola bene"}, {e:"🔥", t:"Inforna con un adulto"} ] }
+      {e:"🥚", t:"Rompi le uova"}, {e:"🌾", t:"Aggiungi la farina"}, {e:"🥄", t:"Mescola bene"}, {e:"🔥", t:"Inforna con un adulto"} ] },
+    { id:"pasta", adv:true, label:"🍝 Fare la pasta", steps:[
+      {e:"💧", t:"Riempi la pentola d'acqua"}, {e:"🔥", t:"Metti la pentola sul fuoco"}, {e:"🧂", t:"Aggiungi il sale quando bolle"},
+      {e:"🍝", t:"Butta la pasta"}, {e:"⏱️", t:"Aspetta qualche minuto"}, {e:"🫗", t:"Scola la pasta con un adulto"}, {e:"🍽️", t:"Condisci e servi"} ] },
+    { id:"bucato", adv:true, label:"🧺 Fare il bucato", steps:[
+      {e:"🧺", t:"Raccogli i vestiti sporchi"}, {e:"🎨", t:"Dividi i colori dai bianchi"}, {e:"🌀", t:"Metti i vestiti nella lavatrice"},
+      {e:"🧴", t:"Aggiungi il detersivo"}, {e:"▶️", t:"Avvia il lavaggio"}, {e:"☀️", t:"Stendi i vestiti"}, {e:"👕", t:"Piega i vestiti asciutti"} ] },
+    { id:"zaino", adv:true, label:"🎒 Preparare lo zaino", steps:[
+      {e:"📅", t:"Guarda l'orario delle lezioni"}, {e:"📚", t:"Prendi i libri giusti"}, {e:"✏️", t:"Metti l'astuccio"},
+      {e:"🍎", t:"Aggiungi la merenda"}, {e:"🥤", t:"Riempi la borraccia"}, {e:"🎒", t:"Chiudi lo zaino"} ] },
+    { id:"strada", adv:true, label:"🚸 Attraversare la strada", steps:[
+      {e:"🚸", t:"Fermati vicino alle strisce"}, {e:"⬅️", t:"Guarda a sinistra"}, {e:"➡️", t:"Guarda a destra"},
+      {e:"👀", t:"Guarda ancora a sinistra"}, {e:"🚦", t:"Controlla che non arrivino auto"}, {e:"🚶", t:"Attraversa camminando"} ] },
+    { id:"pizza", adv:true, label:"🍕 Fare la pizza", steps:[
+      {e:"🌾", t:"Impasta farina, acqua e lievito"}, {e:"⏳", t:"Lascia lievitare l'impasto"}, {e:"🫓", t:"Stendi l'impasto"}, {e:"🍅", t:"Spalma la salsa di pomodoro"},
+      {e:"🧀", t:"Aggiungi la mozzarella"}, {e:"🔥", t:"Inforna con un adulto"}, {e:"⏱️", t:"Aspetta la cottura"}, {e:"🍕", t:"Taglia e mangia"} ] },
+    { id:"mani", adv:true, label:"🧼 Lavarsi bene le mani", steps:[
+      {e:"🚰", t:"Apri l'acqua e bagna le mani"}, {e:"🧼", t:"Prendi il sapone"}, {e:"👏", t:"Strofina palmi e dorso"},
+      {e:"🤞", t:"Pulisci tra le dita"}, {e:"🔢", t:"Conta fino a venti"}, {e:"💧", t:"Sciacqua bene"}, {e:"🧻", t:"Asciuga con un asciugamano"} ] }
   ];
   var currentScenarioIdx = 0;
   var currentOrder = [];
@@ -1284,6 +1599,12 @@
   function renderScenarioPicker(){
     scenarioPickerEl.innerHTML = "";
     scenarios.forEach(function(sc, i){
+      if (i === 0 || (sc.adv && !scenarios[i-1].adv)){
+        var lab = document.createElement("span");
+        lab.className = "picker-group-label";
+        lab.textContent = sc.adv ? "Avanzati (6-8 passaggi)" : "Base (4-5 passaggi)";
+        scenarioPickerEl.appendChild(lab);
+      }
       var b = document.createElement("button");
       b.textContent = sc.label;
       b.setAttribute("aria-current", i === currentScenarioIdx ? "true" : "false");
@@ -1293,7 +1614,11 @@
   }
   function renderOrder(){
     var sc = scenarios[currentScenarioIdx];
-    currentOrder = shuffle(sc.steps);
+    var tries = 0;
+    do {
+      currentOrder = shuffle(sc.steps);
+      tries++;
+    } while (tries < 20 && currentOrder.every(function(s, k){ return s.t === sc.steps[k].t; }));
     orderMsgEl.textContent = ""; orderMsgEl.className = "msg";
     drawOrderList();
     renderScenarioPicker();
@@ -1340,7 +1665,7 @@
   renderOrder();
 
   /* ============ MEMORY ============ */
-  var memoryPool = ["⬆️","⬇️","⬅️","➡️","🔁","⭐","🔺","🔵","🟢","🟡","🤖","🚩"];
+  var memoryPool = ["⬆️","⬇️","⬅️","➡️","🔁","⭐","🔺","🔵","🟢","🟡","🤖","🚩","🟣","🟠","🔶","🔷","💾","🖥️","⌨️","🖱️","📱","🔋","💡","⚙️","🧩","🔑","🔔","🎯","🚀","🛰️","🧲","🔧","🧮","📡","🎲","🧠","🔍","📎","🎧","🕹️"];
   var memoryGridEl = document.getElementById("memoryGrid");
   var memoryMsgEl = document.getElementById("memoryMsg");
   var memoryStatsEl = document.getElementById("memoryStats");
@@ -1446,14 +1771,17 @@
   }
   function newDobbleRound(){
     var n = parseInt(document.getElementById("dobbleSize").value, 10);
+    var c = Math.min(parseInt(document.getElementById("dobbleCommon").value, 10) || 1, n - 1);
     var pool = shuffle(dobblePool);
-    var common = pool[0];
-    var extraA = pool.slice(1, n);
-    var extraB = pool.slice(n, n + n - 1);
-    var cardA = shuffle(extraA.concat([common]));
-    var cardB = shuffle(extraB.concat([common]));
+    var common = pool.slice(0, c);
+    var extraA = pool.slice(c, n);
+    var extraB = pool.slice(n, n + n - c);
+    var cardA = shuffle(extraA.concat(common));
+    var cardB = shuffle(extraB.concat(common));
     dobbleState.common = common;
-    dobbleMsgEl.textContent = ""; dobbleMsgEl.className = "msg";
+    dobbleState.found = {};
+    dobbleMsgEl.textContent = c > 1 ? "Cerca " + c + " simboli uguali: clicca quelli che trovi su entrambe le carte." : "";
+    dobbleMsgEl.className = "msg";
     dobbleStatsEl.textContent = "Coppie trovate: " + dobbleState.score;
 
     var cardPx = Math.min(window.innerWidth * 0.92, 380 + Math.min(n, 20) * 12);
@@ -1478,7 +1806,7 @@
       dobbleCardBEl.appendChild(s);
     });
 
-    dobbleCardAEl.innerHTML = '<span class="dobble-card-label">Trova il simbolo uguale qui</span>';
+    dobbleCardAEl.innerHTML = '<span class="dobble-card-label">' + (c > 1 ? "Trova i simboli uguali qui" : "Trova il simbolo uguale qui") + '</span>';
     var posA = scatterPositions(cardPx, cardA.length, symPx);
     cardA.forEach(function(sym, i){
       var b = document.createElement("button");
@@ -1491,12 +1819,21 @@
       b.style.transform = "translate(-50%,-50%) rotate(" + (Math.random()*50-25) + "deg)";
       b.setAttribute("aria-label", "Simbolo " + sym);
       b.addEventListener("click", function(){
-        if (sym === dobbleState.common){
-          dobbleState.score++;
-          dobbleMsgEl.textContent = "🎉 Esatto, era proprio " + sym + "!";
-          dobbleMsgEl.className = "msg ok";
-          dobbleStatsEl.textContent = "Coppie trovate: " + dobbleState.score;
-          setTimeout(newDobbleRound, 1100);
+        if (dobbleState.common.indexOf(sym) !== -1){
+          if (dobbleState.found[sym]) return;
+          dobbleState.found[sym] = true;
+          b.classList.add("found");
+          var left = dobbleState.common.length - Object.keys(dobbleState.found).length;
+          if (left === 0){
+            dobbleState.score++;
+            dobbleMsgEl.textContent = dobbleState.common.length > 1 ? "🎉 Trovati tutti e " + dobbleState.common.length + "!" : "🎉 Esatto, era proprio " + sym + "!";
+            dobbleMsgEl.className = "msg ok";
+            dobbleStatsEl.textContent = "Coppie trovate: " + dobbleState.score;
+            setTimeout(newDobbleRound, 1300);
+          } else {
+            dobbleMsgEl.textContent = "✅ Giusto! " + sym + " c'è su entrambe. Ne manca" + (left === 1 ? " ancora 1." : "no ancora " + left + ".");
+            dobbleMsgEl.className = "msg ok";
+          }
         } else {
           dobbleMsgEl.textContent = "Non è questo, riprova a confrontare le due carte!";
           dobbleMsgEl.className = "msg warn";
@@ -1507,6 +1844,7 @@
   }
   document.getElementById("btnDobbleNew").addEventListener("click", newDobbleRound);
   document.getElementById("dobbleSize").addEventListener("change", newDobbleRound);
+  document.getElementById("dobbleCommon").addEventListener("change", newDobbleRound);
   newDobbleRound();
 
   /* ============ ORDINA PER CATEGORIA ============ */
@@ -1668,7 +2006,17 @@
     { id:9, title:"Livello 9", grid:6, target:{ id:"T", orient:"h", len:2, fixed:2, pos:0, emoji:"🚗" },
       pieces:[ { id:"A", orient:"v", len:3, fixed:4, pos:0, emoji:"🚚" }, { id:"B", orient:"h", len:2, fixed:3, pos:1, emoji:"🚙" }, { id:"C", orient:"h", len:3, fixed:5, pos:3, emoji:"🚛" }, { id:"D", orient:"v", len:2, fixed:0, pos:4, emoji:"🚕" }, { id:"E", orient:"v", len:2, fixed:3, pos:3, emoji:"🚌" } ] },
     { id:10, title:"Livello 10", grid:6, target:{ id:"T", orient:"h", len:2, fixed:2, pos:0, emoji:"🚗" },
-      pieces:[ { id:"A", orient:"v", len:2, fixed:5, pos:4, emoji:"🚙" }, { id:"B", orient:"v", len:3, fixed:3, pos:0, emoji:"🚚" }, { id:"C", orient:"h", len:2, fixed:5, pos:2, emoji:"🚕" }, { id:"D", orient:"h", len:3, fixed:4, pos:1, emoji:"🚛" }, { id:"E", orient:"h", len:2, fixed:0, pos:0, emoji:"🚌" }, { id:"F", orient:"h", len:2, fixed:3, pos:0, emoji:"🚙" } ] }
+      pieces:[ { id:"A", orient:"v", len:2, fixed:5, pos:4, emoji:"🚙" }, { id:"B", orient:"v", len:3, fixed:3, pos:0, emoji:"🚚" }, { id:"C", orient:"h", len:2, fixed:5, pos:2, emoji:"🚕" }, { id:"D", orient:"h", len:3, fixed:4, pos:1, emoji:"🚛" }, { id:"E", orient:"h", len:2, fixed:0, pos:0, emoji:"🚌" }, { id:"F", orient:"h", len:2, fixed:3, pos:0, emoji:"🚙" } ] },
+    { id:11, title:"Livello 11", grid:6, target:{ id:"T", orient:"h", len:2, fixed:2, pos:0, emoji:"🚗" },
+      pieces:[ { id:"A", orient:"v", len:2, fixed:1, pos:0, emoji:"🚙" }, { id:"B", orient:"h", len:2, fixed:3, pos:0, emoji:"🚕" }, { id:"C", orient:"v", len:2, fixed:5, pos:2, emoji:"🚌" }, { id:"D", orient:"h", len:2, fixed:1, pos:4, emoji:"🚛" }, { id:"E", orient:"v", len:3, fixed:3, pos:1, emoji:"🚚" }, { id:"F", orient:"h", len:2, fixed:4, pos:3, emoji:"🚐" }, { id:"G", orient:"v", len:3, fixed:2, pos:1, emoji:"🚓" } ] },
+    { id:12, title:"Livello 12", grid:6, target:{ id:"T", orient:"h", len:2, fixed:2, pos:0, emoji:"🚗" },
+      pieces:[ { id:"A", orient:"v", len:3, fixed:3, pos:0, emoji:"🚙" }, { id:"B", orient:"v", len:2, fixed:2, pos:1, emoji:"🚕" }, { id:"C", orient:"v", len:2, fixed:1, pos:4, emoji:"🚌" }, { id:"D", orient:"h", len:2, fixed:4, pos:2, emoji:"🚛" }, { id:"E", orient:"h", len:2, fixed:3, pos:1, emoji:"🚚" }, { id:"F", orient:"h", len:3, fixed:0, pos:0, emoji:"🚐" }, { id:"G", orient:"v", len:2, fixed:5, pos:4, emoji:"🚓" } ] },
+    { id:13, title:"Livello 13", grid:6, target:{ id:"T", orient:"h", len:2, fixed:2, pos:0, emoji:"🚗" },
+      pieces:[ { id:"A", orient:"h", len:2, fixed:3, pos:4, emoji:"🚙" }, { id:"B", orient:"h", len:2, fixed:4, pos:1, emoji:"🚕" }, { id:"C", orient:"v", len:2, fixed:2, pos:1, emoji:"🚌" }, { id:"D", orient:"h", len:2, fixed:1, pos:4, emoji:"🚛" }, { id:"E", orient:"h", len:2, fixed:4, pos:3, emoji:"🚚" }, { id:"F", orient:"v", len:3, fixed:3, pos:1, emoji:"🚐" }, { id:"G", orient:"v", len:2, fixed:5, pos:4, emoji:"🚓" } ] },
+    { id:14, title:"Livello 14", grid:6, target:{ id:"T", orient:"h", len:2, fixed:2, pos:0, emoji:"🚗" },
+      pieces:[ { id:"A", orient:"v", len:2, fixed:1, pos:0, emoji:"🚙" }, { id:"B", orient:"h", len:3, fixed:3, pos:0, emoji:"🚕" }, { id:"C", orient:"h", len:3, fixed:5, pos:1, emoji:"🚌" }, { id:"D", orient:"v", len:3, fixed:2, pos:0, emoji:"🚛" }, { id:"E", orient:"h", len:2, fixed:4, pos:2, emoji:"🚚" }, { id:"F", orient:"v", len:3, fixed:5, pos:0, emoji:"🚐" } ] },
+    { id:15, title:"Livello 15", grid:6, target:{ id:"T", orient:"h", len:2, fixed:2, pos:0, emoji:"🚗" },
+      pieces:[ { id:"A", orient:"v", len:3, fixed:3, pos:2, emoji:"🚙" }, { id:"B", orient:"v", len:3, fixed:5, pos:0, emoji:"🚕" }, { id:"C", orient:"v", len:2, fixed:1, pos:0, emoji:"🚌" }, { id:"D", orient:"h", len:2, fixed:3, pos:4, emoji:"🚛" }, { id:"E", orient:"v", len:3, fixed:0, pos:3, emoji:"🚚" }, { id:"F", orient:"h", len:3, fixed:0, pos:2, emoji:"🚐" } ] }
   ];
 
   var rushState = { levelIdx:0, pieces:[], selectedId:null };
@@ -1801,6 +2149,853 @@
   document.getElementById("rushRight").addEventListener("click", function(){ moveRushPiece("right"); });
   document.getElementById("btnRushReset").addEventListener("click", loadRushLevel);
   loadRushLevel();
+
+  /* ============ BLOCCHI: ROBOT E TARTARUGA ============ */
+  (function(){
+/*BLOCKS-PURE-START*/
+var DIRS = [[0,-1],[1,0],[0,1],[-1,0]];
+var blkUid = 1;
+function mk(t, extra){ var o = { uid: blkUid++, t: t }; if (extra) for (var k in extra) o[k] = extra[k]; return o; }
+function runTree(list, hooks){
+  var count = 0, LIMIT = 600, stop = false, reason = null;
+  function run(l){
+    for (var i = 0; i < l.length && !stop; i++){
+      var n = l[i];
+      if (n.t === "rep"){ for (var k = 0; k < n.n && !stop; k++) run(n.body); }
+      else if (n.t === "until"){
+        var guard = 0;
+        while (!stop && !hooks.atGoal()){
+          if (++guard > LIMIT){ stop = true; reason = "loop"; break; }
+          var before = count; run(n.body);
+          if (count === before && !stop){ stop = true; reason = "loop"; }
+        }
+      }
+      else if (n.t === "ifwall"){ if (hooks.wallAhead()) run(n.body); }
+      else {
+        if (++count > LIMIT){ stop = true; reason = "loop"; break; }
+        if (hooks.exec(n) === false){ stop = true; reason = "blocked"; }
+      }
+    }
+  }
+  run(list);
+  return reason;
+}
+function countBlocks(list){
+  var c = 0;
+  list.forEach(function(n){ c++; if (n.body) c += countBlocks(n.body); });
+  return c;
+}
+function hasType(list, t){
+  return list.some(function(n){ return n.t === t || (n.body && hasType(n.body, t)); });
+}
+/* ---- ROBOT ---- */
+function parseRobot(level){
+  var rows = level.map, H = rows.length, W = rows[0].length, o = { W:W, H:H, walls:{}, bats:[], goal:null, start:null };
+  for (var y = 0; y < H; y++) for (var x = 0; x < W; x++){
+    var ch = rows[y][x];
+    if (ch === "#") o.walls[x + "," + y] = true;
+    else if (ch === "B") o.bats.push({ x:x, y:y });
+    else if (ch === "G") o.goal = { x:x, y:y };
+    else if (ch === "R") o.start = { x:x, y:y };
+  }
+  return o;
+}
+function robotRun(level, prog){
+  var m = parseRobot(level);
+  var s = { x:m.start.x, y:m.start.y, dir:level.dir, got:[] };
+  var trace = [];
+  function blockedAt(x, y){ return x < 0 || y < 0 || x >= m.W || y >= m.H || m.walls[x + "," + y]; }
+  function snap(uid, bump){ trace.push({ uid:uid, x:s.x, y:s.y, dir:s.dir, got:s.got.slice(), bump:!!bump }); }
+  var reason = runTree(prog, {
+    atGoal: function(){ return s.x === m.goal.x && s.y === m.goal.y; },
+    wallAhead: function(){ var d = DIRS[s.dir]; return !!blockedAt(s.x + d[0], s.y + d[1]); },
+    exec: function(n){
+      if (n.t === "f"){
+        var d = DIRS[s.dir], nx = s.x + d[0], ny = s.y + d[1];
+        if (blockedAt(nx, ny)){ snap(n.uid, true); return false; }
+        s.x = nx; s.y = ny; snap(n.uid);
+      } else if (n.t === "l"){ s.dir = (s.dir + 3) % 4; snap(n.uid); }
+      else if (n.t === "r"){ s.dir = (s.dir + 1) % 4; snap(n.uid); }
+      else if (n.t === "c"){
+        m.bats.forEach(function(b, i){ if (b.x === s.x && b.y === s.y && s.got.indexOf(i) === -1) s.got.push(i); });
+        snap(n.uid);
+      }
+      return true;
+    }
+  });
+  var atGoal = s.x === m.goal.x && s.y === m.goal.y;
+  var missing = m.bats.length - s.got.length;
+  var ok = false, msg;
+  if (reason === "blocked") msg = "Ops! Il robot ha trovato un muro. Guarda dove si è fermato e prova a cambiare i blocchi.";
+  else if (reason === "loop") msg = "Il programma continua troppo a lungo: forse il robot gira in tondo. Controlla i blocchi.";
+  else if (atGoal && missing === 0){ ok = true; msg = "🎉 Bravissimo! Il robot è arrivato al traguardo" + (m.bats.length ? " con tutte le batterie!" : "!"); }
+  else if (atGoal) msg = "Il robot è arrivato, ma " + (missing === 1 ? "manca ancora 1 batteria 🔋." : "mancano ancora " + missing + " batterie 🔋.") + " Usa il blocco Raccogli sopra la batteria.";
+  else msg = "Il robot non è ancora arrivato al traguardo 🏁. Aggiungi altri blocchi o cambia quelli che hai.";
+  return { trace:trace, ok:ok, msg:msg, reason:reason };
+}
+/* ---- TARTARUGA ---- */
+function segKey(x1, y1, x2, y2){
+  if (x1 > x2 || (x1 === x2 && y1 > y2)){ var a = x1, b = y1; x1 = x2; y1 = y2; x2 = a; y2 = b; }
+  return x1 + "," + y1 + "-" + x2 + "," + y2;
+}
+function turtleRun(level, prog){
+  var s = { x:level.start.x, y:level.start.y, dir:level.dir, pen:true, color:0 };
+  var segs = {}, trace = [];
+  function snap(uid, seg, bump){ trace.push({ uid:uid, x:s.x, y:s.y, dir:s.dir, pen:s.pen, color:s.color, seg:seg || null, bump:!!bump }); }
+  var reason = runTree(prog, {
+    atGoal: function(){ return false; },
+    wallAhead: function(){ return false; },
+    exec: function(n){
+      if (n.t === "f"){
+        var d = DIRS[s.dir], nx = s.x + d[0], ny = s.y + d[1];
+        if (nx < 0 || ny < 0 || nx > level.W || ny > level.H){ snap(n.uid, null, true); return false; }
+        var key = null;
+        if (s.pen){ key = segKey(s.x, s.y, nx, ny); segs[key] = s.color; }
+        var info = key ? { key:key, x1:s.x, y1:s.y, x2:nx, y2:ny, color:s.color } : null;
+        s.x = nx; s.y = ny; snap(n.uid, info);
+      }
+      else if (n.t === "l"){ s.dir = (s.dir + 3) % 4; snap(n.uid); }
+      else if (n.t === "r"){ s.dir = (s.dir + 1) % 4; snap(n.uid); }
+      else if (n.t === "pu"){ s.pen = false; snap(n.uid); }
+      else if (n.t === "pd"){ s.pen = true; snap(n.uid); }
+      else if (n.t === "col"){ s.color = n.c; snap(n.uid); }
+      return true;
+    }
+  });
+  var target = turtleTarget(level);
+  var missing = 0, extra = 0, wrongColor = 0;
+  Object.keys(target).forEach(function(k){
+    if (!(k in segs)) missing++;
+    else if (level.colors && segs[k] !== target[k]) wrongColor++;
+  });
+  Object.keys(segs).forEach(function(k){ if (!(k in target)) extra++; });
+  var ok = !reason && missing === 0 && extra === 0 && wrongColor === 0;
+  var msg;
+  if (reason === "blocked") msg = "La tartaruga sta per uscire dal foglio! Controlla i blocchi.";
+  else if (reason === "loop") msg = "Il programma è troppo lungo, controlla i blocchi.";
+  else if (ok) msg = "🎉 Perfetto! Il disegno è uguale al modello.";
+  else {
+    var parts = [];
+    if (missing) parts.push("mancano " + missing + (missing === 1 ? " linea" : " linee"));
+    if (extra) parts.push("c’" + (extra === 1 ? "è 1 linea" : "sono " + extra + " linee") + " in più");
+    if (wrongColor) parts.push(wrongColor + (wrongColor === 1 ? " linea ha" : " linee hanno") + " un altro colore");
+    msg = "Quasi! Nel disegno " + parts.join(", ") + ". Guarda il modello grigio e riprova.";
+  }
+  return { trace:trace, ok:ok, msg:msg, reason:reason };
+}
+function turtleTarget(level){
+  if (level._target) return level._target;
+  var segs = {}, s = { x:level.start.x, y:level.start.y, dir:level.dir, pen:true, color:0 };
+  runTree(level.solution(), {
+    atGoal: function(){ return false; }, wallAhead: function(){ return false; },
+    exec: function(n){
+      if (n.t === "f"){ var d = DIRS[s.dir], nx = s.x + d[0], ny = s.y + d[1]; if (s.pen) segs[segKey(s.x, s.y, nx, ny)] = s.color; s.x = nx; s.y = ny; }
+      else if (n.t === "l") s.dir = (s.dir + 3) % 4;
+      else if (n.t === "r") s.dir = (s.dir + 1) % 4;
+      else if (n.t === "pu") s.pen = false;
+      else if (n.t === "pd") s.pen = true;
+      else if (n.t === "col") s.color = n.c;
+      return true;
+    }
+  });
+  level._target = segs;
+  return segs;
+}
+/* helpers per scrivere le soluzioni */
+function F(n){ var a = []; for (var i = 0; i < (n || 1); i++) a.push(mk("f")); return a; }
+function L(){ return [mk("l")]; }
+function Rr(){ return [mk("r")]; }
+function C(){ return [mk("c")]; }
+function REP(n, body){ return [mk("rep", { n:n, body:body })]; }
+function UNTIL(body){ return [mk("until", { body:body })]; }
+function IFW(body){ return [mk("ifwall", { body:body })]; }
+function PU(){ return [mk("pu")]; }
+function PD(){ return [mk("pd")]; }
+function COL(c){ return [mk("col", { c:c })]; }
+function cat(){ return Array.prototype.concat.apply([], arguments); }
+/*BLOCKS-PURE-END*/
+
+/*BLOCKS-LEVELS-START*/
+var ROBOT_LEVELS = [
+  { id:1, name:"Primi passi", emoji:"🤖", dir:1, blocks:["f","l","r"],
+    story:"Il robot Bip deve raggiungere la bandiera. Metti insieme i blocchi Avanti!",
+    map:[".....","R...G","....."],
+    solution:function(){ return F(4); } },
+  { id:2, name:"Una curva", emoji:"↪️", dir:1, blocks:["f","l","r","rep"],
+    story:"Questa volta serve girare. Prova anche il blocco Ripeti: fa le stesse mosse più volte!",
+    map:["R....",".....",".....",".....","....G"],
+    solution:function(){ return cat(REP(4, F()), Rr(), REP(4, F())); } },
+  { id:3, name:"Il muro", emoji:"🧱", dir:2, blocks:["f","l","r","rep"],
+    story:"C’è un muro nel mezzo: Bip deve scendere e poi andare verso destra.",
+    map:["R.#..","..#..","..#..",".....","....G"],
+    solution:function(){ return cat(REP(4, F()), L(), REP(4, F())); } },
+  { id:4, name:"Batterie da raccogliere", emoji:"🔋", dir:1, blocks:["f","l","r","c","rep"],
+    story:"Bip ha poca energia! Passa sopra le batterie 🔋 e usa il blocco Raccogli, poi vai alla bandiera.",
+    map:["R.B...","......","..B...","......",".....G"],
+    solution:function(){ return cat(F(2), C(), Rr(), F(2), C(), L(), F(3), Rr(), F(2)); } },
+  { id:5, name:"La scala", emoji:"🪜", dir:1, blocks:["f","l","r","rep"],
+    story:"Per arrivare in cima serve salire una scala a gradini. Un gradino si ripete sempre uguale: usa Ripeti!",
+    map:["R.#####","#..####","##..###","###..##","####..#","#####..","######G"],
+    stair:true,
+    solution:function(){ return REP(6, cat(F(), Rr(), F(), L())); } },
+  { id:6, name:"Fila di batterie", emoji:"🔋", dir:1, blocks:["f","l","r","c","rep"],
+    story:"Una lunga fila di batterie! Raccoglile tutte senza scrivere cento blocchi: Ripeti ti aiuta.",
+    map:["#########","RBBBBBBBG","#########"],
+    solution:function(){ return cat(REP(7, cat(F(), C())), F()); } },
+  { id:7, name:"Giro del recinto", emoji:"🟦", dir:1, blocks:["f","l","r","c","rep"],
+    story:"Le batterie sono agli angoli del recinto. Puoi mettere un Ripeti dentro un altro Ripeti!",
+    map:["R...B","G###.",".###.",".###.","B...B"],
+    solution:function(){ return cat(REP(3, cat(REP(4, F()), C(), Rr())), F(3)); } },
+  { id:8, name:"A spirale", emoji:"🌀", dir:1, blocks:["f","l","r","until","ifwall"],
+    story:"Un percorso a spirale! Prova «Ripeti fino all’arrivo» con dentro «Se c’è un muro davanti: gira a destra» e poi Avanti.",
+    map:["R....","####.","..G#.",".###.","....."],
+    solution:function(){ return UNTIL(cat(IFW(Rr()), F())); } },
+  { id:9, name:"Spirale con batterie", emoji:"🌪️", dir:1, blocks:["f","l","r","c","until","ifwall","rep"],
+    story:"Una spirale più grande con quattro batterie nascoste lungo la strada. Ricorda di raccoglierle tutte!",
+    map:["R......","######.","..B..#.",".#G#.#B",
+         "B#...#.",".#####.","...B..."],
+    solution:function(){ return UNTIL(cat(IFW(Rr()), F(), C())); } },
+  { id:10, name:"Il serpentone", emoji:"🐍", dir:1, blocks:["f","l","r","c","rep"],
+    story:"La sfida finale: un lungo serpentone con tre batterie. Quali parti si ripetono? Usa i Ripeti per accorciare il programma.",
+    map:["R.....B","######.","B......",".######","......B","######.","G......"],
+    solution:function(){ return cat(REP(6, F()), C(), Rr(), REP(2, F()), Rr(), REP(6, F()), C(), L(), REP(2, F()), L(), REP(6, F()), C(), Rr(), REP(2, F()), Rr(), REP(6, F())); } }
+];
+var TURTLE_COLORS = [ { name:"Rosso", hex:"#D8452B" }, { name:"Blu", hex:"#2F78A6" }, { name:"Verde", hex:"#3E9560" }, { name:"Giallo", hex:"#D69A22" } ];
+var TURTLE_LEVELS = [
+  { id:1, name:"Una L", emoji:"📐", W:8, H:8, start:{x:2,y:6}, dir:0, blocks:["f","l","r"],
+    story:"Fai muovere la tartaruga per disegnare la lettera L, uguale al modello grigio.",
+    solution:function(){ return cat(F(3), Rr(), F(3)); } },
+  { id:2, name:"Il quadrato", emoji:"🟥", W:8, H:8, start:{x:2,y:2}, dir:1, blocks:["f","l","r","rep"],
+    story:"Un quadrato ha 4 lati uguali e 4 curve uguali: ottimo per usare Ripeti!",
+    solution:function(){ return REP(4, cat(F(3), Rr())); } },
+  { id:3, name:"Il rettangolo", emoji:"▭", W:8, H:8, start:{x:1,y:2}, dir:1, blocks:["f","l","r","rep"],
+    story:"Un rettangolo ha due lati lunghi e due corti. Cosa si ripete due volte?",
+    solution:function(){ return REP(2, cat(F(5), Rr(), F(3), Rr())); } },
+  { id:4, name:"La scala", emoji:"🪜", W:8, H:8, start:{x:0,y:6}, dir:1, blocks:["f","l","r","rep"],
+    story:"Disegna una scala con quattro gradini. Un gradino: avanti, su, avanti, giù.",
+    solution:function(){ return REP(4, cat(F(), L(), F(), Rr())); } },
+  { id:5, name:"La croce", emoji:"➕", W:8, H:8, start:{x:3,y:1}, dir:1, blocks:["f","l","r","rep"],
+    story:"Il contorno di una croce ha una parte che si ripete quattro volte. Riesci a trovarla?",
+    solution:function(){ return REP(4, cat(F(), Rr(), F(), L(), F(), Rr())); } },
+  { id:6, name:"Due quadrati", emoji:"✏️", W:8, H:8, start:{x:1,y:1}, dir:1, blocks:["f","l","r","rep","pu","pd"],
+    story:"Per spostarti senza disegnare, alza la penna! Poi riabbassala per il secondo quadrato.",
+    solution:function(){ return cat(REP(4, cat(F(2), Rr())), PU(), F(4), PD(), REP(4, cat(F(2), Rr()))); } },
+  { id:7, name:"Quadrato colorato", emoji:"🌈", W:8, H:8, start:{x:2,y:2}, dir:1, colors:true, blocks:["f","l","r","rep","pu","pd","col"],
+    story:"Ogni lato ha un colore diverso: rosso, blu, verde e giallo. Scegli il colore prima di disegnare.",
+    solution:function(){ return cat(COL(0), F(3), Rr(), COL(1), F(3), Rr(), COL(2), F(3), Rr(), COL(3), F(3), Rr()); } },
+  { id:8, name:"La spirale", emoji:"🌀", W:8, H:8, start:{x:3,y:3}, dir:1, blocks:["f","l","r","rep","pu","pd"],
+    story:"Una spirale che cresce: i lati diventano sempre più lunghi.",
+    solution:function(){ return cat(F(1), Rr(), F(1), Rr(), F(2), Rr(), F(2), Rr(), F(3), Rr(), F(3), Rr(), F(4)); } },
+  { id:9, name:"La finestra", emoji:"🪟", W:8, H:8, start:{x:4,y:4}, dir:1, blocks:["f","l","r","rep","pu","pd"],
+    story:"Quattro quadrati attorno allo stesso punto: un Ripeti dentro un altro Ripeti!",
+    solution:function(){ return REP(4, cat(REP(4, cat(F(2), Rr())), Rr())); } },
+  { id:10, name:"Fiore a colori", emoji:"🌸", W:8, H:8, start:{x:4,y:4}, dir:1, colors:true, blocks:["f","l","r","rep","pu","pd","col"],
+    story:"Quattro quadrati, ognuno di un colore diverso, che girano attorno al centro: un vero fiore!",
+    solution:function(){ return cat(COL(0), REP(4, cat(F(2), Rr())), Rr(), COL(1), REP(4, cat(F(2), Rr())), Rr(), COL(2), REP(4, cat(F(2), Rr())), Rr(), COL(3), REP(4, cat(F(2), Rr()))); } }
+];
+/*BLOCKS-LEVELS-END*/
+
+/*BLOCKS-UI-START*/
+var SVGNS = "http://www.w3.org/2000/svg";
+function svgEl(tag, attrs, text){
+  var e = document.createElementNS(SVGNS, tag);
+  for (var k in attrs) e.setAttribute(k, attrs[k]);
+  if (text != null) e.textContent = text;
+  return e;
+}
+var DEFS = {
+  f:{ icon:"⬆️", text:"Avanti" }, l:{ icon:"↩️", text:"Gira a sinistra" }, r:{ icon:"↪️", text:"Gira a destra" },
+  c:{ icon:"🔋", text:"Raccogli" }, rep:{ icon:"🔁", text:"Ripeti" },
+  until:{ icon:"🏁", text:"Ripeti fino all’arrivo" }, ifwall:{ icon:"🧱", text:"Se c’è un muro davanti" },
+  pu:{ icon:"🖐️", text:"Alza la penna" }, pd:{ icon:"✏️", text:"Abbassa la penna" }, col:{ icon:"🎨", text:"Colore" }
+};
+var COLOR_DOTS = ["🔴","🔵","🟢","🟡"];
+function nodeText(n){
+  if (n.t === "col") return COLOR_DOTS[n.c] + " Colore " + TURTLE_COLORS[n.c].name.toLowerCase();
+  return DEFS[n.t].icon + " " + DEFS[n.t].text;
+}
+function createEditor(o){
+  var prog = [], target = [], hist = [], allowed = [], locked = false;
+  function getList(path){
+    var l = prog;
+    for (var i = 0; i < path.length; i++){ var n = l[path[i]]; if (!n || !n.body) return null; l = n.body; }
+    return l;
+  }
+  function pathEq(a, b){ return a.length === b.length && a.every(function(v, i){ return v === b[i]; }); }
+  function pushHist(){ hist.push(JSON.stringify(prog)); if (hist.length > 60) hist.shift(); }
+  function changed(){ render(); if (o.onChange) o.onChange(); }
+  function add(type, c){
+    if (locked) return;
+    var list = getList(target);
+    if (!list){ target = []; list = prog; }
+    pushHist();
+    var node;
+    if (type === "rep") node = mk("rep", { n:2, body:[] });
+    else if (type === "until" || type === "ifwall") node = mk(type, { body:[] });
+    else if (type === "col") node = mk("col", { c:c });
+    else node = mk(type);
+    list.push(node);
+    if (node.body) target = target.concat([list.length - 1]);
+    changed();
+  }
+  function removeAt(path, i){
+    if (locked) return;
+    var list = getList(path); if (!list) return;
+    pushHist(); list.splice(i, 1); target = []; changed();
+  }
+  function stepN(path, i, d){
+    if (locked) return;
+    var list = getList(path); if (!list) return;
+    var n = list[i]; var v = Math.max(1, Math.min(12, n.n + d));
+    if (v === n.n) return;
+    pushHist(); n.n = v; changed();
+  }
+  function setTarget(path){ if (locked) return; target = path; render(); }
+  function buildList(list, path, parent){
+    list.forEach(function(n, i){
+      var b = document.createElement("div");
+      b.className = "blk t-" + n.t;
+      b.setAttribute("data-uid", n.uid);
+      var head = document.createElement("div"); head.className = "blk-head";
+      var txt = document.createElement("span"); txt.className = "blk-text";
+      if (n.t === "rep"){
+        txt.textContent = "🔁 Ripeti";
+        head.appendChild(txt);
+        var minus = document.createElement("button"); minus.type = "button"; minus.className = "blk-step"; minus.textContent = "−";
+        minus.setAttribute("aria-label", "Una volta in meno"); minus.disabled = locked || n.n <= 1;
+        minus.addEventListener("click", function(){ stepN(path, i, -1); });
+        var num = document.createElement("strong"); num.className = "blk-num"; num.textContent = n.n + (n.n === 1 ? " volta" : " volte");
+        var plus = document.createElement("button"); plus.type = "button"; plus.className = "blk-step"; plus.textContent = "+";
+        plus.setAttribute("aria-label", "Una volta in più"); plus.disabled = locked || n.n >= 12;
+        plus.addEventListener("click", function(){ stepN(path, i, 1); });
+        head.appendChild(minus); head.appendChild(num); head.appendChild(plus);
+      } else {
+        txt.textContent = nodeText(n);
+        head.appendChild(txt);
+      }
+      if (n.body){
+        var mine = path.concat([i]);
+        var here = pathEq(target, mine);
+        var inb = document.createElement("button"); inb.type = "button"; inb.className = "blk-in" + (here ? " on" : "");
+        inb.textContent = here ? "✔ Qui dentro" : "📥 Qui dentro";
+        inb.setAttribute("aria-label", here ? "I nuovi blocchi vanno dentro questo blocco" : "Metti i prossimi blocchi dentro questo blocco");
+        inb.disabled = locked;
+        inb.addEventListener("click", function(){ setTarget(mine); });
+        head.appendChild(inb);
+      }
+      var x = document.createElement("button"); x.type = "button"; x.className = "blk-x"; x.textContent = "✕";
+      x.setAttribute("aria-label", "Togli questo blocco"); x.disabled = locked;
+      x.addEventListener("click", function(){ removeAt(path, i); });
+      head.appendChild(x);
+      b.appendChild(head);
+      if (n.body){
+        var mine2 = path.concat([i]);
+        var body = document.createElement("div");
+        body.className = "blk-body" + (pathEq(target, mine2) ? " target" : "");
+        if (n.body.length === 0){
+          var em = document.createElement("div"); em.className = "blk-empty"; em.textContent = "Metti qui i blocchi";
+          body.appendChild(em);
+        } else buildList(n.body, mine2, body);
+        body.addEventListener("click", function(e){ if (e.target === body || e.target.classList.contains("blk-empty")){ e.stopPropagation(); setTarget(mine2); } });
+        b.appendChild(body);
+      }
+      parent.appendChild(b);
+    });
+  }
+  function render(){
+    var pe = o.programEl; pe.innerHTML = "";
+    pe.classList.toggle("target", target.length === 0);
+    var head = document.createElement("button"); head.type = "button"; head.className = "blk-main-head";
+    head.textContent = (target.length === 0 ? "✔ " : "📥 ") + "Programma principale";
+    head.disabled = locked;
+    head.addEventListener("click", function(){ setTarget([]); });
+    pe.appendChild(head);
+    if (prog.length === 0){
+      var em = document.createElement("div"); em.className = "blk-empty"; em.textContent = "Il programma è vuoto: scegli un blocco dall’alto.";
+      pe.appendChild(em);
+    } else buildList(prog, [], pe);
+    var tl = getList(target);
+    var info = "";
+    if (target.length === 0) info = "I prossimi blocchi vanno nel <strong>programma principale</strong>.";
+    else info = "I prossimi blocchi vanno <strong>dentro un blocco</strong> (quello evidenziato). Per tornare fuori premi «Programma principale».";
+    o.infoEl.innerHTML = info;
+    renderPalette();
+  }
+  function renderPalette(){
+    var pal = o.paletteEl; pal.innerHTML = "";
+    allowed.forEach(function(t){
+      var list = t === "col" ? [0,1,2,3] : [null];
+      list.forEach(function(ci){
+        var b = document.createElement("button"); b.type = "button"; b.className = "blk-pal t-" + t;
+        b.textContent = t === "col" ? COLOR_DOTS[ci] + " " + TURTLE_COLORS[ci].name : DEFS[t].icon + " " + DEFS[t].text;
+        b.disabled = locked;
+        b.addEventListener("click", function(){ add(t, ci); });
+        pal.appendChild(b);
+      });
+    });
+  }
+  return {
+    setBlocks:function(a){ allowed = a; render(); },
+    reset:function(){ prog = []; target = []; hist = []; render(); },
+    clear:function(){ if (prog.length){ pushHist(); prog = []; target = []; changed(); } },
+    undo:function(){ if (locked || !hist.length) return; prog = JSON.parse(hist.pop()); target = []; changed(); },
+    program:function(){ return prog; },
+    setLocked:function(v){ locked = v; render(); },
+    highlight:function(uid){
+      var all = o.programEl.querySelectorAll(".blk.running");
+      for (var i = 0; i < all.length; i++) all[i].classList.remove("running");
+      if (uid == null) return;
+      var el = o.programEl.querySelector('.blk[data-uid="' + uid + '"]');
+      if (el){ el.classList.add("running"); if (el.scrollIntoView) el.scrollIntoView({ block:"nearest" }); }
+    }
+  };
+}
+
+/* ---- disegno scena: robot ---- */
+function drawRobotStage(svg, level, trace, k){
+  if (!level._m) level._m = parseRobot(level);
+  var m = level._m, S = 60;
+  svg.setAttribute("viewBox", "0 0 " + (m.W * S) + " " + (m.H * S));
+  while (svg.firstChild) svg.removeChild(svg.firstChild);
+  var st = k > 0 ? trace[k - 1] : { x:m.start.x, y:m.start.y, dir:level.dir, got:[], bump:false };
+  for (var y = 0; y < m.H; y++) for (var x = 0; x < m.W; x++){
+    var wall = !!m.walls[x + "," + y];
+    var r = svgEl("rect", { x:x * S, y:y * S, width:S, height:S, style:"fill:" + (wall ? "var(--ink-soft)" : "var(--surface-soft)") + ";stroke:var(--border);stroke-width:1.5" });
+    if (wall) r.setAttribute("opacity", "0.6");
+    svg.appendChild(r);
+    if (wall) svg.appendChild(svgEl("text", { x:x * S + S / 2, y:y * S + S / 2 + 12, "text-anchor":"middle", "font-size":34 }, "🧱"));
+  }
+  svg.appendChild(svgEl("text", { x:m.goal.x * S + S / 2, y:m.goal.y * S + S / 2 + 13, "text-anchor":"middle", "font-size":38 }, "🏁"));
+  m.bats.forEach(function(b, i){
+    if (st.got.indexOf(i) !== -1) return;
+    svg.appendChild(svgEl("text", { x:b.x * S + S / 2, y:b.y * S + S / 2 + 12, "text-anchor":"middle", "font-size":32 }, "🔋"));
+  });
+  var g = svgEl("g", { transform:"translate(" + (st.x * S + S / 2) + "," + (st.y * S + S / 2) + ")" });
+  var arrow = svgEl("polygon", { points:"0,-29 -10,-18 10,-18", style:"fill:var(--accent-1);stroke:var(--ink);stroke-width:1.5", transform:"rotate(" + (st.dir * 90) + ")" });
+  g.appendChild(svgEl("text", { x:0, y:13, "text-anchor":"middle", "font-size":38 }, "🤖"));
+  g.appendChild(arrow);
+  if (st.bump){
+    var d = DIRS[st.dir];
+    g.appendChild(svgEl("text", { x:d[0] * 30, y:d[1] * 30 + 10, "text-anchor":"middle", "font-size":28 }, "💥"));
+  }
+  svg.appendChild(g);
+}
+/* ---- disegno scena: tartaruga ---- */
+function drawTurtleStage(svg, level, trace, k){
+  var S = 50, M = 30, W = level.W, H = level.H;
+  svg.setAttribute("viewBox", "0 0 " + (W * S + 2 * M) + " " + (H * S + 2 * M));
+  while (svg.firstChild) svg.removeChild(svg.firstChild);
+  var target = turtleTarget(level);
+  Object.keys(target).forEach(function(key){
+    var p = key.split("-").map(function(s){ return s.split(",").map(Number); });
+    svg.appendChild(svgEl("line", { x1:M + p[0][0] * S, y1:M + p[0][1] * S, x2:M + p[1][0] * S, y2:M + p[1][1] * S,
+      style:"stroke:var(--ink-soft)", "stroke-width":16, "stroke-linecap":"round", opacity:0.28 }));
+  });
+  for (var y = 0; y <= H; y++) for (var x = 0; x <= W; x++)
+    svg.appendChild(svgEl("circle", { cx:M + x * S, cy:M + y * S, r:3.5, style:"fill:var(--border)" }));
+  var st = { x:level.start.x, y:level.start.y, dir:level.dir, pen:true, color:0, bump:false };
+  for (var i = 0; i < k; i++){
+    var f = trace[i];
+    if (f.seg){
+      svg.appendChild(svgEl("line", { x1:M + f.seg.x1 * S, y1:M + f.seg.y1 * S, x2:M + f.seg.x2 * S, y2:M + f.seg.y2 * S,
+        stroke:level.colors ? TURTLE_COLORS[f.seg.color].hex : "#2F78A6", "stroke-width":7, "stroke-linecap":"round" }));
+    }
+    st = f;
+  }
+  svg.appendChild(svgEl("circle", { cx:M + level.start.x * S, cy:M + level.start.y * S, r:9, style:"fill:none;stroke:var(--accent-1);stroke-width:3" }));
+  var g = svgEl("g", { transform:"translate(" + (M + st.x * S) + "," + (M + st.y * S) + ")", opacity:st.pen ? 1 : 0.55 });
+  g.appendChild(svgEl("polygon", { points:"0,-26 -9,-15 9,-15", style:"fill:var(--accent-1);stroke:var(--ink);stroke-width:1.5", transform:"rotate(" + (st.dir * 90) + ")" }));
+  g.appendChild(svgEl("text", { x:0, y:10, "text-anchor":"middle", "font-size":30 }, "🐢"));
+  if (st.bump) g.appendChild(svgEl("text", { x:0, y:-20, "text-anchor":"middle", "font-size":24 }, "💥"));
+  svg.appendChild(g);
+}
+
+/* ---- controller condiviso ---- */
+function blockGame(cfg){
+  var $ = function(id){ return document.getElementById(cfg.prefix + id); };
+  var state = { idx:0, trace:null, res:null, k:0, timer:null, running:false };
+  var editor = createEditor({ paletteEl:$("Palette"), programEl:$("Program"), infoEl:$("Info"), onChange:function(){ resetRun(); } });
+  var msgEl = $("Msg"), svg = $("Stage"), storyEl = $("Story"), pickerEl = $("LevelPicker");
+  var btnRun = $("Run"), btnStep = $("Step"), btnUndo = $("Undo"), btnClear = $("Clear"), btnReset = $("Reset"), btnNext = $("Next"), speedEl = $("Speed");
+  function level(){ return cfg.levels[state.idx]; }
+  function setMsg(t, cls){ msgEl.textContent = t || ""; msgEl.className = "msg" + (cls ? " " + cls : ""); }
+  function stopTimer(){ if (state.timer){ clearInterval(state.timer); state.timer = null; } }
+  function resetRun(){
+    stopTimer(); state.running = false; state.trace = null; state.res = null; state.k = 0;
+    editor.highlight(null);
+    btnRun.textContent = "▶️ Esegui"; btnNext.hidden = true;
+    editor.setLocked(false); setButtons();
+    cfg.draw(svg, level(), [], 0);
+    setMsg("");
+  }
+  function setButtons(){
+    btnStep.disabled = state.running; btnUndo.disabled = state.running; btnClear.disabled = state.running; btnReset.disabled = false;
+  }
+  function prepare(){
+    var prog = editor.program();
+    if (!prog.length){ setMsg("Aggiungi qualche blocco al programma, poi premi Esegui.", "warn"); return false; }
+    state.res = cfg.run(level(), prog); state.trace = state.res.trace; state.k = 0;
+    return true;
+  }
+  function showFrame(){
+    cfg.draw(svg, level(), state.trace, state.k);
+    editor.highlight(state.k > 0 ? state.trace[state.k - 1].uid : null);
+  }
+  function finish(){
+    var res = state.res, hint = "";
+    if (res.ok){
+      var prog = editor.program(), lv = level();
+      if (lv.blocks.indexOf("rep") !== -1 && !hasType(prog, "rep") && !hasType(prog, "until") && countBlocks(prog) > 8)
+        hint = " Sai che puoi farlo con meno blocchi? Prova a usare Ripeti!";
+      setMsg(res.msg + hint, "ok");
+      btnNext.hidden = state.idx >= cfg.levels.length - 1;
+    } else setMsg(res.msg, "warn");
+    state.running = false; editor.setLocked(false); setButtons();
+    btnRun.textContent = "▶️ Esegui";
+  }
+  function reduced(){ return window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches; }
+  btnRun.addEventListener("click", function(){
+    if (state.running){ stopTimer(); state.running = false; editor.setLocked(false); setButtons(); btnRun.textContent = "▶️ Esegui"; setMsg("Fermato. Premi Esegui per ripartire."); return; }
+    setMsg("");
+    if (!prepare()) return;
+    state.running = true; editor.setLocked(true); setButtons();
+    btnRun.textContent = "⏹ Ferma";
+    state.k = 0; cfg.draw(svg, level(), state.trace, 0);
+    if (reduced() || state.trace.length === 0){ state.k = state.trace.length; showFrame(); finish(); return; }
+    var delay = parseInt(speedEl.value, 10) || 500;
+    state.timer = setInterval(function(){
+      if (state.k >= state.trace.length){ stopTimer(); editor.highlight(null); finish(); return; }
+      state.k++; showFrame();
+      if (state.k >= state.trace.length){ stopTimer(); setTimeout(function(){ editor.highlight(null); finish(); }, Math.min(delay, 400)); }
+    }, delay);
+  });
+  btnStep.addEventListener("click", function(){
+    if (!state.trace){ if (!prepare()) return; setMsg(""); }
+    if (state.k < state.trace.length){
+      state.k++; showFrame();
+      if (state.k >= state.trace.length){ editor.highlight(null); finish(); }
+    } else { finish(); }
+  });
+  btnUndo.addEventListener("click", function(){ editor.undo(); });
+  btnClear.addEventListener("click", function(){ editor.clear(); });
+  btnReset.addEventListener("click", function(){ resetRun(); });
+  btnNext.addEventListener("click", function(){ loadLevel(state.idx + 1); });
+  function renderPicker(){
+    pickerEl.innerHTML = "";
+    cfg.levels.forEach(function(lv, i){
+      var b = document.createElement("button"); b.type = "button"; b.className = "level-btn";
+      b.setAttribute("aria-current", i === state.idx ? "true" : "false");
+      b.innerHTML = '<span class="le">' + lv.emoji + '</span><span class="lt">Livello ' + lv.id + '</span><span>' + lv.name + '</span>';
+      b.addEventListener("click", function(){ loadLevel(i); });
+      pickerEl.appendChild(b);
+    });
+  }
+  function loadLevel(i){
+    stopTimer(); state.idx = i; state.running = false;
+    editor.reset(); editor.setBlocks(level().blocks);
+    storyEl.textContent = level().story;
+    renderPicker(); resetRun();
+  }
+  loadLevel(0);
+}
+blockGame({ prefix:"rb", levels:ROBOT_LEVELS, draw:drawRobotStage, run:robotRun });
+blockGame({ prefix:"tt", levels:TURTLE_LEVELS, draw:drawTurtleStage, run:turtleRun });
+/*BLOCKS-UI-END*/
+
+  })();
+
+  /* ============ PIXEL ART CODIFICATA ============ */
+  (function(){
+/*PC-PURE-START*/
+var PC_W = { k:".", hex:"#FFFFFF", emoji:"⬜", name:"bianco" };
+var PC_K = { k:"#", hex:"#232336", emoji:"⬛", name:"nero" };
+var PC_R = { k:"R", hex:"#D8452B", emoji:"🟥", name:"rosso" };
+var PC_B = { k:"B", hex:"#2F78A6", emoji:"🟦", name:"blu" };
+var PC_G = { k:"G", hex:"#3E9560", emoji:"🟩", name:"verde" };
+var PC_Y = { k:"Y", hex:"#E8B22E", emoji:"🟨", name:"giallo" };
+var PC_0 = { k:"0", hex:"#FFFFFF", emoji:"⬜", name:"0 bianco" };
+var PC_1 = { k:"1", hex:"#232336", emoji:"⬛", name:"1 nero" };
+function pcNum(k, base){ return { k:k, hex:base.hex, emoji:base.emoji, name:base.name }; }
+var PC_LEVELS = [
+  { id:1, name:"Numeri e colori", emoji:"🔢", type:"numbers",
+    story:"Ogni numero è un colore: 1 = rosso, 2 = giallo, 3 = verde, 0 = lascia bianco. Colora ogni quadretto come dice il codice, nella stessa posizione.",
+    pal:[ pcNum("0", PC_W), pcNum("1", PC_R), pcNum("2", PC_Y), pcNum("3", PC_G) ],
+    target:["00100","01110","11111","22322","22322"] },
+  { id:2, name:"Codice binario 0 e 1", emoji:"💾", type:"binary",
+    story:"I computer usano solo 0 e 1. Qui 1 = quadretto nero, 0 = quadretto bianco. Che disegno esce?",
+    pal:[ PC_0, PC_1 ],
+    target:["01010","11111","11111","01110","00100"] },
+  { id:3, name:"Binario grande", emoji:"😀", type:"binary",
+    story:"Stesso codice, ma più grande: 8 colonne e 8 righe. Vai una riga alla volta, leggendo da sinistra a destra.",
+    pal:[ PC_0, PC_1 ],
+    target:["00111100","01000010","10100101","10000001","10100101","10011001","01000010","00111100"] },
+  { id:4, name:"Conta i quadretti", emoji:"🌲", type:"runs",
+    story:"Questo codice è più corto: per ogni riga dice quanti quadretti di fila hanno lo stesso colore. Per esempio «⬜2 ⬛2 ⬜2» = 2 bianchi, 2 neri, 2 bianchi.",
+    pal:[ PC_W, PC_K ],
+    target:["..##..",".####.","######","..##..","..##..","..##.."] },
+  { id:5, name:"Conta in grande", emoji:"🚀", type:"runs",
+    story:"Un razzo da costruire riga per riga. Ricorda: i numeri dicono quanti quadretti di fila, nell’ordine da sinistra a destra.",
+    pal:[ PC_W, PC_K ],
+    target:["...##...","..####..","..####..","..####..",".######.",".######.","##.##.##","#..##..#"] },
+  { id:6, name:"Le lettere dei colori", emoji:"☀️", type:"letters",
+    story:"Ogni lettera è un colore: R = rosso, B = blu, G = verde, Y = giallo, un puntino = bianco. Colora il disegno!",
+    pal:[ PC_W, PC_R, PC_B, PC_G, PC_Y ],
+    target:["BBYYBB","BYYYYB","YYRRYY","YYRRYY","BYYYYB","BBYYBB"] },
+  { id:7, name:"Battaglia navale", emoji:"📍", type:"coords",
+    story:"Ogni quadretto ha un nome: una lettera per la colonna e un numero per la riga (come nella battaglia navale). Colora tutti i quadretti della lista!",
+    pal:[ PC_W, PC_Y ],
+    target:["...Y...","..YYY..","YYYYYYY",".YYYYY.","..YYY..",".YY.YY.",".Y...Y."] },
+  { id:8, name:"Numeri che diventano righe", emoji:"🧮", type:"decimal",
+    story:"Ogni riga è scritta con un numero. Per trasformarlo in quadretti usa i pesi sopra la griglia (16, 8, 4, 2, 1): somma i pesi neri per ottenere il numero. Esempio: 21 = 16 + 4 + 1.",
+    pal:[ PC_0, PC_1 ],
+    target:["00100","01110","10101","00100","00100"] },
+  { id:9, name:"Numeri grandi", emoji:"🏰", type:"decimal",
+    story:"Ora le righe hanno 8 quadretti, con pesi 128, 64, 32, 16, 8, 4, 2, 1. Scomponi ogni numero: il peso più grande che ci sta, poi il resto… Ce la fai!",
+    pal:[ PC_0, PC_1 ],
+    target:["10100101","11111111","01111110","01011010","01011010","01111110","01111110","01100110"] },
+  { id:10, name:"Barca a colori", emoji:"⛵", type:"runs",
+    story:"Un disegno a colori da costruire con i numeri: «🟨1» = un quadretto giallo, «⬜3» = tre bianchi. Dopo la barca potresti inventare un codice tuo!",
+    pal:[ PC_W, PC_Y, PC_R, PC_B ],
+    target:["...Y....","..YYY...",".YYYYY..","...R....","RRRRRRRR",".RRRRRR.","BBBBBBBB","BBBBBBBB"] },
+  { id:11, name:"Scrivi tu il codice", emoji:"✍️", type:"reverse",
+    story:"Adesso tocca a te! Guarda il disegno e scrivi il codice binario: premi un quadretto per cambiarlo da 0 (bianco) a 1 (nero).",
+    pal:[ PC_0, PC_1 ],
+    target:["010010","111111","111111","011110","001100","000000"] }
+];
+function pcRuns(row){
+  var out = [], i = 0;
+  while (i < row.length){
+    var j = i; while (j < row.length && row[j] === row[i]) j++;
+    out.push({ k:row[i], n:j - i }); i = j;
+  }
+  return out;
+}
+function pcCoordName(x, y){ return String.fromCharCode(65 + x) + (y + 1); }
+function pcRowDecimal(row, pal){
+  var v = 0; for (var i = 0; i < row.length; i++) v = v * 2 + (row[i] === pal[1].k ? 1 : 0);
+  return v;
+}
+function pcCoords(level){
+  var bg = level.pal[0].k, out = [];
+  level.pal.slice(1).forEach(function(p){
+    var cells = [];
+    level.target.forEach(function(row, y){ for (var x = 0; x < row.length; x++) if (row[x] === p.k) cells.push(pcCoordName(x, y)); });
+    out.push({ pal:p, cells:cells });
+  });
+  return out;
+}
+function pcCompare(level, grid){
+  var wrong = [];
+  level.target.forEach(function(row, y){ for (var x = 0; x < row.length; x++) if (grid[y][x] !== row[x]) wrong.push({ x:x, y:y }); });
+  return wrong;
+}
+/*PC-PURE-END*/
+
+/*PC-UI-START*/
+(function(){
+  var gridEl = document.getElementById("pcGrid"), codeEl = document.getElementById("pcCode"), palEl = document.getElementById("pcPalette"),
+      storyEl = document.getElementById("pcStory"), pickerEl = document.getElementById("pcLevelPicker"), msgEl = document.getElementById("pcMsg"),
+      modelWrap = document.getElementById("pcModelWrap"), modelEl = document.getElementById("pcModel"), brushWrap = document.getElementById("pcBrushWrap");
+  var st = { idx:0, grid:null, brush:1, hist:[], painting:false, helped:false };
+  function lv(){ return PC_LEVELS[st.idx]; }
+  function palOf(k){ return lv().pal.filter(function(p){ return p.k === k; })[0]; }
+  function setMsg(t, c){ msgEl.textContent = t || ""; msgEl.className = "msg" + (c ? " " + c : ""); }
+  function blank(){ var l = lv(); return l.target.map(function(r){ return r.split("").map(function(){ return l.pal[0].k; }); }); }
+  function inkFor(hex){ return hex === "#FFFFFF" ? "#232336" : "#FFFFFF"; }
+
+  function renderPicker(){
+    pickerEl.innerHTML = "";
+    PC_LEVELS.forEach(function(l, i){
+      var b = document.createElement("button"); b.type = "button"; b.className = "level-btn";
+      b.setAttribute("aria-current", i === st.idx ? "true" : "false");
+      b.innerHTML = '<span class="le">' + l.emoji + '</span><span class="lt">Livello ' + l.id + '</span><span>' + l.name + '</span>';
+      b.addEventListener("click", function(){ loadLevel(i); });
+      pickerEl.appendChild(b);
+    });
+  }
+  function renderPalette(){
+    palEl.innerHTML = "";
+    var l = lv();
+    brushWrap.hidden = l.type === "reverse";
+    if (l.type === "reverse") return;
+    l.pal.forEach(function(p, i){
+      var b = document.createElement("button"); b.type = "button"; b.className = "pc-swatch";
+      b.setAttribute("aria-pressed", i === st.brush ? "true" : "false");
+      var label = (l.type === "numbers" || l.type === "binary" || l.type === "decimal" || l.type === "letters") && p.k !== "." ? p.k + " · " : "";
+      b.innerHTML = '<span class="pc-dot" style="background:' + p.hex + '"></span><span>' + (l.type === "numbers" ? p.k + " · " : "") + (p.k === "0" || p.k === "1" ? p.name : p.name) + '</span>';
+      b.addEventListener("click", function(){ st.brush = i; renderPalette(); });
+      palEl.appendChild(b);
+    });
+  }
+  function renderCode(){
+    var l = lv(), h = "";
+    modelWrap.hidden = l.type !== "reverse";
+    if (l.type === "numbers" || l.type === "binary" || l.type === "letters"){
+      var W = l.target[0].length;
+      h = '<p class="pc-code-title">Il codice (leggi da sinistra a destra, una riga alla volta):</p><div class="pc-code-grid" style="grid-template-columns:repeat(' + W + ',1fr)">';
+      l.target.forEach(function(row){ row.split("").forEach(function(k){ h += '<span>' + (k === "." ? "·" : k) + '</span>'; }); });
+      h += '</div>';
+      if (l.type === "letters" || l.type === "numbers"){
+        h += '<p class="pc-legend">' + l.pal.map(function(p){ return p.emoji + " " + (l.type === "letters" ? (p.k === "." ? "· " : p.k + " = ") : p.k + " = ") + p.name; }).join(" &nbsp;·&nbsp; ") + '</p>';
+      } else h += '<p class="pc-legend">⬛ 1 = nero &nbsp;·&nbsp; ⬜ 0 = bianco</p>';
+    } else if (l.type === "runs"){
+      h = '<p class="pc-code-title">Il codice (un elenco per ogni riga):</p><ol class="pc-runs">';
+      l.target.forEach(function(row, y){
+        h += '<li><span class="pc-rowlab">Riga ' + (y + 1) + '</span> ' + pcRuns(row).map(function(r){ return '<span class="run">' + palOf(r.k).emoji + r.n + '</span>'; }).join(" ") + '</li>';
+      });
+      h += '</ol>';
+    } else if (l.type === "coords"){
+      h = '<p class="pc-code-title">Colora questi quadretti:</p>';
+      pcCoords(l).forEach(function(g){
+        h += '<p class="pc-coords"><span class="pc-chip-head">' + g.pal.emoji + ' ' + g.pal.name + ':</span> ' + g.cells.map(function(c){ return '<span class="chip">' + c + '</span>'; }).join(" ") + '</p>';
+      });
+      h += '<p class="pc-legend">La lettera è la colonna (in alto), il numero è la riga (a sinistra).</p>';
+    } else if (l.type === "decimal"){
+      h = '<p class="pc-code-title">Il codice: un numero per ogni riga.</p><ol class="pc-runs">';
+      l.target.forEach(function(row, y){ h += '<li><span class="pc-rowlab">Riga ' + (y + 1) + '</span> <strong class="pc-dec">' + pcRowDecimal(row, l.pal) + '</strong></li>'; });
+      h += '</ol><p class="pc-legend">Aiuto: 1 = quadretto nero, 0 = quadretto bianco. Nei quadretti neri, i pesi sopra la griglia si sommano e danno il numero.</p>';
+    } else if (l.type === "reverse"){
+      h = '<p class="pc-code-title">Il disegno da trasformare in codice:</p>';
+      renderModel();
+    }
+    codeEl.innerHTML = h;
+  }
+  function renderModel(){
+    var l = lv(), W = l.target[0].length;
+    modelEl.style.gridTemplateColumns = "repeat(" + W + ",1fr)"; modelEl.innerHTML = "";
+    l.target.forEach(function(row){ row.split("").forEach(function(k){
+      var s = document.createElement("span"); s.style.background = palOf(k).hex; modelEl.appendChild(s);
+    }); });
+  }
+  function labels(){
+    var l = lv(), W = l.target[0].length;
+    if (l.type === "coords"){
+      return { top:Array.apply(null, Array(W)).map(function(_, i){ return String.fromCharCode(65 + i); }), left:l.target.map(function(_, i){ return String(i + 1); }) };
+    }
+    if (l.type === "decimal"){
+      var tops = []; for (var i = W - 1; i >= 0; i--) tops.push(String(Math.pow(2, i)));
+      return { top:tops, left:l.target.map(function(r){ return String(pcRowDecimal(r, l.pal)); }) };
+    }
+    return null;
+  }
+  var wrongSet = {};
+  function renderGrid(){
+    var l = lv(), W = l.target[0].length, H = l.target.length, lab = labels();
+    gridEl.innerHTML = "";
+    gridEl.style.gridTemplateColumns = (lab ? "minmax(2.2em,auto) " : "") + "repeat(" + W + ",1fr)";
+    gridEl.style.setProperty("--pc-cols", W);
+    gridEl.className = "pc-grid" + (lab ? " has-labels" : "") + (W >= 8 ? " big" : "");
+    if (lab){
+      var corner = document.createElement("span"); corner.className = "pc-lab"; gridEl.appendChild(corner);
+      lab.top.forEach(function(t){ var s = document.createElement("span"); s.className = "pc-lab top"; s.textContent = t; gridEl.appendChild(s); });
+    }
+    for (var y = 0; y < H; y++){
+      if (lab){ var ls = document.createElement("span"); ls.className = "pc-lab left"; ls.textContent = lab.left[y]; gridEl.appendChild(ls); }
+      for (var x = 0; x < W; x++){
+        var k = st.grid[y][x], p = palOf(k);
+        var c = document.createElement("button"); c.type = "button"; c.className = "pc-cell";
+        c.setAttribute("data-x", x); c.setAttribute("data-y", y);
+        c.style.background = p.hex; c.style.color = inkFor(p.hex);
+        if (l.type === "reverse") c.textContent = k;
+        if (wrongSet[x + "," + y]) c.classList.add("wrong");
+        c.setAttribute("aria-label", "Riga " + (y + 1) + ", colonna " + (x + 1) + ": " + p.name);
+        gridEl.appendChild(c);
+      }
+    }
+  }
+  function snapshot(){ st.hist.push(JSON.stringify(st.grid)); if (st.hist.length > 80) st.hist.shift(); }
+  function applyTo(x, y, stroke){
+    var l = lv(), cur = st.grid[y][x], nk;
+    if (l.type === "reverse"){ nk = cur === l.pal[0].k ? l.pal[1].k : l.pal[0].k; }
+    else nk = l.pal[st.brush].k;
+    if (nk === cur) return false;
+    st.grid[y][x] = nk; delete wrongSet[x + "," + y]; return true;
+  }
+  function cellFromEvent(e){
+    var el = document.elementFromPoint(e.clientX, e.clientY);
+    return el && el.classList && el.classList.contains("pc-cell") ? el : null;
+  }
+  gridEl.addEventListener("pointerdown", function(e){
+    var el = e.target.classList && e.target.classList.contains("pc-cell") ? e.target : null; if (!el) return;
+    e.preventDefault();
+    var l = lv();
+    snapshot(); setMsg("");
+    st.painting = l.type !== "reverse"; st.moved = false;
+    if (applyTo(+el.getAttribute("data-x"), +el.getAttribute("data-y"))) st.moved = true;
+    renderGrid();
+    if (!st.painting && !st.moved) st.hist.pop();
+    if (st.painting && !st.moved) st.hist.pop();
+  });
+  gridEl.addEventListener("pointermove", function(e){
+    if (!st.painting) return;
+    var el = cellFromEvent(e); if (!el) return;
+    var x = +el.getAttribute("data-x"), y = +el.getAttribute("data-y");
+    if (st.grid[y][x] !== lv().pal[st.brush].k){
+      if (!st.moved){ st.moved = true; }
+      applyTo(x, y); renderGrid();
+    }
+  });
+  function endPaint(){ st.painting = false; }
+  window.addEventListener("pointerup", endPaint); window.addEventListener("pointercancel", endPaint);
+  gridEl.addEventListener("keydown", function(e){
+    if ((e.key === "Enter" || e.key === " ") && e.target.classList && e.target.classList.contains("pc-cell")){
+      e.preventDefault(); snapshot();
+      var x = +e.target.getAttribute("data-x"), y = +e.target.getAttribute("data-y");
+      if (!applyTo(x, y)) st.hist.pop();
+      renderGrid();
+      var again = gridEl.querySelector('.pc-cell[data-x="' + x + '"][data-y="' + y + '"]'); if (again) again.focus();
+    }
+  });
+  document.getElementById("pcUndo").addEventListener("click", function(){
+    if (!st.hist.length) return;
+    st.grid = JSON.parse(st.hist.pop()); wrongSet = {}; setMsg(""); renderGrid();
+  });
+  document.getElementById("pcClear").addEventListener("click", function(){
+    snapshot(); st.grid = blank(); wrongSet = {}; setMsg(""); renderGrid();
+  });
+  document.getElementById("pcCheck").addEventListener("click", function(){
+    var wrong = pcCompare(lv(), st.grid);
+    wrongSet = {};
+    if (!wrong.length){
+      setMsg("🎉 Perfetto! Hai decifrato il codice: il disegno è giusto.", "ok");
+      document.getElementById("pcNext").hidden = st.idx >= PC_LEVELS.length - 1;
+    } else {
+      var empty = wrong.filter(function(w){ return st.grid[w.y][w.x] === lv().pal[0].k; }).length;
+      setMsg("Quasi! " + (wrong.length === 1 ? "C’è ancora 1 quadretto da sistemare." : "Ci sono ancora " + wrong.length + " quadretti da sistemare.") + " Rileggi il codice riga per riga, oppure premi «Aiuto» per vedere dove guardare.", "warn");
+      document.getElementById("pcNext").hidden = true;
+    }
+    renderGrid();
+  });
+  document.getElementById("pcHelp").addEventListener("click", function(){
+    var wrong = pcCompare(lv(), st.grid);
+    wrongSet = {};
+    if (!wrong.length){ setMsg("Non ci sono errori: premi Controlla!", "ok"); renderGrid(); return; }
+    var rows = {};
+    wrong.forEach(function(w){ rows[w.y] = true; });
+    wrong.forEach(function(w){ wrongSet[w.x + "," + w.y] = true; });
+    var rl = Object.keys(rows).map(function(y){ return +y + 1; });
+    setMsg("Controlla " + (rl.length === 1 ? "la riga " : "le righe ") + rl.join(", ") + ": i quadretti con il bordo arancione sono da rivedere.", "warn");
+    renderGrid();
+  });
+  document.getElementById("pcSolution").addEventListener("click", function(){
+    snapshot();
+    st.grid = lv().target.map(function(r){ return r.split(""); });
+    wrongSet = {}; setMsg("Ecco la soluzione. Prova a capire come il codice porta a questo disegno, poi torna a «Svuota» e rifallo da solo!");
+    renderGrid();
+  });
+  document.getElementById("pcNext").addEventListener("click", function(){ loadLevel(st.idx + 1); });
+  function loadLevel(i){
+    st.idx = i; st.brush = 1; st.hist = []; wrongSet = {};
+    st.grid = blank();
+    storyEl.textContent = lv().story;
+    document.getElementById("pcNext").hidden = true;
+    renderPicker(); renderPalette(); renderCode(); renderGrid(); setMsg("");
+  }
+  loadLevel(0);
+})();
+/*PC-UI-END*/
+
+  })();
 })();
 </script>
 </body>
