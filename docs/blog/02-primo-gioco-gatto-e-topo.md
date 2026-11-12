@@ -5,7 +5,7 @@ draft: false
 date: 2026-09-17
 category: Scratch
 class_target: "Elementari, Tutti"
-image: /img/scratch-logo.webp
+image: /img/scratch/gatto-topo-completo.gif
 ---
 
 # 02-Primo-gioco-Gatto e Topo

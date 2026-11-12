@@ -5,7 +5,7 @@ draft: false
 date: 2026-09-18
 category: Scratch
 class_target: "Elementari, Tutti"
-image: /img/scratch-logo.webp
+image: /img/scratch/underwater5.gif
 ---
 
 # 08-Infondo al Mar

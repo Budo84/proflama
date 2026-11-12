@@ -5,7 +5,7 @@ draft: false
 date: 2026-09-18
 category: Scratch
 class_target: "Elementari, Tutti"
-image: /img/scratch-logo.webp
+image: /img/scratch/ghost.gif
 ---
 
 # 05-Fantasmi
