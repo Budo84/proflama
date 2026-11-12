@@ -42,7 +42,7 @@ onMounted(() => {
   featured.value = mix.slice(0, 4)
 })
 
-// 2. Colonne per categoria: 4 articoli più recenti (già ordinati per data) per ciascuna
+// 2. Colonne per categoria: i primi 4 articoli in ordine di titolo per ciascuna
 const PER_COLONNA = 4
 const colonne = [
   { nome: 'Microbit', titolo: 'Micro:bit', icona: '🟦', link: '/microbit' },
@@ -50,7 +50,10 @@ const colonne = [
   { nome: 'Scratch',  titolo: 'Scratch',   icona: '🟧', link: '/scratch' },
   { nome: 'Mbot',     titolo: 'Mbot',      icona: '🟪', link: '/mbot' }
 ].map(c => {
-  const tutti = publicPosts.filter(p => (p.categories || [p.category]).includes(c.nome))
+  // Stesso ordine delle pagine di categoria: per titolo, con i numeri in ordine naturale (1, 2, 10…)
+  const tutti = publicPosts
+    .filter(p => (p.categories || [p.category]).includes(c.nome))
+    .sort((a, b) => String(a.title).localeCompare(String(b.title), 'it', { numeric: true, sensitivity: 'base' }))
   return { ...c, articoli: tutti.slice(0, PER_COLONNA), altri: tutti.length - PER_COLONNA }
 })
 </script>
