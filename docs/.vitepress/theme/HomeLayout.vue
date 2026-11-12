@@ -45,10 +45,10 @@ onMounted(() => {
 // 2. Colonne per categoria: i primi 4 articoli in ordine di titolo per ciascuna
 const PER_COLONNA = 4
 const colonne = [
-  { nome: 'Microbit', titolo: 'Micro:bit', icona: '🟦', link: '/microbit' },
-  { nome: 'Arduino',  titolo: 'Arduino',   icona: '🟩', link: '/arduino' },
-  { nome: 'Scratch',  titolo: 'Scratch',   icona: '🟧', link: '/scratch' },
-  { nome: 'Mbot',     titolo: 'Mbot',      icona: '🟪', link: '/mbot' }
+  { nome: 'Microbit', titolo: 'Micro:bit', icona: '🟦', colore: '#3b82f6', link: '/microbit' },
+  { nome: 'Arduino',  titolo: 'Arduino',   icona: '🟩', colore: '#22c55e', link: '/arduino' },
+  { nome: 'Scratch',  titolo: 'Scratch',   icona: '🟧', colore: '#f97316', link: '/scratch' },
+  { nome: 'Mbot',     titolo: 'Mbot',      icona: '🟪', colore: '#a855f7', link: '/mbot' }
 ].map(c => {
   // Stesso ordine delle pagine di categoria: per titolo, con i numeri in ordine naturale (1, 2, 10…)
   const tutti = publicPosts
@@ -61,7 +61,9 @@ const colonne = [
 <template>
   <Layout>
     <template #home-features-after>
-      
+
+      <p class="home-intro">Lezioni di tecnologia e robotica: scegli un percorso e inizia dalla prima lezione.</p>
+
       <div v-if="featured.length" class="featured-container">
         <div class="featured-grid">
           <a v-for="post in featured" :key="post.url" :href="post.url" class="featured-card">
@@ -75,7 +77,7 @@ const colonne = [
 
       <div class="cat-section">
         <div class="cat-grid">
-          <section v-for="col in colonne" :key="col.nome" class="cat-col">
+          <section v-for="col in colonne" :key="col.nome" class="cat-col" :style="{ '--cat-color': col.colore }">
             <h2 class="cat-title"><a :href="col.link">{{ col.icona }} {{ col.titolo }}</a></h2>
 
             <p v-if="col.articoli.length === 0" class="cat-empty">Presto nuove lezioni.</p>
@@ -96,23 +98,24 @@ const colonne = [
 
 <style scoped>
 /* --- STILE VETRINA --- */
-.featured-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; max-width: 1200px; margin: 40px auto; padding: 0 20px; }
-.featured-card { position: relative; height: 220px; border-radius: 12px; overflow: hidden; display: block; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+.featured-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; max-width: 1200px; margin: 24px auto 0; padding: 0 20px; }
+.home-intro { max-width: 1200px; margin: 28px auto 0; padding: 0 20px; text-align: center; font-size: 1.05rem; color: var(--vp-c-text-2); }
+.featured-card { position: relative; height: 160px; border-radius: 12px; overflow: hidden; display: block; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
 .image-box { width: 100%; height: 100%; background-size: cover; background-position: center; transition: transform 0.5s; }
 .featured-card:hover .image-box { transform: scale(1.1); }
-.card-overlay { position: absolute; bottom: 0; width: 100%; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); padding: 15px; }
-.card-title { color: white; font-weight: bold; font-size: 1.1rem; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+.card-overlay { position: absolute; bottom: 0; left: 0; right: 0; box-sizing: border-box; background: linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.75) 60%, transparent 100%); padding: 28px 14px 12px; }
+.card-title { color: white; font-weight: bold; font-size: 1rem; line-height: 1.3; text-shadow: 0 1px 3px rgba(0,0,0,0.8); display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 
 /* --- COLONNE PER CATEGORIA --- */
 .cat-section { max-width: 1200px; margin: 50px auto; padding: 0 20px; }
 .cat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; align-items: start; }
-.cat-title { margin: 0 0 16px; padding: 0 0 10px; border-top: none; border-bottom: 3px solid var(--vp-c-brand-1); font-size: 1.3rem; }
+.cat-title { margin: 0 0 16px; padding: 0 0 10px; border-top: none; border-bottom: 3px solid var(--cat-color, var(--vp-c-brand-1)); font-size: 1.3rem; }
 .cat-title a { color: inherit; text-decoration: none; }
-.cat-title a:hover { color: var(--vp-c-brand-1); }
-.cat-card { display: block; margin-bottom: 14px; border: 1px solid var(--vp-c-divider); border-radius: 10px; background: var(--vp-c-bg-soft); overflow: hidden; text-decoration: none; color: inherit; transition: border-color 0.2s, transform 0.2s; }
-.cat-card:hover { border-color: var(--vp-c-brand-1); transform: translateY(-2px); }
+.cat-title a:hover { color: var(--cat-color, var(--vp-c-brand-1)); }
+.cat-card { display: block; margin-bottom: 14px; border: 1px solid var(--vp-c-divider); border-radius: 10px; background: var(--vp-c-bg-soft); overflow: hidden; padding-bottom: 10px; text-decoration: none; color: inherit; transition: border-color 0.2s, transform 0.2s; }
+.cat-card:hover { border-color: var(--cat-color, var(--vp-c-brand-1)); transform: translateY(-2px); }
 .cat-thumb { display: block; width: 100%; aspect-ratio: 16 / 9; background-size: cover; background-position: center; }
-.cat-card-title { display: block; padding: 10px 12px; font-weight: 600; font-size: 0.95rem; line-height: 1.35; }
+.cat-card-title { display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; box-sizing: content-box; height: 2.7em; padding: 10px 12px 0; font-weight: 600; font-size: 0.95rem; line-height: 1.35; }
 .cat-empty { color: var(--vp-c-text-2); font-style: italic; margin: 0 0 14px; }
 .cat-more { display: inline-block; font-weight: 600; font-size: 0.95rem; color: var(--vp-c-brand-1); text-decoration: none; }
 .cat-more:hover { text-decoration: underline; }

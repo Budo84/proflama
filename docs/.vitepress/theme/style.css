@@ -22,6 +22,15 @@
   --vp-c-brand-3: #3451b2;
 }
 
+/* -- MENU: il gruppo "Officina-Robotica" resta dentro la barra, senza blocco colorato -- */
+.VPNavBarMenuGroup, .VPNavBarMenuGroup .VPFlyout, .VPNavBarMenuGroup button {
+  background: transparent !important;
+  height: var(--vp-nav-height) !important;
+  max-height: var(--vp-nav-height);
+}
+.VPNavBarMenuGroup button:hover, .VPNavBarMenuGroup button:focus,
+.VPNavBarMenuGroup .VPFlyout:hover button { background: transparent !important; color: var(--vp-c-brand-1); }
+
 /* ============================================================
    STAMPA DELLE SCHEDE (Ctrl+P / Salva come PDF)
    Toglie menu, barre laterali e pulsanti: resta solo la lezione.
