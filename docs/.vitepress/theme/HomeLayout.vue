@@ -50,7 +50,7 @@ const colonne = [
   { nome: 'Scratch',  titolo: 'Scratch',   icona: '🟧', link: '/scratch' },
   { nome: 'Mbot',     titolo: 'Mbot',      icona: '🟪', link: '/mbot' }
 ].map(c => {
-  const tutti = publicPosts.filter(p => p.category === c.nome)
+  const tutti = publicPosts.filter(p => (p.categories || [p.category]).includes(c.nome))
   return { ...c, articoli: tutti.slice(0, PER_COLONNA), altri: tutti.length - PER_COLONNA }
 })
 </script>
