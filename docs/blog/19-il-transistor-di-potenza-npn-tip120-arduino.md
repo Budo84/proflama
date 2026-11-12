@@ -3,8 +3,8 @@ title: 19-Il transistor di potenza NPN TIP120 (Arduino)
 description: 'Usiamo un transistor di potenza NPN TIP120 per pilotare carichi a 12 V come una striscia LED o un motore, regolandone la potenza con il PWM.'
 draft: false
 date: 2026-11-10
-category: Officina-Robotica
-class_target: "2, 3"
+category: "Officina-Robotica, Arduino"
+class_target: "2, 3, Tutti"
 image: /img/robotica/base-arduino-transistor-potenza.webp
 ---
 

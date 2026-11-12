@@ -3,8 +3,8 @@ title: 4-Il pulsante e la resistenza di pull-down (Arduino)
 description: 'Leggiamo un pulsante con un ingresso digitale e capiamo perché serve una resistenza di pull-down o di pull-up.'
 draft: false
 date: 2026-10-23
-category: Officina-Robotica
-class_target: "2, 3"
+category: "Officina-Robotica, Arduino"
+class_target: "2, 3, Tutti"
 image: /img/robotica/base-arduino-pulsante.webp
 ---
 

@@ -3,8 +3,8 @@ title: 20-Il motore passo-passo 28BYJ-48 (Arduino)
 description: ''
 draft: false
 date: 2026-11-10
-category: Officina-Robotica
-class_target: "Tutti"
+category: "Officina-Robotica, Arduino"
+class_target: "2, 3, Tutti"
 image: /img/robotica/base-arduino-passo-passo.webp
 ---
 

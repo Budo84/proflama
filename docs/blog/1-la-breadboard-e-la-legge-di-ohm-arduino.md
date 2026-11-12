@@ -3,8 +3,8 @@ title: 1-La breadboard e la legge di Ohm (Arduino)
 description: 'Impariamo a usare la breadboard e scopriamo con il multimetro come si legano tensione, corrente e resistenza.'
 draft: false
 date: 2026-10-07
-category: Officina-Robotica
-class_target: "2, 3"
+category: "Officina-Robotica, Arduino"
+class_target: "2, 3, Tutti"
 image: /img/robotica/breadboard.png
 ---
 

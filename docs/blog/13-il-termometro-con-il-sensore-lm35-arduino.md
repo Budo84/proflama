@@ -3,8 +3,8 @@ title: 13-Il termometro con il sensore LM35 (Arduino)
 description: 'Misuriamo la temperatura in gradi Celsius con il sensore LM35 e un ingresso analogico di Arduino.'
 draft: false
 date: 2026-11-06
-category: Officina-Robotica
-class_target: "2, 3"
+category: "Officina-Robotica, Arduino"
+class_target: "2, 3, Tutti"
 image: /img/robotica/base-arduino-temperatura.webp
 ---
 

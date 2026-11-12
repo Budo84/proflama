@@ -3,8 +3,8 @@ title: 18-Il sensore di umidità del terreno - il vaso intelligente (Arduino)
 description: 'Misuriamo l''''umidità della terra di una pianta e accendiamo un LED quando serve annaffiare.'
 draft: false
 date: 2026-11-07
-category: Officina-Robotica
-class_target: "2, 3"
+category: "Officina-Robotica, Arduino"
+class_target: "2, 3, Tutti"
 image: /img/robotica/base-arduino-umidita.webp
 ---
 

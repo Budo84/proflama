@@ -3,8 +3,8 @@ title: 17-Il display a 7 segmenti - contare da 0 a 9 (Arduino)
 description: 'Accendiamo i segmenti di un display a 7 segmenti per mostrare le cifre da 0 a 9 e costruire un contatore.'
 draft: false
 date: 2026-11-07
-category: Officina-Robotica
-class_target: "2, 3"
+category: "Officina-Robotica, Arduino"
+class_target: "2, 3, Tutti"
 image: /img/robotica/base-arduino-7segmenti.webp
 ---
 

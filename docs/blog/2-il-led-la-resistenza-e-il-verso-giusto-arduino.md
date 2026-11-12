@@ -3,8 +3,8 @@ title: 2-Il LED, la resistenza e il verso giusto (Arduino)
 description: 'Accendiamo un LED classico con anodo e catodo, calcolando la resistenza che lo protegge dal bruciarsi.'
 draft: false
 date: 2026-10-09
-category: Officina-Robotica
-class_target: "2, 3"
+category: "Officina-Robotica, Arduino"
+class_target: "2, 3, Tutti"
 image: /img/robotica/base-arduino-led-cablaggio.webp
 ---
 

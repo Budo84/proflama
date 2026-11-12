@@ -3,8 +3,8 @@ title: 6-Il sensore PIR - rilevare il movimento (Arduino)
 description: 'Rileviamo il passaggio di una persona con il sensore di movimento PIR e accendiamo un LED.'
 draft: false
 date: 2026-10-27
-category: Officina-Robotica
-class_target: "2, 3"
+category: "Officina-Robotica, Arduino"
+class_target: "2, 3, Tutti"
 image: /img/robotica/base-arduino-pir.webp
 ---
 

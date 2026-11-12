@@ -3,8 +3,8 @@ title: 12-La fotoresistenza - la luce notturna automatica (Arduino)
 description: 'Misuriamo la luce con una fotoresistenza e accendiamo un LED al buio con un circuito a partitore di tensione.'
 draft: false
 date: 2026-11-05
-category: Officina-Robotica
-class_target: "2, 3"
+category: "Officina-Robotica, Arduino"
+class_target: "2, 3, Tutti"
 image: /img/robotica/base-arduino-fotoresistenza.webp
 ---
 

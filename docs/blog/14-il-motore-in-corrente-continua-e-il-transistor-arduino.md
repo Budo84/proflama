@@ -3,8 +3,8 @@ title: 14-Il motore in corrente continua e il transistor (Arduino)
 description: 'Pilotiamo un motorino DC con un transistor e un diodo di protezione, senza collegarlo direttamente ad Arduino.'
 draft: false
 date: 2026-11-06
-category: Officina-Robotica
-class_target: "2, 3"
+category: "Officina-Robotica, Arduino"
+class_target: "2, 3, Tutti"
 image: /img/robotica/base-arduino-motore.webp
 ---
 

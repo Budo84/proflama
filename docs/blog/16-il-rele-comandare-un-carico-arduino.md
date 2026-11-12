@@ -3,8 +3,8 @@ title: 16-Il relè - comandare un carico (Arduino)
 description: 'Usiamo un modulo relè come interruttore comandato per accendere e spegnere un carico a bassa tensione.'
 draft: false
 date: 2026-11-06
-category: Officina-Robotica
-class_target: "2, 3"
+category: "Officina-Robotica, Arduino"
+class_target: "2, 3, Tutti"
 image: /img/robotica/base-arduino-rele.webp
 ---
 

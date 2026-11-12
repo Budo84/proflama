@@ -3,8 +3,8 @@ title: 3-Il buzzer - suoni e melodie (Arduino)
 description: 'Differenza tra buzzer attivo e passivo, e come far suonare note e melodie con la funzione tone().'
 draft: false
 date: 2026-10-22
-category: Officina-Robotica
-class_target: "2, 3"
+category: "Officina-Robotica, Arduino"
+class_target: "2, 3, Tutti"
 image: /img/robotica/base-arduino-buzzer.webp
 ---
 

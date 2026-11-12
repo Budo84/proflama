@@ -3,8 +3,8 @@ title: 8-Misurare le distanze con il sensore a ultrasuoni (Arduino)
 description: 'Misuriamo la distanza da un ostacolo in centimetri con il sensore HC-SR04, come fanno i sensori di parcheggio.'
 draft: false
 date: 2026-10-29
-category: Officina-Robotica
-class_target: "2, 3"
+category: "Officina-Robotica, Arduino"
+class_target: "2, 3, Tutti"
 image: /img/robotica/base-arduino-ultrasuoni.webp
 ---
 
