@@ -11,7 +11,7 @@ Qui trovi tutte le lezioni e gli esercizi dedicati alla scheda Mbot.
 import { data as posts } from './.vitepress/theme/posts.data.ts'
 
 const filteredPosts = posts
-  .filter(post => post.category === 'Mbot' && !post.draft)
+  .filter(post => (post.categories || [post.category]).includes('Mbot') && !post.draft)
   .sort((a, b) =>
     a.title.localeCompare(b.title, 'it', { numeric: true, sensitivity: 'base' })
   )

@@ -13,7 +13,7 @@ import { data as posts } from './.vitepress/theme/posts.data.ts'
 const ordina = (a, b) =>
   a.title.localeCompare(b.title, 'it', { numeric: true, sensitivity: 'base' })
 
-const officina = posts.filter(p => p.category === 'Officina-Robotica' && !p.draft)
+const officina = posts.filter(p => (p.categories || [p.category]).includes('Officina-Robotica') && !p.draft)
 
 // Se nel titolo compare "micro:bit" o "microbit" -> colonna micro:bit, altrimenti Arduino
 const isMicrobit = p => /micro:?bit/i.test(p.title)
