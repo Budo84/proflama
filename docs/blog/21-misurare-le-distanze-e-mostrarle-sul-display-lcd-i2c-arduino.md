@@ -1,5 +1,5 @@
 ---
-title: Misurare le distanze e mostrarle sul display LCD I2C (Arduino)
+title: 21-Misurare le distanze e mostrarle sul display LCD I2C (Arduino)
 description: 'Misuriamo la distanza con il sensore a ultrasuoni HC-SR04 e la mostriamo su un display LCD 16x2 I2C e sul monitor seriale: un metro elettronico che funziona anche senza computer.'
 draft: false
 date: 2026-11-25
@@ -8,7 +8,7 @@ class_target: "2, 3"
 image: /img/robotica/base-arduino-23-ultrasuoni-lcd-i2c.webp
 ---
 
-# Misurare le distanze e mostrarle sul display LCD I2C (Arduino)
+# 21-Misurare le distanze e mostrarle sul display LCD I2C (Arduino)
 
 **Obiettivo:** Costruire un **metro elettronico**: il sensore **HC-SR04** misura la distanza in centimetri e Arduino la scrive sia sul **monitor seriale** sia su un **display LCD 16x2 I2C**.
 
